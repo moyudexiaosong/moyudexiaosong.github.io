@@ -8,9 +8,28 @@
     <link href="/2022/06/16/page/"/>
     <url>/2022/06/16/page/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<hr><p><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h3a4vuw0j7j20ui0u00tk.jpg" alt="image-20220616154940477"></p>]]></content>
     
     
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>搭建Hexo博客</title>
+    <link href="/2022/06/16/%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/"/>
+    <url>/2022/06/16/%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Hexo-GitHub-文章发布原理"><a href="#Hexo-GitHub-文章发布原理" class="headerlink" title="Hexo + GitHub 文章发布原理"></a>Hexo + GitHub 文章发布原理</h2><p>在本地撰写 Markdown 格式文章后，通过 Hexo 解析文档，渲染生成具有主题样式的 HTML 静态网页，再推送到 GitHub 上完成博文的发布。</p><p><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h3a56bynskj20k909naaw.jpg" alt="image-20220616123316035"></p><p><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h3a530lrdgj20qk0m5gol.jpg" alt="image-20220616112321010"></p><h2 id="step0-配置环境"><a href="#step0-配置环境" class="headerlink" title="step0.配置环境"></a>step0.配置环境</h2><p>Git</p><p>Node.js</p><p>step1.github上建立仓库</p><p><em>仓库名称和注册名一致</em></p><h2 id="step2-生成SSH-Keys"><a href="#step2-生成SSH-Keys" class="headerlink" title="step2.生成SSH Keys"></a><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h3a53aguqmj212f0j40vl.jpg" alt="image-20220616113621975">step2.生成SSH Keys</h2><p>在任意文件夹下进入Git Bash，输入ssh检测是否已经安装ssh</p><p>输入<code>ssh-keygen -t rsa -C &quot;注册GitHub用的邮箱&quot;</code></p><p>敲四次回车</p><p><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h3a53j6kxhj20tf0axq42.jpg" alt="image-20220616113950805">在以下文件夹中获得刚生成的密钥，pub里是公钥，复制公钥</p><p><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h3a53qm5b8j20so05o74j.jpg" alt="image-20220616114046868">在GitHub中粘贴</p><p><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h3a53v2nutj20l201lt8q.jpg" alt="image-20220616121224727"></p><p>测试ssh是否绑定成功，<code>ssh -T git@github.com</code></p><p><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h3a54si3wlj20l201lt8q.jpg" alt="image-20220616121224727"></p><p>绑定成功</p><h2 id="step3-本地生成博客内容"><a href="#step3-本地生成博客内容" class="headerlink" title="step3.本地生成博客内容"></a>step3.本地生成博客内容</h2><p>新建文件夹Blog</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">npm install -g hexo-cli #安装hexo，Mac用户需要加sudo<br><br>hexo init #已安装过需要初始化<br><br>hexo g #生成<br><br>hexo s #启动服务，打开本地服务器<br></code></pre></td></tr></table></figure><h2 id="step4-发布博客到互联网"><a href="#step4-发布博客到互联网" class="headerlink" title="step4.发布博客到互联网"></a>step4.发布博客到互联网</h2><p>Hexo 博客文件夹目录结构如下：</p><p><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h3a56lj7k9j20ep09fwes.jpg" alt="image-20220616130057705"></p><p><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h3a555r2doj21130793z4.jpg" alt="image-20220616122404265"></p><p>打开博客配置文件，做出如下修改</p><p><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h3a55jpj2ij20y305oq35.jpg" alt="image-20220616122503416"></p><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs tex">deploy:<br>  type: git<br>  repository: https://github.com/moyudexiaosong/moyudexiaosong.github.io<br>  branch: main<br></code></pre></td></tr></table></figure><p><code>npm install hexo-deployer-git --save #安装上传工具</code></p><p><code>hexo d</code> #上传互联网</p><p>第一次要输入注册名和密码，密码（令牌）</p><p>上传成功，找到网址</p><p>查看当前git用户名和邮箱</p><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs tex">git config user.name<br>git config user.email<br></code></pre></td></tr></table></figure><p>修改</p><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs tex">git config --global user.name &quot;zhangsan(新的用户名)&quot;<br>git config --global user.email &quot;123456@qq.com(新的邮箱)&quot;<br>git config --global user.password &quot;123456(新的密码)&quot;<br><span class="hljs-params">#</span> 这里的zhangsan和邮箱都是你修改之后的用户名和邮箱<br></code></pre></td></tr></table></figure><p>step4.安装主题</p><p><code>npm install --save hexo-theme-fluid</code></p><p>然后在博客目录下创建 _config.fluid.yml，将主题的 _config.yml 内容复制进去。</p><p>将_config.yml下的theme的值landscape修改为fluid，这样才能使用到主题fluids</p><p>参考文章：</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>工具使用指南</tag>
+      
+    </tags>
     
   </entry>
   
