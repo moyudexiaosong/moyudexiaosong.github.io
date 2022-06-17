@@ -20,7 +20,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="搭建Hexo博客">
 <meta property="og:url" content="http://example.com/2022/06/16/%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/index.html">
-<meta property="og:site_name" content="小明明的摸鱼之家">
+<meta property="og:site_name" content="摸鱼之家">
 <meta property="og:description" content="Hexo + GitHub 文章发布原理在本地撰写 Markdown 格式文章后，通过 Hexo 解析文档，渲染生成具有主题样式的 HTML 静态网页，再推送到 GitHub 上完成博文的发布。   step0.配置环境Git Node.js step1.github上建立仓库 仓库名称和注册名一致 step2.生成SSH Keys在任意文件夹下进入Git Bash，输入ssh检测是否已经安装ss">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/e6c9d24egy1h3a56bynskj20k909naaw.jpg">
@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/e6c9d24egy1h3a555r2doj21130793z4.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/e6c9d24egy1h3a55jpj2ij20y305oq35.jpg">
 <meta property="article:published_time" content="2022-06-16T05:55:15.000Z">
-<meta property="article:modified_time" content="2022-06-17T10:21:25.760Z">
+<meta property="article:modified_time" content="2022-06-17T10:37:48.233Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="工具使用指南">
 <meta name="twitter:card" content="summary_large_image">
@@ -40,7 +40,7 @@
   
   
   
-  <title>搭建Hexo博客 - 小明明的摸鱼之家</title>
+  <title>搭建Hexo博客 - 摸鱼之家</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -226,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.3k words
+          3.5k words
         
       </span>
     
@@ -237,7 +237,7 @@
         
         
         
-          19 mins
+          30 mins
         
       </span>
     
@@ -448,6 +448,21 @@
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tex">hexo publish draft newpage<br></code></pre></td></tr></table></figure>
 
 <p>就会自动把newpage.md发送到post中。</p>
+<h2 id="Step6-Live2D看板娘"><a href="#Step6-Live2D看板娘" class="headerlink" title="Step6.Live2D看板娘"></a>Step6.Live2D看板娘</h2><p>安装插件</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">npm install <span class="hljs-comment">--save hexo-helper-live2d</span><br></code></pre></td></tr></table></figure>
+
+<p>修改配置文件</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">live2d:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span>  			<span class="hljs-comment"># 是否启动</span><br>  <span class="hljs-attr">scriptFrom:</span> <span class="hljs-string">local</span> 		<span class="hljs-comment"># 默认</span><br>  <span class="hljs-attr">pluginRootPath:</span> <span class="hljs-string">live2dw/</span>  <span class="hljs-comment"># 插件在站点上的根目录(相对路径)</span><br>  <span class="hljs-attr">pluginJsPath:</span> <span class="hljs-string">lib/</span>  		<span class="hljs-comment"># 脚本文件相对与插件根目录路径</span><br>  <span class="hljs-attr">pluginModelPath:</span> <span class="hljs-string">assets/</span>  <span class="hljs-comment"># 模型文件相对与插件根目录路径</span><br>  <span class="hljs-attr">tagMode:</span> <span class="hljs-literal">false</span>  			<span class="hljs-comment"># 标签模式, 是否仅替换 live2d tag标签而非插入到所有页面中</span><br>  <span class="hljs-attr">debug:</span> <span class="hljs-literal">false</span>  			<span class="hljs-comment"># 调试, 是否在控制台输出日志</span><br>  <span class="hljs-attr">model:</span><br>    <span class="hljs-attr">use:</span> <span class="hljs-string">live2d-widget</span>  	<span class="hljs-comment"># 模型文件</span><br>  <span class="hljs-attr">display:</span><br>    <span class="hljs-attr">position:</span> <span class="hljs-string">right</span> 		<span class="hljs-comment"># 定位方向 left right top bottom</span><br>    <span class="hljs-attr">width:</span> <span class="hljs-number">150</span>  			<span class="hljs-comment"># 小人宽度</span><br>    <span class="hljs-attr">height:</span> <span class="hljs-number">300</span> 			<span class="hljs-comment"># 小人高度</span><br>    <span class="hljs-attr">hOffset:</span> <span class="hljs-number">-15</span>  			<span class="hljs-comment"># 水平偏移</span><br>    <span class="hljs-attr">vOffset:</span> <span class="hljs-number">-15</span>  			<span class="hljs-comment"># 垂直偏移</span><br>  <span class="hljs-attr">mobile:</span><br>    <span class="hljs-attr">show:</span> <span class="hljs-literal">true</span>  			<span class="hljs-comment"># 手机端是否显示</span><br>  <span class="hljs-attr">react:</span><br>    <span class="hljs-attr">opacity:</span> <span class="hljs-number">0.7</span>  			<span class="hljs-comment"># 模型透明度</span><br></code></pre></td></tr></table></figure>
+
+<p>选择人物</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs gams">live2d-widget-<span class="hljs-keyword">model</span>-chitose<br>live2d-widget-<span class="hljs-keyword">model</span>-epsilon2_1<br>live2d-widget-<span class="hljs-keyword">model</span>-gf<br>live2d-widget-<span class="hljs-keyword">model</span>-haru/<span class="hljs-number">01</span> (use npm install --save live2d-widget-<span class="hljs-keyword">model</span>-haru)<br>live2d-widget-<span class="hljs-keyword">model</span>-haru/<span class="hljs-number">02</span> (use npm install --save live2d-widget-<span class="hljs-keyword">model</span>-haru)<br>live2d-widget-<span class="hljs-keyword">model</span>-haruto<br>live2d-widget-<span class="hljs-keyword">model</span>-hibiki<br>live2d-widget-<span class="hljs-keyword">model</span>-hijiki<br>live2d-widget-<span class="hljs-keyword">model</span>-izumi<br>live2d-widget-<span class="hljs-keyword">model</span>-koharu<br>live2d-widget-<span class="hljs-keyword">model</span>-miku<br>live2d-widget-<span class="hljs-keyword">model</span>-ni-j<br>live2d-widget-<span class="hljs-keyword">model</span>-nico<br>live2d-widget-<span class="hljs-keyword">model</span>-nietzsche<br>live2d-widget-<span class="hljs-keyword">model</span>-nipsilon<br>live2d-widget-<span class="hljs-keyword">model</span>-nito<br>live2d-widget-<span class="hljs-keyword">model</span>-shizuku<br>live2d-widget-<span class="hljs-keyword">model</span>-tororo<br>live2d-widget-<span class="hljs-keyword">model</span>-tsumiki<br>live2d-widget-<span class="hljs-keyword">model</span>-unitychan<br>live2d-widget-<span class="hljs-keyword">model</span>-wanko<br>live2d-widget-<span class="hljs-keyword">model</span>-z16<br></code></pre></td></tr></table></figure>
+
+<p>进行安装</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">npm install <span class="hljs-comment">--save 上面对应的代码</span><br></code></pre></td></tr></table></figure>
+
+<p>修改配置文件</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">model:</span><br><span class="hljs-symbol">    use:</span> live2d-widget  <span class="hljs-meta">## 选择的模型文件</span><br></code></pre></td></tr></table></figure>
+
 <p>参考文章：</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_37781304/article/details/82729029?utm_source=app&app_version=5.5.0">hexo史上最全搭建教程</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/60578464#:~:text=%E4%BD%BF%E7%94%A8%20Hexo%2BGitHub%20%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%85%8D%E8%B4%B9%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B%EF%BC%88%E5%B0%8F%E7%99%BD%E5%90%91%EF%BC%89%201%20%E5%87%86%E5%A4%87%202%20%E8%BF%9E%E6%8E%A5%20Github....,Hexo%20%E5%88%B0%20GitHub%20Pages%206%20%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89....%207%20%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8">使用 Hexo+GitHub 搭建个人免费博客教程</a></p>
@@ -527,8 +542,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/06/16/Labiew/" title="Labview">
-                        <span class="hidden-mobile">Labview</span>
+                      <a href="/2022/06/16/MarkDown%E6%95%99%E7%A8%8B/" title="MD使用教程">
+                        <span class="hidden-mobile">MD使用教程</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -831,5 +846,5 @@
   <noscript>
     <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":-15,"vOffset":-15},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
 </html>
