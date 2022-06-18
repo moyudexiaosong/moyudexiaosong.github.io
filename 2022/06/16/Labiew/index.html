@@ -16,35 +16,36 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="如何动态选择曲线可见性利用属性节点。首先找到属性节点，活动曲线。 ![图片](https:&#x2F;&#x2F;sym-1312472160.cos.ap-shanghai.myqcloud.com&#x2F;typora&#x2F;  640.jpeg) 首先给大家说明一下，LV里面，不管是列表框，还是表格，都会有一个活动单元格，活动曲线之类的。 你要操作某一个单元格或者曲线，首先你得让这个 单元格或者曲线变为活动单元格，然后才可以">
+    <meta name="description" content="如何动态选择曲线可见性利用属性节点。首先找到属性节点，活动曲线。  首先给大家说明一下，LV里面，不管是列表框，还是表格，都会有一个活动单元格，活动曲线之类的。 你要操作某一个单元格或者曲线，首先你得让这个 单元格或者曲线变为活动单元格，然后才可以操纵活动单元格的属性。 所以，活动XX的，一定要在前面板中设置，不然你的属性，都是默认是对曲线0或者单元格0做的设置。 下面是用来设置曲线显示的方法，用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Labview">
 <meta property="og:url" content="http://example.com/2022/06/16/Labiew/index.html">
 <meta property="og:site_name" content="摸鱼之家">
-<meta property="og:description" content="如何动态选择曲线可见性利用属性节点。首先找到属性节点，活动曲线。 ![图片](https:&#x2F;&#x2F;sym-1312472160.cos.ap-shanghai.myqcloud.com&#x2F;typora&#x2F;  640.jpeg) 首先给大家说明一下，LV里面，不管是列表框，还是表格，都会有一个活动单元格，活动曲线之类的。 你要操作某一个单元格或者曲线，首先你得让这个 单元格或者曲线变为活动单元格，然后才可以">
+<meta property="og:description" content="如何动态选择曲线可见性利用属性节点。首先找到属性节点，活动曲线。  首先给大家说明一下，LV里面，不管是列表框，还是表格，都会有一个活动单元格，活动曲线之类的。 你要操作某一个单元格或者曲线，首先你得让这个 单元格或者曲线变为活动单元格，然后才可以操纵活动单元格的属性。 所以，活动XX的，一定要在前面板中设置，不然你的属性，都是默认是对曲线0或者单元格0做的设置。 下面是用来设置曲线显示的方法，用">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//%20%20640-20220618100131554.jpeg">
 <meta property="og:image" content="http://example.com/2022/06/16/Labiew/Labiew.assets/640.png">
-<meta property="og:image" content="http://example.com/2022/06/16/Labiew/Labiew.assets/640-20220617110331342.jpeg">
-<meta property="og:image" content="http://example.com/2022/06/16/Labiew/Labiew.assets/640-20220617110252573.jpeg">
-<meta property="og:image" content="http://example.com/2022/06/16/Labiew/Labiew.assets/640-20220617115305652.jpeg">
-<meta property="og:image" content="http://example.com/2022/06/16/Labiew/Labiew.assets/640-20220617121224451.jpeg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//640-20220617110331342.jpeg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//640-20220617110252573.jpeg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//640-20220617115305652.jpeg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//640-20220617121224451.jpeg">
 <meta property="og:image" content="http://example.com/2022/06/16/Labiew/Labiew.assets/640-20220617121301391.png">
-<meta property="og:image" content="http://example.com/2022/06/16/Labiew/Labiew.assets/640-20220617121650078.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//640-20220617121650078.png">
 <meta property="og:image" content="http://example.com/2022/06/16/Labiew/Labiew.assets/640-20220617120217133.png">
 <meta property="og:image" content="http://example.com/2022/06/16/Labiew/Labiew.assets/640-20220617120616648.png">
 <meta property="og:image" content="http://example.com/2022/06/16/Labiew/Labiew.assets/640-20220617120625395.png">
-<meta property="og:image" content="http://example.com/2022/06/16/Labiew/Labiew.assets/640-20220617120800417.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//640-20220617120800417.png">
 <meta property="og:image" content="http://example.com/2022/06/16/Labiew/Labiew.assets/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_SGFsZi1BIFN0dWRpbw==,size_16,color_FFFFFF,t_70.png">
 <meta property="og:image" content="http://example.com/2022/06/16/Labiew/Labiew.assets/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_SGFsZi1BIFN0dWRpbw==,size_16,color_FFFFFF,t_70-20220617125048725.png">
-<meta property="og:image" content="http://example.com/2022/06/16/Labiew/Labiew.assets/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_SGFsZi1BIFN0dWRpbw==,size_16,color_FFFFFF,t_70-20220617125109791.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_SGFsZi1BIFN0dWRpbw==,size_16,color_FFFFFF,t_70-20220617125109791.png">
 <meta property="og:image" content="http://example.com/2022/06/16/Labiew/Labiew.assets/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_SGFsZi1BIFN0dWRpbw==,size_16,color_FFFFFF,t_70-20220617125123967.png">
-<meta property="og:image" content="http://example.com/2022/06/16/Labiew/Labiew.assets/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_SGFsZi1BIFN0dWRpbw==,size_16,color_FFFFFF,t_70-20220617125130498.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_SGFsZi1BIFN0dWRpbw==,size_16,color_FFFFFF,t_70-20220617125130498.png">
 <meta property="article:published_time" content="2022-06-16T05:55:15.000Z">
-<meta property="article:modified_time" content="2022-06-18T01:36:19.084Z">
+<meta property="article:modified_time" content="2022-06-18T02:05:47.650Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="陈师兄的项目">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2022/06/16/Labiew/Labiew.assets/640.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//%20%20640-20220618100131554.jpeg">
   
   
   
@@ -245,7 +246,7 @@
         
         
         
-          23 mins
+          22 mins
         
       </span>
     
@@ -288,7 +289,7 @@
             <div class="markdown-body">
               
               <h2 id="如何动态选择曲线可见性"><a href="#如何动态选择曲线可见性" class="headerlink" title="如何动态选择曲线可见性"></a>如何动态选择曲线可见性</h2><p>利用属性节点。首先找到属性节点，活动曲线。</p>
-<p>![图片](<a target="_blank" rel="noopener" href="https://sym-1312472160.cos.ap-shanghai.myqcloud.com/typora/">https://sym-1312472160.cos.ap-shanghai.myqcloud.com/typora/</a>  640.jpeg)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//%20%20640-20220618100131554.jpeg" srcset="/img/loading.gif" lazyload alt="图片"></p>
 <p>首先给大家说明一下，LV里面，不管是列表框，还是表格，都会有一个活动单元格，活动曲线之类的。</p>
 <p>你要操作某一个单元格或者曲线，首先你得让这个 单元格或者曲线变为活动单元格，然后才可以操纵活动单元格的属性。</p>
 <p>所以，活动XX的，一定要在前面板中设置，不然你的属性，都是默认是对曲线0或者单元格0做的设置。</p>
@@ -296,13 +297,13 @@
 <p><img src="Labiew.assets/640.png" srcset="/img/loading.gif" lazyload alt="图片"></p>
 <h2 id="错误簇的使用"><a href="#错误簇的使用" class="headerlink" title="错误簇的使用"></a>错误簇的使用</h2><p>错误簇其实就是一个簇，里面放了三个控件，一个布尔，一个代码，一个源。</p>
 <p>按名称解绑簇 ，提取了错误簇里的 status元素。这个元素如果是真，表示有错误发生，可以用来停止while循环。</p>
-<p><img src="Labiew.assets/640-20220617110331342.jpeg" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//640-20220617110331342.jpeg" srcset="/img/loading.gif" lazyload alt="图片"></p>
 <p>当然也有人利用错误簇强制vi执行顺序的，毕竟LabVIEW是数据流的编程。</p>
 <p><strong>LabVIEW自带有一些函数是有错误，仍旧执行，可以通过查看帮助文档看相关介绍</strong></p>
-<p><img src="Labiew.assets/640-20220617110252573.jpeg" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//640-20220617110252573.jpeg" srcset="/img/loading.gif" lazyload alt="图片"></p>
 <h2 id="串口读取问题"><a href="#串口读取问题" class="headerlink" title="串口读取问题"></a>串口读取问题</h2><p>####用属性节点得到缓冲字节数</p>
 <p>读取缓冲区字节数这个“<strong>黄金组合</strong>”时，前面要加延时等待，等待仪器响应，等待缓冲区收到数据。如下图画圈地方所示。</p>
-<p><img src="Labiew.assets/640-20220617115305652.jpeg" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//640-20220617115305652.jpeg" srcset="/img/loading.gif" lazyload alt="图片"></p>
 <p>####保证串口接收数据的完整性</p>
 <p>串口这块逻辑都是一样的，收到数据很容易，重点在于如何保证<strong>接收帧的完整性</strong>。</p>
 <p>1，如何保证接收数据是正常接收的，这个可以在帧尾用校验码，累加求和，或者CRC校验。发送时候把校验码加在数据帧最后，解析时候在计算一下校验，对比下，不对则抛弃。</p>
@@ -314,14 +315,14 @@
 <ol>
 <li><p>最粗暴的，就是自己输入字符串控件里敲个回车。</p>
 </li>
-<li><p>正常点，在程序框图里，输入字符串控件后面，用连接字符串，默默地加上16进制的0D0A。也就是串口助手里的“发送新行”的功能。<strong>勾选“</strong>发送新行”时候，串口助手为我们默认都加了这两个字符。<img src="Labiew.assets/640-20220617121224451.jpeg" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<li><p>正常点，在程序框图里，输入字符串控件后面，用连接字符串，默默地加上16进制的0D0A。也就是串口助手里的“发送新行”的功能。<strong>勾选“</strong>发送新行”时候，串口助手为我们默认都加了这两个字符。<img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//640-20220617121224451.jpeg" srcset="/img/loading.gif" lazyload alt="图片"></p>
 </li>
 <li><p>不想敲16进制的0D0A字符串也可以，字符串选板默认有一个常量，叫“行结束符常量”，用这个可以和0D0A一样的效果。<img src="Labiew.assets/640-20220617121301391.png" srcset="/img/loading.gif" lazyload alt="图片"></p>
 </li>
 </ol>
 <p>####高亮调试能收到数据，但是正常运行，就收不到数据</p>
 <p>这个问题最常见的解决方式，就是加<strong>等待延时</strong>，因为高亮执行时，写入缓冲区后，执行到读取缓冲区速度慢，这个时候缓冲区可以读取到数据。而正常执行，延时太短，缓冲区没有数据。可以把上述的100ms改大即可。</p>
-<p><img src="Labiew.assets/640-20220617121650078.png" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//640-20220617121650078.png" srcset="/img/loading.gif" lazyload alt="图片"></p>
 <p>当然，还有一个常见原因，就是程序读到数据了，但是一闪而过（以上这个程序只是举例，和真实案例有差距），因为这个程序字符串不能显示历史字符串。而串口助手都可以显示历史数据的。</p>
 <h2 id="局部变量问题"><a href="#局部变量问题" class="headerlink" title="局部变量问题"></a>局部变量问题</h2><p>####情境一</p>
 <p>TEST A的vi输出了一个结果Result A，然后给TEST B作为输入，但是TEST B的输入，却总是不对，导致TEST B计算有问题。</p>
@@ -333,15 +334,15 @@
 <p>问题出在使用FOR解析读取的数据这儿。FOR有一个特性，输入是数组时候，可以不连接左上角的<strong>N</strong> 这个端子，FOR会自动按数组的大小执行对应次数。但是，这个VISA读取有时候串口读不到数据，是空的，那么这个FOR执行次数是0。</p>
 <p>如果FOR执行次数是0，那么穿过FOR的连线，<strong>输出就会是默认值（一般是空）</strong>，也就是说，连线的数据，穿过了FOR后，数据无法传递给FOR后面的函数。所以，吃亏还是吃亏在了基础知识，但是很多人估计书本学习不会遇到，毕竟这个靠实际调试才会发现。</p>
 <p>所以，如果要改程序，请用移位寄存器，稍微改一下就可以解决这个问题啦。如下图所示。</p>
-<p><img src="Labiew.assets/640-20220617120800417.png" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//640-20220617120800417.png" srcset="/img/loading.gif" lazyload alt="图片"></p>
 <h2 id="Labview状态机的介绍与程序示例"><a href="#Labview状态机的介绍与程序示例" class="headerlink" title="Labview状态机的介绍与程序示例"></a>Labview状态机的介绍与程序示例</h2><h5 id="一、状态机简介"><a href="#一、状态机简介" class="headerlink" title="一、状态机简介"></a>一、状态机简介</h5><p>  状态机是在工程应用中使用最多的设计模型。使用状态机，我们可以很容易的实现程序流程图中的判断、分支。<br>  Labview状态机是由一个While循环、一个条件结构和一个移位寄存器组成的。其中while循环用来保证程序可以连续的运行；条件结构的各种分支中的代码用来描述状态机的各种状态，以及下一状态的选择；移位寄存器用来将之前状态所作出的选择传递到下一次循环的选择端子。</p>
 <h5 id="二、状态机的基本框架"><a href="#二、状态机的基本框架" class="headerlink" title="二、状态机的基本框架"></a>二、状态机的基本框架</h5><p>  在程序框图中创建一个while循环，并在while循环上添加移位寄存器，然后再while循环内创建一个条件结构，条件结构的选择端是一个枚举常量，自定义枚举类型，保存后使用。</p>
 <p><img src="Labiew.assets/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_SGFsZi1BIFN0dWRpbw==,size_16,color_FFFFFF,t_70.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
 <h5 id="三、例程"><a href="#三、例程" class="headerlink" title="三、例程"></a>三、例程</h5><p>按下开始按钮后，LED开始以输入的时间间隔闪烁，按下停止按钮，程序停止运行。</p>
 <p><img src="Labiew.assets/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_SGFsZi1BIFN0dWRpbw==,size_16,color_FFFFFF,t_70-20220617125048725.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
-<h6 id="程序框图"><a href="#程序框图" class="headerlink" title="程序框图"></a>程序框图</h6><p><img src="Labiew.assets/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_SGFsZi1BIFN0dWRpbw==,size_16,color_FFFFFF,t_70-20220617125109791.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h6 id="程序框图"><a href="#程序框图" class="headerlink" title="程序框图"></a>程序框图</h6><p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_SGFsZi1BIFN0dWRpbw==,size_16,color_FFFFFF,t_70-20220617125109791.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
 <p><img src="Labiew.assets/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_SGFsZi1BIFN0dWRpbw==,size_16,color_FFFFFF,t_70-20220617125123967.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
-<p><img src="Labiew.assets/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_SGFsZi1BIFN0dWRpbw==,size_16,color_FFFFFF,t_70-20220617125130498.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_SGFsZi1BIFN0dWRpbw==,size_16,color_FFFFFF,t_70-20220617125130498.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
 <p><strong>枚举类型的分支情况如下：</strong><br>  设置三项分别为：“开始”、“亮”、灭。然后在条件结构的分支处，<strong>右键-为每个值添加分支</strong><br>  其中左侧初始值与”开始“分支内的都是同一个枚举常量（即通过复制粘贴得到的）。</p>
 <h6 id="程序逻辑"><a href="#程序逻辑" class="headerlink" title="程序逻辑"></a>程序逻辑</h6><p>初始条件的输入值为“开始”，进入“开始”的条件分支进行判断。</p>
 <p>如果按钮按下，输出“亮”，并作为下一次条件的输入；<br>如果按钮未按下，输出“开始”，并作为下一次条件的输入，即保持原状态。<br>如果条件的输入为“亮”，此时条件输出“灭”，并作为下一次的输入。</p>
@@ -415,9 +416,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/06/16/MarkDown%E6%95%99%E7%A8%8B/" title="MD使用教程">
+                      <a href="/2022/06/16/%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/" title="搭建Hexo博客">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">MD使用教程</span>
+                        <span class="hidden-mobile">搭建Hexo博客</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
