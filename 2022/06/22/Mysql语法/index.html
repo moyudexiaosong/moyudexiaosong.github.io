@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="MySQL 连接MySQL登录12[root@host]# mysql -u root -pEnter password:****** 退出MySQL12mysql&gt; exitBye MySQL 数据库操作查询所有的数据库1SHOW DATABASES; 使用数据库1use 数据库名称; 查看当前使用的数据库1select database(); 创建数据库12CREATE DATABAS">
+    <meta name="description" content="MySQL 语法1.Mysql基础MySQL登录12[root@host]# mysql -u root -pEnter password:****** 退出MySQL12mysql&gt; exitBye 1.1 MySQL 数据库操作查询所有的数据库1SHOW DATABASES; 使用数据库1use 数据库名称; 查看当前使用的数据库1select database(); 创建数据库12C">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mysql">
 <meta property="og:url" content="http://example.com/2022/06/22/Mysql%E8%AF%AD%E6%B3%95/index.html">
 <meta property="og:site_name" content="摸鱼之家">
-<meta property="og:description" content="MySQL 连接MySQL登录12[root@host]# mysql -u root -pEnter password:****** 退出MySQL12mysql&gt; exitBye MySQL 数据库操作查询所有的数据库1SHOW DATABASES; 使用数据库1use 数据库名称; 查看当前使用的数据库1select database(); 创建数据库12CREATE DATABAS">
+<meta property="og:description" content="MySQL 语法1.Mysql基础MySQL登录12[root@host]# mysql -u root -pEnter password:****** 退出MySQL12mysql&gt; exitBye 1.1 MySQL 数据库操作查询所有的数据库1SHOW DATABASES; 使用数据库1use 数据库名称; 查看当前使用的数据库1select database(); 创建数据库12C">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//image-20220623155025359.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//image-20220623154845811.png">
@@ -99,12 +99,14 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//image-20220625123028441.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//image-20220625123108905.png">
 <meta property="article:published_time" content="2022-06-22T04:50:14.000Z">
-<meta property="article:modified_time" content="2022-06-25T04:31:46.128Z">
+<meta property="article:modified_time" content="2022-06-25T05:22:21.090Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="JavaWeb">
+<meta property="article:tag" content="JavaWeb&amp;Mysql">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//image-20220623155025359.png">
   
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
   <title>Mysql - 摸鱼之家</title>
@@ -299,17 +301,16 @@
     
 
     
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          696 mins
-        
-      </span>
-    
 
     
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+      
     
   </div>
 
@@ -347,14 +348,14 @@
             <div class="markdown-body">
               
               <hr>
-<h1 id="MySQL-连接"><a href="#MySQL-连接" class="headerlink" title="MySQL 连接"></a>MySQL 连接</h1><h4 id="MySQL登录"><a href="#MySQL登录" class="headerlink" title="MySQL登录"></a>MySQL登录</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">[root@host]# mysql -u root -p<br>Enter password:******<br></code></pre></td></tr></table></figure>
+<h1 id="MySQL-语法"><a href="#MySQL-语法" class="headerlink" title="MySQL 语法"></a>MySQL 语法</h1><h2 id="1-Mysql基础"><a href="#1-Mysql基础" class="headerlink" title="1.Mysql基础"></a>1.Mysql基础</h2><h4 id="MySQL登录"><a href="#MySQL登录" class="headerlink" title="MySQL登录"></a>MySQL登录</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">[root@host]# mysql -u root -p<br>Enter password:******<br></code></pre></td></tr></table></figure>
 <h4 id="退出MySQL"><a href="#退出MySQL" class="headerlink" title="退出MySQL"></a>退出MySQL</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql&gt; exit<br>Bye<br></code></pre></td></tr></table></figure>
-<h1 id="MySQL-数据库操作"><a href="#MySQL-数据库操作" class="headerlink" title="MySQL 数据库操作"></a>MySQL 数据库操作</h1><h4 id="查询所有的数据库"><a href="#查询所有的数据库" class="headerlink" title="查询所有的数据库"></a>查询所有的数据库</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SHOW DATABASES;<br></code></pre></td></tr></table></figure>
+<h3 id="1-1-MySQL-数据库操作"><a href="#1-1-MySQL-数据库操作" class="headerlink" title="1.1 MySQL 数据库操作"></a>1.1 MySQL 数据库操作</h3><h4 id="查询所有的数据库"><a href="#查询所有的数据库" class="headerlink" title="查询所有的数据库"></a>查询所有的数据库</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SHOW DATABASES;<br></code></pre></td></tr></table></figure>
 <h4 id="使用数据库"><a href="#使用数据库" class="headerlink" title="使用数据库"></a>使用数据库</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">use 数据库名称;<br></code></pre></td></tr></table></figure>
 <h4 id="查看当前使用的数据库"><a href="#查看当前使用的数据库" class="headerlink" title="查看当前使用的数据库"></a>查看当前使用的数据库</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select database();<br></code></pre></td></tr></table></figure>
 <h4 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE DATABASE 数据库名;<br>CREATE DATABASE IF NOT EXISTS 数据库名称;<br></code></pre></td></tr></table></figure>
 <h4 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">drop database &lt;数据库名&gt;;<br>DROP DATABASE IF EXISTS 数据库名称;<br></code></pre></td></tr></table></figure>
-<h1 id="MySQL-数据类型"><a href="#MySQL-数据类型" class="headerlink" title="MySQL 数据类型"></a>MySQL 数据类型</h1><h4 id="数值类型"><a href="#数值类型" class="headerlink" title="数值类型"></a>数值类型</h4><div class="table-container">
+<h3 id="1-2-MySQL-数据类型"><a href="#1-2-MySQL-数据类型" class="headerlink" title="1.2 MySQL 数据类型"></a>1.2 MySQL 数据类型</h3><h4 id="数值类型"><a href="#数值类型" class="headerlink" title="数值类型"></a>数值类型</h4><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -540,14 +541,14 @@
 </tbody>
 </table>
 </div>
-<h1 id="MySQL数据表操作"><a href="#MySQL数据表操作" class="headerlink" title="MySQL数据表操作"></a>MySQL数据表操作</h1><h4 id="查询当前数据库下所有表名称"><a href="#查询当前数据库下所有表名称" class="headerlink" title="查询当前数据库下所有表名称"></a>查询当前数据库下所有表名称</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SHOW TABLES;<br></code></pre></td></tr></table></figure>
+<h3 id="1-3-MySQL数据表操作"><a href="#1-3-MySQL数据表操作" class="headerlink" title="1.3 MySQL数据表操作"></a>1.3 MySQL数据表操作</h3><h4 id="查询当前数据库下所有表名称"><a href="#查询当前数据库下所有表名称" class="headerlink" title="查询当前数据库下所有表名称"></a>查询当前数据库下所有表名称</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SHOW TABLES;<br></code></pre></td></tr></table></figure>
 <h4 id="查询表结构（即表的所有列名及其数据类型）"><a href="#查询表结构（即表的所有列名及其数据类型）" class="headerlink" title="查询表结构（即表的所有列名及其数据类型）"></a>查询表结构（即表的所有列名及其数据类型）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">DESC 表名称;<br></code></pre></td></tr></table></figure>
 <h4 id="创建Table"><a href="#创建Table" class="headerlink" title="创建Table"></a>创建Table</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE 表名 ( <br>  字段名1 数据类型1, <br>  字段名2 数据类型2,<br>  ...<br>	字段名n 数据类型n );<br></code></pre></td></tr></table></figure>
 <p>实例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create table tb_user (<br>    id int,<br>    username varchar(20),<br>    password varchar(32)<br>);<br></code></pre></td></tr></table></figure>
 <h4 id="删除数据表"><a href="#删除数据表" class="headerlink" title="删除数据表"></a>删除数据表</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">DROP TABLE table_name ;<br>DROP TABLE IF EXISTS 表名;<br></code></pre></td></tr></table></figure>
 <h4 id="修改数据表"><a href="#修改数据表" class="headerlink" title="修改数据表"></a>修改数据表</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 改表名 --<br>ALTER TABLE 表名 RENAME TO 新的表名;<br>-- 将表名student修改为stu<br>alter table student rename to stu;<br><br>-- 加一列 --<br>ALTER TABLE 表名 ADD 列名 数据类型;<br>-- 给stu表添加一列address，该字段类型是varchar(50) alter table stu add address varchar(50);<br><br>-- 改数据类型 --<br>ALTER TABLE 表名 MODIFY 列名 新数据类型;<br>-- 将stu表中的address字段的类型改为 char(50) alter table stu modify address char(50);<br><br>-- 删除列 --<br>ALTER TABLE 表名 DROP 列名;<br>-- 将stu表中的addr字段 删除 alter table stu drop addr;<br><br>-- 修改列名和数据类型 --<br>ALTER TABLE 表名 CHANGE 列名 新列名 新数据类型;<br>-- 将stu表中的address字段名改为 addr，类型改为varchar(50) alter table stu change address addr varchar(50);<br></code></pre></td></tr></table></figure>
-<h1 id="MySQL数据增删改"><a href="#MySQL数据增删改" class="headerlink" title="MySQL数据增删改"></a>MySQL数据增删改</h1><h4 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 给指定列添加数据 --<br>INSERT INTO 表名(列名1,列名2,...) VALUES(值1,值2,...);<br><br>-- 给全部列添加数据 --<br>INSERT INTO 表名 VALUES(值1,值2,...);<br><br>-- 批量添加数据 --<br>INSERT INTO 表名(列名1,列名2,...) VALUES(值1,值2,...),(值1,值2,...),(值1,值2,...)...;<br>INSERT INTO 表名 VALUES(值1,值2,...),(值1,值2,...),(值1,值2,...)...;<br></code></pre></td></tr></table></figure>
+<h3 id="1-4-MySQL数据增删改"><a href="#1-4-MySQL数据增删改" class="headerlink" title="1.4 MySQL数据增删改"></a>1.4 MySQL数据增删改</h3><h4 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 给指定列添加数据 --<br>INSERT INTO 表名(列名1,列名2,...) VALUES(值1,值2,...);<br><br>-- 给全部列添加数据 --<br>INSERT INTO 表名 VALUES(值1,值2,...);<br><br>-- 批量添加数据 --<br>INSERT INTO 表名(列名1,列名2,...) VALUES(值1,值2,...),(值1,值2,...),(值1,值2,...)...;<br>INSERT INTO 表名 VALUES(值1,值2,...),(值1,值2,...),(值1,值2,...)...;<br></code></pre></td></tr></table></figure>
 <p>实例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select * from stu;<br>-- 给指定列添加数据<br>INSERT INTO stu (id, NAME) VALUES (1, &#x27;张三&#x27;);<br>-- 给所有列添加数据，列名的列表可以省略的<br>INSERT INTO stu (id,NAME,sex,birthday,score,email,tel,STATUS) VALUES (2,&#x27;李四&#x27;,&#x27;男&#x27;,&#x27;1999-11- 11&#x27;,88.88,&#x27;lisi@itcast.cn&#x27;,&#x27;13888888888&#x27;,1);<br>INSERT INTO stu VALUES (2,&#x27;李四&#x27;,&#x27;男&#x27;,&#x27;1999-11-11&#x27;,88.88,&#x27;lisi@itcast.cn&#x27;,&#x27;13888888888&#x27;,1);<br>-- 批量添加数据<br>INSERT INTO stu VALUES<br>(2,&#x27;李四&#x27;,&#x27;男&#x27;,&#x27;1999-11-11&#x27;,88.88,&#x27;lisi@itcast.cn&#x27;,&#x27;13888888888&#x27;,1), (2,&#x27;李四&#x27;,&#x27;男&#x27;,&#x27;1999-11-11&#x27;,88.88,&#x27;lisi@itcast.cn&#x27;,&#x27;13888888888&#x27;,1), (2,&#x27;李四&#x27;,&#x27;男&#x27;,&#x27;1999-11-11&#x27;,88.88,&#x27;lisi@itcast.cn&#x27;,&#x27;13888888888&#x27;,1);<br></code></pre></td></tr></table></figure>
 <h4 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">UPDATE 表名 SET 列名1=值1,列名2=值2,... [WHERE 条件] ;<br>update stu set birthday = &#x27;1999-12-12&#x27;, score = 99.99 where name = &#x27;张三&#x27;;<br></code></pre></td></tr></table></figure>
@@ -559,7 +560,7 @@
 </ol>
 </blockquote>
 <h4 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">DELETE FROM 表名 [WHERE 条件] ;<br><br>-- 删除张三记录<br>delete from stu where name = &#x27;张三&#x27;;<br>-- 删除stu表中所有的数据 <br>delete from stu;<br></code></pre></td></tr></table></figure>
-<h1 id="MySQL数据库查询"><a href="#MySQL数据库查询" class="headerlink" title="MySQL数据库查询"></a>MySQL数据库查询</h1><h4 id="基础查询"><a href="#基础查询" class="headerlink" title="基础查询"></a>基础查询</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 查询多个字段<br>SELECT 字段列表 FROM 表名;<br>SELECT * FROM 表名; -- 查询所有数据<br><br>-- 把查到的结果的重复记录去掉<br>SELECT DISTINCT 字段列表 FROM 表名;<br><br>-- 起别名<br>AS: AS 也可以省略<br></code></pre></td></tr></table></figure>
+<h2 id="2-MySQL数据库查询"><a href="#2-MySQL数据库查询" class="headerlink" title="2. MySQL数据库查询"></a>2. MySQL数据库查询</h2><h4 id="基础查询"><a href="#基础查询" class="headerlink" title="基础查询"></a>基础查询</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 查询多个字段<br>SELECT 字段列表 FROM 表名;<br>SELECT * FROM 表名; -- 查询所有数据<br><br>-- 把查到的结果的重复记录去掉<br>SELECT DISTINCT 字段列表 FROM 表名;<br><br>-- 起别名<br>AS: AS 也可以省略<br></code></pre></td></tr></table></figure>
 <p>实例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">select distinct address from stu;<br>select name,math as 数学成绩,english as 英文成绩 from stu;<br>select name,math 数学成绩,english 英文成绩 from stu;<br></code></pre></td></tr></table></figure>
 <h4 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h4><p><strong>where：</strong>数据库中常用的是where关键字，用于在初始表中筛选查询。它是一个约束声明，用于约束数据，在返回结果集之前起作用。</p>
@@ -2616,7 +2617,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/JavaWeb/">#JavaWeb</a>
+        <a href="/tags/JavaWeb-Mysql/">#JavaWeb&Mysql</a>
       
     </div>
   
@@ -2644,6 +2645,11 @@
           <div>June 22, 2022</div>
         </div>
       
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Updated on</div>
+          <div>June 25, 2022</div>
+        </div>
       
       <div class="license-meta-item">
         <div>Licensed under</div>
@@ -2693,6 +2699,12 @@
             </div>
 
             
+  <article id="comments" lazyload>
+    
+
+  </article>
+
+
           </article>
         </div>
       </div>
@@ -2788,6 +2800,30 @@
        <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
   
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        Views: 
+        <span id="busuanzi_value_site_pv"></span>
+        
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        Visitors: 
+        <span id="busuanzi_value_site_uv"></span>
+        
+      </span>
+    
+    
+  
+</div>
+
   
   
   
@@ -3010,6 +3046,8 @@
   <script  src="https://lib.baomitu.com/mathjax/3.2.1/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
