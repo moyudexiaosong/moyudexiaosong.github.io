@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo13.jpeg">
 <meta property="article:published_time" content="2022-06-24T06:32:57.000Z">
-<meta property="article:modified_time" content="2022-06-27T14:32:23.227Z">
+<meta property="article:modified_time" content="2022-06-27T17:20:44.675Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="机器学习基础理论">
 <meta name="twitter:card" content="summary_large_image">
@@ -662,56 +662,109 @@ w_i\leftarrow w_i+\Delta w_i</script><script type="math/tex; mode=display">
 <p>传统任务中，样本的特征需要人类专家来设计，这称为特征工程（feature engineering）。特征好坏对泛化性能有至关重要的影响。而深度学习为全自动数据分析带来了可能，可以自动产生更好的特征。</p>
 <h1 id="6、支持向量机"><a href="#6、支持向量机" class="headerlink" title="6、支持向量机"></a><strong>6、支持向量机</strong></h1><p>支持向量机（Support Vector Machine），简称SVM，是一种经典的二分类模型，属于监督学习算法。</p>
 <p>支持向量机可能是最流行和最受关注的机器学习算法之一，它是一种经典的二分类模型，基本模型定义为特征空间中最大间隔的线性分类器，其学习的优化目标便是间隔最大化，因此支持向量机本身可以转化为一个凸二次规划求解的问题。</p>
+<p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=支持向量机&amp;spm=1001.2101.3001.7020">支持向量机</a>可以说是数学推导过程最复杂的<a target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/7624837?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165635027116782248597637%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=165635027116782248597637&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-7624837-null-null.142^v24^control,157^v15^new_3&amp;utm_term=%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA&amp;spm=1018.2226.3001.4187">算法</a>，<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_55858423/article/details/119080443?spm=1001.2101.3001.6650.3&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-3-119080443-blog-90678747.pc_relevant_antiscanv2&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-3-119080443-blog-90678747.pc_relevant_antiscanv2&amp;utm_relevant_index=6">具体推导过程</a>。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lzx159951/article/details/106692871?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165635027116782248597637%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=165635027116782248597637&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-2-106692871-null-null.142^v24^control,157^v15^new_3&amp;utm_term=%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA&amp;spm=1018.2226.3001.4187">参考源代码解析</a></p>
 <h2 id="6-1-函数间隔与几何间隔"><a href="#6-1-函数间隔与几何间隔" class="headerlink" title="6.1 函数间隔与几何间隔"></a><strong>6.1 函数间隔与几何间隔</strong></h2><blockquote>
 <p>支持向量机的目标是确定一个对样本的分类结果最鲁棒的线性<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=分类器&amp;spm=1001.2101.3001.7020">分类器</a>，即找到一个具有最大间隔的划分超平面。为此以间隔为优化目标，可将其转化为一个凸二次规划问题。</p>
 </blockquote>
-<p>对于二分类学习，假设现在的数据是线性可分的，这时分类学习最基本的想法就是找到一个合适的超平面，该超平面能够将不同类别的样本分开，类似二维平面使用$ax+by+c=0$来表示，超平面实际上表示的就是高维的平面，如下图所示：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72f6a2ec8a-20220627212336991.png" srcset="/img/loading.gif" lazyload alt="1.png"></p>
-<p>对数据点进行划分时，易知：当超平面距离与它最近的数据点的间隔越大，分类的鲁棒性越好，即当新的数据点加入时，超平面对这些点的适应性最强，出错的可能性最小。因此需要让所选择的超平面能够最大化这个间隔Gap（如下图所示）， 常用的间隔定义有两种，一种称之为<strong>函数间隔</strong>，一种为<strong>几何间隔</strong>，下面将分别介绍这两种间隔，并对SVM为什么会选用几何间隔做了一些阐述。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72f6a06d5a.png" srcset="/img/loading.gif" lazyload alt="2.png"></p>
-<h3 id="6-1-1-函数间隔"><a href="#6-1-1-函数间隔" class="headerlink" title="6.1.1 函数间隔"></a><strong>6.1.1 函数间隔</strong></h3><p>在超平面$w’x+b=0$确定的情况下，$|w’x+b|$能够代表点$x$<em>距离超平面的远近，易知：当$w’x+b&gt;$0时，表示$x$</em>在超平面的一侧（正类，类标为1），而当$w’x+b&lt;0$时，则表示$x$<em>在超平面的另外一侧（负类，类别为-1），因此$(w’x+b)y $的正负性恰能表示数据点$x$</em>是否被分类正确。于是便引出了<strong>函数间隔</strong>的定义（functional margin）:</p>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72f690a14b.png" srcset="/img/loading.gif" lazyload alt="3.png"></p>
-<p>而超平面$(w,b)$关于所有样本点$(Xi，Yi)$的函数间隔最小值则为超平面在训练数据集$T$上的函数间隔：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72f690ac26.png" srcset="/img/loading.gif" lazyload alt="4.png"></p>
-<p>可以看出：这样定义的函数间隔在处理SVM上会有问题，当超平面的两个参数$w$和$b$同比例改变时，函数间隔也会跟着改变，但是实际上超平面还是原来的超平面，并没有变化。例如：$w_1x_1+w_2x_2+w_3x_3+b=0$其实等价于$2w_1x_1+2w_2x_2+2w_3x_3+2b=0$，但计算的函数间隔却翻了一倍。从而引出了能真正度量点到超平面距离的概念——几何间隔（geometrical margin）。</p>
-<h3 id="6-1-2-几何间隔"><a href="#6-1-2-几何间隔" class="headerlink" title="6.1.2 几何间隔"></a><strong>6.1.2 几何间隔</strong></h3><p><strong>几何间隔</strong>代表的则是数据点到超平面的真实距离，对于超平面w’x+b=0，w代表的是该超平面的法向量，设x<em>为超平面外一点x在法向量w方向上的投影点，x与超平面的距离为r，则有x</em>=x-r(w/||w||)，又x<em>在超平面上，即w’x</em>+b=0，代入即可得：</p>
+<p>对于二分类问题，其基本思想就是基于训练集$D$在样本空间中找到一个用来划分的超平面，将不同类别的样本分开。</p>
+<p>但仅仅是将样本分开的话，那么我们可能可以找到许多个划分超平面。如图所示，从几何意义易知，粗线对训练样本局部的扰动的“容忍性”最好（其他的超平面训练样本很容易越界，考虑到噪声等因素，其分类结果很不稳定），也是最鲁棒的（即当新的数据点加入时，超平面对这些点的适应性最强，出错的可能性最小）。于是粗线也就是我们想要的最优划分超平面。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NoaWNoZW5zdXl1,size_16,color_FFFFFF,t_70.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p>我们知道最优划分超平面应该满足超平面同时离两个不同类的样本尽量远这一条件，以下是为了量化“尽量远”进行的概念引申：</p>
+<p><strong>超平面方程</strong>：样本空间中，用来描述超平面的线性方程为：</p>
+<script type="math/tex; mode=display">
+w^Tx+b=0</script><p>其中$w=(w_1;w_2;…;w_d)$为法向量，决定了超平面的方向；$b$为位移项，决定了超平面与原点之间的距离。</p>
+<p><strong>点到超平面的距离</strong>：样本空间中任意点$x$到超平面$(w,b)$的距离为：</p>
+<script type="math/tex; mode=display">
+r=\frac{|w^Tx+b|}{||w||}</script><p><strong>约束条件</strong>：假设超平面$(w，b)$能将训练样本正确分类，即对于$(x_i,y_i)\in D$，若$y_i=+1$，则有$w^Tx_i+b&gt;0$；若$y_i=-1$，则有$w^Tx_i+b&lt;0$​，令</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+w^Tx_i+b\geq+1, & y_i=+1\\
+w^Tx_i+b\leq-1, &  y_i=-1
+\end{cases}</script><p>为超平面将训练样本正确分类的约束条件。</p>
+<h3 id="6-1-1-函数间隔"><a href="#6-1-1-函数间隔" class="headerlink" title="6.1.1 函数间隔"></a><strong>6.1.1 函数间隔</strong></h3><p>假设最合适的分类超平面已找到，如前所述，分类超平面的方程即为：$f(x)=w^Tx+b=0$，也就是说超平面上的点都符合该方程式。</p>
+<p><strong>函数间隔</strong>的定义为：</p>
+<script type="math/tex; mode=display">
+\hat{\gamma}=yf(x)=y(w^Tx+b)</script><p>而超平面$(w,b)$关于所有样本点$(x_i，y_i)$的函数间隔最小值则为超平面在训练数据集$T$​上的函数间隔：</p>
+<script type="math/tex; mode=display">
+\hat{\gamma}=min\hat{\gamma},\ (i=1,...,n)</script><p>可以看出：这样定义的函数间隔在处理SVM上会有问题，当超平面的两个参数$w$和$b$同比例改变时，函数间隔也会跟着改变，但是实际上超平面还是原来的超平面，并没有变化。例如：$w_1x_1+w_2x_2+w_3x_3+b=0$其实等价于$2w_1x_1+2w_2x_2+2w_3x_3+2b=0$，但计算的函数间隔却翻了一倍。从而引出了能真正度量点到超平面距离的概念——几何间隔（geometrical margin）。</p>
+<h3 id="6-1-2-几何间隔"><a href="#6-1-2-几何间隔" class="headerlink" title="6.1.2 几何间隔"></a><strong>6.1.2 几何间隔</strong></h3><p><strong>几何间隔</strong>代表的则是数据点到超平面的真实距离，对于超平面$w’x+b=0$，$w$代表的是该超平面的法向量，设$x$为超平面外一点在法向量$w$方向上的投影点，$x$与超平面的距离为$\gamma$，则有：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72f697d499.png" srcset="/img/loading.gif" lazyload alt="5.png"></p>
-<p>为了得到r的绝对值，令r呈上其对应的类别y，即可得到几何间隔的定义：</p>
+<p>为了得到$\gamma$的绝对值，令$\gamma$呈上其对应的类别$y$，即可得到几何间隔的定义：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72f696fd10.png" srcset="/img/loading.gif" lazyload alt="6.png"></p>
-<p>从上述函数间隔与几何间隔的定义可以看出：实质上函数间隔就是|w’x+b|，而几何间隔就是点到超平面的距离。</p>
-<h2 id="6-2-最大间隔与支持向量"><a href="#6-2-最大间隔与支持向量" class="headerlink" title="6.2 最大间隔与支持向量"></a><strong>6.2 最大间隔与支持向量</strong></h2><p>通过前面的分析可知：函数间隔不适合用来最大化间隔，因此这里我们要找的最大间隔指的是几何间隔，于是最大间隔分类器的目标函数定义为：</p>
-<p><img src="https://i.loli.net/2018/10/17/5bc72f69af163.png" srcset="/img/loading.gif" lazyload alt="7.png"></p>
-<p>一般地，我们令r^为1（这样做的目的是为了方便推导和目标函数的优化），从而上述目标函数转化为：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72f697bb1d.png" srcset="/img/loading.gif" lazyload alt="8.png"></p>
-<p>对于y(w’x+b)=1的数据点，即下图中位于w’x+b=1或w’x+b=-1上的数据点，我们称之为<strong>支持向量</strong>（support vector），易知：对于所有的支持向量，它们恰好满足y<em>(w’x</em>+b)=1，而所有不是支持向量的点，有y<em>(w’x</em>+b)&gt;1。</p>
-<p><img src="https://i.loli.net/2018/10/17/5bc72f6a838c4.png" srcset="/img/loading.gif" lazyload alt="9.png"></p>
-<h2 id="6-3-从原始优化问题到对偶问题"><a href="#6-3-从原始优化问题到对偶问题" class="headerlink" title="6.3 从原始优化问题到对偶问题"></a><strong>6.3 从原始优化问题到对偶问题</strong></h2><p>对于上述得到的目标函数，求1/||w||的最大值相当于求||w||^2的最小值，因此很容易将原来的目标函数转化为：</p>
+<p>从上述定义可以看出：实质上函数间隔就是$|w’x+b|$，而几何间隔就是函数间隔除以$||w||$，直观来讲就是点到超平面的距离。</p>
+<h2 id="6-2-最大间隔与支持向量"><a href="#6-2-最大间隔与支持向量" class="headerlink" title="6.2 最大间隔与支持向量"></a><strong>6.2 最大间隔与支持向量</strong></h2><p>SVM之所以叫支持向量机，因为其核心理念是：支持向量样本会对识别的问题起关键性作用。那什么是支持向量（Support <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=vector&amp;spm=1001.2101.3001.7020">vector</a>）呢？支持向量也就是离分类超平面（Hyper plane）最近的样本点。</p>
+<p>如下图所示，有两类样本数据（橙色和蓝色的小圆点），中间的红线是分类超平面，两条虚线上的点（橙色圆点3个和蓝色圆点2个）是距离超平面最近的点，这些点即为<strong>支持向量</strong>。简单地说，作为支持向量的样本点<strong>非常非常重要</strong>，以至于其他的样本点可以视而不见。而这个分类超平面正是SVM分类器，通过这个分类超平面实现对样本数据一分为二。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMzYzMDMy,size_16,color_FFFFFF,t_70-20220628001505170.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p>如何找到最合适的分类超平面？依据的原则就是间隔最大化。</p>
+<p>所谓间隔最大化，说的是分类超平面跟两类数据的间隔要尽可能大（即远离两边数据），这就要提到我们前面说到的公平原则。“三八线”要划在课桌正中间，不偏向任何一方，才能保证双方利益最大化。对于分类超平面来说，也就是要位于两类数据的正中间，不偏向任何一类，才能保证离两边数据都尽可能远，从而实现间隔最大化。</p>
+<p>如左下图所示，有两类样本数据（分别用橙色和蓝色的小圆圈表示），我们可通过红色或蓝色两条直线（L1或L2）将这两类样本数据分开。事实上，我们还可以画出很多条直线将两类样本分开，也就是说，存在有多个可行的线性分类器能将两类样本分类。SVM的最终目标是：以间隔最大化为原则找到最合适的那个分类器。<br><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMzYzMDMy,size_16,color_FFFFFF,t_70-20220628001732659.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p>从直观上看，图中蓝线L2偏向了橙色数据一方，有失<strong>公平原则</strong>，因而不是我们要找的理想的分类器。红线L1则较注重公平，不偏向任何一类数据，从而能较好地确保离两类数据都尽可能远，实现间隔最大化，这样的分类超平面具有更好的泛化性能，分类更加准确，正是我们要找的最合适的分类器。</p>
+<p>我们注意到，图中两条虚线（S1和S2）上的圆点数据即为支持向量（Support vector），它们距离分类超平面最近。现在<u>我们仅保留这些支持向量数据点进行分析</u>（右上图），可以看出两条虚线之间的间隔距离为$\gamma$。依据公平原则，支持向量到分类超平面的距离则为$\gamma /2$，这个值即为分类间隔。间隔最大化，就是最大化这个值$\gamma /2$。</p>
+<p><u>由此可以看出，分类间隔值$\gamma /2$只与支持向量数据点有关，与其他非支持向量数据点无关。</u>这也正好诠释了我们在文中开头说到的：SVM的核心理念是支持向量样本会对识别的问题起关键性作用。也就是说，分类超平面的确定仅取决于支持向量。</p>
+<p>对于给定的训练样本，首先要找到距离分类超平面最近的点（支持向量），再通过最大化这些点之间的间隔来求解。</p>
+<p>通过前面的分析可知：函数间隔不适合用来最大化间隔，因此这里我们要找的最大间隔指的是几何间隔。</p>
+<p>为便于计算，位于分类超平面两侧的数据计算的数值分别取1或-1，以将数据分两类，这两类数据通常也称为正、负样本数据。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMzYzMDMy,size_16,color_FFFFFF,t_70.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p>两类数据的函数方程式即为：</p>
+<script type="math/tex; mode=display">
+正样本：f(x)=w^Tx+b=1\\
+负样本：f(x)=w^Tx+b=-1</script><p>也就是说任何属于正样本类的数据$x$带入方程式得到的结果$y$计算取值都为1，即$y=1$；任何属于负样本类的数据$x$带入方程式得到的结果$y$计算取值都为-1，即$y=-1$​。</p>
+<p>两个不同类别的支持向量分别到超平面的距离之和</p>
+<script type="math/tex; mode=display">
+\gamma=\frac{2}{||w||}</script><p>推导过程：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NoaWNoZW5zdXl1,size_16,color_FFFFFF,t_70-20220627230850969.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p>于是，最优划分超平面即对应最大间隔的划分超平面，也就是找到满足约束条件的 $w$ 和 $b$ 使得$γ$​ 最大，即：</p>
+<script type="math/tex; mode=display">
+max_{w,b} \frac{2}{||w||}\\
+s.t.\ y_i(w^Tx_i+b)\geq1,\ i=1,2,...,m</script><p>最大化$||w||^{-1}$等驾驭最小化$||w||^2$，于是上述条件可重写为：</p>
+<script type="math/tex; mode=display">
+max_{w,b} \frac{1}{2}||w||^2\\
+s.t.\ y_i(w^Tx_i+b)\geq1,\ i=1,2,...,m</script><p><img src="https://i.loli.net/2018/10/17/5bc72f6a838c4.png" srcset="/img/loading.gif" lazyload alt="9.png"></p>
+<p>这里解释一下为什么要用$||w||^2$：由约束条件可知将不会存在错误分类的样本，即不存在欠拟合的问题；那么，上式的优化目标可进一步解释为“最小化$\frac{1}{2}||w||^2$则相当于寻找最不可能过拟合的分类超平面”，为了防止过拟合引入了正则化，即在最小化目标函数中加入分类器的所有参数的模值的平方（不含位移项$b$）。</p>
+<h2 id="6-3-从原始优化问题到对偶问题"><a href="#6-3-从原始优化问题到对偶问题" class="headerlink" title="6.3 从原始优化问题到对偶问题"></a><strong>6.3 从原始优化问题到对偶问题</strong></h2><blockquote>
+<p>对于上述目标函数，接下来我们将采用拉格朗日乘子法得到其对偶问题。由于该对偶问题又为二次规划问题，故采用了SMO算法对其进行求解。</p>
+</blockquote>
+<h3 id="6-3-1-转换对偶问题"><a href="#6-3-1-转换对偶问题" class="headerlink" title="6.3.1 转换对偶问题"></a>6.3.1 转换对偶问题</h3><p>对于上述得到的目标函数，将原来的目标函数转化为：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72f6978cbb.png" srcset="/img/loading.gif" lazyload alt="10.png"></p>
 <p>即变为了一个带约束的凸二次规划问题，按书上所说可以使用现成的优化计算包（QP优化包）求解，但由于SVM的特殊性，一般我们将原问题变换为它的<strong>对偶问题</strong>，接着再对其对偶问题进行求解。为什么通过对偶问题进行求解，有下面两个原因：</p>
 <pre><code class="hljs">* 一是因为使用对偶问题更容易求解；
 * 二是因为通过对偶问题求解出现了向量内积的形式，从而能更加自然地引出核函数。
-</code></pre><p>对偶问题，顾名思义，可以理解成优化等价的问题，更一般地，是将一个原始目标函数的最小化转化为它的对偶函数最大化的问题。对于当前的优化问题，首先我们写出它的朗格朗日函数：</p>
+</code></pre><p>以下是拉格朗日乘子法求得其对偶问题的基本步骤：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//20190530105244927.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>对偶问题，顾名思义，可以理解成优化等价的问题，更一般地，是将一个原始目标函数的最小化转化为它的对偶函数最大化的问题。</p>
+<p>对于当前的优化问题，按照上面的步骤，首先我们写出它的朗格朗日函数：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72f9332be7.png" srcset="/img/loading.gif" lazyload alt="11.png"></p>
-<p>上式很容易验证：当其中有一个约束条件不满足时，L的最大值为 ∞（只需令其对应的α为 ∞即可）；当所有约束条件都满足时，L的最大值为1/2||w||^2（此时令所有的α为0），因此实际上原问题等价于：</p>
+<p>上式很容易验证：当其中有一个约束条件不满足时，$L$的最大值为 ∞（只需令其对应的$α$为 $∞$即可）；当所有约束条件都满足时，$L$的最大值为$1/2||w||^2$（此时令所有的$α$为0），因此实际上原问题等价于：</p>
 <p><img src="https://i.loli.net/2018/10/17/5bc72f93321c5.png" srcset="/img/loading.gif" lazyload alt="12.png"></p>
 <p>由于这个的求解问题不好做，因此一般我们将最小和最大的位置交换一下（需满足KKT条件） ，变成原问题的对偶问题：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72f9330967.png" srcset="/img/loading.gif" lazyload alt="13.png"></p>
-<p>这样就将原问题的求最小变成了对偶问题求最大（用对偶这个词还是很形象），接下来便可以先求L对w和b的极小，再求L对α的极大。</p>
-<p>（1）首先求L对w和b的极小，分别求L关于w和b的偏导，可以得出：</p>
+<p>这样就将原问题的求最小变成了对偶问题求最大（用对偶这个词还是很形象），接下来便可以先求$L$对$w$和$b$的极小，再求$L$对$α$的极大。</p>
+<p>（1）首先求$L$对$w$和$b$的极小，分别求$L$关于$w$和$b$的偏导，可以得出：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72f9333e66.png" srcset="/img/loading.gif" lazyload alt="14.png"></p>
-<p>将上述结果代入L得到：</p>
+<p>将上述结果代入$L$得到：</p>
 <p><img src="https://i.loli.net/2018/10/17/5bc72f935ae21.png" srcset="/img/loading.gif" lazyload alt="15.png"></p>
-<p>（2）接着L关于α极大求解α（通过SMO算法求解，此处不做深入）。</p>
+<p>推导过程：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NoaWNoZW5zdXl1,size_16,color_FFFFFF,t_70-20220628004324967.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p>（2）接着$L$关于$α$极大求解$α$。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72f9338a9d.png" srcset="/img/loading.gif" lazyload alt="16.png"></p>
-<p>（3）最后便可以根据求解出的α，计算出w和b，从而得到分类超平面函数。</p>
+<p>（3）最后便可以根据求解出的$α$，计算出$w$和$b$，从而得到分类超平面函数。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72f93419ca.png" srcset="/img/loading.gif" lazyload alt="17.png"></p>
-<p>在对新的点进行预测时，实际上就是将数据点x*代入分类函数f(x)=w’x+b中，若f(x)&gt;0，则为正类，f(x)&lt;0，则为负类，根据前面推导得出的w与b，分类函数如下所示，此时便出现了上面所提到的内积形式。</p>
+<p>在对新的点进行预测时，实际上就是将数据点$x$代入分类函数$f(x)=w’x+b$中，若$f(x)&gt;0$，则为正类，$f(x)&lt;0$，则为负类，根据前面推导得出的$w$与$b$，分类函数如下所示，此时便出现了上面所提到的内积形式。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72f9353166.png" srcset="/img/loading.gif" lazyload alt="18.png"></p>
-<p>这里实际上只需计算新样本与支持向量的内积，因为对于非支持向量的数据点，其对应的拉格朗日乘子一定为0，根据最优化理论（K-T条件），对于不等式约束y(w’x+b)-1≥0，满足：</p>
+<p>这里实际上只需计算新样本与支持向量的内积，因为对于非支持向量的数据点，其对应的拉格朗日乘子一定为0，根据最优化理论（K-T条件），即要求：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//20190530120814493.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p>注：KKT条件主要包含三大部分：<br>①：拉格朗日乘子$≥ 0$<br>②：原问题的约束条件<br>③：拉格朗日函数中的拉格朗日乘子项$= 0 $</p>
+<p>因此，根据以上KKT条件，我们可以对$\alpha_i$的取值进行讨论，并得出支持向量机一个重要结论：==训练完成后，大部分的训练样本都不需要保留，最终模型仅与支持向量有关。==</p>
+<p>对于不等式约束$y(w’x+b)-1≥0$，满足：</p>
 <p><img src="https://i.loli.net/2018/10/17/5bc72f933c947.png" srcset="/img/loading.gif" lazyload alt="19.png">        </p>
-<h2 id="6-4-核函数"><a href="#6-4-核函数" class="headerlink" title="6.4 核函数"></a><strong>6.4 核函数</strong></h2><p>由于上述的超平面只能解决线性可分的问题，对于线性不可分的问题，例如：异或问题，我们需要使用核函数将其进行推广。一般地，解决线性不可分问题时，常常采用<strong>映射</strong>的方式，将低维原始空间映射到高维特征空间，使得数据集在高维空间中变得线性可分，从而再使用线性学习器分类。如果原始空间为有限维，即属性数有限，那么总是存在一个高维特征空间使得样本线性可分。若∅代表一个映射，则在特征空间中的划分函数变为：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72f934303e.png" srcset="/img/loading.gif" lazyload alt="20.png"></p>
-<p>按照同样的方法，先写出新目标函数的拉格朗日函数，接着写出其对偶问题，求L关于w和b的极大，最后运用SOM求解α。可以得出：</p>
+<h3 id="6-3-2-求解对偶问题"><a href="#6-3-2-求解对偶问题" class="headerlink" title="6.3.2 求解对偶问题"></a>6.3.2 求解对偶问题</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/shichensuyu/article/details/90678747">SMO推导过程</a></p>
+<h2 id="6-4-核函数"><a href="#6-4-核函数" class="headerlink" title="6.4 核函数"></a><strong>6.4 核函数</strong></h2><blockquote>
+<p>前三节是在样本在其原始样本空间线性可分的假设下进行讨论的，本节针对原始样本空间线性不可分的问题，基于==有限维原始样本空间一定存在一个高维特征空间使样本线性可分==这一定理，引出了原始空间和特征空间的桥梁——核函数的相关概念，并强调==核函数的选择是支持向量机的最大变数。==</p>
+</blockquote>
+<p>将样本从原始样本空间映射到一个更高维的特征空间，使得样本在这个特征空间内线性可分，令$\phi(x)$表示将$x$​映射后的特征向量，则在特征空间中划分超平面所对应的模型可表示为：</p>
+<script type="math/tex; mode=display">
+f(x)=w^T\phi(x)+b</script><p>按照同样的方法，先写出新目标函数的拉格朗日函数，接着写出其对偶问题，求$L$关于$w$和$b$的极大，最后运用SOM求解$α$。可以得出：</p>
 <p>（1）原对偶问题变为：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc730cc68b3b.png" srcset="/img/loading.gif" lazyload alt="21.png"></p>
 <p>（2）原分类函数变为：<br>​    <img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc730cc1b673.png" srcset="/img/loading.gif" lazyload alt="22.png"></p>
@@ -722,11 +775,19 @@ w_i\leftarrow w_i+\Delta w_i</script><script type="math/tex; mode=display">
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc730cc173b2.png" srcset="/img/loading.gif" lazyload alt="24.png"></p>
 <p>（2）分类函数：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc730cc05959.png" srcset="/img/loading.gif" lazyload alt="25.png"></p>
-<p>因此，在线性不可分问题中，核函数的选择成了支持向量机的最大变数，若选择了不合适的核函数，则意味着将样本映射到了一个不合适的特征空间，则极可能导致性能不佳。同时，核函数需要满足以下这个必要条件：</p>
+<p>因此，在线性不可分问题中，==核函数的选择成了支持向量机的最大变数==，若选择了不合适的核函数，则意味着将样本映射到了一个不合适的特征空间，则极可能导致性能不佳。同时，核函数需要满足以下这个必要条件：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc730ccc468c.png" srcset="/img/loading.gif" lazyload alt="26.png"></p>
+<p>注：</p>
+<ul>
+<li>半正定矩阵：设$A$为实对称矩阵，若对于每个非零向量$X$，都有$X^TAX\geq0$，则称$A$为半正定矩阵，$X^TAX$为半正定二次型。</li>
+</ul>
+<p>由该定理可以看出，核矩阵是实对称矩阵，==只要一个对称函数对应的核矩阵半正定，它就可以作为核函数==。</p>
 <p>由于核函数的构造十分困难，通常我们都是从一些常用的核函数中选择，下面列出了几种常用的核函数：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc730ccc541a.png" srcset="/img/loading.gif" lazyload alt="27.png"></p>
-<h2 id="6-5-软间隔支持向量机"><a href="#6-5-软间隔支持向量机" class="headerlink" title="6.5 软间隔支持向量机"></a><strong>6.5 软间隔支持向量机</strong></h2><p>前面的讨论中，我们主要解决了两个问题：当数据线性可分时，直接使用最大间隔的超平面划分；当数据线性不可分时，则通过核函数将数据映射到高维特征空间，使之线性可分。然而在现实问题中，对于某些情形还是很难处理，例如数据中有<strong>噪声</strong>的情形，噪声数据（<strong>outlier</strong>）本身就偏离了正常位置，但是在前面的SVM模型中，我们要求所有的样本数据都必须满足约束，如果不要这些噪声数据还好，当加入这些outlier后导致划分超平面被挤歪了，如下图所示，对支持向量机的泛化性能造成很大的影响。</p>
+<h2 id="6-5-软间隔支持向量机"><a href="#6-5-软间隔支持向量机" class="headerlink" title="6.5 软间隔支持向量机"></a><strong>6.5 软间隔支持向量机</strong></h2><blockquote>
+<p>前面的内容都是基于理论进行的推导，但在现实情况下我们很难确定合适的核函数对样本进行完美分类，故提出了软间隔的概念，允许有尽可能少的样本不满足约束条件。于是在前面的基础上，模型加入了对各个样本松弛变量的考量，并采用6.3节的方法进行求解。</p>
+</blockquote>
+<p>前面的讨论中，我们主要解决了两个问题：当数据线性可分时，直接使用最大间隔的超平面划分；当数据线性不可分时，则通过核函数将数据映射到高维特征空间，使之线性可分。然而在现实问题中，对于某些情形还是很难处理，例如数据中有<strong>噪声</strong>的情形，噪声数据（<strong>outlier</strong>）本身就偏离了正常位置，但是在前面的SVM模型中，我们要求所有的样本数据都必须满足约束，如果不要这些噪声数据还好，当加入这些outlier后导致划分超平面被挤歪了，如下图所示，对支持向量机的泛化性能造成很大的影响。</p>
 <p><img src="https://i.loli.net/2018/10/17/5bc730ccce68e.png" srcset="/img/loading.gif" lazyload alt="28.png"></p>
 <p>为了解决这一问题，我们需要允许某一些数据点不满足约束，即可以在一定程度上偏移超平面，同时使得不满足约束的数据点尽可能少，这便引出了<strong>“软间隔”支持向量机</strong>的概念</p>
 <pre><code class="hljs">* 允许某些数据点不满足约束y(w&#39;x+b)≥1；
@@ -737,14 +798,36 @@ w_i\leftarrow w_i+\Delta w_i</script><script type="math/tex; mode=display">
 <p><img src="https://i.loli.net/2018/10/17/5bc730cc5e5a9.png" srcset="/img/loading.gif" lazyload alt="30.png"></p>
 <p>支持向量机中的损失函数为<strong>hinge损失</strong>，引入<strong>“松弛变量”</strong>，目标函数与约束条件可以写为：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc7317aa3411.png" srcset="/img/loading.gif" lazyload alt="31.png"></p>
-<p>其中C为一个参数，控制着目标函数与新引入正则项之间的权重，这样显然每个样本数据都有一个对应的松弛变量，用以表示该样本不满足约束的程度，将新的目标函数转化为拉格朗日函数得到：</p>
+<p>其中$C$为一个参数，控制着目标函数与新引入正则项之间的权重，这样显然每个样本数据都有一个对应的松弛变量，用以表示该样本不满足约束的程度，将新的目标函数转化为拉格朗日函数得到：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc7317a4c96e.png" srcset="/img/loading.gif" lazyload alt="32.png"></p>
-<p>按照与之前相同的方法，先让L求关于w，b以及松弛变量的极小，再使用SMO求出α，有：</p>
+<p>按照与之前相同的方法，先让$L$求关于$w$，$b$以及松弛变量的极小，再使用SMO求出$α$，有：</p>
 <p><img src="https://i.loli.net/2018/10/17/5bc7317a6dff2.png" srcset="/img/loading.gif" lazyload alt="33.png"></p>
-<p>将w代入L化简，便得到其对偶问题：</p>
+<p>将$w$代入$L$化简，便得到其对偶问题：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc7317ab6646.png" srcset="/img/loading.gif" lazyload alt="34.png"></p>
-<p>将“软间隔”下产生的对偶问题与原对偶问题对比可以发现：新的对偶问题只是约束条件中的α多出了一个上限C，其它的完全相同，因此在引入核函数处理线性不可分问题时，便能使用与“硬间隔”支持向量机完全相同的方法。</p>
+<p>对于软间隔支持向量机，KKT条件要求：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//20190530210442677.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p>推导过程：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NoaWNoZW5zdXl1,size_16,color_FFFFFF,t_70-20220628011444870.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p>由上图的推导可以看出，软间隔支持向量机的最终模型仅与支持向量有关，即通过hinge损失函数仍保持了稀疏性。</p>
+<p>将“软间隔”下产生的对偶问题与原对偶问题对比可以发现：新的对偶问题只是约束条件中的$α$多出了一个上限$C$，其它的完全相同，因此在引入核函数处理线性不可分问题时，便能使用与“硬间隔”支持向量机完全相同的方法。</p>
 <p>——在此SVM就介绍完毕。</p>
+<h2 id="6-6-SVM优缺点"><a href="#6-6-SVM优缺点" class="headerlink" title="6.6 SVM优缺点"></a>6.6 SVM优缺点</h2><p><strong>优点</strong></p>
+<ul>
+<li>可以解决高维问题，即大型特征空间；</li>
+<li>解决小样本下机器学习问题；</li>
+<li>能够处理非线性特征的相互作用；</li>
+<li>无局部极小值问题；（相对于神经网络等算法）</li>
+<li>无需依赖整个数据；</li>
+<li>泛化能力比较强；</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>当观测样本很多时，效率并不是很高；</li>
+<li>对非线性问题没有通用解决方案，有时候很难找到一个合适的核函数；</li>
+<li>对于核函数的高维映射解释力不强，尤其是径向基函数；</li>
+<li>常规SVM只支持二分类；</li>
+<li><strong>对缺失数据敏感；</strong></li>
+</ul>
 
               
             </div>
