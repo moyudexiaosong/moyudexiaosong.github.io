@@ -1061,8 +1061,8 @@ S_b=S_t-S_w=\sum_{i=1}^Nm_i(u_i-u)(u_i-u)^T</script><p>所以多分类LDA有多�
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/06/16/MarkDown%E6%95%99%E7%A8%8B/" title="MarDown使用教程">
-                        <span class="hidden-mobile">MarDown使用教程</span>
+                      <a href="/2022/06/16/%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/" title="搭建Hexo博客">
+                        <span class="hidden-mobile">搭建Hexo博客</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -1077,7 +1077,7 @@ S_b=S_t-S_w=\sum_{i=1}^Nm_i(u_i-u)(u_i-u)^T</script><p>所以多分类LDA有多�
     
   <div id="vcomment" class="comment"></div> 
   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/xcss/valine@v1.1.7/dist/Valine.min.js"></script>
   <script>
     var notify = '' == true ? true : false;
     var verify = '' == true ? true : false;
@@ -1086,10 +1086,13 @@ S_b=S_t-S_w=\sum_{i=1}^Nm_i(u_i-u)(u_i-u)^T</script><p>所以多分类LDA有多�
               el: '.comment',
               notify: notify,
               verify: verify,
+              guest_info: guest_info,
               app_id: "",
               app_key: "",
               placeholder: "说点什么",
-              avatar:"retro"
+              avatar:"retro",            
+              pageSize:"10"
+
           });
       }
   </script>
