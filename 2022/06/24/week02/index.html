@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on a minute ago
+                    Last updated on 40 minutes ago
                   
                 
               </p>
@@ -898,27 +898,28 @@ f(x)=w^T\phi(x)+b</script><p>按照同样的方法，先写出新目标函数的
             
   <article id="comments" lazyload>
     
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.18/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"bnV21wVlhdVXX4Kwbw4dw5KO-gzGzoHsz","appKey":"MgFT2BlN4sFPXkQs67irl6Hs","path":"window.location.pathname","placeholder":"说点什么","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://bnv21wvl.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          var imgSelector = '#valine .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
-      });
-    });
+  <div id="vcomment" class="comment"></div> 
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  <script>
+    var notify = '' == true ? true : false;
+    var verify = '' == true ? true : false;
+      window.onload = function() {
+          new Valine({
+              el: '.comment',
+              notify: notify,
+              verify: verify,
+              app_id: "",
+              app_key: "",
+              placeholder: "说点什么",
+              avatar:"retro"
+          });
+      }
   </script>
+
+ 
   <noscript>Please enable JavaScript to view the comments</noscript>
+
 
 
   </article>
