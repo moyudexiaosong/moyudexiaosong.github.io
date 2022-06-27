@@ -1077,19 +1077,18 @@ S_b=S_t-S_w=\sum_{i=1}^Nm_i(u_i-u)(u_i-u)^T</script><p>所以多分类LDA有多�
     
   <div id="vcomment" class="comment"></div> 
   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//cdn.jsdelivr.net/gh/xcss/valine@v1.1.7/dist/Valine.min.js"></script>
+  <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
   <script>
     var notify = '' == true ? true : false;
     var verify = '' == true ? true : false;
       window.onload = function() {
           new Valine({
               el: '.comment',
-              notify: notify,
-              verify: verify,
               app_id: "",
               app_key: "",
               placeholder: "说点什么",
-              avatar:"retro"       
+              avatar:"retro",
+              meta: false       
 
           });
       }
