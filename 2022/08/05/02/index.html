@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo27.jpeg">
 <meta property="article:published_time" content="2022-08-05T06:11:50.000Z">
-<meta property="article:modified_time" content="2022-08-08T13:24:57.614Z">
+<meta property="article:modified_time" content="2022-08-11T11:32:23.315Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary_large_image">
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k words
+          5.6k words
         
       </span>
     
@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on a day ago
+                    Last updated on a few seconds ago
                   
                 
               </p>
@@ -412,6 +412,126 @@
 <p>用循环把数组中每个元素都访问到，一般会用for循环遍历</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">let</span> names = [<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>]</span><br><span class="language-javascript">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>;i&lt;names.<span class="hljs-property">length</span>;i++)&#123;</span><br><span class="language-javascript">        <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">write</span>(names[i])</span><br><span class="language-javascript">    &#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
 <p><strong>操作数组：</strong></p>
+<p><strong>增：</strong></p>
+<p><strong>数组.push()</strong>：将一个或多个元素添加到数组的末尾，并返回该数组的新长度 </p>
+<p><strong>arr.unshift(新增的内容)</strong> ：将一个或多个元素添加到数组的<strong>开头</strong>，并返回该数组的新长度</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">  <span class="hljs-keyword">let</span> arr =  [<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, <span class="hljs-number">6</span>, <span class="hljs-number">1</span>, <span class="hljs-number">77</span>, <span class="hljs-number">0</span>, <span class="hljs-number">52</span>, <span class="hljs-number">0</span>, <span class="hljs-number">25</span>, <span class="hljs-number">7</span>]</span><br><span class="language-javascript">  arr.<span class="hljs-title function_">push</span>(<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">17</span>)</span><br><span class="language-javascript">  arr.<span class="hljs-title function_">unshift</span>(<span class="hljs-number">43</span>,<span class="hljs-number">5</span>,<span class="hljs-number">2</span>)</span><br><span class="language-javascript">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>;i&lt;arr.<span class="hljs-property">length</span>;i++)&#123;</span><br><span class="language-javascript">      <span class="hljs-keyword">if</span>(arr[i]&gt;<span class="hljs-number">10</span>)&#123;</span><br><span class="language-javascript">          <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">write</span>(arr[i])</span><br><span class="language-javascript">          <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">write</span>(<span class="hljs-string">&quot;\n&quot;</span>)</span><br><span class="language-javascript">      &#125;</span><br><span class="language-javascript">  &#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p><strong>删：</strong></p>
+<p>数组. pop() 方法从数组中删除最后一个元素，并返回该元素的值</p>
+<p>数组. shift() 方法从数组中删除第一个元素，并返回该元素的值</p>
+<p>数组. splice() 方法 删除指定元素</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html">arr.splice(2,4)<br>//第一个参数为要删除的起始位置，第二个参数为要删除的元素个数，可以缺省，会默认删到最后<br></code></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">let</span> arr =  [<span class="hljs-number">2</span>, <span class="hljs-number">10</span>, <span class="hljs-number">6</span>, <span class="hljs-number">1</span>, <span class="hljs-number">77</span>, <span class="hljs-number">30</span>, <span class="hljs-number">52</span>, <span class="hljs-number">50</span>, <span class="hljs-number">25</span>, <span class="hljs-number">7</span>]</span><br><span class="language-javascript">    <span class="hljs-keyword">let</span> min=arr[<span class="hljs-number">0</span>]</span><br><span class="language-javascript">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>;i&lt;arr.<span class="hljs-property">length</span>;i++)&#123;</span><br><span class="language-javascript">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j=i;j&lt;arr.<span class="hljs-property">length</span>;j++)&#123;</span><br><span class="language-javascript">            <span class="hljs-keyword">if</span>(arr[j]&gt;arr[i])&#123;</span><br><span class="language-javascript">                min=arr[i]</span><br><span class="language-javascript">                arr[i]=arr[j]</span><br><span class="language-javascript">                arr[j]=min</span><br><span class="language-javascript">            &#125;</span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript">    &#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>利用js渲染画面案例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-comment">// 1. 利用循环弹出四次输入框， 会得到4个数据，放到数组里面</span></span><br><span class="language-javascript">    <span class="hljs-keyword">let</span> arr = []</span><br><span class="language-javascript">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">4</span>; i++) &#123;</span><br><span class="language-javascript">        <span class="hljs-comment">// prompt(`请输入第 $&#123;i&#125; 季度的数据`)  ===  123</span></span><br><span class="language-javascript">        arr.<span class="hljs-title function_">push</span>(<span class="hljs-title function_">prompt</span>(<span class="hljs-string">`请输入第 <span class="hljs-subst">$&#123;i&#125;</span> 季度的数据`</span>))</span><br><span class="language-javascript">    &#125;</span><br><span class="language-javascript">    <span class="hljs-comment">// console.log(arr)</span></span><br><span class="language-javascript">    <span class="hljs-comment">// 注意我们渲染循环的是柱子 </span></span><br><span class="language-javascript">    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">write</span>(<span class="hljs-string">`&lt;div class=&quot;box&quot;&gt;`</span>)</span><br><span class="language-javascript">    <span class="hljs-comment">// 循环4个柱子</span></span><br><span class="language-javascript">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr.<span class="hljs-property">length</span>; i++) &#123;</span><br><span class="language-javascript">        <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">write</span>(<span class="hljs-string">`</span></span><br><span class="hljs-string"><span class="language-javascript">             &lt;div style=&quot;height: <span class="hljs-subst">$&#123;arr[i]&#125;</span>px;&quot;&gt;</span></span><br><span class="hljs-string"><span class="language-javascript">                 &lt;span&gt;<span class="hljs-subst">$&#123;arr[i]&#125;</span>&lt;/span&gt;</span></span><br><span class="hljs-string"><span class="language-javascript">                &lt;h4&gt;第<span class="hljs-subst">$&#123;i + <span class="hljs-number">1</span>&#125;</span>季度&lt;/h4&gt;</span></span><br><span class="hljs-string"><span class="language-javascript">            &lt;/div&gt;</span></span><br><span class="hljs-string"><span class="language-javascript">        `</span>)</span><br><span class="language-javascript">    &#125;</span><br><span class="language-javascript">    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">write</span>(<span class="hljs-string">`&lt;/div&gt;`</span>)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>在<code>script</code>标签里把css语句写到函数参数里，用<code>$&#123;&#125;</code>把括号外的变量包裹起来。</p>
+<h2 id="三、函数"><a href="#三、函数" class="headerlink" title="三、函数"></a>三、函数</h2><p><strong>函数:</strong></p>
+<p>function，是被设计为执行特定任务的代码块，可以实现代码复用，提高开发效率</p>
+<p><strong>声明语法：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html">function 函数名()&#123;<br>	函数体<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>举例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">function</span> <span class="hljs-title function_">mulTable</span>(<span class="hljs-params">a,b</span>)&#123;</span><br><span class="language-javascript">        <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">write</span>(<span class="hljs-string">`<span class="hljs-subst">$&#123;a&#125;</span>x<span class="hljs-subst">$&#123;b&#125;</span>=<span class="hljs-subst">$&#123;a*b&#125;</span>`</span>)</span><br><span class="language-javascript">    &#125;</span><br><span class="language-javascript">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">9</span>;i++)&#123;</span><br><span class="language-javascript">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">9</span>;j++)&#123;</span><br><span class="language-javascript">            <span class="hljs-title function_">mulTable</span>(i,j)</span><br><span class="language-javascript">            <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">write</span>(<span class="hljs-string">&quot;\n&quot;</span>)</span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript">    &#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p><strong>函数名命名规范：</strong></p>
+<ul>
+<li>和变量命名基本一致</li>
+<li>尽量小驼峰式命名法</li>
+<li>前缀应该为动词</li>
+<li>命名建议:常用动词约定</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>动词</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>can</td>
+<td>判断是否可执行某个动作，eg.canShow( )</td>
+</tr>
+<tr>
+<td>has</td>
+<td>判断是否含有某个值，eg.hasShot( )</td>
+</tr>
+<tr>
+<td>is</td>
+<td>判断是否为某个值，eg.isText( )</td>
+</tr>
+<tr>
+<td>get</td>
+<td>获取某个值，eg.getName( )</td>
+</tr>
+<tr>
+<td>set</td>
+<td>设置某个值</td>
+</tr>
+<tr>
+<td>Load</td>
+<td>加载某些数据，eg.loadTable( )</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>函数传参：</strong></p>
+<p>调用语法：<code>函数名(传递的参数列表)</code></p>
+<p>调用函数时，需要传入几个数据就写几个，用逗号隔开</p>
+<p>形参和实参：</p>
+<ul>
+<li>形参：声明函数时括号里的叫形参</li>
+<li>实参：调用函数时括号里的叫实参</li>
+<li>开发中尽量保持形参和实参个数一致</li>
+<li>两个相同的函数后面的会覆盖前面的函数</li>
+<li>在Javascript中实参的个数和形参的个数可以不一致<ul>
+<li>如果形参过多 会自动填上undefined (了解即可)</li>
+<li>如果实参过多 那么多余的实参会被忽略 (函数内部有一个arguments,以伪数组的形式装着所有的实参)</li>
+</ul>
+</li>
+</ul>
+<p><strong>函数返回值：</strong></p>
+<p>当函数需要返回数据出去时，用return关键字</p>
+<p>注意:</p>
+<ul>
+<li>函数内部只能出现 1 次 return，并且 return 后面代码不会再被执行，所以 return 后面的数据不要换行写 </li>
+<li>return会立即结束当前函数</li>
+<li>函数可以没有 return，这种情况函数默认返回值为 undefined</li>
+</ul>
+<p><strong>作用域：</strong></p>
+<p>全局作用域：作用于所有代码执行的环境(整个 <code>script</code> 标签内部)或者一个独立的 js 文件</p>
+<p>局部作用域：作用于函数内的代码环境</p>
+<p>块级作用域：由 { } 包括，只在{ }内有效，例如if语句和for语句里面的{ }等</p>
+<p><strong>变量的作用域：</strong></p>
+<p>全局变量：函数外部用<code>let</code>定义的变量，在任何区域都可以访问和修改</p>
+<p>局部变量：函数内部用<code>let</code>的变量，局部变量只能在当前函数内部访问和修改</p>
+<p>块级变量：{ } 内部的<code>let</code>变量，只能在块作用域里访问，不能跨块访问，也不能跨函数访问</p>
+<blockquote>
+<p>注意：</p>
+<ol>
+<li>如果函数内部或者块级作用域内部，变量没有声明，直接赋值，也当全局变量看，但是强烈不推荐 </li>
+<li>但是有一种情况，函数内部的形参可以看做是局部变量。</li>
+</ol>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">function</span> <span class="hljs-title function_">sayHi</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="language-javascript">        name=<span class="hljs-string">&#x27;xmm&#x27;</span></span><br><span class="language-javascript">        num=<span class="hljs-number">100</span></span><br><span class="language-javascript">        <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">write</span>(<span class="hljs-string">&#x27;Hi!&#x27;</span>)</span><br><span class="language-javascript">    &#125;</span><br><span class="language-javascript">    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">write</span>(<span class="hljs-string">`<span class="hljs-subst">$&#123;name&#125;</span>\n`</span>)</span><br><span class="language-javascript">    <span class="hljs-title function_">sayHi</span>()</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>输出：xmm Hi！</p>
+<p><strong>作用域链：</strong></p>
+<p>采取<strong>就近原则</strong>的方式来查找变量最终的值</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span> </span><br><span class="language-javascript">    <span class="hljs-keyword">function</span> <span class="hljs-title function_">fn1</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">        <span class="hljs-keyword">let</span> a = <span class="hljs-number">2</span></span><br><span class="language-javascript">        <span class="hljs-keyword">let</span> b = <span class="hljs-string">&#x27;22&#x27;</span></span><br><span class="language-javascript">        <span class="hljs-title function_">fn2</span>()</span><br><span class="language-javascript">        <span class="hljs-keyword">function</span> <span class="hljs-title function_">fn2</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">            <span class="hljs-keyword">let</span> a = <span class="hljs-number">3</span></span><br><span class="language-javascript">            <span class="hljs-title function_">fn3</span>()</span><br><span class="language-javascript">            <span class="hljs-keyword">function</span> <span class="hljs-title function_">fn3</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">                <span class="hljs-keyword">let</span> a=<span class="hljs-number">4</span></span><br><span class="language-javascript">                <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">write</span>(a)</span><br><span class="language-javascript">                <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">write</span>(b)</span><br><span class="language-javascript">            &#125; </span><br><span class="language-javascript">        &#125;</span><br><span class="language-javascript">    &#125; </span><br><span class="language-javascript">    <span class="hljs-title function_">fn1</span>()   </span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>输出为：4 22</p>
+<p><strong>匿名函数：</strong></p>
+<p>将匿名函数赋值给一个变量，并且通过变量名称进行调用</p>
+<p>语法：<code>let fn = function()&#123;&#125;</code></p>
+<p>调用：<code>fn()</code></p>
+<p>立即执行函数：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    (<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">write</span>(<span class="hljs-string">&quot;123&quot;</span>)&#125;)()； <span class="hljs-comment">// 方法1 </span></span><br><span class="language-javascript">    (<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">write</span>(<span class="hljs-string">&quot;456&quot;</span>)&#125;())； <span class="hljs-comment">// 方法2</span></span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>注意: 多个立即执行函数要用<code>;</code> 隔开，要不然会报错</p>
+<ul>
+<li>立即执行函数可以防止变量污染</li>
+<li>立即执行函数无需另外调用，立即执行</li>
+<li>多个立即执行函数之间用分号隔开</li>
+</ul>
+<p>案例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">   <span class="hljs-keyword">function</span> <span class="hljs-title function_">switchSecond</span>(<span class="hljs-params">i</span>)&#123;</span><br><span class="language-javascript">       <span class="hljs-keyword">let</span> hour=i/<span class="hljs-number">3600</span></span><br><span class="language-javascript">       <span class="hljs-keyword">let</span> min=i/<span class="hljs-number">60</span>%<span class="hljs-number">60</span></span><br><span class="language-javascript">       <span class="hljs-keyword">let</span> sec=i%<span class="hljs-number">60</span></span><br><span class="language-javascript">       <span class="hljs-keyword">let</span> args=[<span class="hljs-built_in">parseInt</span>(hour),<span class="hljs-built_in">parseInt</span>(min),<span class="hljs-built_in">parseInt</span>(sec)]</span><br><span class="language-javascript">       <span class="hljs-keyword">return</span> args</span><br><span class="language-javascript">   &#125;</span><br><span class="language-javascript">   <span class="hljs-keyword">let</span> sec = <span class="hljs-title function_">prompt</span>(<span class="hljs-string">&quot;请输入想转换的秒&quot;</span>)</span><br><span class="language-javascript">   <span class="hljs-keyword">let</span> args=<span class="hljs-title function_">switchSecond</span>(sec)</span><br><span class="language-javascript">   <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">write</span>(<span class="hljs-string">`&lt;div&gt;把秒数转换成几小时几分零几秒&lt;br&gt;&lt;span&gt;<span class="hljs-subst">$&#123;sec&#125;</span>秒转换后是<span class="hljs-subst">$&#123;args[<span class="hljs-number">0</span>]&#125;</span>小时<span class="hljs-subst">$&#123;args[<span class="hljs-number">1</span>]&#125;</span>分钟<span class="hljs-subst">$&#123;args[<span class="hljs-number">2</span>]&#125;</span>秒&lt;span&gt;&lt;div&gt;`</span>)     </span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
               
             </div>
