@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo19.jpeg">
 <meta property="article:published_time" content="2022-08-06T01:26:37.000Z">
-<meta property="article:modified_time" content="2022-08-12T02:32:56.401Z">
+<meta property="article:modified_time" content="2022-08-12T17:25:43.629Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary_large_image">
@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on a minute ago
+                    Last updated on 7 minutes ago
                   
                 
               </p>
@@ -425,7 +425,7 @@
 </ul>
 <p>它们有着各自特别的特性，我们将在后面学习到。有时候大家会说“Array 类型”或“Date 类型”，但其实它们并不是自身所属的类型，而是属于一个对象类型即 “object”。它们以不同的方式对 “object” 做了一些扩展。</p>
 <p>JavaScript 中的对象非常强大。这里我们只接触了其冰山一角。在后面的章节中，我们将频繁使用对象进行编程，并学习更多关于对象的知识。</p>
-<h2 id="任务"><a href="#任务" class="headerlink" title="任务"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/object#tasks">任务</a></h2><h3 id="检查空对象"><a href="#检查空对象" class="headerlink" title="检查空对象"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/object#jian-cha-kong-dui-xiang">检查空对象</a></h3><p>重要程度: 5</p>
+<h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/object#tasks">作业</a></h2><h3 id="检查空对象"><a href="#检查空对象" class="headerlink" title="检查空对象"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/object#jian-cha-kong-dui-xiang">检查空对象</a></h3><p>重要程度: 5</p>
 <p>写一个 <code>isEmpty(obj)</code> 函数，当对象没有属性的时候返回 <code>true</code>，否则返回 <code>false</code>。</p>
 <p>答案：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> obj=&#123;&#125;<span class="hljs-comment">//true</span><br><span class="hljs-keyword">let</span> obj=&#123;<br>    <span class="hljs-attr">ff</span>:<span class="hljs-number">2</span><br>&#125;<span class="hljs-comment">//false</span><br><span class="hljs-comment">//函数逻辑：如果能被遍历相当于属性非空</span><br><span class="hljs-keyword">let</span> schedule = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i <span class="hljs-keyword">in</span> obj)&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span><br>&#125;<br><span class="hljs-title function_">alert</span>(<span class="hljs-title function_">schedule</span>())<br></code></pre></td></tr></table></figure>
