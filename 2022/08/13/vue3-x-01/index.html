@@ -16,26 +16,26 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="润学笔记">
-<meta property="og:url" content="http://example.com/2022/08/09/%E6%B6%A601/index.html">
+    <meta name="description" content="Vue3.x从零开始学-第一季 基础语法篇1.初识vue3.x编写第一个HelloWorld 在VSCode中新建立一个index.html的文件。 打开index.html后，直接输入html，然后会出现选项，直接选择html:5，就可以快速生成html的基本结构。 当然，你也可以直接输入!号，然后回车，也会给我们输出同样的结果。根据自己的喜好，自行选择就好。 直接引入Vue3.x源码 Vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue3.x 01">
+<meta property="og:url" content="http://example.com/2022/08/13/vue3-x-01/index.html">
 <meta property="og:site_name" content="摸鱼之家">
+<meta property="og:description" content="Vue3.x从零开始学-第一季 基础语法篇1.初识vue3.x编写第一个HelloWorld 在VSCode中新建立一个index.html的文件。 打开index.html后，直接输入html，然后会出现选项，直接选择html:5，就可以快速生成html的基本结构。 当然，你也可以直接输入!号，然后回车，也会给我们输出同样的结果。根据自己的喜好，自行选择就好。 直接引入Vue3.x源码 Vue">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208092132268.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208092133968.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208092136836.png">
-<meta property="article:published_time" content="2022-08-09T13:27:07.000Z">
-<meta property="article:modified_time" content="2022-08-12T02:33:39.398Z">
+<meta property="og:image" content="http://example.com/img/photo21.jpeg">
+<meta property="article:published_time" content="2022-08-13T11:02:54.000Z">
+<meta property="article:modified_time" content="2022-08-13T16:35:49.870Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="Run">
+<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208092132268.png">
+<meta name="twitter:image" content="http://example.com/img/photo21.jpeg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>润学笔记 - 摸鱼之家</title>
+  <title>vue3.x 01 - 摸鱼之家</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -208,13 +208,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/photo31.jpeg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/photo21.jpeg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="润学笔记"></span>
+            <span id="subtitle" data-typed-text="vue3.x 01"></span>
           
         </div>
 
@@ -225,8 +225,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-09 21:27" pubdate>
-          August 9, 2022 pm
+        <time datetime="2022-08-13 19:02" pubdate>
+          August 13, 2022 pm
         </time>
       </span>
     
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 words
+          1.3k words
         
       </span>
     
@@ -285,12 +285,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">润学笔记</h1>
+            <h1 style="display: none">vue3.x 01</h1>
             
               <p class="note note-info">
                 
                   
-                    Last updated on 2 days ago
+                    Last updated on 4 hours ago
                   
                 
               </p>
@@ -298,21 +298,55 @@
             <div class="markdown-body">
               
               <hr>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208092132268.png" srcset="/img/loading.gif" lazyload alt="image-20220809213237235"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208092133968.png" srcset="/img/loading.gif" lazyload alt="image-20220809213357937"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208092136836.png" srcset="/img/loading.gif" lazyload alt="image-20220809213631788"></p>
-
+<h1 id="Vue3-x从零开始学-第一季-基础语法篇"><a href="#Vue3-x从零开始学-第一季-基础语法篇" class="headerlink" title="Vue3.x从零开始学-第一季 基础语法篇"></a>Vue3.x从零开始学-第一季 基础语法篇</h1><h2 id="1-初识vue3-x"><a href="#1-初识vue3-x" class="headerlink" title="1.初识vue3.x"></a>1.初识vue3.x</h2><p><strong>编写第一个HelloWorld</strong></p>
+<p>在VSCode中新建立一个<code>index.html</code>的文件。</p>
+<p>打开<code>index.html</code>后，直接输入<code>html</code>，然后会出现选项，直接选择<code>html:5</code>，就可以快速生成html的基本结构。</p>
+<p>当然，你也可以直接输入<code>!</code>号，然后<code>回车</code>，也会给我们输出同样的结果。根据自己的喜好，自行选择就好。</p>
+<p><strong>直接引入Vue3.x源码</strong></p>
+<p>Vue官方提供直接引入的CDN服务地址，只要用<code>&lt;script&gt;</code>标签，就可以直接在<code>&lt;head&gt;</code>里引入<code>Vue3</code>，并且使用它。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;script src=<span class="hljs-string">&quot;https://unpkg.com/vue@next&quot;</span>&gt;&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+<p>引入Vue3的框架之后，我们就可以写Vue的代码了。先在<code>&lt;body&gt;</code>标签中，加入一个<code>&lt;div&gt;</code>层,并给他一个<code>id=&quot;root&quot;</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;<br>&lt;html lang=&quot;en&quot;&gt;<br>&lt;head&gt;<br>    &lt;meta charset=&quot;UTF-8&quot;&gt;<br>    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;<br>    &lt;title&gt;Hello World&lt;/title&gt;<br>    &lt;script src=&quot;https://unpkg.com/vue@next&quot;&gt;&lt;/script&gt;<br>&lt;/head&gt;<br><br>&lt;body&gt;<br>    &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;<br>&lt;/body&gt;<br>&lt;script&gt;<br>    Vue.createApp(&#123;<br>        template: &#x27;&lt;div&gt;Hello World&lt;/div&gt;&#x27;<br>    &#125;).mount(&quot;#app&quot;)<br>&lt;/script&gt;<br>&lt;/html&gt;<br></code></pre></td></tr></table></figure>
+<p>其中，Vue的语法为：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">createApp</span>(&#123;   <span class="hljs-comment">//创建一个Vue实例，简单理解就说，我要使用Vue了</span><br>    <span class="hljs-attr">template</span>: <span class="hljs-string">&#x27;&lt;div&gt;Hello World&lt;/div&gt;&#x27;</span>   <span class="hljs-comment">// template是模板的意思，就是在JS里写html代码</span><br>&#125;).<span class="hljs-title function_">mount</span>(<span class="hljs-string">&quot;#app&quot;</span>)   <span class="hljs-comment">//这个模板需要放一个位置，也就是说挂载，挂载到`id=app`的DOM上</span><br></code></pre></td></tr></table></figure>
+<ol>
+<li>用<code>Vue.</code>创建一个实例对象，符合命名规范即可</li>
+<li>用<code>template</code>创建一个模版，里面是<code>html</code>代码</li>
+<li><code>.mount</code>是模版要挂载的位置</li>
+</ol>
+<h2 id="2-Vue3编写的计数器"><a href="#2-Vue3编写的计数器" class="headerlink" title="2. Vue3编写的计数器"></a>2. Vue3编写的计数器</h2>
               
             </div>
             <hr/>
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF/" class="category-chain-item">前端</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Run/">#Run</a>
+        <a href="/tags/JavaScript/">#JavaScript</a>
       
     </div>
   
@@ -326,18 +360,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/08/12/JavaScript-04/" title="JavaScript 04">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">JavaScript 04</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/08/06/JavaScript-03/" title="JavaScript 03">
-                        <span class="hidden-mobile">JavaScript 03</span>
+                      <a href="/2022/08/13/JavaScript-05/" title="JavaScript 05">
+                        <span class="hidden-mobile">JavaScript 05</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

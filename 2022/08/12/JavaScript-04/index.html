@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo19.jpeg">
 <meta property="article:published_time" content="2022-08-12T02:34:01.000Z">
-<meta property="article:modified_time" content="2022-08-12T17:32:07.780Z">
+<meta property="article:modified_time" content="2022-08-12T17:42:15.928Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary_large_image">
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.1k words
+          7k words
         
       </span>
     
@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on a few seconds ago
+                    Last updated on a day ago
                   
                 
               </p>
@@ -302,21 +302,8 @@
 <p>当我们不再需要某个东西时会发生什么？JavaScript 引擎如何发现它并清理它？</p>
 <h3 id="可达性（Reachability）"><a href="#可达性（Reachability）" class="headerlink" title="可达性（Reachability）"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/garbage-collection#ke-da-xing-reachability">可达性（Reachability）</a></h3><p>JavaScript 中主要的内存管理概念是 <strong>可达性</strong>。</p>
 <p>简而言之，“可达值“是那些以某种方式可访问或可用的值。它们一定是存储在内存中的。</p>
-<ol>
-<li><p>这里列出固有的可达值的基本集合，这些值明显不能被释放。</p>
-<p>比方说：</p>
-<ul>
-<li>当前执行的函数，它的局部变量和参数。</li>
-<li>当前嵌套调用链上的其他函数、它们的局部变量和参数。</li>
-<li>全局变量。</li>
-<li>（还有一些内部的）</li>
-</ul>
-<p>这些值被称作 <strong>根（roots）</strong>。</p>
-</li>
-<li><p>如果一个值可以通过引用链从根访问任何其他值，则认为该值是可达的。</p>
+<p>如果一个值可以通过引用链从根访问任何其他值，则认为该值是可达的，这些值被称作 <strong>根（roots）</strong>。</p>
 <p>比方说，如果全局变量中有一个对象，并且该对象有一个属性引用了另一个对象，则 <strong>该</strong> 对象被认为是可达的。而且它引用的内容也是可达的。下面是详细的例子。</p>
-</li>
-</ol>
 <p>在 JavaScript 引擎中有一个被称作 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Garbage_collection_(computer_science">垃圾回收器</a>) 的东西在后台执行。它监控着所有对象的状态，并删除掉那些已经不可达的。</p>
 <p>这里是一个最简单的例子：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// user 具有对这个对象的引用</span><br><span class="hljs-keyword">let</span> user = &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;John&quot;</span><br>&#125;;<br></code></pre></td></tr></table></figure>
@@ -359,7 +346,7 @@
 <li>垃圾收集器找到所有的根，并“标记”（记住）它们。</li>
 <li>然后它遍历并“标记”来自它们的所有引用。</li>
 <li>然后它遍历标记的对象并标记 <strong>它们的</strong> 引用。所有被遍历到的对象都会被记住，以免将来再次遍历到同一个对象。</li>
-<li>……如此操作，直到所有可达的（从根部）引用都被访问到。</li>
+<li>如此操作，直到所有可达的（从根部）引用都被访问到。</li>
 <li>没有被标记的对象都会被删除。</li>
 </ul>
 <p>例如，使我们的对象有如下的结构：</p>
@@ -397,8 +384,8 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> user = &#123;<br>  <span class="hljs-comment">// ...</span><br>&#125;;<br><br><span class="hljs-comment">// 首先，声明函数</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">sayHi</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Hello!&quot;</span>);<br>&#125;<br><br><span class="hljs-comment">// 然后将其作为一个方法添加</span><br>user.<span class="hljs-property">sayHi</span> = sayHi;<br><br>user.<span class="hljs-title function_">sayHi</span>(); <span class="hljs-comment">// Hello!</span><br></code></pre></td></tr></table></figure>
 <p><strong>面向对象编程</strong></p>
 <p>当我们在代码中用对象表示实体时，就是所谓的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Object-oriented_programming">面向对象编程</a>，简称为 “OOP”。</p>
-<p>语法3：方法简写</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 这些对象作用一样</span><br><br>user = &#123;<br>  <span class="hljs-attr">sayHi</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Hello&quot;</span>);<br>  &#125;<br>&#125;;<br><br><span class="hljs-comment">// 方法简写看起来更好，对吧？</span><br><span class="hljs-keyword">let</span> user = &#123;<br>  <span class="hljs-title function_">sayHi</span>(<span class="hljs-params"></span>) &#123; <span class="hljs-comment">// 与 &quot;sayHi: function()&#123;...&#125;&quot; 一样</span><br>    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Hello&quot;</span>);<br>  &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p><strong>语法3：方法简写，最为常用</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 这些对象作用一样</span><br><br>user = &#123;<br>  <span class="hljs-attr">sayHi</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Hello&quot;</span>);<br>  &#125;<br>&#125;;<br><br><span class="hljs-comment">// 方法简写看起来更好，对吧？</span><br><span class="hljs-keyword">let</span> user = &#123;<br>  <span class="hljs-title function_">sayHi</span>(<span class="hljs-params"></span>) &#123; <span class="hljs-comment">// 与 &quot;sayHi: function()&#123;...&#125;&quot; 一样</span><br>    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Hello&quot;</span>);<br>  &#125;，<br>&#125;;<br></code></pre></td></tr></table></figure>
 <p>如上所示，我们可以省略 <code>&quot;function&quot;</code>，只写 <code>sayHi()</code>。</p>
 <p>在几乎所有的情况下，更短的语法是首选的。</p>
 <h3 id="方法中的-“this”"><a href="#方法中的-“this”" class="headerlink" title="方法中的 “this”"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/object-methods#fang-fa-zhong-de-this">方法中的 “this”</a></h3><p><strong>为了访问调用该方法的对象，方法中可以使用 <code>this</code> 关键字。</strong></p>
