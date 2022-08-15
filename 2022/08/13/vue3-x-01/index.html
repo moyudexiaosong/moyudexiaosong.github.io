@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo21.jpeg">
 <meta property="article:published_time" content="2022-08-13T11:02:54.000Z">
-<meta property="article:modified_time" content="2022-08-13T16:35:49.870Z">
+<meta property="article:modified_time" content="2022-08-14T09:35:09.918Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary_large_image">
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k words
+          2.7k words
         
       </span>
     
@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on 4 hours ago
+                    Last updated on a day ago
                   
                 
               </p>
@@ -314,7 +314,17 @@
 <li>用<code>template</code>创建一个模版，里面是<code>html</code>代码</li>
 <li><code>.mount</code>是模版要挂载的位置</li>
 </ol>
-<h2 id="2-Vue3编写的计数器"><a href="#2-Vue3编写的计数器" class="headerlink" title="2. Vue3编写的计数器"></a>2. Vue3编写的计数器</h2>
+<h2 id="2-Vue3编写的计数器"><a href="#2-Vue3编写的计数器" class="headerlink" title="2. Vue3编写的计数器"></a>2. Vue3编写的计数器</h2><hr>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;<br>&lt;html lang=&quot;en&quot;&gt;<br>&lt;head&gt;<br>    &lt;meta charset=&quot;UTF-8&quot;&gt;<br>    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;<br>    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;<br>    &lt;title&gt;Document&lt;/title&gt;<br>    &lt;script src=&quot;https://unpkg.com/vue@next&quot;&gt;&lt;/script&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>    &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;   <br>    &lt;script&gt;<br>        Vue.createApp(&#123;<br>            data()&#123;<br>                return&#123;<br>                    counter:1<br>                &#125;<br>            &#125;,<br>            mounted()&#123;<br>                setInterval(()=&gt;&#123;<br>                    this.counter+=1<br>                &#125;,1000)<br>            &#125;,//只要页面一加载，就会执行这个步骤<br>            template:&#x27;&lt;div&gt;&#123;&#123;counter&#125;&#125;&lt;/div&gt;&#x27;<br>        &#125;).mount(&quot;#app&quot;)<br>    &lt;/script&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br></code></pre></td></tr></table></figure>
+<p>计数器能变化，肯定是需要一个变量的，这个变量起名为<code>counter</code>。在Vue的<code>template</code>(模板)中使用变量，需要用到字面量标识<code>&#123;&#123;&#125;&#125;</code>双大括号，我喜欢把这个双大括号叫做<code>字面量</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">createApp</span>(&#123;<br>        <span class="hljs-attr">template</span>: <span class="hljs-string">&#x27;&lt;div&gt;&#123;&#123;counter&#125;&#125;&lt;/div&gt;&#x27;</span><br>    &#125;).<span class="hljs-title function_">mount</span>(<span class="hljs-string">&quot;#app&quot;</span>)<br></code></pre></td></tr></table></figure>
+<p>到目前为止，只是在模板中使用了<code>counter</code>变量，但是还没有声明，声明这个变量需要在<code>data()</code>函数中，具体代码如下，可以在浏览器中看到 一个1显示出来。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> &#123;<br>        <span class="hljs-attr">counter</span>: <span class="hljs-number">1</span><br>    &#125;<br>&#125;,<br></code></pre></td></tr></table></figure>
+<p><strong>mounted( )中实现自增</strong></p>
+<p><code>mounted</code>是一个声明周期钩子函数，可以把他想成是页加载渲染完成，<strong>自动执行</strong>，不用调用的方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">mounted</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;页面加载完成后-自动执行&#x27;</span>)<br>    <span class="hljs-built_in">setInterval</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">counter</span> += <span class="hljs-number">1</span>   <span class="hljs-comment">//这个this.counter指向的就是data中的counter</span><br>        <span class="hljs-comment">//this.$data.counter +=1   //效果相同</span><br>    &#125;, <span class="hljs-number">1000</span>)<br>&#125;,<br></code></pre></td></tr></table></figure>
+<p>这节就是你要转变的一个观点，从面向DOM编程，改为面向数据编程。</p>
+
               
             </div>
             <hr/>
@@ -359,6 +369,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/08/14/JavaScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="JavaScript基础知识">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JavaScript基础知识</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo19.jpeg">
 <meta property="article:published_time" content="2022-08-12T17:32:46.000Z">
-<meta property="article:modified_time" content="2022-08-13T20:19:54.732Z">
+<meta property="article:modified_time" content="2022-08-13T20:29:41.745Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary_large_image">
@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on a few seconds ago
+                    Last updated on 2 days ago
                   
                 
               </p>
@@ -298,7 +298,7 @@
             <div class="markdown-body">
               
               <hr>
-<h1 id="JavaScript-基础-第五天"><a href="#JavaScript-基础-第五天" class="headerlink" title="JavaScript 基础 - 第五天"></a>JavaScript 基础 - 第五天</h1><h1 id="一、构造器和操作符-“new”"><a href="#一、构造器和操作符-“new”" class="headerlink" title="一、构造器和操作符 “new”"></a>一、构造器和操作符 “new”</h1><p>常规的 <code>&#123;...&#125;</code> 语法允许创建一个对象。但是我们经常需要创建很多类似的对象，例如多个用户或菜单项等。</p>
+<h1 id="JavaScript-基础-第五天"><a href="#JavaScript-基础-第五天" class="headerlink" title="JavaScript 基础 - 第五天"></a>JavaScript 基础 - 第五天</h1><h2 id="一、构造器和操作符-“new”"><a href="#一、构造器和操作符-“new”" class="headerlink" title="一、构造器和操作符 “new”"></a>一、构造器和操作符 “new”</h2><p>常规的 <code>&#123;...&#125;</code> 语法允许创建一个对象。但是我们经常需要创建很多类似的对象，例如多个用户或菜单项等。</p>
 <p>这可以使用构造函数和 <code>&quot;new&quot;</code> 操作符来实现。</p>
 <h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/constructor-new#gou-zao-han-shu">构造函数</a></h3><p>构造函数在技术上是常规函数。不过有两个约定：</p>
 <ol>
@@ -324,7 +324,7 @@
 <p>如果我们有许多行用于创建单个复杂对象的代码，我们可以将它们封装在一个立即调用的构造函数中，像这样：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 创建一个函数并立即使用 new 调用它</span><br><span class="hljs-keyword">let</span> user = <span class="hljs-keyword">new</span> <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = <span class="hljs-string">&quot;John&quot;</span>;<br>  <span class="hljs-variable language_">this</span>.<span class="hljs-property">isAdmin</span> = <span class="hljs-literal">false</span>;<br><br>  <span class="hljs-comment">// ……用于用户创建的其他代码</span><br>  <span class="hljs-comment">// 也许是复杂的逻辑和语句</span><br>  <span class="hljs-comment">// 局部变量等</span><br>&#125;;<br></code></pre></td></tr></table></figure>
 <p><u>这个构造函数不能被再次调用</u>，因为它不保存在任何地方，只是被创建和调用。因此，这个技巧旨在封装构建单个对象的代码，而无需将来重用。</p>
-<h2 id="构造器的-return"><a href="#构造器的-return" class="headerlink" title="构造器的 return"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/constructor-new#gou-zao-qi-de-return">构造器的 return</a></h2><p>通常，构造器没有 <code>return</code> 语句。它们的任务是将所有必要的东西写入 <code>this</code>，并自动转换为结果。</p>
+<h3 id="构造器的-return"><a href="#构造器的-return" class="headerlink" title="构造器的 return"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/constructor-new#gou-zao-qi-de-return">构造器的 return</a></h3><p>通常，构造器没有 <code>return</code> 语句。它们的任务是将所有必要的东西写入 <code>this</code>，并自动转换为结果。</p>
 <p>但是，如果这有一个 <code>return</code> 语句，那么规则就简单了：</p>
 <ul>
 <li>如果 <code>return</code> 返回的是一个对象，则返回这个对象，而不是 <code>this</code>。</li>
