@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>小样本学习综述</title>
+    <link href="/2022/08/31/%E5%B0%8F%E6%A0%B7%E6%9C%AC%E5%AD%A6%E4%B9%A0%E7%BB%BC%E8%BF%B0/"/>
+    <url>/2022/08/31/%E5%B0%8F%E6%A0%B7%E6%9C%AC%E5%AD%A6%E4%B9%A0%E7%BB%BC%E8%BF%B0/</url>
+    
+    <content type="html"><![CDATA[<hr><p><a class="btn" href="https://www.cnblogs.com/jiangxinyang/p/12163215.html#:~:text=Task-invariant%E6%98%AF%E5%9C%A8%E4%B8%80%E4%B8%AA%E5%A4%A7%E7%9A%84%E4%B8%94%E5%92%8C%E4%BB%BB%E5%8A%A1%E7%9B%B8%E4%BC%BC%E7%9A%84source,%E6%95%B0%E6%8D%AE%E9%9B%86%E4%B8%8A%E8%AE%AD%E7%BB%83%E4%B8%80%E4%B8%AA%E5%B5%8C%E5%85%A5%E6%A8%A1%E5%9E%8B%EF%BC%8C%E7%84%B6%E5%90%8E%E7%9B%B4%E6%8E%A5%E7%94%A8%E4%BA%8E%E5%BD%93%E5%89%8D%E4%BB%BB%E5%8A%A1%E7%9A%84%E8%AE%AD%E7%BB%83%E9%9B%86%E5%92%8C%E6%B5%8B%E8%AF%95%E9%9B%86%E5%B5%8C%E5%85%A5%E3%80%82" title="title">FSL小样本学习综述</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>JavaScript</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>vue3.x 组件篇</title>
     <link href="/2022/08/25/vue3-x-%E7%BB%84%E4%BB%B6%E7%AF%87/"/>
     <url>/2022/08/25/vue3-x-%E7%BB%84%E4%BB%B6%E7%AF%87/</url>
