@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo30.jpeg">
 <meta property="article:published_time" content="2022-09-09T15:52:46.000Z">
-<meta property="article:modified_time" content="2022-09-11T18:46:32.065Z">
+<meta property="article:modified_time" content="2022-09-11T19:11:20.856Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Python基础知识">
 <meta name="twitter:card" content="summary_large_image">
@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on a few seconds ago
+                    Last updated on a minute ago
                   
                 
               </p>
@@ -336,7 +336,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys<br><span class="hljs-keyword">import</span> pygame<br><span class="hljs-keyword">from</span> ship <span class="hljs-keyword">import</span> Ship<br><span class="hljs-keyword">from</span> settings <span class="hljs-keyword">import</span> Settings<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">AlienInvasion</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        pygame.init()<br>        self.settings=Settings()<br>        self.screen=pygame.display.set_mode(<br>          (self.settings.screen_width,<br>           self.settings.screen_height))<br>        pygame.display.set_caption(<span class="hljs-string">&quot;Alien Invasion&quot;</span>)<br>        self.ship = Ship(self)<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">run_game</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            <span class="hljs-keyword">for</span> event <span class="hljs-keyword">in</span> pygame.event.get():<br>                <span class="hljs-keyword">if</span> event.<span class="hljs-built_in">type</span>==pygame.QUIT:<br>                    sys.exit()<br>            self.screen.fill((self.settings.bg_color))<br>            self.ship.blitme()<br>            pygame.display.flip()<br><span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    ai=AlienInvasion()<br>    ai.run_game()<br></code></pre></td></tr></table></figure>
 <p>Pygame之所以高效，是因为它让你能够像处理矩形（rect 对象） 一样处理所有的游戏元素。</p>
 <p>Ship传进去一个当前AlienInvasion 实例的引用来访问AlienInvasion中定义的所有游戏资源。<code>get_rect()</code>函数的作用是将我们的图片的位置用代码的形式告诉我们，</p>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202209120240394.png" srcset="/img/loading.gif" lazyload alt="image-20220912024014365"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202209120310949.png" srcset="/img/loading.gif" lazyload alt="image-20220912031036928"></p>
 <p>调用pygame.image.load() 加载图像，并将飞船图像的位置传递给它。该函数返回一个表示飞船的surface</p>
 <p><strong><code>pygame.surface.blit()</code>方法</strong></p>
 <p>假设有两个surface对象，简称为图，函数<code>B.blit(A,dest)</code>的功能就是把图A粘贴到图B上，这意味着B上的图将被A上的图覆盖，且永久不能恢复。</p>
