@@ -314,6 +314,7 @@
 <p>绑定成功</p>
 <h2 id="step3-本地生成博客内容"><a href="#step3-本地生成博客内容" class="headerlink" title="step3.本地生成博客内容"></a>step3.本地生成博客内容</h2><p>新建文件夹Blog</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">npm install -g hexo-cli #安装hexo，Mac用户需要加sudo<br><br>hexo init #已安装过需要初始化<br><br>hexo g #生成<br><br>hexo s #启动服务，打开本地服务器<br></code></pre></td></tr></table></figure>
+
 <h2 id="step4-发布博客到互联网"><a href="#step4-发布博客到互联网" class="headerlink" title="step4.发布博客到互联网"></a>step4.发布博客到互联网</h2><p>Hexo 博客文件夹目录结构如下：</p>
 <ul>
 <li>node_modules: 依赖包</li>
@@ -327,163 +328,167 @@
 <p>打开博客配置文件，做出如下修改</p>
 <p><img src="https://tva1.sinaimg.cn/large/e6c9d24egy1h3a55jpj2ij20y305oq35.jpg" srcset="/img/loading.gif" lazyload alt="image-20220616122503416"></p>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs tex">deploy:<br>  type: git<br>  repository: https://github.com/moyudexiaosong/moyudexiaosong.github.io<br>  branch: main<br></code></pre></td></tr></table></figure>
+
 <p><code>npm install hexo-deployer-git --save #安装上传工具</code></p>
 <p><code>hexo d</code> #上传互联网</p>
 <p>第一次要输入注册名和密码，密码（令牌）</p>
 <p>上传成功，找到网址</p>
 <p>查看当前git用户名和邮箱</p>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs tex">git config user.name<br>git config user.email<br></code></pre></td></tr></table></figure>
+
 <p>修改</p>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs tex">git config --global user.name &quot;zhangsan(新的用户名)&quot;<br>git config --global user.email &quot;123456@qq.com(新的邮箱)&quot;<br>git config --global user.password &quot;123456(新的密码)&quot;<br><span class="hljs-params">#</span> 这里的zhangsan和邮箱都是你修改之后的用户名和邮箱<br></code></pre></td></tr></table></figure>
+
 <p>step4.安装主题</p>
 <p><code>npm install --save hexo-theme-fluid</code></p>
 <p>然后在博客目录下创建 _config.fluid.yml，将主题的 _config.yml 内容复制进去。</p>
 <p>将_config.yml下的theme的值landscape修改为fluid，这样才能使用到主题fluids</p>
 <h2 id="step5-hexo基本配置"><a href="#step5-hexo基本配置" class="headerlink" title="step5.hexo基本配置"></a>step5.hexo基本配置</h2><p>在文件根目录下的<code>_config.yml</code>，就是整个hexo框架的配置文件了。可以在里面修改大部分的配置。详细可参考<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration">官方的配置</a>描述。</p>
-<h5 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h5><div class="table-container">
-<table>
+<h5 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h5><table>
 <thead>
 <tr>
-<th style="text-align:center">参数</th>
-<th style="text-align:center">描述</th>
+<th align="center">参数</th>
+<th align="center">描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center"><code>title</code></td>
-<td style="text-align:center">网站标题</td>
+<tbody><tr>
+<td align="center"><code>title</code></td>
+<td align="center">网站标题</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>subtitle</code></td>
-<td style="text-align:center">网站副标题</td>
+<td align="center"><code>subtitle</code></td>
+<td align="center">网站副标题</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>description</code></td>
-<td style="text-align:center">网站描述</td>
+<td align="center"><code>description</code></td>
+<td align="center">网站描述</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>author</code></td>
-<td style="text-align:center">您的名字</td>
+<td align="center"><code>author</code></td>
+<td align="center">您的名字</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>language</code></td>
-<td style="text-align:center">网站使用的语言</td>
+<td align="center"><code>language</code></td>
+<td align="center">网站使用的语言</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>timezone</code></td>
-<td style="text-align:center">网站时区。Hexo 默认使用您电脑的时区。<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">时区列表</a>。比如说：<code>America/New_York</code>, <code>Japan</code>, 和 <code>UTC</code> 。</td>
+<td align="center"><code>timezone</code></td>
+<td align="center">网站时区。Hexo 默认使用您电脑的时区。<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">时区列表</a>。比如说：<code>America/New_York</code>, <code>Japan</code>, 和 <code>UTC</code> 。</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <p>其中，<code>description</code>主要用于SEO，告诉搜索引擎一个关于您站点的简单描述，通常建议在其中包含您网站的关键词。<code>author</code>参数用于主题显示文章的作者。</p>
 <h6 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+
 <h5 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h5><p>Front-matter 是文件最上方以 <code>---</code> 分隔的区域，用于指定个别文件的变量，举例来说：</p>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs tex">title: Hello World<br>date: 2013/7/13 20:46:25<br>---<br></code></pre></td></tr></table></figure>
+
 <p>下是预先定义的参数，您可在模板中使用这些参数值并加以利用。</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th style="text-align:center">参数</th>
-<th style="text-align:center">描述</th>
+<th align="center">参数</th>
+<th align="center">描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center"><code>layout</code></td>
-<td style="text-align:center">布局</td>
+<tbody><tr>
+<td align="center"><code>layout</code></td>
+<td align="center">布局</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>title</code></td>
-<td style="text-align:center">标题</td>
+<td align="center"><code>title</code></td>
+<td align="center">标题</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>date</code></td>
-<td style="text-align:center">建立日期</td>
+<td align="center"><code>date</code></td>
+<td align="center">建立日期</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>updated</code></td>
-<td style="text-align:center">更新日期</td>
+<td align="center"><code>updated</code></td>
+<td align="center">更新日期</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>comments</code></td>
-<td style="text-align:center">开启文章的评论功能</td>
+<td align="center"><code>comments</code></td>
+<td align="center">开启文章的评论功能</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>tags</code></td>
-<td style="text-align:center">标签（不适用于分页）</td>
+<td align="center"><code>tags</code></td>
+<td align="center">标签（不适用于分页）</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>categories</code></td>
-<td style="text-align:center">分类（不适用于分页）</td>
+<td align="center"><code>categories</code></td>
+<td align="center">分类（不适用于分页）</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>permalink</code></td>
-<td style="text-align:center">覆盖文章网址</td>
+<td align="center"><code>permalink</code></td>
+<td align="center">覆盖文章网址</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <h6 id="layout（布局）"><a href="#layout（布局）" class="headerlink" title="layout（布局）"></a>layout（布局）</h6><p>当你每一次使用代码</p>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tex">hexo new paper<br></code></pre></td></tr></table></figure>
+
 <p>它其实默认使用的是<code>post</code>这个布局，也就是在<code>source</code>文件夹下的<code>_post</code>里面。</p>
 <p>Hexo 有三种默认布局：<code>post</code>、<code>page</code> 和 <code>draft</code>，它们分别对应不同的路径，而您自定义的其他布局和 <code>post</code> 相同，都将储存到 <code>source/_posts</code> 文件夹。</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th style="text-align:center">布局</th>
-<th style="text-align:center">路径</th>
+<th align="center">布局</th>
+<th align="center">路径</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center"><code>post</code></td>
-<td style="text-align:center"><code>source/_posts</code></td>
+<tbody><tr>
+<td align="center"><code>post</code></td>
+<td align="center"><code>source/_posts</code></td>
 </tr>
 <tr>
-<td style="text-align:center"><code>page</code></td>
-<td style="text-align:center"><code>source</code></td>
+<td align="center"><code>page</code></td>
+<td align="center"><code>source</code></td>
 </tr>
 <tr>
-<td style="text-align:center"><code>draft</code></td>
-<td style="text-align:center"><code>source/_drafts</code></td>
+<td align="center"><code>draft</code></td>
+<td align="center"><code>source/_drafts</code></td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <p>而new这个命令其实是：</p>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tex">hexo new [layout] &lt;title&gt; <span class="hljs-params">#</span>这个layout默认是post<br></code></pre></td></tr></table></figure>
+
 <h6 id="page"><a href="#page" class="headerlink" title="page"></a>page</h6><p>如果你想另起一页，那么可以使用</p>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tex">hexo new page board<br></code></pre></td></tr></table></figure>
+
 <p>系统会自动给你在source文件夹下创建一个board文件夹，以及board文件夹中的index.md.</p>
 <h6 id="draft"><a href="#draft" class="headerlink" title="draft"></a>draft</h6><p>draft是草稿的意思，也就是你如果想写文章，又不希望被看到，那么可以</p>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tex">hexo new draft newpage<br></code></pre></td></tr></table></figure>
+
 <p>如果你的草稿文件写的过程中，想要预览一下，那么可以使用</p>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tex">hexo server --draft<br></code></pre></td></tr></table></figure>
+
 <p>在本地端口中开启服务预览。</p>
 <p>如果你的草稿文件写完了，想要发表到post中，</p>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tex">hexo publish draft newpage<br></code></pre></td></tr></table></figure>
+
 <p>就会自动把newpage.md发送到post中。</p>
 <h2 id="Step6-Live2D看板娘"><a href="#Step6-Live2D看板娘" class="headerlink" title="Step6.Live2D看板娘"></a>Step6.Live2D看板娘</h2><p>安装插件</p>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">npm install <span class="hljs-comment">--save hexo-helper-live2d</span><br></code></pre></td></tr></table></figure>
+
 <p>修改配置文件</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">live2d:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span>  			<span class="hljs-comment"># 是否启动</span><br>  <span class="hljs-attr">scriptFrom:</span> <span class="hljs-string">local</span> 		<span class="hljs-comment"># 默认</span><br>  <span class="hljs-attr">pluginRootPath:</span> <span class="hljs-string">live2dw/</span>  <span class="hljs-comment"># 插件在站点上的根目录(相对路径)</span><br>  <span class="hljs-attr">pluginJsPath:</span> <span class="hljs-string">lib/</span>  		<span class="hljs-comment"># 脚本文件相对与插件根目录路径</span><br>  <span class="hljs-attr">pluginModelPath:</span> <span class="hljs-string">assets/</span>  <span class="hljs-comment"># 模型文件相对与插件根目录路径</span><br>  <span class="hljs-attr">tagMode:</span> <span class="hljs-literal">false</span>  			<span class="hljs-comment"># 标签模式, 是否仅替换 live2d tag标签而非插入到所有页面中</span><br>  <span class="hljs-attr">debug:</span> <span class="hljs-literal">false</span>  			<span class="hljs-comment"># 调试, 是否在控制台输出日志</span><br>  <span class="hljs-attr">model:</span><br>    <span class="hljs-attr">use:</span> <span class="hljs-string">live2d-widget</span>  	<span class="hljs-comment"># 模型文件</span><br>  <span class="hljs-attr">display:</span><br>    <span class="hljs-attr">position:</span> <span class="hljs-string">right</span> 		<span class="hljs-comment"># 定位方向 left right top bottom</span><br>    <span class="hljs-attr">width:</span> <span class="hljs-number">150</span>  			<span class="hljs-comment"># 小人宽度</span><br>    <span class="hljs-attr">height:</span> <span class="hljs-number">300</span> 			<span class="hljs-comment"># 小人高度</span><br>    <span class="hljs-attr">hOffset:</span> <span class="hljs-number">-15</span>  			<span class="hljs-comment"># 水平偏移</span><br>    <span class="hljs-attr">vOffset:</span> <span class="hljs-number">-15</span>  			<span class="hljs-comment"># 垂直偏移</span><br>  <span class="hljs-attr">mobile:</span><br>    <span class="hljs-attr">show:</span> <span class="hljs-literal">true</span>  			<span class="hljs-comment"># 手机端是否显示</span><br>  <span class="hljs-attr">react:</span><br>    <span class="hljs-attr">opacity:</span> <span class="hljs-number">0.7</span>  			<span class="hljs-comment"># 模型透明度</span><br></code></pre></td></tr></table></figure>
+
 <p>选择人物</p>
 <figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs gams">live2d-widget-<span class="hljs-keyword">model</span>-chitose<br>live2d-widget-<span class="hljs-keyword">model</span>-epsilon2_1<br>live2d-widget-<span class="hljs-keyword">model</span>-gf<br>live2d-widget-<span class="hljs-keyword">model</span>-haru/<span class="hljs-number">01</span> (use npm install --save live2d-widget-<span class="hljs-keyword">model</span>-haru)<br>live2d-widget-<span class="hljs-keyword">model</span>-haru/<span class="hljs-number">02</span> (use npm install --save live2d-widget-<span class="hljs-keyword">model</span>-haru)<br>live2d-widget-<span class="hljs-keyword">model</span>-haruto<br>live2d-widget-<span class="hljs-keyword">model</span>-hibiki<br>live2d-widget-<span class="hljs-keyword">model</span>-hijiki<br>live2d-widget-<span class="hljs-keyword">model</span>-izumi<br>live2d-widget-<span class="hljs-keyword">model</span>-koharu<br>live2d-widget-<span class="hljs-keyword">model</span>-miku<br>live2d-widget-<span class="hljs-keyword">model</span>-ni-j<br>live2d-widget-<span class="hljs-keyword">model</span>-nico<br>live2d-widget-<span class="hljs-keyword">model</span>-nietzsche<br>live2d-widget-<span class="hljs-keyword">model</span>-nipsilon<br>live2d-widget-<span class="hljs-keyword">model</span>-nito<br>live2d-widget-<span class="hljs-keyword">model</span>-shizuku<br>live2d-widget-<span class="hljs-keyword">model</span>-tororo<br>live2d-widget-<span class="hljs-keyword">model</span>-tsumiki<br>live2d-widget-<span class="hljs-keyword">model</span>-unitychan<br>live2d-widget-<span class="hljs-keyword">model</span>-wanko<br>live2d-widget-<span class="hljs-keyword">model</span>-z16<br></code></pre></td></tr></table></figure>
+
 <p>进行安装</p>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">npm install <span class="hljs-comment">--save 上面对应的代码</span><br></code></pre></td></tr></table></figure>
+
 <p>修改配置文件</p>
 <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">model:</span><br><span class="hljs-symbol">    use:</span> live2d-widget  <span class="hljs-meta">## 选择的模型文件</span><br></code></pre></td></tr></table></figure>
+
 <h2 id="Step7-设置图床"><a href="#Step7-设置图床" class="headerlink" title="Step7.设置图床"></a>Step7.设置图床</h2><h6 id="创建-GitHub-仓库"><a href="#创建-GitHub-仓库" class="headerlink" title="创建 GitHub 仓库"></a>创建 GitHub 仓库</h6><h6 id="使用-jsDelivr-进行-CDN-加速"><a href="#使用-jsDelivr-进行-CDN-加速" class="headerlink" title="使用 jsDelivr 进行 CDN 加速"></a>使用 jsDelivr 进行 CDN 加速</h6><h6 id="使用PicGo上传图片"><a href="#使用PicGo上传图片" class="headerlink" title="使用PicGo上传图片"></a>使用PicGo上传图片</h6><h6 id="Typora-配置-PicGo-上传"><a href="#Typora-配置-PicGo-上传" class="headerlink" title="Typora 配置 PicGo 上传"></a>Typora 配置 PicGo 上传</h6><ul>
 <li><p>打开 PicGo 软件，找到<code>图床设置</code>中的<code>GitHub图床</code>，填写相关信息。</p>
 </li>
 <li><ul>
-<li><strong>设定仓库名【必填】</strong>：填写<code>你的用户名/你的仓库名</code>，比如我的 yifeng-talking/pictures</li>
+<li><strong>设定仓库名【必填】</strong>：填写<code>你的用户名/你的仓库名</code>，比如我的 yifeng-talking&#x2F;pictures</li>
 <li><strong>设定分支名【必填】</strong>：填写<code>main</code></li>
 <li><strong>设定Token【必填】</strong>：在Github主页点击自己头像后，依次选择【Settings】-&gt;【Developer settings】-&gt;【Personal access tokens】-&gt;【Generate new token】，填写Note描述（随便），设置过期时间Expiration为永不过期No expiration，设定勾选【repo】，然后点击下方的【Generate token】生成一个Token，这个Token只会显示一次，自行保存，然后复制到 PicGo 中。</li>
-<li>指定存储路径【选填】：填写图片要存储的路径，比如填【images/】，这样就会在仓库下创建一个名为 images 的文件夹，图片将会储存在此文件夹中，这里不填。</li>
+<li>指定存储路径【选填】：填写图片要存储的路径，比如填【images&#x2F;】，这样就会在仓库下创建一个名为 images 的文件夹，图片将会储存在此文件夹中，这里不填。</li>
 <li><strong>设定自定义域名【选填】</strong>：图片上传后，PicGo 会按照【自定义域名+上传的图片名】的方式生成访问链接，放到剪贴板上，因为我们要使用 jsDeliver 进行加速，因而这里设置为<code>https://cdn.jsdelivr.net/gh/你的用户名/你的仓库名</code>，比如我设置为<strong><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/yifeng-talking/pictures">https://cdn.jsdelivr.net/gh/yifeng-talking/pictures</a></strong></li>
 </ul>
 </li>
@@ -493,18 +498,22 @@
 </li>
 </ul>
 <h2 id="Step8-设置内联公式"><a href="#Step8-设置内联公式" class="headerlink" title="Step8.设置内联公式"></a>Step8.设置内联公式</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm uninstall hexo-renderer-marked --save<br>npm install hexo-renderer-kramed --save<br></code></pre></td></tr></table></figure>
-<p>更换Hexo的markdown渲染引擎，<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https%3A%2F%2Fgithub.com%2Fsun11%2Fhexo-renderer-kramed">hexo-renderer-kramed</a>引擎是在默认的渲染引擎<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https%3A%2F%2Fgithub.com%2Fhexojs%2Fhexo-renderer-marked">hexo-renderer-marked</a>的基础上修改了一些bug，两者比较接近，也比较轻量级。</p>
+
+<p>更换Hexo的markdown渲染引擎，<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https://github.com/sun11/hexo-renderer-kramed">hexo-renderer-kramed</a>引擎是在默认的渲染引擎<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https://github.com/hexojs/hexo-renderer-marked">hexo-renderer-marked</a>的基础上修改了一些bug，两者比较接近，也比较轻量级。</p>
 <p>执行上面的命令，先卸载原来的渲染引擎，再安装新的。</p>
-<p>然后，跟换引擎后行间公式可以正确渲染了，但是这样还没有完全解决问题，行内公式的渲染还是有问题，因为<a target="_blank" rel="noopener" href="https://link.jianshu.com?t=https%3A%2F%2Fgithub.com%2Fsun11%2Fhexo-renderer-kramed">hexo-renderer-kramed</a>引擎也有语义冲突的问题。接下来到博客根目录下，找到node_modules\kramed\lib\rules\inline.js，把第11行的escape变量的值做相应的修改：</p>
+<p>然后，跟换引擎后行间公式可以正确渲染了，但是这样还没有完全解决问题，行内公式的渲染还是有问题，因为<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https://github.com/sun11/hexo-renderer-kramed">hexo-renderer-kramed</a>引擎也有语义冲突的问题。接下来到博客根目录下，找到node_modules\kramed\lib\rules\inline.js，把第11行的escape变量的值做相应的修改：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//  escape: /^\\([\\`*&#123;&#125;\[\]()#$+\-.!_&gt;])/,</span><br>  <span class="hljs-attr">escape</span>: <span class="hljs-regexp">/^\\([`*\[\]()#$+\-.!_&gt;])/</span><br></code></pre></td></tr></table></figure>
-<p>这一步是在原基础上取消了对\,{,}的转义(escape)。<br>同时把第20行的em变量也要做相应的修改。</p>
+
+<p>这一步是在原基础上取消了对,{,}的转义(escape)。<br>同时把第20行的em变量也要做相应的修改。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//  em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*[\s\S])+?)\*(?!\*)/,</span><br>  <span class="hljs-attr">em</span>: <span class="hljs-regexp">/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</span><br></code></pre></td></tr></table></figure>
+
 <p>如果已经开启主题，需要先修改配置文件，再在文章的Front-matter里打开math开关，如下</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">math</span>: <span class="hljs-keyword">true</span><br></code></pre></td></tr></table></figure>
+
 <p>参考文章：</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_37781304/article/details/82729029?utm_source=app&amp;app_version=5.5.0">hexo史上最全搭建教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_37781304/article/details/82729029?utm_source=app&app_version=5.5.0">hexo史上最全搭建教程</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/60578464#:~:text=%E4%BD%BF%E7%94%A8%20Hexo%2BGitHub%20%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%85%8D%E8%B4%B9%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B%EF%BC%88%E5%B0%8F%E7%99%BD%E5%90%91%EF%BC%89%201%20%E5%87%86%E5%A4%87%202%20%E8%BF%9E%E6%8E%A5%20Github....,Hexo%20%E5%88%B0%20GitHub%20Pages%206%20%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89....%207%20%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8">使用 Hexo+GitHub 搭建个人免费博客教程</a></p>
-<p><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1710047962336524256&amp;wfr=spider&amp;for=pc">高速稳定图床</a></p>
+<p><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1710047962336524256&wfr=spider&for=pc">高速稳定图床</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/7ab21c7f0674">在Hexo中渲染MathJax数学公式</a></p>
 
               
