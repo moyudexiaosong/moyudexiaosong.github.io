@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="上篇主要介绍和讨论了线性模型。首先从最简单的最小二乘法开始，讨论输入属性有一个和多个的情形，接着通过广义线性模型延伸开来，将预测连续值的回归问题转化为分类问题，从而引入了对数几率回归，最后线性判别分析LDA将样本点进行投影，多分类问题实质上通过划分的方法转化为多个二分类问题进行求解。本篇将讨论另一种被广泛使用的分类算法–决策树（Decision Tree）。 #4、决策树 ##4.1 决策树基本">
+    <meta name="description" content="上篇主要介绍和讨论了线性模型。首先从最简单的最小二乘法开始，讨论输入属性有一个和多个的情形，接着通过广义线性模型延伸开来，将预测连续值的回归问题转化为分类问题，从而引入了对数几率回归，最后线性判别分析LDA将样本点进行投影，多分类问题实质上通过划分的方法转化为多个二分类问题进行求解。本篇将讨论另一种被广泛使用的分类算法—决策树（Decision Tree）。 4、决策树4.1 决策树基本概念决策">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习第二周">
 <meta property="og:url" content="http://example.com/2022/06/24/week02/index.html">
 <meta property="og:site_name" content="摸鱼之家">
-<meta property="og:description" content="上篇主要介绍和讨论了线性模型。首先从最简单的最小二乘法开始，讨论输入属性有一个和多个的情形，接着通过广义线性模型延伸开来，将预测连续值的回归问题转化为分类问题，从而引入了对数几率回归，最后线性判别分析LDA将样本点进行投影，多分类问题实质上通过划分的方法转化为多个二分类问题进行求解。本篇将讨论另一种被广泛使用的分类算法–决策树（Decision Tree）。 #4、决策树 ##4.1 决策树基本">
+<meta property="og:description" content="上篇主要介绍和讨论了线性模型。首先从最简单的最小二乘法开始，讨论输入属性有一个和多个的情形，接着通过广义线性模型延伸开来，将预测连续值的回归问题转化为分类问题，从而引入了对数几率回归，最后线性判别分析LDA将样本点进行投影，多分类问题实质上通过划分的方法转化为多个二分类问题进行求解。本篇将讨论另一种被广泛使用的分类算法—决策树（Decision Tree）。 4、决策树4.1 决策树基本概念决策">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo37.jpeg">
 <meta property="article:published_time" content="2022-06-24T06:32:57.000Z">
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          27k words
+          13k words
         
       </span>
     
@@ -298,10 +298,8 @@
             <div class="markdown-body">
               
               <hr>
-<p>上篇主要介绍和讨论了线性模型。首先从最简单的最小二乘法开始，讨论输入属性有一个和多个的情形，接着通过广义线性模型延伸开来，将预测连续值的回归问题转化为分类问题，从而引入了对数几率回归，最后线性判别分析LDA将样本点进行投影，多分类问题实质上通过划分的方法转化为多个二分类问题进行求解。本篇将讨论另一种被广泛使用的分类算法–决策树（Decision Tree）。</p>
-<p>#<strong>4、决策树</strong></p>
-<p>##<strong>4.1 决策树基本概念</strong></p>
-<p>决策树是一种机器学习的方法。决策树的生成算法有ID3, C4.5和C5.0等。决策树是一种树形结构，其中每个内部节点表示一个属性上的判断，每个分支代表一个判断结果的输出，最后每个叶节点代表一种分类结果。</p>
+<p>上篇主要介绍和讨论了线性模型。首先从最简单的最小二乘法开始，讨论输入属性有一个和多个的情形，接着通过广义线性模型延伸开来，将预测连续值的回归问题转化为分类问题，从而引入了对数几率回归，最后线性判别分析LDA将样本点进行投影，多分类问题实质上通过划分的方法转化为多个二分类问题进行求解。本篇将讨论另一种被广泛使用的分类算法—决策树（Decision Tree）。</p>
+<h1 id="4、决策树"><a href="#4、决策树" class="headerlink" title="4、决策树"></a><strong>4、决策树</strong></h1><h2 id="4-1-决策树基本概念"><a href="#4-1-决策树基本概念" class="headerlink" title="4.1 决策树基本概念"></a><strong>4.1 决策树基本概念</strong></h2><p>决策树是一种机器学习的方法。决策树的生成算法有ID3, C4.5和C5.0等。决策树是一种树形结构，其中每个内部节点表示一个属性上的判断，每个分支代表一个判断结果的输出，最后每个叶节点代表一种分类结果。</p>
 <p>决策树是一种十分常用的分类方法，需要监管学习，监管学习就是给出一堆样本，每个样本都有一组属性和一个分类结果，也就是分类结果已知，那么通过学习这些样本得到一个决策树，这个决策树能够对新的数据给出正确的分类。这里通过一个简单的例子来说明决策树的构成思路：</p>
 <p>给出如下的一组数据，一共有十个样本（学生数量），每个样本有分数，出勤率，回答问题次数，作业提交率四个属性，最后判断这些学生是否是好学生。最后一列给出了人工分类结果。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//v2-ed38beb4538a90f2b961233b18acc1ca_1440w.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
@@ -320,35 +318,37 @@
 * 每个分支代表这个特征属性在某个值域上的输出。
 * 每个叶子节点存放一个类别。
 * 每个节点包含的样本集合通过属性测试被划分到子节点中，根节点包含样本全集。
-</code></pre>
-<p>##<strong>4.2 决策树的构造</strong></p>
-<p>决策树的构造是一个递归的过程，有三种情形会导致递归返回：</p>
+</code></pre><h2 id="4-2-决策树的构造"><a href="#4-2-决策树的构造" class="headerlink" title="4.2 决策树的构造"></a><strong>4.2 决策树的构造</strong></h2><p>决策树的构造是一个递归的过程，有三种情形会导致递归返回：</p>
 <p>(1) 当前结点包含的样本<u>全属于同一类别</u>，这时直接将该节点标记为叶节点，并设为相应的类别；</p>
 <p>(2) 当前属性集为空，或是所有样本在所有属性上取值相同，无法划分，这时将该节点标记为叶节点，并将其类别设为该节点所含样本最多的类别；</p>
 <p>(3) 当前结点包含的样本集合为空，不能划分，这时也将该节点标记为叶节点，并将其类别设为父节点中所含样本最多的类别。算法的基本流程如下图所示：</p>
-<img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc728ecc27fe-20220625223316135.png" srcset="/img/loading.gif" lazyload alt="2.png" style="zoom:150%;">
-
+<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc728ecc27fe-20220625223316135.png" srcset="/img/loading.gif" lazyload alt="2.png" style="zoom:150%;"></p>
 <p>举个例子，首先将所有数据点分成两组，将相似的数据点分在一组，然后在每个组内重复二进制分割过程，以此来生成决策树。生成结果是，每个后续的叶子节点将具有更少但更同质的数据点。决策树的基础是通过树中的不同路径隔离出“幸存者”群体，属于这些路径的任何人都将被预测为可能的“幸存者”。</p>
 <p>重复划分数据以获得同质数据组的过程被称为递归分区。它仅涉及两个步骤，如下面所示：</p>
 <p>步骤1：识别将数据点分解成最均匀的两个组的二分问题。</p>
 <p>步骤2：对于每个叶节点重复步骤1，直到达到终止标准。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//u=468529240,2161184244&fm=173&s=798C34720B2341205AD514DA0000E0B1&w=640&h=311&img.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//u=1283713208,3337743947&fm=173&s=4DAA307203BA5021424100DA0000E0B2&w=640&h=311&img.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//u=91869356,1158323049&fm=173&s=4DA834720372582208F02DDA000050B2&w=640&h=311&img.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//u=93050560,1795077123&fm=173&s=4DA830720332582358F5B0CA000050B2&w=640&h=311&img.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//u=1741801751,280438553&fm=173&s=5DA830728BAA500B18E4D5CA0000E0B2&w=640&h=311&img.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//u=468529240,2161184244&amp;fm=173&amp;s=798C34720B2341205AD514DA0000E0B1&amp;w=640&amp;h=311&amp;img.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//u=1283713208,3337743947&amp;fm=173&amp;s=4DAA307203BA5021424100DA0000E0B2&amp;w=640&amp;h=311&amp;img.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//u=91869356,1158323049&amp;fm=173&amp;s=4DA834720372582208F02DDA000050B2&amp;w=640&amp;h=311&amp;img.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//u=93050560,1795077123&amp;fm=173&amp;s=4DA830720332582358F5B0CA000050B2&amp;w=640&amp;h=311&amp;img.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//u=1741801751,280438553&amp;fm=173&amp;s=5DA830728BAA500B18E4D5CA0000E0B2&amp;w=640&amp;h=311&amp;img.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>有各种可能的终止标准：</p>
-<p>- 当叶子节点的数据点都是相同的预测类别&#x2F;值时终止</p>
+<p>- 当叶子节点的数据点都是相同的预测类别/值时终止</p>
 <p>- 当叶片节点包含的数据点少于五个时终止</p>
 <p>- 当进一步的分支在超出最小阈值范围的情况下也无法提高同质性时终止</p>
 <p>使用交叉验证来选择终止标准，以确保决策树可以为新数据绘制准确的预测路径。</p>
 <p>决策树应用广泛，可以处理关于分类分组（例如男性与女性），也可以处理连续值问题（例如收入）。如果问题是连续值问题，它可以将结果分为几组，例如比较“高于平均水平”和“低于平均值”的不同值。</p>
 <p>在标准决策树中，可能的答案只能有2个，例如“是”或“否”。如果想测试三个或更多的答案（“是”，“否”，“有时”），可以给树添加更多分支，如下图，在“是”和“不是”的二分支延伸出一个“有时”和“否”的分支。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//u=628979622,698225812&fm=173&s=05A87C32099ED4C80A692CDA000080B1&w=543&h=409&img.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//u=628979622,698225812&amp;fm=173&amp;s=05A87C32099ED4C80A692CDA000080B1&amp;w=543&amp;h=409&amp;img.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>可以看出：决策树学习的关键在于如何选择划分属性，不同的划分属性得出不同的分支结构，从而影响整颗决策树的性能。属性划分的目标是让各个划分出来的子节点尽可能地“纯”，即属于同一类别。因此下面便是介绍量化纯度的具体方法，决策树最常用的算法有三种：ID3，C4.5和CART。</p>
-<p>###<strong>4.2.1 ID3算法</strong></p>
-<p>ID3算法由&#x3D;&#x3D;增熵（Entropy）原理&#x3D;&#x3D;来决定哪个做父节点，哪个节点需要分裂。对于一组数据，熵越小说明分类结果越好。熵定义如下：<br>$$<br>Entropy＝- sum [p(x_i) * log2(P(x_i) ]<br>$$<br>其中$p(x_i) $为$x_i$出现的概率。假如是2分类问题，当A类和B类各占50%的时候，<br>$$<br>Entropy &#x3D; - （0.5<em>log_2( 0.5)+0.5</em>log_2( 0.5))&#x3D; 1<br>$$<br>当只有A类，或只有B类的时候，<br>$$<br>Entropy&#x3D; - （1*log_2( 1）+0）&#x3D;0<br>$$<br>综上，使用信息增益为准则来选择划分属性，“&#x3D;&#x3D;信息熵&#x3D;&#x3D;”(information entropy)是度量样本结合纯度的常用指标，假定当前样本集合$D$中第$k$类样本所占比例为$p_k$，则样本集合$D$的信息熵定义为：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc728ec515a5-20220625223524206.png" srcset="/img/loading.gif" lazyload alt="3.png">因为$log_21&#x3D;0$，易知只有一个类别时，信息熵为0，纯度最高。</p>
+<h3 id="4-2-1-ID3算法"><a href="#4-2-1-ID3算法" class="headerlink" title="4.2.1 ID3算法"></a><strong>4.2.1 ID3算法</strong></h3><p>ID3算法由==增熵（Entropy）原理==来决定哪个做父节点，哪个节点需要分裂。对于一组数据，熵越小说明分类结果越好。熵定义如下：</p>
+<script type="math/tex; mode=display">
+Entropy＝- sum [p(x_i) * log2(P(x_i) ]</script><p>其中$p(x_i) $为$x_i$出现的概率。假如是2分类问题，当A类和B类各占50%的时候，</p>
+<script type="math/tex; mode=display">
+Entropy = - （0.5*log_2( 0.5)+0.5*log_2( 0.5))= 1</script><p>当只有A类，或只有B类的时候，</p>
+<script type="math/tex; mode=display">
+Entropy= - （1*log_2( 1）+0）=0</script><p>综上，使用信息增益为准则来选择划分属性，“==信息熵==”(information entropy)是度量样本结合纯度的常用指标，假定当前样本集合$D$中第$k$类样本所占比例为$p_k$，则样本集合$D$的信息熵定义为：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc728ec515a5-20220625223524206.png" srcset="/img/loading.gif" lazyload alt="3.png">因为$log_21=0$，易知只有一个类别时，信息熵为0，纯度最高。</p>
 <p>所以当$Entropy$最大为1的时候，是分类效果最差的状态，当它最小为0的时候，是完全分类的状态。因为熵等于零是理想状态，一般实际情况下，熵介于0和1之间。</p>
 <p>熵的不断最小化，实际上就是提高分类正确率的过程。</p>
 <p>比如上表中的4个属性：单一地通过以下语句分类：</p>
@@ -365,16 +365,14 @@
 <p>最后发现分数小于70为【不是好学生】这条分错最少，也就是熵最小，所以应该选择这条为父节点进行树的生成，当然分数也可以选择大于71，大于72等等，出勤率也可以选择小于60，65等等，总之会有很多类似上述1~4的条件，最后选择分类错最少即熵最小的那个条件。而当分裂父节点时道理也一样，分裂有很多选择，针对每一个选择，与分裂前的分类错误率比较，留下那个提高最大的选择，即熵减最大的选择。</p>
 <p>假定通过属性划分样本集$D$，产生了$V$个分支节点，$D^v$表示其中第$v$个分支节点，易知：分支节点包含的样本数越多，表示该分支节点的影响力越大。故可以计算出划分后相比原始数据集$D$获得的“信息增益”（information gain）。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc728ec3e067.png" srcset="/img/loading.gif" lazyload alt="4.png"></p>
-<p>信息增益越大，表示使用该属性划分样本集$D$的效果越好，因此ID3算法在递归过程中，每次选择&#x3D;&#x3D;最大信息增益的属性&#x3D;&#x3D;作为当前的划分属性。</p>
-<p>###<strong>4.2.2 C4.5算法</strong></p>
-<p>通过对ID3的学习，可以知道ID3存在一个问题，那就是越细小的分割分类错误率越小，所以ID3会越分越细，比如以第一个属性为例：设阈值小于70可将样本分为2组，但是分错了1个。如果设阈值小于70，再加上阈值等于95，那么分错率降到了0，但是这种分割显然只对训练数据有用，对于新的数据没有意义，这就是所说的过度学习（Overfitting）。</p>
+<p>信息增益越大，表示使用该属性划分样本集$D$的效果越好，因此ID3算法在递归过程中，每次选择==最大信息增益的属性==作为当前的划分属性。</p>
+<h3 id="4-2-2-C4-5算法"><a href="#4-2-2-C4-5算法" class="headerlink" title="4.2.2 C4.5算法"></a><strong>4.2.2 C4.5算法</strong></h3><p>通过对ID3的学习，可以知道ID3存在一个问题，那就是越细小的分割分类错误率越小，所以ID3会越分越细，比如以第一个属性为例：设阈值小于70可将样本分为2组，但是分错了1个。如果设阈值小于70，再加上阈值等于95，那么分错率降到了0，但是这种分割显然只对训练数据有用，对于新的数据没有意义，这就是所说的过度学习（Overfitting）。</p>
 <p>分割太细了，训练数据的分类可以达到0错误率，但是因为新的数据和训练数据不同，所以面对新的数据分错率反倒上升了。决策树是通过分析训练数据，得到数据的统计信息，而不是专为训练数据量身定做。</p>
 <p>就比如给人做衣服，叫来10个人做参考，做出一件10个人都能穿的衣服，然后叫来另外5个和前面10个人身高差不多的，这件衣服也能穿。但是当你为10个人每人做一件正好合身的衣服，那么这10件衣服除了那个量身定做的人，别人都穿不了。</p>
-<p>所以为了避免分割太细，c4.5对ID3进行了改进，C4.5中，优化项要除以分割太细的代价，这个比值叫做&#x3D;&#x3D;信息增益率&#x3D;&#x3D;，显然<u>分割太细分母增加，信息增益率会降低。除此之外，其他的原理和ID3相同</u>。</p>
+<p>所以为了避免分割太细，c4.5对ID3进行了改进，C4.5中，优化项要除以分割太细的代价，这个比值叫做==信息增益率==，显然<u>分割太细分母增加，信息增益率会降低。除此之外，其他的原理和ID3相同</u>。</p>
 <p>首先使用ID3算法计算出信息增益高于平均水平的候选属性，接着C4.5计算这些候选属性的增益率，增益率定义为：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc728ec69647.png" srcset="/img/loading.gif" lazyload alt="5.png"></p>
-<p>###<strong>4.2.3 CART算法</strong></p>
-<p>CART是一个二叉树，也是回归树，同时也是分类树，CART的构成简单明了。CART只能将一个父节点分为2个子节点。CART用GINI指数来决定如何分裂：</p>
+<h3 id="4-2-3-CART算法"><a href="#4-2-3-CART算法" class="headerlink" title="4.2.3 CART算法"></a><strong>4.2.3 CART算法</strong></h3><p>CART是一个二叉树，也是回归树，同时也是分类树，CART的构成简单明了。CART只能将一个父节点分为2个子节点。CART用GINI指数来决定如何分裂：</p>
 <p>GINI指数：总体内包含的类别越杂乱，GINI指数就越大（跟熵的概念很相似）。</p>
 <p>a. 比如出勤率大于70%这个条件将训练数据分成两组：大于70%里面有两类：【好学生】和【不是好学生】，而小于等于70%里也有两类：【好学生】和【不是好学生】。</p>
 <p>b. 如果用分数小于70分来分：则小于70分只有【不是好学生】一类，而大于等于70分有【好学生】和【不是好学生】两类。</p>
@@ -390,25 +388,21 @@
 <p>第三次. 1，3到10做训练数据，2做测试数据，以此类推</p>
 <p>做10次，然后大平均错误率。这样称为 10 folds Cross-Validation。</p>
 <p>比如 3 folds Cross-Validation 指的是数据分3份，2份做训练，1份做测试。</p>
-<p>##<strong>4.3 剪枝处理</strong></p>
-<p>从决策树的构造流程中我们可以直观地看出：不管怎么样的训练集，决策树总是能很好地将各个类别分离开来，这时就会遇到之前提到过的问题：过拟合（overfitting），即太依赖于训&#x3D;练样本。剪枝（pruning）则是决策树算法对付过拟合的主要手段，剪枝的策略有两种如下：</p>
+<h2 id="4-3-剪枝处理"><a href="#4-3-剪枝处理" class="headerlink" title="4.3 剪枝处理"></a><strong>4.3 剪枝处理</strong></h2><p>从决策树的构造流程中我们可以直观地看出：不管怎么样的训练集，决策树总是能很好地将各个类别分离开来，这时就会遇到之前提到过的问题：过拟合（overfitting），即太依赖于训=练样本。剪枝（pruning）则是决策树算法对付过拟合的主要手段，剪枝的策略有两种如下：</p>
 <pre><code class="hljs">* 预剪枝（prepruning）：在构造的过程中先评估，再考虑是否分支。
 * 后剪枝（post-pruning）：在构造好一颗完整的决策树后，自底向上，评估分支的必要性。
-</code></pre>
-<p>评估指的是性能度量，即决策树的泛化性能。之前提到：可以使用测试集作为学习器泛化性能的近似，因此可以将数据集划分为训练集和测试集。</p>
+</code></pre><p>评估指的是性能度量，即决策树的泛化性能。之前提到：可以使用测试集作为学习器泛化性能的近似，因此可以将数据集划分为训练集和测试集。</p>
 <p>预剪枝表示在构造数的过程中，对一个节点考虑是否分支时，首先计算决策树不分支时在测试集上的性能，再计算分支之后的性能，若分支对性能没有提升，则选择不分支（即剪枝）。</p>
 <p>后剪枝则表示在构造好一颗完整的决策树后，从最下面的节点开始，考虑该节点分支对模型的性能是否有提升，若无则剪枝，即将该节点标记为叶子节点，类别标记为其包含样本最多的类别。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc728ec80d34.png" srcset="/img/loading.gif" lazyload alt="8.png"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc728ec9e330.png" srcset="/img/loading.gif" lazyload alt="9.png"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc728ec9d497.png" srcset="/img/loading.gif" lazyload alt="10.png"></p>
-<p>上图分别表示不剪枝处理的决策树、预剪枝决策树和后剪枝决策树。预剪枝处理使得决策树的很多分支被剪掉，因此大大降低了训练时间开销，同时降低了过拟合的风险，但另一方面由于剪枝同时剪掉了当前节点后续子节点的分支，因此预剪枝“贪心”的本质阻止了分支的展开，<u>在一定程度上带来了欠拟合的风险</u>。而后剪枝则通常保留了更多的分支，因此&#x3D;&#x3D;采用后剪枝策略的决策树性能往往优于预剪枝&#x3D;&#x3D;，但其自底向上遍历了所有节点，并计算性能，训练时间开销相比预剪枝大大提升。</p>
-<p>##<strong>4.4 连续值与缺失值处理</strong></p>
-<p>对于连续值的属性，若每个取值作为一个分支则显得不可行，因此需要进行离散化处理，常用的方法为二分法，基本思想为：给定样本集D与连续属性α，二分法试图找到一个划分点$t$将样本集$D$在属性$α$上分为$≤t$与$＞t$。</p>
+<p>上图分别表示不剪枝处理的决策树、预剪枝决策树和后剪枝决策树。预剪枝处理使得决策树的很多分支被剪掉，因此大大降低了训练时间开销，同时降低了过拟合的风险，但另一方面由于剪枝同时剪掉了当前节点后续子节点的分支，因此预剪枝“贪心”的本质阻止了分支的展开，<u>在一定程度上带来了欠拟合的风险</u>。而后剪枝则通常保留了更多的分支，因此==采用后剪枝策略的决策树性能往往优于预剪枝==，但其自底向上遍历了所有节点，并计算性能，训练时间开销相比预剪枝大大提升。</p>
+<h2 id="4-4-连续值与缺失值处理"><a href="#4-4-连续值与缺失值处理" class="headerlink" title="4.4 连续值与缺失值处理"></a><strong>4.4 连续值与缺失值处理</strong></h2><p>对于连续值的属性，若每个取值作为一个分支则显得不可行，因此需要进行离散化处理，常用的方法为二分法，基本思想为：给定样本集D与连续属性α，二分法试图找到一个划分点$t$将样本集$D$在属性$α$上分为$≤t$与$＞t$。</p>
 <pre><code class="hljs">* 首先将α的所有取值按升序排列，所有相邻属性的均值作为候选划分点（n-1个，n为α所有的取值数目）。
 * 计算每一个划分点划分集合D（即划分为两个分支）后的信息增益。
 * 选择最大信息增益的划分点作为最优划分点。
-</code></pre>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72a0968fad.png" srcset="/img/loading.gif" lazyload alt="11.png"></p>
+</code></pre><p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72a0968fad.png" srcset="/img/loading.gif" lazyload alt="11.png"></p>
 <p>现实中常会遇到不完整的样本，即某些属性值缺失。有时若简单采取剔除，则会造成大量的信息浪费，因此在属性值缺失的情况下需要解决两个问题：</p>
 <ol>
 <li>如何选择划分属性。</li>
@@ -423,11 +417,11 @@
 <p>​    </p>
 <p>比较常用的决策树有ID3，C4.5和CART（Classification And Regression Tree），CART的分类效果一般优于其他决策树。下面介绍具体步骤。</p>
 <p>ID3: 由增熵（Entropy）原理来决定那个做父节点，那个节点需要分裂。对于一组数据，熵越小说明分类结果越好。熵定义如下：</p>
-<p>Entropy＝- sum [p(x_i) * <em>log</em>2(P(x_i) ]</p>
+<p>Entropy＝- sum [p(x_i) <em> </em>log*2(P(x_i) ]</p>
 <p>其中p(x_i) 为x_i出现的概率。假如是2分类问题，当A类和B类各占50%的时候，</p>
-<p>Entropy &#x3D; - （0.5<em>log_2( 0.5)+0.5</em>log_2( 0.5))&#x3D; 1</p>
+<p>Entropy = - （0.5<em>log_2( 0.5)+0.5</em>log_2( 0.5))= 1</p>
 <p>当只有A类，或只有B类的时候，</p>
-<p>Entropy&#x3D; - （1*log_2( 1）+0）&#x3D;0</p>
+<p>Entropy= - （1*log_2( 1）+0）=0</p>
 <p>所以当Entropy最大为1的时候，是分类效果最差的状态，当它最小为0的时候，是完全分类的状态。因为熵等于零是理想状态，一般实际情况下，熵介于0和1之间。</p>
 <p>熵的不断最小化，实际上就是提高分类正确率的过程。</p>
 <p>比如上表中的4个属性：单一地通过以下语句分类：</p>
@@ -494,9 +488,8 @@
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/jiaoyangwm/article/details/79525237">机器学习实战之决策树</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/U62UCAM7rJWfbsyVdhs6-A">决策树和随机森林</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/655d8e555494">决策树算法的代码实现</a></p>
-<p>上篇主要讨论了决策树算法。首先从决策树的基本概念出发，引出决策树基于树形结构进行决策，进一步介绍了构造决策树的递归流程以及其递归终止条件，在递归的过程中，划分属性的选择起到了关键作用，因此紧接着讨论了三种评估属性划分效果的经典算法，介绍了剪枝策略来解决原生决策树容易产生的过拟合问题，最后简述了属性连续值&#x2F;缺失值的处理方法。本篇将讨论现阶段十分热门的另一个经典监督学习算法–神经网络（neural network）。</p>
-<p>#<strong>5、神经网络</strong></p>
-<p>神经网络的特征就是可以从数据中学习。所谓“从数据中学习”，是指可以由数据自动决定权重参数的值。</p>
+<p>上篇主要讨论了决策树算法。首先从决策树的基本概念出发，引出决策树基于树形结构进行决策，进一步介绍了构造决策树的递归流程以及其递归终止条件，在递归的过程中，划分属性的选择起到了关键作用，因此紧接着讨论了三种评估属性划分效果的经典算法，介绍了剪枝策略来解决原生决策树容易产生的过拟合问题，最后简述了属性连续值/缺失值的处理方法。本篇将讨论现阶段十分热门的另一个经典监督学习算法—神经网络（neural network）。</p>
+<h1 id="5、神经网络"><a href="#5、神经网络" class="headerlink" title="5、神经网络"></a><strong>5、神经网络</strong></h1><p>神经网络的特征就是可以从数据中学习。所谓“从数据中学习”，是指可以由数据自动决定权重参数的值。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//v2-b3388d6a10215958ada3df82d0a61587_r.jpg" srcset="/img/loading.gif" lazyload alt="preview"></p>
 <p>神经网络的优点是对所有的问题都可以用同样的流程来解决。比如，不管要求解的问题是识别物，还是识别狗，抑或是识别人脸，神经网络都是通过不断地学习所提供的数据，尝试发现待求解的问题的模式。也就是说，与待处理的问题无关，神经网络可以将数据直接作为原始数据，进行“端对端”的学习。</p>
 <blockquote>
@@ -504,15 +497,17 @@
 <p>垃圾邮件识别：现在有一封电子邮件，把出现在里面的所有词汇提取出来，送进一个机器里，机器需要判断这封邮件是否是垃圾邮件。<br>疾病判断：病人到医院去做了一大堆肝功、尿检测验，把测验结果送进一个机器里，机器需要判断这个病人是否得病，得的什么病。<br>猫狗分类：有一大堆猫、狗照片，把每一张照片送进一个机器里，机器需要判断这幅照片里的东西是猫还是狗。</p>
 </blockquote>
 <p>向上例这种能自动对输入的东西进行分类的机器，就叫做分类器。</p>
-<p>分类器的输入是一个数值向量，叫做特征(向量)。在第一个例子里，分类器的输入是一堆0、1值，表示字典里的每一个词是否在邮件中出现，比如向量(1，1……)就表示这封邮件里只出现了两个词abandon和abnormal;第二个例子里，分类器的输入是一堆化验指标；第三个例子里，分类器的输入是照片，假如每一张照片都是320<em>240像素的红绿蓝三通道彩色照片，那么分类器的输入就是一个长度为320</em>240*3&#x3D;230400的向量。</p>
+<p>分类器的输入是一个数值向量，叫做特征(向量)。在第一个例子里，分类器的输入是一堆0、1值，表示字典里的每一个词是否在邮件中出现，比如向量(1，1……)就表示这封邮件里只出现了两个词abandon和abnormal;第二个例子里，分类器的输入是一堆化验指标；第三个例子里，分类器的输入是照片，假如每一张照片都是320<em>240像素的红绿蓝三通道彩色照片，那么分类器的输入就是一个长度为320</em>240*3=230400的向量。</p>
 <p>分类器的输出也是数值。第一个例子中，输出1表示邮件是垃圾邮件，输出0则说明邮件是正常邮件；第二个例子中，输出0表示健康，输出1表示有甲肝Q，输出2表示有乙肝，输出3表示有饼干等等；第三个例子中，输出0表示图片中是狗，输出1表示是猫。</p>
 <p>分类器的目标就是让正确分类的比例尽可能高。一般我们需要首先收集一些样本，人为标记上正确分类结果，然后用这些标记好的数据训练分类器，训练好的分类器就可以在新来的特征向量上工作了。</p>
 <h2 id="5-1-神经元模型"><a href="#5-1-神经元模型" class="headerlink" title="5.1 神经元模型"></a><strong>5.1 神经元模型</strong></h2><h3 id="5-1-1-基本概念"><a href="#5-1-1-基本概念" class="headerlink" title="5.1.1 基本概念"></a>5.1.1 基本概念</h3><p>假设分类器的输入是通过某种途径获得的两个值，输出是0和1，比如分别代表猫和狗。现在有一些样本:<img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//image-20220626144159265.png" srcset="/img/loading.gif" lazyload alt="image-20220626144159265"></p>
 <p>最简单地把这两组特征向量分开的方法当然是在两组数据中间画一条竖直线。直线左边是狗，右边是猫，分类器就完成了。以后来了新的向量，凡是落在直线左边的都是狗，落在右边的都是猫。</p>
 <p>一条直线把平面一分为二，一个平面把三维空间一分为二，一个$n-1$维超平面把$n$维空间一分为二，两边分属不同的两类，这种分类器就叫做神经元。</p>
-<p>大家都知道平面上的直线方程是$ax+by+c&#x3D;0$，等式左边大于零和小于零分别表示点$(x,y)$在直线的一侧还是另一侧，把这个式子推广到n维空间里，直线的高维形式称为超平面，它的方程是:<br>$$<br>h&#x3D;a_1x_1+a_2x_2+…+a_nx_n+a_0<br>$$<br>神经元就是当$h$大于0时输出1，$h$小干0时输出0这么一个模型，它的实质就是把特征空间一切两半，认为两瓣分别属两个类。这个模型有点像人脑中的神经元：从多个感受器接受电信号$x_1,x_2,…,x_n$进行处理(加权相加再偏移一点，即判断输入是否在某条直线$h&#x3D;0$的一侧)，发出电信号(在正确的那侧发出1.否则不发信号，可以认为是发出0)，这就是它叫神经元的原因。</p>
+<p>大家都知道平面上的直线方程是$ax+by+c=0$，等式左边大于零和小于零分别表示点$(x,y)$在直线的一侧还是另一侧，把这个式子推广到n维空间里，直线的高维形式称为超平面，它的方程是:</p>
+<script type="math/tex; mode=display">
+h=a_1x_1+a_2x_2+...+a_nx_n+a_0</script><p>神经元就是当$h$大于0时输出1，$h$小干0时输出0这么一个模型，它的实质就是把特征空间一切两半，认为两瓣分别属两个类。这个模型有点像人脑中的神经元：从多个感受器接受电信号$x_1,x_2,…,x_n$进行处理(加权相加再偏移一点，即判断输入是否在某条直线$h=0$的一侧)，发出电信号(在正确的那侧发出1.否则不发信号，可以认为是发出0)，这就是它叫神经元的原因。</p>
 <p>当然，上述一条竖直线能分开两类只是我们假设的理想情况，在实际训练神经元的时候，我们并不知道特征是怎么抱团的。神经元有一种学习方法称为Hebb算法：</p>
-<p>先随机选一条直线&#x2F;平面&#x2F;超平面，然后把样本一个个拿过来，如果这条直线分错了，说明这个点分错边了，就稍微把直线移动一点，让它靠近这个样本，争取跨过这个样本，让它跑到直线正确的一侧；如果直线分对了，它就暂时停下不动。因此训练神经元的过程就是这条直线不断在跳舞，最终跳到两个类之间的竖直线位置。</p>
+<p>先随机选一条直线/平面/超平面，然后把样本一个个拿过来，如果这条直线分错了，说明这个点分错边了，就稍微把直线移动一点，让它靠近这个样本，争取跨过这个样本，让它跑到直线正确的一侧；如果直线分对了，它就暂时停下不动。因此训练神经元的过程就是这条直线不断在跳舞，最终跳到两个类之间的竖直线位置。</p>
 <p>“M-P神经元模型”正是对这一结构进行了抽象，也称“阈值逻辑单元“。</p>
 <p>神经元树突对应于输入部分，每个神经元收到n个其他神经元传递过来的输入信号，这些信号通过带权重的连接传递给细胞体，这些权重又称为连接权（connection weight）。细胞体分为两部分，前一部分计算总输入值（即输入信号的加权和，或者说累积电平），后一部分先计算总输入值与该神经元阈值的差值，然后通过激活函数（activation function）的处理，产生输出从轴突传送给其它神经元。M-P神经元模型如下图所示：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72cbb7be44-20220626183521735.png" srcset="/img/loading.gif" lazyload alt="2.png"></p>
@@ -526,7 +521,7 @@
 <p>Bias：偏置，或者称为阈值(Threshold)。</p>
 <p>Activationfunction：激活函数。</p>
 <p>需要掌握的线性代数基础知识：</p>
-<p><a target="_blank" rel="noopener" href="https://richyoungcrew.blog.csdn.net/article/details/124108851?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1-124108851-blog-83628080.pc_relevant_paycolumn_v3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-1-124108851-blog-83628080.pc_relevant_paycolumn_v3&utm_relevant_index=2">特征值的通俗解释</a></p>
+<p><a target="_blank" rel="noopener" href="https://richyoungcrew.blog.csdn.net/article/details/124108851?spm=1001.2101.3001.6650.1&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-124108851-blog-83628080.pc_relevant_paycolumn_v3&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-124108851-blog-83628080.pc_relevant_paycolumn_v3&amp;utm_relevant_index=2">特征值的通俗解释</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20501504/answer/174887899">人类语言讲述相似矩阵</a></p>
 <p><strong>输入</strong>的是特征向量，通过对其的学习，可以得知，特征向量代表的是变化的方向。或者说，是最能代表这个事物的特征的方向。</p>
 <p>人有性别，身高，手，脚，五官等。电脑有屏幕，键盘，CPU，GPU等。速度有方向。颜色有种类。</p>
@@ -540,7 +535,7 @@
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//image-20220626145728717.png" srcset="/img/loading.gif" lazyload alt="image-20220626145728717"></p>
 <p>解决办法是多层神经网络，底层神经元的输出是高层神经元的输入。我们可以在中间横着砍一刀，竖着砍一刀，然后把左上和右下的部分合在一起，与右上的左下部分分开；也可以围着左上角的边沿砍10刀把这一部分先挖出来，然后和右下角合并。</p>
 <p>每砍一刀，其实就是使用了一个神经元，把不同砍下的半平面做交、并等运算，就是把这些神经元的输出当作输入，后面再连接一个神经元。这个例子中特征的形状称为异或，这种情况一个神经元搞不定，但是两层神经元就能正确对其进行分类。</p>
-<p>只要你能砍足够多刀，把结果拼在一起，什么奇怪形状的边界神经网络都能够表示，所以说神经网络在理论上可以表示很复杂的函数&#x2F;空间分布。但是真实的神经网络是否能摆动到正确的位置还要看网络初始值设置、样本容量和分布。</p>
+<p>只要你能砍足够多刀，把结果拼在一起，什么奇怪形状的边界神经网络都能够表示，所以说神经网络在理论上可以表示很复杂的函数/空间分布。但是真实的神经网络是否能摆动到正确的位置还要看网络初始值设置、样本容量和分布。</p>
 <p>神经网络神奇的地方在于它的每一个组件非常简单——把空间切一刀+某种激活函数（0-1阶跃、sigmoid、max-pooling），但是可以一层一层级联。输入向量连到许多神经元上，这些神经元的输出又连到一堆神经元上，这一过程可以重复很多次。这和人脑中的神经元很相似：每一个神经元都有一些神经元作为其输入，又是另一些神经元的输入，数值向量就像是电信号，在不同神经元之间传导，每一个神经元只有满足了某种条件才会发射信号到下一层神经元。</p>
 <p>神经网络的训练依靠反向传播算法：最开始输入层输入特征向量，网络层层计算获得输出，输出层发现输出和正确的类号不一样，这时它就让最后一层神经元进行参数调整，最后一层神经元不仅自己调整参数，还会勒令连接它的倒数第二层神经元调整，层层往回退着调整。经过调整的网络会在样本上继续测试，如果输出还是老分错，继续来一轮回退调整，直到网络输出满意为止。</p>
 <p>神经网络举例：</p>
@@ -549,23 +544,32 @@
 <p>第二层的一些神经元可以识别更加细化的纹理，比如布纹、刻度、叶纹。<img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//78fd60058ceabf34d3936ac8fe618c77_1440w.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>第三层的一些神经元负责感受黑夜里的黄色烛光、鸡蛋黄、高光。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//aae832d13b33f15ba97c358fdf7319d2_1440w.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>第四层的一些神经元负责识别萌狗的脸、<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E4%B8%83%E6%98%9F%E7%93%A2%E8%99%AB&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:36429105%7D">七星瓢虫</a>和一堆圆形物体的存在。<img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//04468c646e0d456b0fd4772d4e2a993b_1440w.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>第四层的一些神经元负责识别萌狗的脸、<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=七星瓢虫&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra={&quot;sourceType&quot;%3A&quot;answer&quot;%2C&quot;sourceId&quot;%3A36429105}">七星瓢虫</a>和一堆圆形物体的存在。<img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//04468c646e0d456b0fd4772d4e2a993b_1440w.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>第五层的一些神经元可以识别出花、圆形屋顶、键盘、鸟、黑眼圈动物。<img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//ab6984020030ff15f9ddb3eb716c7da6_1440w.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>##<strong>5.2 感知机与多层网络</strong></p>
-<h3 id="5-2-1-什么是感知机"><a href="#5-2-1-什么是感知机" class="headerlink" title="5.2.1 什么是感知机"></a>5.2.1 什么是感知机</h3><p>感知机（Perceptron）是二类分类的线性分类模型，其输入为实例的特征向量，输出为实例的类别。其学习旨在求出将训练数据进行线性划分的分离超平面，为此，导入基于误分类的损失函数，利用<strong>梯度下降法</strong>对损失函数进行极小化，求得感知机模型。它是神经网络与支持向量机的基础。</p>
-<p><strong>感知机的数学定义：</strong> 假设输入空间(特征空间)是 $X\subseteq R^n$ ，输出空间是 y&#x3D;{+1, -1}。输入表示实例的特征向量，对应于输入空间(特征空间)的点；输出 $y\in Y$表示实例的类别。由输入空间到输出空间的如下函数：<br>$$<br>f(x)&#x3D;sign(w\cdot x+b)<br>$$<br>称为感知机。其中$w$和$b$为感知机模型参数，$w\subseteq R^n$ 叫做权值(weight)或权值向量(weight vector)，$b\in R$ 叫作偏置(bias)， $w\cdot x$表示$w$ 和 $x$​的内积。sign是符号函数，即：<br>$$<br>sign(x) &#x3D;<br>\begin{cases}<br>+1, &amp; x\geq 0\<br>-1, &amp; x&lt;0<br>\end{cases}<br>$$<br><strong>感知机的几何解释：</strong>感知机的几何解释是线性方程：$w\cdot x+b&#x3D;0$，对应与特征空间$R^n$中的一个超平面$S$，其中$w$是从超平面的法向量，$b$是超平面的截距。</p>
+<h2 id="5-2-感知机与多层网络"><a href="#5-2-感知机与多层网络" class="headerlink" title="5.2 感知机与多层网络"></a><strong>5.2 感知机与多层网络</strong></h2><h3 id="5-2-1-什么是感知机"><a href="#5-2-1-什么是感知机" class="headerlink" title="5.2.1 什么是感知机"></a>5.2.1 什么是感知机</h3><p>感知机（Perceptron）是二类分类的线性分类模型，其输入为实例的特征向量，输出为实例的类别。其学习旨在求出将训练数据进行线性划分的分离超平面，为此，导入基于误分类的损失函数，利用<strong>梯度下降法</strong>对损失函数进行极小化，求得感知机模型。它是神经网络与支持向量机的基础。</p>
+<p><strong>感知机的数学定义：</strong> 假设输入空间(特征空间)是 $X\subseteq R^n$ ，输出空间是 y={+1, -1}。输入表示实例的特征向量，对应于输入空间(特征空间)的点；输出 $y\in Y$表示实例的类别。由输入空间到输出空间的如下函数：</p>
+<script type="math/tex; mode=display">
+f(x)=sign(w\cdot x+b)</script><p>称为感知机。其中$w$和$b$为感知机模型参数，$w\subseteq R^n$ 叫做权值(weight)或权值向量(weight vector)，$b\in R$ 叫作偏置(bias)， $w\cdot x$表示$w$ 和 $x$​的内积。sign是符号函数，即：</p>
+<script type="math/tex; mode=display">
+sign(x) = 
+\begin{cases}
++1, & x\geq 0\\
+-1, & x<0
+\end{cases}</script><p><strong>感知机的几何解释：</strong>感知机的几何解释是线性方程：$w\cdot x+b=0$，对应与特征空间$R^n$中的一个超平面$S$，其中$w$是从超平面的法向量，$b$是超平面的截距。</p>
 <p>这个超平面将特征空间划分为两个部分。位于两部分的点(特征向量)分别被分为<strong>正、负两类</strong>。</p>
 <p>因此，超平面S成为分离超平面(separating hyperplane)。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//image-20220626164153663.png" srcset="/img/loading.gif" lazyload alt="image-20220626164153663"></p>
-<p>给定训练集，则感知机的$n+1$个参数（$n$个权重$+1$个阈值）都可以通过学习得到。阈值$\theta$可以看作一个输入值固定为-1的哑结点，权重为$ω_n+1$，即假设有一个固定输入$x_{n+1}&#x3D;-1$的输入层神经元，其对应的权重为$ω_n+1$，这样就把权重和阈值统一为权重的学习了。简单感知机的结构如下图所示：</p>
+<p>给定训练集，则感知机的$n+1$个参数（$n$个权重$+1$个阈值）都可以通过学习得到。阈值$\theta$可以看作一个输入值固定为-1的哑结点，权重为$ω_n+1$，即假设有一个固定输入$x_{n+1}=-1$的输入层神经元，其对应的权重为$ω_n+1$，这样就把权重和阈值统一为权重的学习了。简单感知机的结构如下图所示：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72cbb3fdf0.png" srcset="/img/loading.gif" lazyload alt="4.png"></p>
 <p>举个例子：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//SouthEast-20220626205116065.png" srcset="/img/loading.gif" lazyload alt="这里写图片描述"></p>
-<p>该感知器具有两个输入神经元，一个输出神经元。<br>我们知道该模型是可以做与或非运算的。这是因为如果我们要做与或非运算，那么对于输入$x_1,x_2$来说，其取值只能是0或1，而我们的输出<br>$$<br>y&#x3D;f(\sum^2_{i&#x3D;1}w_ix_i-\theta)<br>$$<br>如果要做与运算，那令阈值$w1&#x3D;1，w2&#x3D;1$，$\theta&#x3D;2$，则只有在$x_1&#x3D;1，x_2&#x3D;1$的时候才能激活输出层神经元，输出1，其余情况均输出0。</p>
+<p>该感知器具有两个输入神经元，一个输出神经元。<br>我们知道该模型是可以做与或非运算的。这是因为如果我们要做与或非运算，那么对于输入$x_1,x_2$来说，其取值只能是0或1，而我们的输出</p>
+<script type="math/tex; mode=display">
+y=f(\sum^2_{i=1}w_ix_i-\theta)</script><p>如果要做与运算，那令阈值$w1=1，w2=1$，$\theta=2$，则只有在$x_1=1，x_2=1$的时候才能激活输出层神经元，输出1，其余情况均输出0。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//SouthEast-20220626211107613.png" srcset="/img/loading.gif" lazyload alt="这里写图片描述"></p>
-<p>同样，如果做或运算，那令阈值$w_1&#x3D;1，w_2&#x3D;1，\theta&#x3D;1$，则只要有一个输入$x_i&#x3D;1$，即可激活输出神经元，输出1。</p>
+<p>同样，如果做或运算，那令阈值$w_1=1，w_2=1，\theta=1$，则只要有一个输入$x_i=1$，即可激活输出神经元，输出1。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//SouthEast-20220626211115436.png" srcset="/img/loading.gif" lazyload alt="这里写图片描述"></p>
-<p>如果对$x_1$做非运算，那么可以令阈值$w_1&#x3D;-0.6，w_2&#x3D;0，\theta&#x3D;-0.5$，则如果$x_1&#x3D;1，x_2&#x3D;0$，总输入为-0.6，小于阈值，输出0，如果$x_1&#x3D;0，x_2&#x3D;0$，总输入为0，大于阈值，输出1。这里的激活函数为阶跃函数。</p>
+<p>如果对$x_1$做非运算，那么可以令阈值$w_1=-0.6，w_2=0，\theta=-0.5$，则如果$x_1=1，x_2=0$，总输入为-0.6，小于阈值，输出0，如果$x_1=0，x_2=0$，总输入为0，大于阈值，输出1。这里的激活函数为阶跃函数。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//SouthEast-20220626211124168.png" srcset="/img/loading.gif" lazyload alt="这里写图片描述"></p>
 <p>经过观察，可以发现，对于只有输入层与输出层的感知机模型，其只能对线性数据进行划分，对于如下图的异或模型，其实无法准确划分的。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//SouthEast-20220626211325553.png" srcset="/img/loading.gif" lazyload alt="这里写图片描述"></p>
@@ -575,14 +579,15 @@
 <p>因此我们可以看到，随着网络深度的增加，每一层节点个数的增加，都可以加强网络的表达能力，网络的复杂度越高，其表示能力就越强，也就可以表达更复杂的模型。</p>
 <p>通过上面你的示例，我们也可以看到，对网络的学习其实主要是对网络中各个节点之间的连接权值和阈值的学习，即寻找最优的连接权值和阈值从而使得该模型可以达到最优（一般是局部最优）。</p>
 <h3 id="5-2-2-感知机的学习策略"><a href="#5-2-2-感知机的学习策略" class="headerlink" title="5.2.2 感知机的学习策略"></a>5.2.2 感知机的学习策略</h3><p><strong>感知机的线性可分性</strong>：</p>
-<p>能够将数据集的正实例点和负实例点完全正确地划分到超平面的两侧，即对所有的$y_i&#x3D;+1$的实例$i$，有$w\cdot x_i+b&gt;0$，对所有的$y_i&#x3D;-1$的实例$i$，有$w\cdot x_i+b&lt;0$，则称数据集为**线性可分数据集(linearly separable data set)**； 否则，数据集线性不可分。</p>
+<p>能够将数据集的正实例点和负实例点完全正确地划分到超平面的两侧，即对所有的$y_i=+1$的实例$i$，有$w\cdot x_i+b&gt;0$，对所有的$y_i=-1$的实例$i$，有$w\cdot x_i+b&lt;0$，则称数据集为<strong>线性可分数据集(linearly separable data set)</strong>； 否则，数据集线性不可分。</p>
 <p><strong>感知机权重的学习规则：</strong></p>
 <p>对于训练样本$(x，y)$，当该样本进入感知机学习后，会产生一个输出值，若该输出值与样本的真实标记不一致，则感知机会对权重进行调整，若激活函数为阶跃函数，则调整的方法为（基于梯度下降法）：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72cbb3ba63-20220626183500252.png" srcset="/img/loading.gif" lazyload alt="5.png"></p>
 <p>其中 $η∈(0，1)$称为学习率，可以看出感知机是通过逐个样本输入来更新权重，首先设定好初始权重（一般为随机），逐个地输入样本数据，若输出值与真实标记相同则继续输入下一个样本，若不一致则更新权重，然后再重新逐个检验，直到每个样本数据的输出值都与真实标记相同。容易看出：感知机模型总是能将训练数据的每一个样本都预测正确，和决策树模型总是能将所有训练数据都分开一样，感知机模型很容易产生过拟合问题。</p>
-<p><strong>感知机的权重更新公式</strong>：<br>$$<br>w_i\leftarrow w_i+\Delta w_i<br>$$</p>
-<p>$$<br>\Delta w_i&#x3D;\eta(y-\hat{y})x_i<br>$$</p>
-<p>如果预测正确，感知机不发生变化；否则，根据错误程度来调整参数。感知机只有一层功能神经元，学习能力有限，只能解决线性可分问题。</p>
+<p><strong>感知机的权重更新公式</strong>：</p>
+<script type="math/tex; mode=display">
+w_i\leftarrow w_i+\Delta w_i</script><script type="math/tex; mode=display">
+\Delta w_i=\eta(y-\hat{y})x_i</script><p>如果预测正确，感知机不发生变化；否则，根据错误程度来调整参数。感知机只有一层功能神经元，学习能力有限，只能解决线性可分问题。</p>
 <p>经证明：若两类模式是<strong>线性可分</strong>的（存在一个超平面能将它们分开），则感知机一定会收敛；否则感知机将会发生振荡。</p>
 <p>使用多层功能神经元，可解决非线性可分问题。隐含层hidden layer：位于输出层和输入层之间的层。</p>
 <p>多层前馈神经网络multi-layer feedforward neural networks：相邻层全连接，同层无连接，不存在跨层连接。多层神经网络的拓扑结构如下图所示：</p>
@@ -591,12 +596,10 @@
 <pre><code class="hljs">* 每层神经元与下一层神经元之间完全互连
 * 神经元之间不存在同层连接
 * 神经元之间不存在跨层连接
-</code></pre>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72cbb47ff8-20220626183449784.png" srcset="/img/loading.gif" lazyload alt="7.png"></p>
+</code></pre><p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72cbb47ff8-20220626183449784.png" srcset="/img/loading.gif" lazyload alt="7.png"></p>
 <p>根据上面的特点可以得知：这里的“前馈”指的是网络拓扑结构中不存在”环”或”回路”，而不是指该网络只能向前传播而不能向后传播（下节中的BP神经网络正是基于前馈神经网络而增加了反馈调节机制）。</p>
 <p>神经网络的学习过程就是根据训练数据来调整神经元之间的“连接权”以及每个神经元的阈值，换句话说：神经网络所学习到的东西都蕴含在网络的连接权与阈值中。</p>
-<p>##<strong>5.3 BP神经网络算法</strong></p>
-<p>由上面可以得知：神经网络的学习主要蕴含在权重和阈值中，多层网络使用上面简单感知机的权重调整规则显然不够用了，BP神经网络算法即误差逆传播算法（error BackPropagation）正是为学习多层前馈神经网络而设计，BP神经网络算法是迄今为止最成功的的神经网络学习算法。</p>
+<h2 id="5-3-BP神经网络算法"><a href="#5-3-BP神经网络算法" class="headerlink" title="5.3 BP神经网络算法"></a><strong>5.3 BP神经网络算法</strong></h2><p>由上面可以得知：神经网络的学习主要蕴含在权重和阈值中，多层网络使用上面简单感知机的权重调整规则显然不够用了，BP神经网络算法即误差逆传播算法（error BackPropagation）正是为学习多层前馈神经网络而设计，BP神经网络算法是迄今为止最成功的的神经网络学习算法。</p>
 <p>一般而言，只需包含一个足够多神经元的隐层，就能以任意精度逼近任意复杂度的连续函数[Hornik et al.,1989]，故下面以训练单隐层的前馈神经网络为例，介绍BP神经网络的算法思想。</p>
 <p>多层前馈(BP)神经网络：<br>相邻两层是全连接，而层内是没有连接的，跨层之间也没有连接：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//SouthEast-20220626212100699.png" srcset="/img/loading.gif" lazyload alt="这里写图片描述"></p>
@@ -619,16 +622,13 @@
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72ce227ff1.png" srcset="/img/loading.gif" lazyload alt="12.png"></p>
 <p>拓展阅读：</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/as091313/article/details/79080583">BP神经网络</a></p>
-<p>##<strong>5.4 全局最小与局部最小</strong></p>
-<p>模型学习的过程实质上就是一个寻找最优参数的过程，例如BP算法试图通过最速下降来寻找使得累积经验误差最小的权值与阈值，在谈到最优时，一般会提到局部极小（local minimum）和全局最小（global minimum）。</p>
+<h2 id="5-4-全局最小与局部最小"><a href="#5-4-全局最小与局部最小" class="headerlink" title="5.4 全局最小与局部最小"></a><strong>5.4 全局最小与局部最小</strong></h2><p>模型学习的过程实质上就是一个寻找最优参数的过程，例如BP算法试图通过最速下降来寻找使得累积经验误差最小的权值与阈值，在谈到最优时，一般会提到局部极小（local minimum）和全局最小（global minimum）。</p>
 <pre><code class="hljs">* 局部极小解：参数空间中的某个点，其邻域点的误差函数值均不小于该点的误差函数值。
 * 全局最小解：参数空间中的某个点，所有其他点的误差函数值均不小于该点的误差函数值。
-</code></pre>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72ce2803dc.png" srcset="/img/loading.gif" lazyload alt="13.png"></p>
+</code></pre><p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72ce2803dc.png" srcset="/img/loading.gif" lazyload alt="13.png"></p>
 <p>要成为局部极小点，只要满足该点在参数空间中的梯度为零。局部极小可以有多个，而全局最小只有一个。全局最小一定是局部极小，但局部最小却不一定是全局最小。显然在很多机器学习算法中，都试图找到目标函数的全局最小。梯度下降法的主要思想就是沿着负梯度方向去搜索最优解，负梯度方向是函数值下降最快的方向，若迭代到某处的梯度为0，则表示达到一个局部最小，参数更新停止。</p>
 <p>因此在现实任务中，通常使用以下策略尽可能地去接近全局最小：</p>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs tex">* 以多组不同参数值初始化多个神经网络，按标准方法训练，迭代停止后，取其中误差最小的解作为最终参数。<br>* 使用“模拟退火”技术，这里不做具体介绍。<br>* 使用随机梯度下降，即在计算梯度时加入了随机因素，使得在局部最小时，计算的梯度仍可能不为0，从而迭代可以继续进行。<br>* 遗传算法genetic algorithm<br>上述技术大多是启发式，理论上尚缺乏保障。<br></code></pre></td></tr></table></figure>
-
 <h2 id="5-5其他常见神经网络"><a href="#5-5其他常见神经网络" class="headerlink" title="5.5其他常见神经网络"></a>5.5其他常见神经网络</h2><h3 id="5-5-1RBF网络"><a href="#5-5-1RBF网络" class="headerlink" title="5.5.1RBF网络"></a>5.5.1RBF网络</h3><p>RBF（Radial Basis Function径向基函数）网络：一种单隐层前馈神经网络，它使用径向基函数作为隐层神经元的激活函数，而输出层是对隐层神经单元输出的线性组合。</p>
 <p>RBF网络训练过程：1.确定神经元中心，常用随机采样、聚类等；2.利用BP算法来确定参数。</p>
 <h3 id="5-5-2-ART网络"><a href="#5-5-2-ART网络" class="headerlink" title="5.5.2 ART网络"></a>5.5.2 ART网络</h3><p>竞争型学习competitive learning：一种常用的无监督策略，网络的输出神经元互相竞争，每一时刻只有一个竞争获胜的神经元被激活，其他神经元被抑制。又称”胜者通吃“</p>
@@ -660,51 +660,69 @@
 <p>深度学习，通过多层处理，逐渐将初始的底层特征表示转化为高层特征表示，用简单模型即可完成复杂的任务。深度学习可理解为特征学习（feature learning）或表示学习（representation learning）。</p>
 <p>无论是DBN还是CNN，都是通过多个隐层来把与输出目标联系不大的初始输入转化为与输出目标更加密切的表示，使原来只通过单层映射难以完成的任务变为可能。即通过多层处理，逐渐将初始的“低层”特征表示转化为“高层”特征表示，从而使得最后可以用简单的模型来完成复杂的学习任务。</p>
 <p>传统任务中，样本的特征需要人类专家来设计，这称为特征工程（feature engineering）。特征好坏对泛化性能有至关重要的影响。而深度学习为全自动数据分析带来了可能，可以自动产生更好的特征。</p>
-<p>#<strong>6、支持向量机</strong></p>
-<p>支持向量机（Support Vector Machine），简称SVM，是一种经典的二分类模型，属于监督学习算法。</p>
+<h1 id="6、支持向量机"><a href="#6、支持向量机" class="headerlink" title="6、支持向量机"></a><strong>6、支持向量机</strong></h1><p>支持向量机（Support Vector Machine），简称SVM，是一种经典的二分类模型，属于监督学习算法。</p>
 <p>支持向量机可能是最流行和最受关注的机器学习算法之一，它是一种经典的二分类模型，基本模型定义为特征空间中最大间隔的线性分类器，其学习的优化目标便是间隔最大化，因此支持向量机本身可以转化为一个凸二次规划求解的问题。</p>
-<p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA&spm=1001.2101.3001.7020">支持向量机</a>可以说是数学推导过程最复杂的<a target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/7624837?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165635027116782248597637%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=165635027116782248597637&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-7624837-null-null.142%5Ev24%5Econtrol,157%5Ev15%5Enew_3&utm_term=%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA&spm=1018.2226.3001.4187">算法</a>，<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_55858423/article/details/119080443?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-119080443-blog-90678747.pc_relevant_antiscanv2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-119080443-blog-90678747.pc_relevant_antiscanv2&utm_relevant_index=6">具体推导过程</a>。</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lzx159951/article/details/106692871?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165635027116782248597637%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=165635027116782248597637&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-2-106692871-null-null.142%5Ev24%5Econtrol,157%5Ev15%5Enew_3&utm_term=%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA&spm=1018.2226.3001.4187">参考源代码解析</a></p>
-<p>##<strong>6.1 函数间隔与几何间隔</strong></p>
-<blockquote>
-<p>支持向量机的目标是确定一个对样本的分类结果最鲁棒的线性<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%88%86%E7%B1%BB%E5%99%A8&spm=1001.2101.3001.7020">分类器</a>，即找到一个具有最大间隔的划分超平面。为此以间隔为优化目标，可将其转化为一个凸二次规划问题。</p>
+<p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=支持向量机&amp;spm=1001.2101.3001.7020">支持向量机</a>可以说是数学推导过程最复杂的<a target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/7624837?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165635027116782248597637%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=165635027116782248597637&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-7624837-null-null.142^v24^control,157^v15^new_3&amp;utm_term=%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA&amp;spm=1018.2226.3001.4187">算法</a>，<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_55858423/article/details/119080443?spm=1001.2101.3001.6650.3&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-3-119080443-blog-90678747.pc_relevant_antiscanv2&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-3-119080443-blog-90678747.pc_relevant_antiscanv2&amp;utm_relevant_index=6">具体推导过程</a>。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lzx159951/article/details/106692871?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165635027116782248597637%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=165635027116782248597637&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-2-106692871-null-null.142^v24^control,157^v15^new_3&amp;utm_term=%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA&amp;spm=1018.2226.3001.4187">参考源代码解析</a></p>
+<h2 id="6-1-函数间隔与几何间隔"><a href="#6-1-函数间隔与几何间隔" class="headerlink" title="6.1 函数间隔与几何间隔"></a><strong>6.1 函数间隔与几何间隔</strong></h2><blockquote>
+<p>支持向量机的目标是确定一个对样本的分类结果最鲁棒的线性<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=分类器&amp;spm=1001.2101.3001.7020">分类器</a>，即找到一个具有最大间隔的划分超平面。为此以间隔为优化目标，可将其转化为一个凸二次规划问题。</p>
 </blockquote>
 <p>对于二分类问题，其基本思想就是基于训练集$D$在样本空间中找到一个用来划分的超平面，将不同类别的样本分开。</p>
 <p>但仅仅是将样本分开的话，那么我们可能可以找到许多个划分超平面。如图所示，从几何意义易知，粗线对训练样本局部的扰动的“容忍性”最好（其他的超平面训练样本很容易越界，考虑到噪声等因素，其分类结果很不稳定），也是最鲁棒的（即当新的数据点加入时，超平面对这些点的适应性最强，出错的可能性最小）。于是粗线也就是我们想要的最优划分超平面。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NoaWNoZW5zdXl1,size_16,color_FFFFFF,t_70.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
 <p>我们知道最优划分超平面应该满足超平面同时离两个不同类的样本尽量远这一条件，以下是为了量化“尽量远”进行的概念引申：</p>
-<p><strong>超平面方程</strong>：样本空间中，用来描述超平面的线性方程为：<br>$$<br>w^Tx+b&#x3D;0<br>$$<br>其中$w&#x3D;(w_1;w_2;…;w_d)$为法向量，决定了超平面的方向；$b$为位移项，决定了超平面与原点之间的距离。</p>
-<p><strong>点到超平面的距离</strong>：样本空间中任意点$x$到超平面$(w,b)$的距离为：<br>$$<br>r&#x3D;\frac{|w^Tx+b|}{||w||}<br>$$<br><strong>约束条件</strong>：假设超平面$(w，b)$能将训练样本正确分类，即对于$(x_i,y_i)\in D$，若$y_i&#x3D;+1$，则有$w^Tx_i+b&gt;0$；若$y_i&#x3D;-1$，则有$w^Tx_i+b&lt;0$​，令<br>$$<br>\begin{cases}<br>w^Tx_i+b\geq+1, &amp; y_i&#x3D;+1\<br>w^Tx_i+b\leq-1, &amp;  y_i&#x3D;-1<br>\end{cases}<br>$$<br>为超平面将训练样本正确分类的约束条件。</p>
-<p>###<strong>6.1.1 函数间隔</strong></p>
-<p>假设最合适的分类超平面已找到，如前所述，分类超平面的方程即为：$f(x)&#x3D;w^Tx+b&#x3D;0$，也就是说超平面上的点都符合该方程式。</p>
-<p><strong>函数间隔</strong>的定义为：<br>$$<br>\hat{\gamma}&#x3D;yf(x)&#x3D;y(w^Tx+b)<br>$$<br>而超平面$(w,b)$关于所有样本点$(x_i，y_i)$的函数间隔最小值则为超平面在训练数据集$T$​上的函数间隔：<br>$$<br>\hat{\gamma}&#x3D;min\hat{\gamma},\ (i&#x3D;1,…,n)<br>$$<br>可以看出：这样定义的函数间隔在处理SVM上会有问题，当超平面的两个参数$w$和$b$同比例改变时，函数间隔也会跟着改变，但是实际上超平面还是原来的超平面，并没有变化。例如：$w_1x_1+w_2x_2+w_3x_3+b&#x3D;0$其实等价于$2w_1x_1+2w_2x_2+2w_3x_3+2b&#x3D;0$，但计算的函数间隔却翻了一倍。从而引出了能真正度量点到超平面距离的概念——几何间隔（geometrical margin）。</p>
-<p>###<strong>6.1.2 几何间隔</strong></p>
-<p><strong>几何间隔</strong>代表的则是数据点到超平面的真实距离，对于超平面$w’x+b&#x3D;0$，$w$代表的是该超平面的法向量，设$x$为超平面外一点在法向量$w$方向上的投影点，$x$与超平面的距离为$\gamma$，则有：</p>
+<p><strong>超平面方程</strong>：样本空间中，用来描述超平面的线性方程为：</p>
+<script type="math/tex; mode=display">
+w^Tx+b=0</script><p>其中$w=(w_1;w_2;…;w_d)$为法向量，决定了超平面的方向；$b$为位移项，决定了超平面与原点之间的距离。</p>
+<p><strong>点到超平面的距离</strong>：样本空间中任意点$x$到超平面$(w,b)$的距离为：</p>
+<script type="math/tex; mode=display">
+r=\frac{|w^Tx+b|}{||w||}</script><p><strong>约束条件</strong>：假设超平面$(w，b)$能将训练样本正确分类，即对于$(x_i,y_i)\in D$，若$y_i=+1$，则有$w^Tx_i+b&gt;0$；若$y_i=-1$，则有$w^Tx_i+b&lt;0$​，令</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+w^Tx_i+b\geq+1, & y_i=+1\\
+w^Tx_i+b\leq-1, &  y_i=-1
+\end{cases}</script><p>为超平面将训练样本正确分类的约束条件。</p>
+<h3 id="6-1-1-函数间隔"><a href="#6-1-1-函数间隔" class="headerlink" title="6.1.1 函数间隔"></a><strong>6.1.1 函数间隔</strong></h3><p>假设最合适的分类超平面已找到，如前所述，分类超平面的方程即为：$f(x)=w^Tx+b=0$，也就是说超平面上的点都符合该方程式。</p>
+<p><strong>函数间隔</strong>的定义为：</p>
+<script type="math/tex; mode=display">
+\hat{\gamma}=yf(x)=y(w^Tx+b)</script><p>而超平面$(w,b)$关于所有样本点$(x_i，y_i)$的函数间隔最小值则为超平面在训练数据集$T$​上的函数间隔：</p>
+<script type="math/tex; mode=display">
+\hat{\gamma}=min\hat{\gamma},\ (i=1,...,n)</script><p>可以看出：这样定义的函数间隔在处理SVM上会有问题，当超平面的两个参数$w$和$b$同比例改变时，函数间隔也会跟着改变，但是实际上超平面还是原来的超平面，并没有变化。例如：$w_1x_1+w_2x_2+w_3x_3+b=0$其实等价于$2w_1x_1+2w_2x_2+2w_3x_3+2b=0$，但计算的函数间隔却翻了一倍。从而引出了能真正度量点到超平面距离的概念——几何间隔（geometrical margin）。</p>
+<h3 id="6-1-2-几何间隔"><a href="#6-1-2-几何间隔" class="headerlink" title="6.1.2 几何间隔"></a><strong>6.1.2 几何间隔</strong></h3><p><strong>几何间隔</strong>代表的则是数据点到超平面的真实距离，对于超平面$w’x+b=0$，$w$代表的是该超平面的法向量，设$x$为超平面外一点在法向量$w$方向上的投影点，$x$与超平面的距离为$\gamma$，则有：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72f697d499.png" srcset="/img/loading.gif" lazyload alt="5.png"></p>
 <p>为了得到$\gamma$的绝对值，令$\gamma$呈上其对应的类别$y$，即可得到几何间隔的定义：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72f696fd10.png" srcset="/img/loading.gif" lazyload alt="6.png"></p>
 <p>从上述定义可以看出：实质上函数间隔就是$|w’x+b|$，而几何间隔就是函数间隔除以$||w||$，直观来讲就是点到超平面的距离。</p>
-<p>##<strong>6.2 最大间隔与支持向量</strong></p>
-<p>SVM之所以叫支持向量机，因为其核心理念是：支持向量样本会对识别的问题起关键性作用。那什么是支持向量（Support <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=vector&spm=1001.2101.3001.7020">vector</a>）呢？支持向量也就是离分类超平面（Hyper plane）最近的样本点。</p>
+<h2 id="6-2-最大间隔与支持向量"><a href="#6-2-最大间隔与支持向量" class="headerlink" title="6.2 最大间隔与支持向量"></a><strong>6.2 最大间隔与支持向量</strong></h2><p>SVM之所以叫支持向量机，因为其核心理念是：支持向量样本会对识别的问题起关键性作用。那什么是支持向量（Support <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=vector&amp;spm=1001.2101.3001.7020">vector</a>）呢？支持向量也就是离分类超平面（Hyper plane）最近的样本点。</p>
 <p>如下图所示，有两类样本数据（橙色和蓝色的小圆点），中间的红线是分类超平面，两条虚线上的点（橙色圆点3个和蓝色圆点2个）是距离超平面最近的点，这些点即为<strong>支持向量</strong>。简单地说，作为支持向量的样本点<strong>非常非常重要</strong>，以至于其他的样本点可以视而不见。而这个分类超平面正是SVM分类器，通过这个分类超平面实现对样本数据一分为二。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMzYzMDMy,size_16,color_FFFFFF,t_70-20220628001505170.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
 <p>如何找到最合适的分类超平面？依据的原则就是间隔最大化。</p>
 <p>所谓间隔最大化，说的是分类超平面跟两类数据的间隔要尽可能大（即远离两边数据），这就要提到我们前面说到的公平原则。“三八线”要划在课桌正中间，不偏向任何一方，才能保证双方利益最大化。对于分类超平面来说，也就是要位于两类数据的正中间，不偏向任何一类，才能保证离两边数据都尽可能远，从而实现间隔最大化。</p>
 <p>如左下图所示，有两类样本数据（分别用橙色和蓝色的小圆圈表示），我们可通过红色或蓝色两条直线（L1或L2）将这两类样本数据分开。事实上，我们还可以画出很多条直线将两类样本分开，也就是说，存在有多个可行的线性分类器能将两类样本分类。SVM的最终目标是：以间隔最大化为原则找到最合适的那个分类器。<br><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMzYzMDMy,size_16,color_FFFFFF,t_70-20220628001732659.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
 <p>从直观上看，图中蓝线L2偏向了橙色数据一方，有失<strong>公平原则</strong>，因而不是我们要找的理想的分类器。红线L1则较注重公平，不偏向任何一类数据，从而能较好地确保离两类数据都尽可能远，实现间隔最大化，这样的分类超平面具有更好的泛化性能，分类更加准确，正是我们要找的最合适的分类器。</p>
-<p>我们注意到，图中两条虚线（S1和S2）上的圆点数据即为支持向量（Support vector），它们距离分类超平面最近。现在<u>我们仅保留这些支持向量数据点进行分析</u>（右上图），可以看出两条虚线之间的间隔距离为$\gamma$。依据公平原则，支持向量到分类超平面的距离则为$\gamma &#x2F;2$，这个值即为分类间隔。间隔最大化，就是最大化这个值$\gamma &#x2F;2$。</p>
-<p><u>由此可以看出，分类间隔值$\gamma &#x2F;2$只与支持向量数据点有关，与其他非支持向量数据点无关。</u>这也正好诠释了我们在文中开头说到的：SVM的核心理念是支持向量样本会对识别的问题起关键性作用。也就是说，分类超平面的确定仅取决于支持向量。</p>
+<p>我们注意到，图中两条虚线（S1和S2）上的圆点数据即为支持向量（Support vector），它们距离分类超平面最近。现在<u>我们仅保留这些支持向量数据点进行分析</u>（右上图），可以看出两条虚线之间的间隔距离为$\gamma$。依据公平原则，支持向量到分类超平面的距离则为$\gamma /2$，这个值即为分类间隔。间隔最大化，就是最大化这个值$\gamma /2$。</p>
+<p><u>由此可以看出，分类间隔值$\gamma /2$只与支持向量数据点有关，与其他非支持向量数据点无关。</u>这也正好诠释了我们在文中开头说到的：SVM的核心理念是支持向量样本会对识别的问题起关键性作用。也就是说，分类超平面的确定仅取决于支持向量。</p>
 <p>对于给定的训练样本，首先要找到距离分类超平面最近的点（支持向量），再通过最大化这些点之间的间隔来求解。</p>
 <p>通过前面的分析可知：函数间隔不适合用来最大化间隔，因此这里我们要找的最大间隔指的是几何间隔。</p>
 <p>为便于计算，位于分类超平面两侧的数据计算的数值分别取1或-1，以将数据分两类，这两类数据通常也称为正、负样本数据。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMzYzMDMy,size_16,color_FFFFFF,t_70.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
-<p>两类数据的函数方程式即为：<br>$$<br>正样本：f(x)&#x3D;w^Tx+b&#x3D;1\<br>负样本：f(x)&#x3D;w^Tx+b&#x3D;-1<br>$$<br>也就是说任何属于正样本类的数据$x$带入方程式得到的结果$y$计算取值都为1，即$y&#x3D;1$；任何属于负样本类的数据$x$带入方程式得到的结果$y$计算取值都为-1，即$y&#x3D;-1$​。</p>
-<p>两个不同类别的支持向量分别到超平面的距离之和<br>$$<br>\gamma&#x3D;\frac{2}{||w||}<br>$$<br>推导过程：</p>
+<p>两类数据的函数方程式即为：</p>
+<script type="math/tex; mode=display">
+正样本：f(x)=w^Tx+b=1\\
+负样本：f(x)=w^Tx+b=-1</script><p>也就是说任何属于正样本类的数据$x$带入方程式得到的结果$y$计算取值都为1，即$y=1$；任何属于负样本类的数据$x$带入方程式得到的结果$y$计算取值都为-1，即$y=-1$​。</p>
+<p>两个不同类别的支持向量分别到超平面的距离之和</p>
+<script type="math/tex; mode=display">
+\gamma=\frac{2}{||w||}</script><p>推导过程：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NoaWNoZW5zdXl1,size_16,color_FFFFFF,t_70-20220627230850969.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
-<p>于是，最优划分超平面即对应最大间隔的划分超平面，也就是找到满足约束条件的 $w$ 和 $b$ 使得$γ$​ 最大，即：<br>$$<br>max_{w,b} \frac{2}{||w||}\<br>s.t.\ y_i(w^Tx_i+b)\geq1,\ i&#x3D;1,2,…,m<br>$$<br>最大化$||w||^{-1}$等驾驭最小化$||w||^2$，于是上述条件可重写为：<br>$$<br>max_{w,b} \frac{1}{2}||w||^2\<br>s.t.\ y_i(w^Tx_i+b)\geq1,\ i&#x3D;1,2,…,m<br>$$<br><img src="https://i.loli.net/2018/10/17/5bc72f6a838c4.png" srcset="/img/loading.gif" lazyload alt="9.png"></p>
+<p>于是，最优划分超平面即对应最大间隔的划分超平面，也就是找到满足约束条件的 $w$ 和 $b$ 使得$γ$​ 最大，即：</p>
+<script type="math/tex; mode=display">
+max_{w,b} \frac{2}{||w||}\\
+s.t.\ y_i(w^Tx_i+b)\geq1,\ i=1,2,...,m</script><p>最大化$||w||^{-1}$等驾驭最小化$||w||^2$，于是上述条件可重写为：</p>
+<script type="math/tex; mode=display">
+max_{w,b} \frac{1}{2}||w||^2\\
+s.t.\ y_i(w^Tx_i+b)\geq1,\ i=1,2,...,m</script><p><img src="https://i.loli.net/2018/10/17/5bc72f6a838c4.png" srcset="/img/loading.gif" lazyload alt="9.png"></p>
 <p>这里解释一下为什么要用$||w||^2$：由约束条件可知将不会存在错误分类的样本，即不存在欠拟合的问题；那么，上式的优化目标可进一步解释为“最小化$\frac{1}{2}||w||^2$则相当于寻找最不可能过拟合的分类超平面”，为了防止过拟合引入了正则化，即在最小化目标函数中加入分类器的所有参数的模值的平方（不含位移项$b$）。</p>
-<p>##<strong>6.3 从原始优化问题到对偶问题</strong></p>
-<blockquote>
+<h2 id="6-3-从原始优化问题到对偶问题"><a href="#6-3-从原始优化问题到对偶问题" class="headerlink" title="6.3 从原始优化问题到对偶问题"></a><strong>6.3 从原始优化问题到对偶问题</strong></h2><blockquote>
 <p>对于上述目标函数，接下来我们将采用拉格朗日乘子法得到其对偶问题。由于该对偶问题又为二次规划问题，故采用了SMO算法对其进行求解。</p>
 </blockquote>
 <h3 id="6-3-1-转换对偶问题"><a href="#6-3-1-转换对偶问题" class="headerlink" title="6.3.1 转换对偶问题"></a>6.3.1 转换对偶问题</h3><p>对于上述得到的目标函数，将原来的目标函数转化为：</p>
@@ -712,13 +730,12 @@
 <p>即变为了一个带约束的凸二次规划问题，按书上所说可以使用现成的优化计算包（QP优化包）求解，但由于SVM的特殊性，一般我们将原问题变换为它的<strong>对偶问题</strong>，接着再对其对偶问题进行求解。为什么通过对偶问题进行求解，有下面两个原因：</p>
 <pre><code class="hljs">* 一是因为使用对偶问题更容易求解；
 * 二是因为通过对偶问题求解出现了向量内积的形式，从而能更加自然地引出核函数。
-</code></pre>
-<p>以下是拉格朗日乘子法求得其对偶问题的基本步骤：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//20190530105244927.png" srcset="/img/loading.gif" lazyload></p>
+</code></pre><p>以下是拉格朗日乘子法求得其对偶问题的基本步骤：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//20190530105244927.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>对偶问题，顾名思义，可以理解成优化等价的问题，更一般地，是将一个原始目标函数的最小化转化为它的对偶函数最大化的问题。</p>
 <p>对于当前的优化问题，按照上面的步骤，首先我们写出它的朗格朗日函数：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72f9332be7.png" srcset="/img/loading.gif" lazyload alt="11.png"></p>
-<p>上式很容易验证：当其中有一个约束条件不满足时，$L$的最大值为 ∞（只需令其对应的$α$为 $∞$即可）；当所有约束条件都满足时，$L$的最大值为$1&#x2F;2||w||^2$（此时令所有的$α$为0），因此实际上原问题等价于：</p>
+<p>上式很容易验证：当其中有一个约束条件不满足时，$L$的最大值为 ∞（只需令其对应的$α$为 $∞$即可）；当所有约束条件都满足时，$L$的最大值为$1/2||w||^2$（此时令所有的$α$为0），因此实际上原问题等价于：</p>
 <p><img src="https://i.loli.net/2018/10/17/5bc72f93321c5.png" srcset="/img/loading.gif" lazyload alt="12.png"></p>
 <p>由于这个的求解问题不好做，因此一般我们将最小和最大的位置交换一下（需满足KKT条件） ，变成原问题的对偶问题：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72f9330967.png" srcset="/img/loading.gif" lazyload alt="13.png"></p>
@@ -733,20 +750,21 @@
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72f9338a9d.png" srcset="/img/loading.gif" lazyload alt="16.png"></p>
 <p>（3）最后便可以根据求解出的$α$，计算出$w$和$b$，从而得到分类超平面函数。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72f93419ca.png" srcset="/img/loading.gif" lazyload alt="17.png"></p>
-<p>在对新的点进行预测时，实际上就是将数据点$x$代入分类函数$f(x)&#x3D;w’x+b$中，若$f(x)&gt;0$，则为正类，$f(x)&lt;0$，则为负类，根据前面推导得出的$w$与$b$，分类函数如下所示，此时便出现了上面所提到的内积形式。</p>
+<p>在对新的点进行预测时，实际上就是将数据点$x$代入分类函数$f(x)=w’x+b$中，若$f(x)&gt;0$，则为正类，$f(x)&lt;0$，则为负类，根据前面推导得出的$w$与$b$，分类函数如下所示，此时便出现了上面所提到的内积形式。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc72f9353166.png" srcset="/img/loading.gif" lazyload alt="18.png"></p>
 <p>这里实际上只需计算新样本与支持向量的内积，因为对于非支持向量的数据点，其对应的拉格朗日乘子一定为0，根据最优化理论（K-T条件），即要求：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//20190530120814493.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
-<p>注：KKT条件主要包含三大部分：<br>①：拉格朗日乘子$≥ 0$<br>②：原问题的约束条件<br>③：拉格朗日函数中的拉格朗日乘子项$&#x3D; 0 $</p>
-<p>因此，根据以上KKT条件，我们可以对$\alpha_i$的取值进行讨论，并得出支持向量机一个重要结论：&#x3D;&#x3D;训练完成后，大部分的训练样本都不需要保留，最终模型仅与支持向量有关。&#x3D;&#x3D;</p>
+<p>注：KKT条件主要包含三大部分：<br>①：拉格朗日乘子$≥ 0$<br>②：原问题的约束条件<br>③：拉格朗日函数中的拉格朗日乘子项$= 0 $</p>
+<p>因此，根据以上KKT条件，我们可以对$\alpha_i$的取值进行讨论，并得出支持向量机一个重要结论：==训练完成后，大部分的训练样本都不需要保留，最终模型仅与支持向量有关。==</p>
 <p>对于不等式约束$y(w’x+b)-1≥0$，满足：</p>
 <p><img src="https://i.loli.net/2018/10/17/5bc72f933c947.png" srcset="/img/loading.gif" lazyload alt="19.png">        </p>
 <h3 id="6-3-2-求解对偶问题"><a href="#6-3-2-求解对偶问题" class="headerlink" title="6.3.2 求解对偶问题"></a>6.3.2 求解对偶问题</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/shichensuyu/article/details/90678747">SMO推导过程</a></p>
-<p>##<strong>6.4 核函数</strong></p>
-<blockquote>
-<p>前三节是在样本在其原始样本空间线性可分的假设下进行讨论的，本节针对原始样本空间线性不可分的问题，基于&#x3D;&#x3D;有限维原始样本空间一定存在一个高维特征空间使样本线性可分&#x3D;&#x3D;这一定理，引出了原始空间和特征空间的桥梁——核函数的相关概念，并强调&#x3D;&#x3D;核函数的选择是支持向量机的最大变数。&#x3D;&#x3D;</p>
+<h2 id="6-4-核函数"><a href="#6-4-核函数" class="headerlink" title="6.4 核函数"></a><strong>6.4 核函数</strong></h2><blockquote>
+<p>前三节是在样本在其原始样本空间线性可分的假设下进行讨论的，本节针对原始样本空间线性不可分的问题，基于==有限维原始样本空间一定存在一个高维特征空间使样本线性可分==这一定理，引出了原始空间和特征空间的桥梁——核函数的相关概念，并强调==核函数的选择是支持向量机的最大变数。==</p>
 </blockquote>
-<p>将样本从原始样本空间映射到一个更高维的特征空间，使得样本在这个特征空间内线性可分，令$\phi(x)$表示将$x$​映射后的特征向量，则在特征空间中划分超平面所对应的模型可表示为：<br>$$<br>f(x)&#x3D;w^T\phi(x)+b<br>$$<br>按照同样的方法，先写出新目标函数的拉格朗日函数，接着写出其对偶问题，求$L$关于$w$和$b$的极大，最后运用SOM求解$α$。可以得出：</p>
+<p>将样本从原始样本空间映射到一个更高维的特征空间，使得样本在这个特征空间内线性可分，令$\phi(x)$表示将$x$​映射后的特征向量，则在特征空间中划分超平面所对应的模型可表示为：</p>
+<script type="math/tex; mode=display">
+f(x)=w^T\phi(x)+b</script><p>按照同样的方法，先写出新目标函数的拉格朗日函数，接着写出其对偶问题，求$L$关于$w$和$b$的极大，最后运用SOM求解$α$。可以得出：</p>
 <p>（1）原对偶问题变为：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc730cc68b3b.png" srcset="/img/loading.gif" lazyload alt="21.png"></p>
 <p>（2）原分类函数变为：<br>​    <img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc730cc1b673.png" srcset="/img/loading.gif" lazyload alt="22.png"></p>
@@ -757,17 +775,16 @@
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc730cc173b2.png" srcset="/img/loading.gif" lazyload alt="24.png"></p>
 <p>（2）分类函数：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc730cc05959.png" srcset="/img/loading.gif" lazyload alt="25.png"></p>
-<p>因此，在线性不可分问题中，&#x3D;&#x3D;核函数的选择成了支持向量机的最大变数&#x3D;&#x3D;，若选择了不合适的核函数，则意味着将样本映射到了一个不合适的特征空间，则极可能导致性能不佳。同时，核函数需要满足以下这个必要条件：</p>
+<p>因此，在线性不可分问题中，==核函数的选择成了支持向量机的最大变数==，若选择了不合适的核函数，则意味着将样本映射到了一个不合适的特征空间，则极可能导致性能不佳。同时，核函数需要满足以下这个必要条件：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc730ccc468c.png" srcset="/img/loading.gif" lazyload alt="26.png"></p>
 <p>注：</p>
 <ul>
 <li>半正定矩阵：设$A$为实对称矩阵，若对于每个非零向量$X$，都有$X^TAX\geq0$，则称$A$为半正定矩阵，$X^TAX$为半正定二次型。</li>
 </ul>
-<p>由该定理可以看出，核矩阵是实对称矩阵，&#x3D;&#x3D;只要一个对称函数对应的核矩阵半正定，它就可以作为核函数&#x3D;&#x3D;。</p>
+<p>由该定理可以看出，核矩阵是实对称矩阵，==只要一个对称函数对应的核矩阵半正定，它就可以作为核函数==。</p>
 <p>由于核函数的构造十分困难，通常我们都是从一些常用的核函数中选择，下面列出了几种常用的核函数：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc730ccc541a.png" srcset="/img/loading.gif" lazyload alt="27.png"></p>
-<p>##<strong>6.5 软间隔支持向量机</strong></p>
-<blockquote>
+<h2 id="6-5-软间隔支持向量机"><a href="#6-5-软间隔支持向量机" class="headerlink" title="6.5 软间隔支持向量机"></a><strong>6.5 软间隔支持向量机</strong></h2><blockquote>
 <p>前面的内容都是基于理论进行的推导，但在现实情况下我们很难确定合适的核函数对样本进行完美分类，故提出了软间隔的概念，允许有尽可能少的样本不满足约束条件。于是在前面的基础上，模型加入了对各个样本松弛变量的考量，并采用6.3节的方法进行求解。</p>
 </blockquote>
 <p>前面的讨论中，我们主要解决了两个问题：当数据线性可分时，直接使用最大间隔的超平面划分；当数据线性不可分时，则通过核函数将数据映射到高维特征空间，使之线性可分。然而在现实问题中，对于某些情形还是很难处理，例如数据中有<strong>噪声</strong>的情形，噪声数据（<strong>outlier</strong>）本身就偏离了正常位置，但是在前面的SVM模型中，我们要求所有的样本数据都必须满足约束，如果不要这些噪声数据还好，当加入这些outlier后导致划分超平面被挤歪了，如下图所示，对支持向量机的泛化性能造成很大的影响。</p>
@@ -775,10 +792,9 @@
 <p>为了解决这一问题，我们需要允许某一些数据点不满足约束，即可以在一定程度上偏移超平面，同时使得不满足约束的数据点尽可能少，这便引出了<strong>“软间隔”支持向量机</strong>的概念</p>
 <pre><code class="hljs">* 允许某些数据点不满足约束y(w&#39;x+b)≥1；
 * 同时又使得不满足约束的样本尽可能少。
-</code></pre>
-<p>这样优化目标变为：</p>
+</code></pre><p>这样优化目标变为：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc730cc6c9fe.png" srcset="/img/loading.gif" lazyload alt="29.png"></p>
-<p>如同阶跃函数，0&#x2F;1损失函数虽然表示效果最好，但是数学性质不佳。因此常用其它函数作为“替代损失函数”。</p>
+<p>如同阶跃函数，0/1损失函数虽然表示效果最好，但是数学性质不佳。因此常用其它函数作为“替代损失函数”。</p>
 <p><img src="https://i.loli.net/2018/10/17/5bc730cc5e5a9.png" srcset="/img/loading.gif" lazyload alt="30.png"></p>
 <p>支持向量机中的损失函数为<strong>hinge损失</strong>，引入<strong>“松弛变量”</strong>，目标函数与约束条件可以写为：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//5bc7317aa3411.png" srcset="/img/loading.gif" lazyload alt="31.png"></p>
@@ -794,7 +810,7 @@
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use//watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NoaWNoZW5zdXl1,size_16,color_FFFFFF,t_70-20220628011444870.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
 <p>由上图的推导可以看出，软间隔支持向量机的最终模型仅与支持向量有关，即通过hinge损失函数仍保持了稀疏性。</p>
 <p>将“软间隔”下产生的对偶问题与原对偶问题对比可以发现：新的对偶问题只是约束条件中的$α$多出了一个上限$C$，其它的完全相同，因此在引入核函数处理线性不可分问题时，便能使用与“硬间隔”支持向量机完全相同的方法。</p>
-<p>—-在此SVM就介绍完毕。</p>
+<p>——在此SVM就介绍完毕。</p>
 <h2 id="6-6-SVM优缺点"><a href="#6-6-SVM优缺点" class="headerlink" title="6.6 SVM优缺点"></a>6.6 SVM优缺点</h2><p><strong>优点</strong></p>
 <ul>
 <li>可以解决高维问题，即大型特征空间；</li>
