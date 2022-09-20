@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on 7 days ago
+                    Last updated on 8 days ago
                   
                 
               </p>
@@ -308,8 +308,8 @@
 </ul>
 <p>标记语言不用于向计算机发出指令，常用于格式化和链接。标记语言的存在是用来被读取的，他是被动的。</p>
 <blockquote>
-<p>⌘+B    打开/关闭导航栏</p>
-<p>⌥+⇧+光标选中    多行选择</p>
+<p>⌘+B	打开&#x2F;关闭导航栏</p>
+<p>⌥+⇧+光标选中	多行选择</p>
 </blockquote>
 <p><strong>浏览器执行JS：</strong></p>
 <p>浏览器分成两部分：渲染引擎和JS引擎</p>
@@ -319,7 +319,8 @@
 </ul>
 <p>浏览器本身并不会执行JS代码，而是由JS引擎转化为二进制的机器语言，由计算机来运行。</p>
 <p><strong>JS组成：</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208051409617.png" srcset="/img/loading.gif" lazyload alt="image-20220803182235562" style="zoom:50%;"></p>
+<img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208051409617.png" srcset="/img/loading.gif" lazyload alt="image-20220803182235562" style="zoom:50%;">
+
 <ul>
 <li><p>ECMAScript：规定了js基础语法核心知识。</p>
 <ul>
@@ -352,6 +353,7 @@
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208031829931.png" srcset="/img/loading.gif" lazyload alt="image-20220803182955896"></p>
 <p><strong>行内形式</strong></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;小明明&quot;</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;alert(&#x27;真棒&#x27;)&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
 <ul>
 <li>可以将单行或少量JS代码写在HTML标签的事件属性中，如:onclick</li>
 <li>注意但双引号的使用：在HTML中推荐使用双引号，JS中推荐使用单引号</li>
@@ -360,22 +362,26 @@
 <h5 id="内嵌形式"><a href="#内嵌形式" class="headerlink" title="内嵌形式"></a>内嵌形式</h5><p>直接写在html文件里，用<code>script</code>标签包住 </p>
 <p><strong>规范</strong>：<code>script</code>标签写在<code>body</code>上面</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>  <span class="hljs-comment">&lt;!-- 内联形式：通过 script 标签包裹 JavaScript 代码 --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&#x27;Hello,JavaScript！&#x27;</span>);</span><br><span class="language-javascript">  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
 <blockquote>
 <p>注意事项：</p>
-<p>我们将 <code>&lt;script&gt;</code>放在HTML文件的底部附近的原因是浏览器会按照代码在文件中的顺序加载 HTML。 </p>
+<p>我们将 <code>&lt;script&gt; </code>放在HTML文件的底部附近的原因是浏览器会按照代码在文件中的顺序加载 HTML。 </p>
 <p>如果先加载的 JavaScript 期望修改其下方的 HTML，那么它可能由于 HTML 尚未被加载而失效。 因此，将 JavaScript 代码放在 HTML页面的底部附近通常是最好的策略。</p>
 </blockquote>
 <h5 id="外部形式"><a href="#外部形式" class="headerlink" title="外部形式"></a>外部形式</h5><p>一般将 JavaScript 代码写在独立的以 .js 结尾的文件中，然后通过 <code>script</code> 标签的 <code>src</code> 属性引入</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// demo.js</span><br><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">write</span>(<span class="hljs-string">&#x27;Hello,JavaScript！&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>  <span class="hljs-comment">&lt;!-- 外部形式：通过 script 的 src 属性引入独立的 .js 文件 --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;demo.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
 <p>如果 <code>script</code> 标签使用 <code>src</code> 属性引入了某 <code>.js</code> 文件，那么标签的代码会被忽略，如下代码所示：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>  <span class="hljs-comment">&lt;!-- 外部形式：通过 script 的 src 属性引入独立的 .js 文件 --&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;demo.js&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-comment">// 此处的代码会被忽略掉！！！！</span></span><br><span class="language-javascript">  	<span class="hljs-title function_">alert</span>(<span class="hljs-number">666</span>);  </span><br><span class="language-javascript">  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
 <blockquote>
 <p>外部JavaScript会使代码更加有序，更易于复用，且没有了脚本的混合，HTML 也会更加易读，因此这是个好的习惯。</p>
 </blockquote>
-<h4 id="1-2-注释和结束符"><a href="#1-2-注释和结束符" class="headerlink" title="1.2 注释和结束符"></a>1.2 注释和结束符</h4><h5 id="单行注释"><a href="#单行注释" class="headerlink" title="单行注释"></a>单行注释</h5><p>使用 <code>//</code> 注释单行代码</p>
+<h4 id="1-2-注释和结束符"><a href="#1-2-注释和结束符" class="headerlink" title="1.2 注释和结束符"></a>1.2 注释和结束符</h4><h5 id="单行注释"><a href="#单行注释" class="headerlink" title="单行注释"></a>单行注释</h5><p>使用 <code>// </code> 注释单行代码</p>
 <h5 id="多行注释"><a href="#多行注释" class="headerlink" title="多行注释"></a>多行注释</h5><p>使用 <code>/* */</code> 注释多行代码</p>
-<p><strong>注：编辑器中单行注释的快捷键为 <code>ctrl + /</code></strong>，多行注释为<code>shift+alt+A</code></p>
+<p>**注：编辑器中单行注释的快捷键为 <code>ctrl + /</code>**，多行注释为<code>shift+alt+A</code></p>
 <h5 id="结束符"><a href="#结束符" class="headerlink" title="结束符"></a>结束符</h5><p>在 JavaScript 中 <code>;</code> 代表一段代码的结束，多数情况下可以省略 <code>;</code> 使用回车（enter）替代。</p>
 <p>JavaScript 跟 HTML 和 CSS 一样，会忽略【一些】空白符，但是换行符（回车）会被识别成结束符 <code>;</code>，因此在实际开发中有许多人主张书写 JavaScript 代码时省略结束符 <code>;</code></p>
 <p><strong>但为了风格统一，要写结束符就每句都写，要么每句都不写(按照团队要求)</strong></p>
@@ -388,20 +394,24 @@
 </ul>
 <h5 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h5><p>显示一个对话框，向 <code>prompt()</code> 输入任意内容显示在对话框中，用来提示用户输入文字：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>  <br>  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"> </span><br><span class="language-javascript">    <span class="hljs-comment">// 1. 输入的任意数字，都会以弹窗形式展示</span></span><br><span class="language-javascript">    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">write</span>(<span class="hljs-string">&#x27;要输出的内容&#x27;</span>);</span><br><span class="language-javascript">    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&#x27;要输出的内容&#x27;</span>);</span><br><span class="language-javascript">    <span class="hljs-comment">// 2. 以弹窗形式提示用户输入姓名，注意这里的文字使用英文的引号</span></span><br><span class="language-javascript">    <span class="hljs-title function_">prompt</span>(<span class="hljs-string">&#x27;请输入您的姓名:&#x27;</span>);</span><br><span class="language-javascript">  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
 <h3 id="二、变量"><a href="#二、变量" class="headerlink" title="二、变量"></a>二、变量</h3><p>变量是程序在内存中申请的一块用来存放数据的空间。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">  <span class="hljs-comment">// x 符号代表了 5 这个数值</span></span><br><span class="language-javascript">  x = <span class="hljs-number">5</span>;</span><br><span class="language-javascript">  <span class="hljs-comment">// y 符号代表了 6 这个数值</span></span><br><span class="language-javascript">  y = <span class="hljs-number">6</span>;</span><br><span class="language-javascript">    </span><br><span class="language-javascript">  <span class="hljs-comment">//举例： 在 JavaScript 中使用变量可以将某个数据（数值）记录下来！</span></span><br><span class="language-javascript"></span><br><span class="language-javascript">  <span class="hljs-comment">// 将用户输入的内容保存在 num 这个变量（容器）中</span></span><br><span class="language-javascript">  num = <span class="hljs-title function_">prompt</span>(<span class="hljs-string">&#x27;请输入一数字!&#x27;</span>);</span><br><span class="language-javascript"></span><br><span class="language-javascript">  <span class="hljs-comment">// 通过 num 变量（容器）将用户输入的内容输出出来</span></span><br><span class="language-javascript">  <span class="hljs-title function_">alert</span>(num);</span><br><span class="language-javascript">  <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">write</span>(num);</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
 <h4 id="2-1-声明和赋值"><a href="#2-1-声明和赋值" class="headerlink" title="2.1 声明和赋值"></a>2.1 声明和赋值</h4><p>要想使用变量，首先需要创建变量(专业说法: 声明变量)</p>
 <h5 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h5><p>声明(定义)变量有两部分构成：声明关键字<code>let</code>、变量名（标识）</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>  <br>  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"> </span><br><span class="language-javascript">    <span class="hljs-comment">// let 变量名</span></span><br><span class="language-javascript">    <span class="hljs-comment">// 声明(定义)变量有两部分构成：声明关键字、变量名（标识）</span></span><br><span class="language-javascript">    <span class="hljs-comment">// let 即关键字，所谓关键字是系统提供的专门用来声明（定义）变量的词语</span></span><br><span class="language-javascript">    <span class="hljs-comment">// age 即变量的名称，也叫标识符</span></span><br><span class="language-javascript">    <span class="hljs-keyword">let</span> age;</span><br><span class="language-javascript">  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
 <p><code>let</code> 和 <code>var</code> (variable变量的意思)都是 JavaScript 中的声明变量的关键字，使用关键字声明变量后，计算机会自动为变量分配内存空间，使用变量名来对内存进行访问，推荐使用 <code>let</code> 声明变量！！！</p>
 <blockquote>
 <p>注意：let 不允许多次声明一个变量。</p>
-<p>​            未赋值变量输出为underfined</p>
-<p>​            未声明但赋值的变量依然可以使用</p>
+<p>​			未赋值变量输出为underfined</p>
+<p>​			未声明但赋值的变量依然可以使用</p>
 </blockquote>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208042043742.png" srcset="/img/loading.gif" lazyload alt="image-20220804204345709"></p>
 <h5 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h5><p>声明（定义）变量相当于创造了一个空的“容器”，通过赋值向这个容器中添加数据。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs html"> <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"> </span><br><span class="language-javascript">  <span class="hljs-comment">// 声明(定义)变量有两部分构成：声明关键字、变量名（标识）</span></span><br><span class="language-javascript">  <span class="hljs-comment">// let 即关键字，所谓关键字是系统提供的专门用来声明（定义）变量的词语</span></span><br><span class="language-javascript">  <span class="hljs-comment">// age 即变量的名称，也叫标识符</span></span><br><span class="language-javascript">  <span class="hljs-keyword">let</span> age;</span><br><span class="language-javascript">  <span class="hljs-comment">// 赋值，将 18 这个数据存入了 age 这个“容器”中</span></span><br><span class="language-javascript">  age = <span class="hljs-number">18</span>;</span><br><span class="language-javascript">  <span class="hljs-comment">// 这样 age 的值就成了 18</span></span><br><span class="language-javascript">  <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">write</span>(age);</span><br><span class="language-javascript">  </span><br><span class="language-javascript">  <span class="hljs-comment">// 也可以声明和赋值同时进行</span></span><br><span class="language-javascript">  <span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello world!&#x27;</span>;</span><br><span class="language-javascript">  <span class="hljs-title function_">alert</span>(str);</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
 <h4 id="2-2-关键字"><a href="#2-2-关键字" class="headerlink" title="2.2 关键字"></a>2.2 关键字</h4><p>JavaScript 使用专门的关键字 <code>let</code> 和 <code>var</code> 来声明（定义）变量，在使用时需要注意一些细节：</p>
 <p>以下是使用 <code>let</code> 时的注意事项：</p>
 <ol>
@@ -432,12 +442,15 @@
 </ul>
 <p>语法：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html">let names = [&#x27;xm&#x27;,&#x27;ed&#x27;,&#x27;gfb&#x27;,fs]<br></code></pre></td></tr></table></figure>
+
 <h3 id="三、数据类型"><a href="#三、数据类型" class="headerlink" title="三、数据类型"></a>三、数据类型</h3><p>给数据分类是为了更加充分和高效的利用内存，也更加方便程序员的使用数据。</p>
 <p><strong>JavaScript是一种弱类型或者说动态语言</strong>，这意味着不用提前声明变量的类型，在程序运行过程中，类型会根据定义的值被JS引擎自动确定。</p>
 <p>注：通过 typeof 关键字检测数据类型</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>  <br>  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"> </span><br><span class="language-javascript">    <span class="hljs-comment">// 检测 1 是什么类型数据，结果为 number</span></span><br><span class="language-javascript">    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">write</span>(<span class="hljs-keyword">typeof</span> <span class="hljs-number">1</span>);</span><br><span class="language-javascript">  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
 <p>JS拥有动态类型，意味着变量的类型是可以改变的：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html">var x = 6;		//x为数字<br>var x = &#x27;Bill&#x27;	//x为字符串<br></code></pre></td></tr></table></figure>
+
 <p>JS数据类型整体分为两大类：</p>
 <ul>
 <li>基本数据类型( Number , String , Boolean , Underfined , Null )</li>
@@ -447,6 +460,7 @@
 <h4 id="3-1-数值类型"><a href="#3-1-数值类型" class="headerlink" title="3.1 数值类型"></a>3.1 数值类型</h4><p>即我们数学中学习到的数字，可以是整数、小数、正数、负数、特殊类型</p>
 <p>JavaScript 中的数值类型与数学中的数字是一样的，分为正数、负数、小数等。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">        <span class="hljs-keyword">let</span> num1 = <span class="hljs-number">3.14</span></span><br><span class="language-javascript">        <span class="hljs-keyword">let</span> num2 = <span class="hljs-number">0xd3</span></span><br><span class="language-javascript">        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Number</span>.<span class="hljs-property">MAX_VALUE</span>)<span class="hljs-comment">//最大数值</span></span><br><span class="language-javascript">        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Number</span>.<span class="hljs-property">MIN_VALUE</span>)<span class="hljs-comment">//最小数值</span></span><br><span class="language-javascript">        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Infinity</span>)<span class="hljs-comment">//无穷大</span></span><br><span class="language-javascript">        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(-<span class="hljs-title class_">Infinity</span>)<span class="hljs-comment">//无穷小</span></span><br><span class="language-javascript">        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">NaN</span>)<span class="hljs-comment">//Not A Number非数值，eg.&#x27;pink&#x27;-100</span></span><br><span class="language-javascript">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
 <blockquote>
 <p>isNaN()这个方法用来判断是否为非数字，返回值为true或者false。</p>
 </blockquote>
@@ -455,10 +469,41 @@
 <ol>
 <li><p>无论单引号或是双引号必须成对使用</p>
 </li>
-<li><p><strong>单引号/双引号可以互相嵌套，但是不以自已嵌套自已</strong>，要么外单内双，要么内单外双</p>
+<li><p><strong>单引号&#x2F;双引号可以互相嵌套，但是不以自已嵌套自已</strong>，要么外单内双，要么内单外双</p>
 </li>
 <li><p>必要时可以使用转义符 <code>\</code>，输出单引号或双引号</p>
-<p>| 转义符 | 解释说明                 |<br>| ——— | ———————————— |<br>| <code>\n</code>   | 换行符，n是newline的意思 |<br>| <code>\\</code>   | \                        |<br>| <code>\&#39;</code>   | ‘’                       |<br>| <code>\&quot;</code>   | “”                       |<br>| <code>\t</code>   | Tab 缩进                 |<br>| <code>\b</code>   | Blank 空格               |</p>
+<table>
+<thead>
+<tr>
+<th>转义符</th>
+<th>解释说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>\n</code></td>
+<td>换行符，n是newline的意思</td>
+</tr>
+<tr>
+<td><code>\\</code></td>
+<td>\</td>
+</tr>
+<tr>
+<td><code>\&#39;</code></td>
+<td>‘’</td>
+</tr>
+<tr>
+<td><code>\&quot;</code></td>
+<td>“”</td>
+</tr>
+<tr>
+<td><code>\t</code></td>
+<td>Tab 缩进</td>
+</tr>
+<tr>
+<td><code>\b</code></td>
+<td>Blank 空格</td>
+</tr>
+</tbody></table>
 </li>
 </ol>
 <p><strong>模版字符串：</strong></p>
@@ -497,17 +542,19 @@
 <p>在 JavaScript 中数据被分成了不同的类型，如数值、字符串、布尔值、undefined，在实际编程的过程中，不同数据类型之间存在着转换的关系。</p>
 <h4 id="4-1-隐式转换"><a href="#4-1-隐式转换" class="headerlink" title="4.1 隐式转换"></a>4.1 隐式转换</h4><ul>
 <li>+号两边只要有一个是字符串，都会把另外一个转成字符串</li>
-<li>除了+以外的算术运算符 比如 - * / 等都会把数据转成数字类型</li>
+<li>除了+以外的算术运算符 比如 - * &#x2F; 等都会把数据转成数字类型</li>
 <li>+号作为正号解析可以转换成Number</li>
 </ul>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208050128502.png" srcset="/img/loading.gif" lazyload alt="image-20220805012849467"></p>
 <p>某些运算符被执行时，系统内部自动将数据类型进行转换，这种转换称为隐式转换。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"> </span><br><span class="language-javascript">    <span class="hljs-keyword">let</span> num = <span class="hljs-number">13</span>; <span class="hljs-comment">// 数值</span></span><br><span class="language-javascript">    <span class="hljs-keyword">let</span> num2 = <span class="hljs-string">&#x27;2&#x27;</span>; <span class="hljs-comment">// 字符串</span></span><br><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-comment">// 结果为 132</span></span><br><span class="language-javascript">    <span class="hljs-comment">// 原因是将数值 num 转换成了字符串，相当于 &#x27;13&#x27;</span></span><br><span class="language-javascript">    <span class="hljs-comment">// 然后 + 将两个字符串拼接到了一起</span></span><br><span class="language-javascript">    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(num + num2);</span><br><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-comment">// 结果为 11</span></span><br><span class="language-javascript">    <span class="hljs-comment">// 原因是将字符串 num2 转换成了数值，相当于 2</span></span><br><span class="language-javascript">    <span class="hljs-comment">// 然后数值 13 减去 数值 2</span></span><br><span class="language-javascript">    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(num - num2);</span><br><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">let</span> a = <span class="hljs-title function_">prompt</span>(<span class="hljs-string">&#x27;请输入一个数字&#x27;</span>);</span><br><span class="language-javascript">    <span class="hljs-keyword">let</span> b = <span class="hljs-title function_">prompt</span>(<span class="hljs-string">&#x27;请再输入一个数字&#x27;</span>);</span><br><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-title function_">alert</span>(a + b);</span><br><span class="language-javascript">  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
 <p>注：数据类型的隐式转换是 JavaScript 的特征，后续学习中还会遇到，目前先需要理解什么是隐式转换。</p>
 <h4 id="4-2显式转换"><a href="#4-2显式转换" class="headerlink" title="4.2显式转换"></a>4.2显式转换</h4><p>编写程序时过度依靠系统内部的隐式转换是不严禁的，因为隐式转换规律并不清晰，大多是靠经验总结的规律。为了避免因隐式转换带来的问题，通常根逻辑需要对数据进行显示转换。</p>
 <h5 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h5><p>通过 <code>Number</code> 显示转换成数值类型，当转换失败时结果为 <code>NaN</code>（Not a Number）即不是一个数字。 </p>
 <ul>
-<li>Number(数据) <ul>
+<li><p>Number(数据) </p>
+<ul>
 <li>转成数字类型</li>
 <li>如果字符串内容里有非数字，转换失败时结果为 NaN(Not a Number)即不是一个数字 </li>
 <li>NaN也是number类型的数据，代表非数字</li>
@@ -525,12 +572,14 @@
 </li>
 </ul>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-keyword">let</span> t = <span class="hljs-string">&#x27;12&#x27;</span>;</span><br><span class="language-javascript">    <span class="hljs-keyword">let</span> f = <span class="hljs-number">8</span>;</span><br><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-comment">// 显式将字符串 12 转换成数值 12</span></span><br><span class="language-javascript">    t = <span class="hljs-title class_">Number</span>(t);</span><br><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-comment">// 检测转换后的类型</span></span><br><span class="language-javascript">    <span class="hljs-comment">// console.log(typeof t);</span></span><br><span class="language-javascript">    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(t + f); <span class="hljs-comment">// 结果为 20</span></span><br><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-comment">// 并不是所有的值都可以被转成数值类型</span></span><br><span class="language-javascript">    <span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;hello&#x27;</span>;</span><br><span class="language-javascript">    <span class="hljs-comment">// 将 hello 转成数值是不现实的，当无法转换成</span></span><br><span class="language-javascript">    <span class="hljs-comment">// 数值时，得到的结果为 NaN （Not a Number）</span></span><br><span class="language-javascript">    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Number</span>(str));</span><br><span class="language-javascript">    <span class="hljs-keyword">let</span> num = <span class="hljs-number">3.14</span></span><br><span class="language-javascript">    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">write</span>(<span class="hljs-title class_">Number</span>(num))</span><br><span class="language-javascript">    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">write</span>(<span class="hljs-built_in">parseInt</span>(num))</span><br><span class="language-javascript">    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">write</span>(<span class="hljs-built_in">parseFloat</span>(num))</span><br><span class="language-javascript">  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
 <h5 id="String"><a href="#String" class="headerlink" title="String"></a><strong>String</strong></h5><p>转换为字符型：</p>
 <ul>
 <li>String(数据)</li>
 <li>变量.toString(进制)</li>
 </ul>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">        <span class="hljs-keyword">let</span> num = <span class="hljs-title class_">String</span>(<span class="hljs-number">163</span>)</span><br><span class="language-javascript">        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">typeof</span> num)</span><br><span class="language-javascript">        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(num.<span class="hljs-title function_">toString</span>(<span class="hljs-number">2</span>))</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
 
               
             </div>

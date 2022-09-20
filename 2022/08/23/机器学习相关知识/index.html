@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.3k words
+          3.4k words
         
       </span>
     
@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on 25 days ago
+                    Last updated on a month ago
                   
                 
               </p>
@@ -311,12 +311,12 @@
 <p>由此一个想法自然而然的产生：如果这36层神经网络是恒等映射（identity mapping），那么56层的神经网络不就和20层的一样好了吗？</p>
 <p>更进一步呢？如果这36层神经网络相比于恒等映射再好上那么一点点（更接近最优函数），那么不就起到了正优化的作用了吗？ResNet的insight由此诞生。</p>
 <h3 id="ResNet的数学表示"><a href="#ResNet的数学表示" class="headerlink" title="ResNet的数学表示"></a>ResNet的数学表示</h3><p>基于以上的考虑，我们在所拟合的函数中加入恒等函数。</p>
-<p>假设某一层内，最优函数记为$ H(x) $，那么我们所拟合的目标函数 $F(x) $定义为$ F(x):=H(x)−x$ ，函数 $F(x) $被称为“残差函数”。</p>
+<p>假设某一层内，最优函数记为$ H(x) $，那么我们所拟合的目标函数 $F(x) $定义为$ F(x):&#x3D;H(x)−x$ ，函数 $F(x) $被称为“残差函数”。</p>
 <p>残差在数理统计中是指实际观察值与估计值(拟合值)之间的差，实际观察值就是$ H(x)$ ，拟合值是 $x$ ，这里的 $F(x) $就叫残差。</p>
 <p>由此可见，我们所需要的函数由两部分组成：恒等函数和残差函数。恒等函数的存在，避免了“负优化”问题，而残差函数则起到了“锦上添花”的作用。</p>
 <p>因此，ResNet的基本架构就由如下图的残差块所组成。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208232100797.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>对应到神经网络中，残差块的数学表达式可以写成：$ y=σ(F(x,W)+x)$ 。</p>
+<p>对应到神经网络中，残差块的数学表达式可以写成：$ y&#x3D;σ(F(x,W)+x)$ 。</p>
 <p>其中， $y$ 代表残差块的输出，$ σ(·) $代表激活函数，$ F(·) $代表残差函数， $x$ 代表输入， $W$ 代表残差块内的所有权重。weight layer代表着卷积操作，一般一个残差部分包含2-3个卷积操作，将卷积后的特征图与$x$相加得到新的特征图。</p>
 <p>如前所述，ResNet基于这样一种假设：最优函数与线性函数有一定的相似性。初始化常规神经网络时，其权重参数接近零，因此网络仅输出其输入的副本。换言之，它首先对恒等函数建模。所以如果目标函数和恒等函数相当接近（通常是这种情况），那么训练速度会大大加快。这也是残差学习相对更加容易的原因。</p>
 <p>此外，利用残差块可以训练出一个有效的深层神经网络：输入可以通过层间的残余连接更快地向前传播。</p>
@@ -350,14 +350,14 @@
 </li>
 </ul>
 <p><strong>一般我们使用的都是数据并行+同步更新。因此本文主要讲解数据并行+同步更的细节。</strong></p>
-<p>分别以单机单卡和单机4卡，batchsize=64为例。</p>
+<p>分别以单机单卡和单机4卡，batchsize&#x3D;64为例。</p>
 <p>在单机单卡的模式下，一次性输入一个batch的数据进行forward。在得到网络的output后，由output和target进行loss的计算。但要注意，这里的loss要对bacth中的样本量（batchsize）取平均。</p>
-<p> 在单机4卡的模式下，因为batchsize=64。因此分配给每块GPU的size为16。各块GPU上模型一致并共享参数，只是数据输入不同。4块GPU分别进行forward，各GPU上loss的计算依旧要根据本卡上的样本量（size=16）取平均。在梯度计算上，我看到过两个版本，一种是将多卡loss收集到主GPU上再次按卡数进行平均。随后再进行梯度回传并更新参数，将更新后的参数分发给其他GPU。另外一种是各GPU先分别进行梯度回传，再将梯度gather到主GPU上取平均，随后更新参数并分发给其他GPU。两种方法最终的结果实际上是一致的，只是步骤不同。因此这里不再深究。</p>
+<p> 在单机4卡的模式下，因为batchsize&#x3D;64。因此分配给每块GPU的size为16。各块GPU上模型一致并共享参数，只是数据输入不同。4块GPU分别进行forward，各GPU上loss的计算依旧要根据本卡上的样本量（size&#x3D;16）取平均。在梯度计算上，我看到过两个版本，一种是将多卡loss收集到主GPU上再次按卡数进行平均。随后再进行梯度回传并更新参数，将更新后的参数分发给其他GPU。另外一种是各GPU先分别进行梯度回传，再将梯度gather到主GPU上取平均，随后更新参数并分发给其他GPU。两种方法最终的结果实际上是一致的，只是步骤不同。因此这里不再深究。</p>
 <p> 从上面的分析可以看出，无论是单卡训练还是多卡训练，最终用来计算梯度的loss值，是要对样本量取平均的。因此在借助Pytorch累加梯度的特性，变相增加batchsize的过程中，需要将loss除以累加迭代的次数。</p>
 <p>那么问题来了，单机单卡、单机多卡、借助梯度累加变相增加batchsize三者是否完全等价？</p>
 <p>除去训练速度以及不同GPU随机种子设定不同导致的细微差别，单从forward、backward、parameter、update三方面来看，是没有什么差别的。</p>
 <p>但是，有个东西叫<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/24810318">Bach Normalization</a>。大家都知道，这神器对模型训练大有脾益，有了他不但减小了对dropout的依赖，更削弱了参数初始化的影响。可是，这玩意儿是基于batch来计算的。在单卡，多卡、变相增大batchsize的情况下，Bach Normalization单次处理的数据量可就不一样了。</p>
-<p>单卡时，每次处理的数据量等于batchsize。而在多卡情况下，由于数据分发，每次处理的数据量等于batchsize/卡数。在变相增大batchsize的情况下，每次处理的数据量与不进行这种操作是相等的，也就是说采用这种方法，其loss计算和梯度计算与增大的batchsize是一致的。但是在Bach Normalization上依旧是从前那个少年！</p>
+<p>单卡时，每次处理的数据量等于batchsize。而在多卡情况下，由于数据分发，每次处理的数据量等于batchsize&#x2F;卡数。在变相增大batchsize的情况下，每次处理的数据量与不进行这种操作是相等的，也就是说采用这种方法，其loss计算和梯度计算与增大的batchsize是一致的。但是在Bach Normalization上依旧是从前那个少年！</p>
 <h2 id="三、卷积神经网络CNN"><a href="#三、卷积神经网络CNN" class="headerlink" title="三、卷积神经网络CNN"></a>三、<a target="_blank" rel="noopener" href="https://easyai.tech/ai-definition/cnn/">卷积神经网络CNN</a></h2><p>CNN 有2大特点：</p>
 <ol>
 <li>能够有效的将大数据量的图片降维成小数据量</li>

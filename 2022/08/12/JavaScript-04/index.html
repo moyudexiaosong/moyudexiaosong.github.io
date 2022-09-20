@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on 7 days ago
+                    Last updated on 8 days ago
                   
                 
               </p>
@@ -304,38 +304,51 @@
 <p>简而言之，“可达值“是那些以某种方式可访问或可用的值。它们一定是存储在内存中的。</p>
 <p>如果一个值可以通过引用链从根访问任何其他值，则认为该值是可达的，这些值被称作 <strong>根（roots）</strong>。</p>
 <p>比方说，如果全局变量中有一个对象，并且该对象有一个属性引用了另一个对象，则 <strong>该</strong> 对象被认为是可达的。而且它引用的内容也是可达的。下面是详细的例子。</p>
-<p>在 JavaScript 引擎中有一个被称作 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Garbage_collection_(computer_science">垃圾回收器</a>) 的东西在后台执行。它监控着所有对象的状态，并删除掉那些已经不可达的。</p>
+<p>在 JavaScript 引擎中有一个被称作 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)">垃圾回收器</a> 的东西在后台执行。它监控着所有对象的状态，并删除掉那些已经不可达的。</p>
 <p>这里是一个最简单的例子：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// user 具有对这个对象的引用</span><br><span class="hljs-keyword">let</span> user = &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;John&quot;</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
 <p>这里的箭头描述了一个对象引用。全局变量 <code>&quot;user&quot;</code> 引用了对象 <code>&#123;name：&quot;John&quot;&#125;</code>（为简洁起见，我们称它为 John）。John 的 <code>&quot;name&quot;</code> 属性存储一个原始值，所以它被写在对象内部。</p>
 <p>如果 <code>user</code> 的值被重写了，这个引用就没了：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">user = <span class="hljs-literal">null</span>;<br></code></pre></td></tr></table></figure>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208122129707.png" srcset="/img/loading.gif" lazyload alt="image-20220812212903662" style="zoom:50%;"></p>
+
+<img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208122129707.png" srcset="/img/loading.gif" lazyload alt="image-20220812212903662" style="zoom:50%;">
+
 <p>现在 John 变成不可达的了。因为没有引用了，就不能访问到它了。垃圾回收器会认为它是垃圾数据并进行回收，然后释放内存。</p>
 <h3 id="两个引用"><a href="#两个引用" class="headerlink" title="两个引用"></a>两个引用</h3><p>现在让我们想象下，我们把 <code>user</code> 的引用复制给 <code>admin</code>：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// user 具有对这个对象的引用</span><br><span class="hljs-keyword">let</span> user = &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;John&quot;</span><br>&#125;;<br><br><span class="hljs-keyword">let</span> admin = user;<br></code></pre></td></tr></table></figure>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208122130890.png" srcset="/img/loading.gif" lazyload alt="image-20220812213046846" style="zoom:50%;"></p>
+
+<img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208122130890.png" srcset="/img/loading.gif" lazyload alt="image-20220812213046846" style="zoom:50%;">
+
 <p>现在如果执行刚刚的那个操作：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">user = <span class="hljs-literal">null</span>;<br></code></pre></td></tr></table></figure>
+
 <p>user的引用箭头会指向一个空对象，然后原来的John对象仍然可以被 <code>admin</code> 这个全局变量访问到，因此它必须被保留在内存中。如果我们又重写了 <code>admin</code>，对象就会被删除。</p>
 <h3 id="相互关联的对象"><a href="#相互关联的对象" class="headerlink" title="相互关联的对象"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/garbage-collection#xiang-hu-guan-lian-de-dui-xiang">相互关联的对象</a></h3><p>现在来看一个更复杂的例子。这是个家庭：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">marry</span>(<span class="hljs-params">man, woman</span>) &#123;<br>  woman.<span class="hljs-property">husband</span> = man;<br>  man.<span class="hljs-property">wife</span> = woman;<br><br>  <span class="hljs-keyword">return</span> &#123;<br>    <span class="hljs-attr">father</span>: man,<br>    <span class="hljs-attr">mother</span>: woman<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">let</span> family = <span class="hljs-title function_">marry</span>(&#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;John&quot;</span><br>&#125;, &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Ann&quot;</span><br>&#125;);<br></code></pre></td></tr></table></figure>
+
 <p><code>marry</code> 函数通过让两个对象相互引用使它们“结婚”了，并返回了一个包含这两个对象的新对象。</p>
 <p>由此产生的内存结构：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208122208797.png" srcset="/img/loading.gif" lazyload alt="image-20220812220856765" style="zoom:67%;"></p>
+<img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208122208797.png" srcset="/img/loading.gif" lazyload alt="image-20220812220856765" style="zoom:67%;">
+
 <p>到目前为止，所有对象都是可达的。</p>
 <p>现在让我们移除两个引用：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">delete</span> family.<span class="hljs-property">father</span>;<br><span class="hljs-keyword">delete</span> family.<span class="hljs-property">mother</span>.<span class="hljs-property">husband</span>;<br></code></pre></td></tr></table></figure>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208122211563.png" srcset="/img/loading.gif" lazyload alt="image-20220812221147533" style="zoom:67%;"></p>
+
+<img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208122211563.png" srcset="/img/loading.gif" lazyload alt="image-20220812221147533" style="zoom:67%;">
+
 <p>仅删除这两个引用中的一个是不够的，因为所有的对象仍然都是可达的。</p>
 <p>但是，如果我们把这两个都删除，那么我们可以看到再也没有对 John 的引用了：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208122212756.png" srcset="/img/loading.gif" lazyload alt="image-20220812221239727" style="zoom:67%;"></p>
+<img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208122212756.png" srcset="/img/loading.gif" lazyload alt="image-20220812221239727" style="zoom:67%;">
+
 <p>对外引用不重要，只有传入引用才可以使对象可达。所以，John 现在是不可达的，并且将被从内存中删除，同时 John 的所有数据也将变得不可达。</p>
 <h3 id="无法到达的岛屿"><a href="#无法到达的岛屿" class="headerlink" title="无法到达的岛屿"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/garbage-collection#wu-fa-dao-da-de-dao-yu">无法到达的岛屿</a></h3><p>几个对象相互引用，但外部没有对其任意对象的引用，这些对象也可能是不可达的，并被从内存中删除。</p>
 <p>源对象与上面相同。然后：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">family = <span class="hljs-literal">null</span>;<br></code></pre></td></tr></table></figure>
+
 <p>内存内部状态将变成：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208122214946.png" srcset="/img/loading.gif" lazyload alt="image-20220812221424918" style="zoom: 50%;"></p>
+<img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208122214946.png" srcset="/img/loading.gif" lazyload alt="image-20220812221424918" style="zoom: 50%;">
+
 <p>这个例子展示了可达性概念的重要性。</p>
 <p>显而易见，John 和 Ann 仍然连着，都有传入的引用。但是，这样还不够。</p>
 <p>前面说的 <code>&quot;family&quot;</code> 对象已经不再与根相连，相当于在family引用这一步就把下面的全删了，没有了外部对其的引用，所以它变成了一座“孤岛”，并且将被从内存中删除。</p>
@@ -349,15 +362,19 @@
 <li>没有被标记的对象都会被删除。</li>
 </ul>
 <p>例如，使我们的对象有如下的结构：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208122217549.png" srcset="/img/loading.gif" lazyload alt="image-20220812221744508" style="zoom:50%;"></p>
+<img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208122217549.png" srcset="/img/loading.gif" lazyload alt="image-20220812221744508" style="zoom:50%;">
+
 <p>我们可以清楚地看到右侧有一个“无法到达的岛屿”。现在我们来看看“标记和清除”垃圾收集器如何处理它。</p>
 <p>第一步标记所有的根：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208122225381.png" srcset="/img/loading.gif" lazyload alt="image-20220812222535340" style="zoom:50%;"></p>
+<img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208122225381.png" srcset="/img/loading.gif" lazyload alt="image-20220812222535340" style="zoom:50%;">
+
 <p>然后，我们跟随它们的引用标记它们所引用的对象：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208122226193.png" srcset="/img/loading.gif" lazyload alt="image-20220812222618154" style="zoom:50%;"></p>
+<img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208122226193.png" srcset="/img/loading.gif" lazyload alt="image-20220812222618154" style="zoom:50%;">
+
 <p>……如果还有引用的话，继续标记：</p>
 <p>现在，无法通过这个过程访问到的对象被认为是不可达的，并且会被删除。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208122226826.png" srcset="/img/loading.gif" lazyload alt="image-20220812222656786" style="zoom:50%;"></p>
+<img src="https://cdn.jsdelivr.net/gh/moyudexiaosong/picGo-use/202208122226826.png" srcset="/img/loading.gif" lazyload alt="image-20220812222656786" style="zoom:50%;">
+
 <p>这是垃圾收集工作的概念。JavaScript 引擎做了许多优化，使垃圾回收运行速度更快，并且不会对代码执行引入任何延迟。</p>
 <p>一些优化建议：</p>
 <ul>
@@ -374,38 +391,48 @@
 </ul>
 <h2 id="二、对象方法、”this”"><a href="#二、对象方法、”this”" class="headerlink" title="二、对象方法、”this”"></a>二、对象方法、”this”</h2><p>通常创建对象来表示真实世界中的实体，如用户和订单等：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> user = &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;John&quot;</span>,<br>  <span class="hljs-attr">age</span>: <span class="hljs-number">30</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
 <p>并且，在现实世界中，用户可以进行 <strong>操作</strong>：如从购物车中挑选某物、登录和注销等。</p>
 <p>在 JavaScript 中，行为（action）由属性中的函数来表示。</p>
 <h3 id="方法示例"><a href="#方法示例" class="headerlink" title="方法示例"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/object-methods#fang-fa-shi-li">方法示例</a></h3><p>语法1：使用函数表达式创建一个函数，并将其指定给对象的 <code>user.sayHi</code> 属性。</p>
 <p>随后我们像这样 <code>user.sayHi()</code> 调用它。用户现在可以说话了！</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> user = &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;John&quot;</span>,<br>  <span class="hljs-attr">age</span>: <span class="hljs-number">30</span><br>&#125;;<br><br>user.<span class="hljs-property">sayHi</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Hello!&quot;</span>);<br>&#125;;<br><br>user.<span class="hljs-title function_">sayHi</span>(); <span class="hljs-comment">// Hello!</span><br></code></pre></td></tr></table></figure>
+
 <p>语法2：使用预先声明的函数作为方法：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> user = &#123;<br>  <span class="hljs-comment">// ...</span><br>&#125;;<br><br><span class="hljs-comment">// 首先，声明函数</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">sayHi</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Hello!&quot;</span>);<br>&#125;<br><br><span class="hljs-comment">// 然后将其作为一个方法添加</span><br>user.<span class="hljs-property">sayHi</span> = sayHi;<br><br>user.<span class="hljs-title function_">sayHi</span>(); <span class="hljs-comment">// Hello!</span><br></code></pre></td></tr></table></figure>
+
 <p><strong>面向对象编程</strong></p>
 <p>当我们在代码中用对象表示实体时，就是所谓的 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Object-oriented_programming">面向对象编程</a>，简称为 “OOP”。</p>
 <p><strong>语法3：方法简写，最为常用</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 这些对象作用一样</span><br><br>user = &#123;<br>  <span class="hljs-attr">sayHi</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Hello&quot;</span>);<br>  &#125;<br>&#125;;<br><br><span class="hljs-comment">// 方法简写看起来更好，对吧？</span><br><span class="hljs-keyword">let</span> user = &#123;<br>  <span class="hljs-title function_">sayHi</span>(<span class="hljs-params"></span>) &#123; <span class="hljs-comment">// 与 &quot;sayHi: function()&#123;...&#125;&quot; 一样</span><br>    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Hello&quot;</span>);<br>  &#125;，<br>&#125;;<br></code></pre></td></tr></table></figure>
+
 <p>如上所示，我们可以省略 <code>&quot;function&quot;</code>，只写 <code>sayHi()</code>。</p>
 <p>在几乎所有的情况下，更短的语法是首选的。</p>
 <h3 id="方法中的-“this”"><a href="#方法中的-“this”" class="headerlink" title="方法中的 “this”"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/object-methods#fang-fa-zhong-de-this">方法中的 “this”</a></h3><p><strong>为了访问调用该方法的对象，方法中可以使用 <code>this</code> 关键字。</strong></p>
 <p>举个例子：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> user = &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;John&quot;</span>,<br>  <span class="hljs-attr">age</span>: <span class="hljs-number">30</span>,<br><br>  <span class="hljs-title function_">sayHi</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">// &quot;this&quot; 指的是“当前的对象”</span><br>    <span class="hljs-title function_">alert</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span>);<br>  &#125;<br><br>&#125;;<br><br>user.<span class="hljs-title function_">sayHi</span>(); <span class="hljs-comment">// John</span><br></code></pre></td></tr></table></figure>
+
 <p>在这里 <code>user.sayHi()</code> 执行过程中，<code>this</code> 的值是 <code>user</code>。</p>
 <p>技术上讲，也可以在不使用 <code>this</code> 的情况下，通过外部变量名来引用它：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> user = &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;John&quot;</span>,<br>  <span class="hljs-attr">age</span>: <span class="hljs-number">30</span>,<br><br>  <span class="hljs-title function_">sayHi</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title function_">alert</span>(user.<span class="hljs-property">name</span>); <span class="hljs-comment">// &quot;user&quot; 替代 &quot;this&quot;</span><br>  &#125;<br><br>&#125;;<br></code></pre></td></tr></table></figure>
+
 <p>但这样的代码是不可靠的。如果我们决定将 <code>user</code> 复制给另一个变量，例如 <code>admin = user</code>，并赋另外的值给 <code>user</code>，那么它将访问到错误的对象。</p>
 <p>下面这个示例证实了这一点：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> user = &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;John&quot;</span>,<br>  <span class="hljs-attr">age</span>: <span class="hljs-number">30</span>,<br><br>  <span class="hljs-title function_">sayHi</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-title function_">alert</span>( user.<span class="hljs-property">name</span> ); <span class="hljs-comment">// 导致错误</span><br>  &#125;<br><br>&#125;;<br><br><br><span class="hljs-keyword">let</span> admin = user;<br>user = <span class="hljs-literal">null</span>; <span class="hljs-comment">// 重写让其更明显</span><br><br>admin.<span class="hljs-title function_">sayHi</span>(); <span class="hljs-comment">// TypeError: Cannot read property &#x27;name&#x27; of null</span><br></code></pre></td></tr></table></figure>
+
 <p>如果我们在 <code>alert</code> 中以 <code>this.name</code> 替换 <code>user.name</code>，那么代码就会正常运行。</p>
 <h3 id="“this”-不受限制"><a href="#“this”-不受限制" class="headerlink" title="“this” 不受限制"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/object-methods#this-bu-shou-xian-zhi">“this” 不受限制</a></h3><p>在 JavaScript 中，<code>this</code> 关键字与其他大多数编程语言中的不同。JavaScript 中的 <code>this</code> 可以用于任何函数，即使它不是对象的方法。</p>
 <p>下面这样的代码没有语法错误：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">sayHi</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-title function_">alert</span>( <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> );<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <p><code>this</code> 的值是在代码运行时计算出来的，它取决于代码上下文。</p>
 <p>例如，这里相同的函数被分配给两个不同的对象，在调用中有着不同的 “this” 值：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> user = &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;John&quot;</span> &#125;;<br><span class="hljs-keyword">let</span> admin = &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Admin&quot;</span> &#125;;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">sayHi</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-title function_">alert</span>( <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> );<br>&#125;<br><br><span class="hljs-comment">// 在两个对象中使用相同的函数</span><br>user.<span class="hljs-property">f</span> = sayHi;<br>admin.<span class="hljs-property">f</span> = sayHi;<br><br><span class="hljs-comment">// 这两个调用有不同的 this 值</span><br><span class="hljs-comment">// 函数内部的 &quot;this&quot; 是“点符号前面”的那个对象</span><br>user.<span class="hljs-title function_">f</span>(); <span class="hljs-comment">// John（this == user）</span><br>admin.<span class="hljs-title function_">f</span>(); <span class="hljs-comment">// Admin（this == admin）</span><br><br>admin[<span class="hljs-string">&#x27;f&#x27;</span>](); <span class="hljs-comment">// Admin（使用点符号或方括号语法来访问这个方法，都没有关系。）</span><br></code></pre></td></tr></table></figure>
+
 <p><strong>在没有对象的情况下调用：<code>this == undefined</code></strong></p>
 <p>我们甚至可以在没有对象的情况下调用函数：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">sayHi</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-title function_">alert</span>(<span class="hljs-variable language_">this</span>);<br>&#125;<br><br><span class="hljs-title function_">sayHi</span>(); <span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+
 <p>在这种情况下，严格模式下的 <code>this</code> 值为 <code>undefined</code>。如果我们尝试访问 <code>this.name</code>，将会报错。</p>
 <p>在非严格模式的情况下，<code>this</code> 将会是 <strong>全局对象</strong>（浏览器中的 <code>window</code>，我们稍后会在 <a target="_blank" rel="noopener" href="https://zh.javascript.info/global-object">全局对象</a> 一章中学习它）。这是一个历史行为，<code>&quot;use strict&quot;</code> 已经将其修复了。</p>
 <p><strong>解除 <code>this</code> 绑定的后果</strong></p>
@@ -416,6 +443,7 @@
 <h3 id="箭头函数没有自己的-“this”"><a href="#箭头函数没有自己的-“this”" class="headerlink" title="箭头函数没有自己的 “this”"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/object-methods#jian-tou-han-shu-mei-you-zi-ji-de-this">箭头函数没有自己的 “this”</a></h3><p>箭头函数有些特别：它们没有自己的 <code>this</code>。如果我们在这样的函数中引用 <code>this</code>，<code>this</code> 值取决于外部“正常的”函数。</p>
 <p>举个例子，这里的 <code>arrow()</code> 使用的 <code>this</code> 来自于外部的 <code>user.sayHi()</code> 方法：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> user = &#123;<br>  <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;Ilya&quot;</span>,<br>  <span class="hljs-title function_">sayHi</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-title function_">arrow</span> = (<span class="hljs-params"></span>) =&gt; <span class="hljs-title function_">alert</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">firstName</span>);<br>    <span class="hljs-title function_">arrow</span>();<br>  &#125;<br>&#125;;<br><br>user.<span class="hljs-title function_">sayHi</span>(); <span class="hljs-comment">// Ilya</span><br></code></pre></td></tr></table></figure>
+
 <p>这是箭头函数的一个特性，当我们并不想要一个独立的 <code>this</code>，反而想从外部上下文中获取时，它很有用。在后面的 <a target="_blank" rel="noopener" href="https://zh.javascript.info/arrow-functions">深入理解箭头函数</a> 一章中，我们将深入介绍箭头函数。</p>
 <h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/object-methods#zong-jie">总结</a></h3><ul>
 <li>存储在对象属性中的函数被称为“方法”。</li>
@@ -437,15 +465,22 @@
 <li><code>mul()</code> 将保存的值相乘并返回计算结果。</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> calculator = &#123;<br>  <span class="hljs-comment">// ……你的代码……</span><br>&#125;;<br><br>calculator.<span class="hljs-title function_">read</span>();<br><span class="hljs-title function_">alert</span>( calculator.<span class="hljs-title function_">sum</span>() );<br><span class="hljs-title function_">alert</span>( calculator.<span class="hljs-title function_">mul</span>() );<br></code></pre></td></tr></table></figure>
+
 <p>答案：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> calculator = &#123;<br>    <span class="hljs-attr">a</span>:<span class="hljs-literal">null</span>,<br>    <span class="hljs-attr">b</span>:<span class="hljs-literal">null</span>,<br>    <span class="hljs-title function_">read</span>(<span class="hljs-params"></span>)&#123;<br>       a=<span class="hljs-title function_">prompt</span>(<span class="hljs-string">&quot;请输入第一个值&quot;</span>) <br>       b=<span class="hljs-title function_">prompt</span>(<span class="hljs-string">&quot;请输入第二个值&quot;</span>) <br>    &#125;,<br>    <span class="hljs-title function_">sum</span>(<span class="hljs-params"></span>)&#123;<br>        <span class="hljs-keyword">return</span> -(-a-b)<span class="hljs-comment">//为了输出数值对象</span><br>    &#125;,<br>    <span class="hljs-title function_">mul</span>(<span class="hljs-params"></span>)&#123;<br>        <span class="hljs-keyword">return</span> a*b<br>    &#125;,<br>&#125;;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">isEmpty</span>(<span class="hljs-params">obj</span>)&#123;<br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i <span class="hljs-keyword">in</span> calculator)&#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>    &#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span><br>&#125;<br><span class="hljs-title function_">alert</span>(<span class="hljs-title function_">isEmpty</span>(calculator))<br>calculator.<span class="hljs-title function_">read</span>();<br><span class="hljs-title function_">alert</span>( calculator.<span class="hljs-title function_">sum</span>() );<br><span class="hljs-title function_">alert</span>( calculator.<span class="hljs-title function_">mul</span>() );<br></code></pre></td></tr></table></figure>
+
+
+
 <h3 id="链式（调用）"><a href="#链式（调用）" class="headerlink" title="链式（调用）"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/object-methods#lian-shi-tiao-yong">链式（调用）</a></h3><p>重要程度: 2</p>
 <p>有一个可以上下移动的 <code>ladder</code> 对象：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> ladder = &#123;<br>  <span class="hljs-attr">step</span>: <span class="hljs-number">0</span>,<br>  <span class="hljs-title function_">up</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">step</span>++;<br>  &#125;,<br>  <span class="hljs-title function_">down</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">step</span>--;<br>  &#125;,<br>  <span class="hljs-attr">showStep</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123; <span class="hljs-comment">// 显示当前的 step</span><br>    <span class="hljs-title function_">alert</span>( <span class="hljs-variable language_">this</span>.<span class="hljs-property">step</span> );<br>  &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
 <p>现在，如果我们要按顺序执行几次调用，可以这样做：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript">ladder.<span class="hljs-title function_">up</span>();<br>ladder.<span class="hljs-title function_">up</span>();<br>ladder.<span class="hljs-title function_">down</span>();<br>ladder.<span class="hljs-title function_">showStep</span>(); <span class="hljs-comment">// 1</span><br>ladder.<span class="hljs-title function_">down</span>();<br>ladder.<span class="hljs-title function_">showStep</span>(); <span class="hljs-comment">// 0</span><br></code></pre></td></tr></table></figure>
+
 <p>修改 <code>up</code>，<code>down</code> 和 <code>showStep</code> 的代码，让调用可以链接，就像这样：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">ladder.<span class="hljs-title function_">up</span>().<span class="hljs-title function_">up</span>().<span class="hljs-title function_">down</span>().<span class="hljs-title function_">showStep</span>().<span class="hljs-title function_">down</span>().<span class="hljs-title function_">showStep</span>(); <span class="hljs-comment">// 展示 1，然后 0</span><br></code></pre></td></tr></table></figure>
+
 <p>这种方法在 JavaScript 库中被广泛使用。</p>
 
               
