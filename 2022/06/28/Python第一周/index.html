@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="第 1 章	起步 查看python版本python3 -V  退出Python并返回到终端窗口， Ctrl + D或执行命令exit()   文件名使用小写字母，并用下划线代替空格，因为Python采用了这些命名约定  ⌘+B运行程序   第 2 章　变量和简单数据类型Python只记录变量的最新值。 变量名只能包含字母（最好是小写）、数字和下划线。 变量是标签： 变量常被描述为可用于存储值的盒">
+    <meta name="description" content="第 1 章    起步 查看python版本python3 -V 退出Python并返回到终端窗口， Ctrl + D或执行命令exit()  文件名使用小写字母，并用下划线代替空格，因为Python采用了这些命名约定  ⌘+B运行程序   第 2 章　变量和简单数据类型Python只记录变量的最新值。 变量名只能包含字母（最好是小写）、数字和下划线。 变量是标签： 变量常被描述为可用于存储值的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python Day01">
 <meta property="og:url" content="http://example.com/2022/06/28/Python%E7%AC%AC%E4%B8%80%E5%91%A8/index.html">
 <meta property="og:site_name" content="摸鱼之家">
-<meta property="og:description" content="第 1 章	起步 查看python版本python3 -V  退出Python并返回到终端窗口， Ctrl + D或执行命令exit()   文件名使用小写字母，并用下划线代替空格，因为Python采用了这些命名约定  ⌘+B运行程序   第 2 章　变量和简单数据类型Python只记录变量的最新值。 变量名只能包含字母（最好是小写）、数字和下划线。 变量是标签： 变量常被描述为可用于存储值的盒">
+<meta property="og:description" content="第 1 章    起步 查看python版本python3 -V 退出Python并返回到终端窗口， Ctrl + D或执行命令exit()  文件名使用小写字母，并用下划线代替空格，因为Python采用了这些命名约定  ⌘+B运行程序   第 2 章　变量和简单数据类型Python只记录变量的最新值。 变量名只能包含字母（最好是小写）、数字和下划线。 变量是标签： 变量常被描述为可用于存储值的">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo30.jpeg">
 <meta property="article:published_time" content="2022-06-28T07:38:33.000Z">
@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on 14 days ago
+                    Last updated on 18 days ago
                   
                 
               </p>
@@ -298,10 +298,9 @@
             <div class="markdown-body">
               
               <hr>
-<h3 id="第-1-章起步"><a href="#第-1-章起步" class="headerlink" title="第 1 章	起步"></a>第 1 章	起步</h3><ul>
-<li><p>查看python版本<code>python3 -V</code></p>
-</li>
-<li><p>退出Python并返回到终端窗口， <code>Ctrl + D</code>或执行命令<code>exit() </code></p>
+<h3 id="第-1-章-起步"><a href="#第-1-章-起步" class="headerlink" title="第 1 章    起步"></a>第 1 章    起步</h3><ul>
+<li>查看python版本<code>python3 -V</code></li>
+<li><p>退出Python并返回到终端窗口， <code>Ctrl + D</code>或执行命令<code>exit()</code></p>
 </li>
 <li><p>文件名使用小写字母，并用下划线代替空格，因为Python采用了这些命名约定</p>
 </li>
@@ -316,47 +315,45 @@
 <p>在Python中，用<strong>引号括起的都是字符串</strong>。</p>
 <p><strong>字符串的大小写方法：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">name = <span class="hljs-string">&quot;ada lovelace&quot;</span> <br><span class="hljs-built_in">print</span>(name.title())//首字母大写<br><span class="hljs-built_in">print</span>(name.upper())//全部大写<br><span class="hljs-built_in">print</span>(name.lower())//全部小写<br></code></pre></td></tr></table></figure>
-
 <p>输出结果：</p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">Ada Lovelace</span><br><span class="hljs-attribute">ADA LOVELACE </span><br><span class="hljs-attribute">ada lovelace</span><br></code></pre></td></tr></table></figure>
-
 <p><strong>在字符串中使用变量：</strong></p>
 <p><strong>在字符串中插入变量的值，可在前引号前加上字母f</strong> ，再将要插入的变量放在花括号内，f是format（设置格式）的简写。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">first_name=<span class="hljs-string">&quot;ada&quot;</span><br>last_name=<span class="hljs-string">&quot;lovelace&quot;</span><br>full_name=<span class="hljs-string">f&quot;<span class="hljs-subst">&#123;first_name&#125;</span> <span class="hljs-subst">&#123;last_name&#125;</span>&quot;</span><br><span class="hljs-built_in">print</span>(full_name)<br></code></pre></td></tr></table></figure>
-
 <p>练习2-3：个性化消息 　</p>
 <p>用变量表示一个人的名字，并向其显示一 条消息。显示的消息应非常简单，下面是一个例子。</p>
 <p>Hello Eric, would you like to learn some Python today?</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">name=<span class="hljs-string">&quot;eric&quot;</span><br>word=<span class="hljs-string">f&quot;Hello <span class="hljs-subst">&#123;name&#125;</span>, would you like to learn some Python today?&quot;</span><br><span class="hljs-built_in">print</span>(word)<br></code></pre></td></tr></table></figure>
-
 <p><strong>制表符或换行符：</strong></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">制表符</th>
-<th align="center">\t</th>
+<th style="text-align:center">制表符</th>
+<th style="text-align:center">\t</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">换行符</td>
-<td align="center">\n</td>
+<tbody>
+<tr>
+<td style="text-align:center">换行符</td>
+<td style="text-align:center">\n</td>
 </tr>
 <tr>
-<td align="center">换行后添加一个制表符</td>
-<td align="center">\n\t</td>
+<td style="text-align:center">换行后添加一个制表符</td>
+<td style="text-align:center">\n\t</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><strong>删除空白：</strong></p>
 <p>去掉字符串右边空白，使用方法rstrip() ，左边空白使用lstrip()，去掉全部空白使用strip()。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>favorite_language = <span class="hljs-string">&#x27;python &#x27;</span> <br><span class="hljs-meta">&gt;&gt;&gt; </span>favorite_language<br><span class="hljs-string">&#x27;python &#x27;</span> <br><span class="hljs-meta">&gt;&gt;&gt; </span>favorite_language.rstrip()<br><span class="hljs-string">&#x27;python&#x27;</span> <br><span class="hljs-meta">&gt;&gt;&gt; </span>favorite_language<br><span class="hljs-string">&#x27;python &#x27;</span><br></code></pre></td></tr></table></figure>
-
 <p>对变量favorite_language 调用方法rstrip() 后，多余的空格被删除了。但这种删除只是暂时的，接下来再次询问favorite_language 的值时，你会发现这个字符串与输入时一样，依然包含多余的空白。</p>
 <p><strong>要永久删除这个字符串中的空白，必须将删除操作的结果关联到变量：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>favorite_language = <span class="hljs-string">&#x27;python &#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>favorite_language = favorite_language.rstrip() &gt;&gt;&gt; favorite_language <span class="hljs-string">&#x27;python&#x27;</span><br></code></pre></td></tr></table></figure>
-
 <p><strong>整数</strong></p>
 <ul>
-<li><p>在Python中，可对整数执行加（+ ）减（- ）乘（* ）除（&#x2F; ）运算。</p>
+<li><p>在Python中，可对整数执行加（+ ）减（- ）乘（* ）除（/ ）运算。</p>
 </li>
 <li><p>用两个乘号表示乘方运算。</p>
 </li>
@@ -367,7 +364,6 @@
 <p>Python将所有带小数点的数称为浮点数 。</p>
 <p>从很大程度上说，使用浮点数时无须考虑其行为。你只需输入要使用的数，Python通常会按你期望的方式处理它们，但需要注意的是，结果包含的小数位数可能是不确定的：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">0.2</span>+<span class="hljs-number">0.1</span><br><span class="hljs-number">0.30000000000000004</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">3</span>*<span class="hljs-number">0.1</span><br><span class="hljs-number">0.30000000000000004</span><br></code></pre></td></tr></table></figure>
-
 <p><strong>整数和浮点数</strong></p>
 <ul>
 <li>将任意两个数相除时，结果总是浮点数，即便这两个数都是整数且能整除。</li>
@@ -376,129 +372,98 @@
 <p><strong>数中的下划线</strong></p>
 <p>书写很大的数时，可使用下划线将其中的数字分组，使其更清晰易读：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>universe_age = <span class="hljs-number">14_000_000_000</span><br></code></pre></td></tr></table></figure>
-
 <p>当你打印这种使用下划线定义的数时，Python不会打印其中的下划线：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(universe_age) <span class="hljs-number">14000000000</span><br></code></pre></td></tr></table></figure>
-
 <p><strong>在一行内同时给多个变量赋值：</strong></p>
 <p>例如，下面演示了如何将变量x 、y 和z 都初始化为零：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">x,y,z=<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span><br><span class="hljs-built_in">print</span>(x)<br><span class="hljs-built_in">print</span>(y)<br><span class="hljs-built_in">print</span>(z)<br></code></pre></td></tr></table></figure>
-
 <p>Python将<strong>按顺序将每个值赋给对应的变量。只要变量和值的个数相同，Python就能正确地将它们关联起来。</strong></p>
 <p><strong>常量类似于变量：</strong></p>
 <p><strong>其值在程序的整个生命周期内保持不变</strong>。Python没有内置的常量类型，但Python程序员会使用全大写来指出应将某个变量视为常量，其值应始终不变：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">MAX_CONNECTIONS = <span class="hljs-number">5000</span><br></code></pre></td></tr></table></figure>
-
 <p><u>在代码中，要指出某个特定的变量视为常量，可将其字母全部大写。</u></p>
 <p>在Python中，注释用井号（# ）标识。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 向大家问好。 </span><br></code></pre></td></tr></table></figure>
-
 <h3 id="第-3-章-列表简介"><a href="#第-3-章-列表简介" class="headerlink" title="第 3 章　列表简介"></a>第 3 章　列表简介</h3><p>列表由一系列按特定顺序排列的元素组成。通常给列表指定一个表示复数的名称（如letters 、digits 或names ）。在Python中，用方括号<code>[]</code>表示列表，并用逗号分隔其中的元素。下面是一个简单的列表示例，其中包含几种自行车：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">bicycles = [<span class="hljs-string">&#x27;trek&#x27;</span>, <span class="hljs-string">&#x27;cannondale&#x27;</span>, <span class="hljs-string">&#x27;redline&#x27;</span>, <span class="hljs-string">&#x27;specialized&#x27;</span>]<br></code></pre></td></tr></table></figure>
-
 <p>Python将打印列表的固定格式如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">[<span class="hljs-string">&#x27;trek&#x27;</span>, <span class="hljs-string">&#x27;cannondale&#x27;</span>, <span class="hljs-string">&#x27;redline&#x27;</span>, <span class="hljs-string">&#x27;specialized&#x27;</span>]<br></code></pre></td></tr></table></figure>
-
 <p><strong>访问列表元素</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(bicycles[<span class="hljs-number">0</span>])<br></code></pre></td></tr></table></figure>
-
 <p><strong>索引从0而不是1开始</strong></p>
 <p>Python为访问最后一个列表元素提供了一种特殊语法。<strong>通过将索引指定为-1 ，可让Python返回最后一个列表元素：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">bicycles = [<span class="hljs-string">&#x27;trek&#x27;</span>, <span class="hljs-string">&#x27;cannondale&#x27;</span>, <span class="hljs-string">&#x27;redline&#x27;</span>, <span class="hljs-string">&#x27;specialized&#x27;</span>] <br><span class="hljs-built_in">print</span>(bicycles[-<span class="hljs-number">1</span>])<br></code></pre></td></tr></table></figure>
-
 <p>这段代码返回’specialized’ 。</p>
 <p>这种语法很有用，因为你经常需要在不知道列表长度的情况下访问最后的元素。这种约定也适用于其他负数索引。例如，索引-2 返回倒数第二个列表元素，索引-3 返回倒数第三个列表元素，依此类推。</p>
 <p><strong>元素增删改查：</strong></p>
-<p>1）**在列表末尾添加元素append() **</p>
+<p>1）<strong>在列表末尾添加元素append() </strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">motorcycles = [<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br>motorcycles.append(<span class="hljs-string">&#x27;ducati&#x27;</span>) <br><span class="hljs-built_in">print</span>(motorcycles)<br></code></pre></td></tr></table></figure>
-
 <p>输出结果：</p>
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scheme">[<span class="hljs-symbol">&#x27;honda</span>&#x27;, <span class="hljs-symbol">&#x27;yamaha</span>&#x27;, <span class="hljs-symbol">&#x27;suzuki</span>&#x27;, <span class="hljs-symbol">&#x27;ducati</span>&#x27;]<br></code></pre></td></tr></table></figure>
-
 <p>方法append() 让动态地创建列表易如反掌。</p>
 <p>例如，你可以先创建 一个空列表，再使用一系列函数调用append() 来添加元素。</p>
 <p>2）<strong>使用方法insert() 可在列表的任何位置添加新元素</strong>，为此，你需要指定新元素的索引和值。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">motorcycles = [<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br>motorcycles.insert(<span class="hljs-number">0</span>, <span class="hljs-string">&#x27;ducati&#x27;</span>) <br></code></pre></td></tr></table></figure>
-
 <p>方法 insert() 在索引0 处添加空间，并将值’ducati’ 存储到这个地 方。这种操作将列表中既有的每个元素都右移一个位置。</p>
 <p>3）<strong>使用del 语句删除元素</strong></p>
 <p>如果知道要删除的元素在列表中的位置，可使用del 语句。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">del</span> motorcycles[<span class="hljs-number">0</span>]<br></code></pre></td></tr></table></figure>
-
 <p>4）<strong>使用方法pop() 删除末尾元素</strong></p>
 <p>方法pop() 删除列表末尾的元素，并让你能够接着使用它。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">motorcycles = [<span class="hljs-string">&#x27;honda&#x27;</span>, <span class="hljs-string">&#x27;yamaha&#x27;</span>, <span class="hljs-string">&#x27;suzuki&#x27;</span>]<br>last_owned = motorcycles.pop() <br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;The last motorcycle I owned was a <span class="hljs-subst">&#123;last_owned.title()&#125;</span>.&quot;</span>)<br></code></pre></td></tr></table></figure>
-
 <p>5）弹出列表中任何位置处的元素</p>
 <p>可以使用pop() 来删除列表中任意位置的元素，只需在圆括号中指定要删除元素的索引即可。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">first_owned = motorcycles.pop(<span class="hljs-number">0</span>)<br></code></pre></td></tr></table></figure>
-
 <p>6）根据值删除元素</p>
 <p>有时候，你不知道要从列表中删除的值所处的位置。如果只知道要 删除的元素的值，可使用方法remove() 。</p>
 <p>例如，假设要从列表motorcycles 中删除值’ducati’ 。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">motorcycles.remove(<span class="hljs-string">&#x27;ducati&#x27;</span>) <br></code></pre></td></tr></table></figure>
-
 <p>注意：方法remove() 只删除第一个指定的值。如果要删除的值可能在列表中出现多次，就需要使用循环来确保将每个值都删除。</p>
 <p><strong>列表排序：</strong></p>
 <p>按字母顺序<strong>永久</strong>排列<code>sort()</code>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">cars.sort()<br></code></pre></td></tr></table></figure>
-
 <p>列表顺序被永久改变，<strong>再也无法恢复到原来的排列顺序</strong>。</p>
-<p>按与字母顺序相反的顺序排列列表元素，只需向<code>sort() </code>方法传递参数<code>reverse=True</code> 即可。</p>
+<p>按与字母顺序相反的顺序排列列表元素，只需向<code>sort()</code>方法传递参数<code>reverse=True</code> 即可。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">cars.sort(reverse=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
-
 <p>列表<strong>临时</strong>排序<code>sorted</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">cars = [<span class="hljs-string">&#x27;bmw&#x27;</span>, <span class="hljs-string">&#x27;audi&#x27;</span>, <span class="hljs-string">&#x27;toyota&#x27;</span>, <span class="hljs-string">&#x27;subaru&#x27;</span>]<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">sorted</span>(cars))<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">sorted</span>(cars,reverse=<span class="hljs-literal">True</span>))<br></code></pre></td></tr></table></figure>
-
 <p><strong>反转列表reverse()</strong> </p>
 <p>永久性地修改列表元素的排列顺序，但可随时恢复到原来的排列顺序，只需对列表再次调用reverse() 即可。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">cars.reverse() <br></code></pre></td></tr></table></figure>
-
 <p><strong>len() 获取列表长度</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">len</span>(cars)<br></code></pre></td></tr></table></figure>
-
 <h3 id="第-4-章-操作列表"><a href="#第-4-章-操作列表" class="headerlink" title="第 4 章　操作列表"></a>第 4 章　操作列表</h3><p><strong>遍历整个列表：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">magicians = [<span class="hljs-string">&#x27;alice&#x27;</span>, <span class="hljs-string">&#x27;david&#x27;</span>, <span class="hljs-string">&#x27;carolina&#x27;</span>]<br><span class="hljs-keyword">for</span> magician <span class="hljs-keyword">in</span> magicians:<br>	<span class="hljs-built_in">print</span>(magician)<br></code></pre></td></tr></table></figure>
-
 <p><strong>使用函数range()</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> value <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">5</span>):<br>	<span class="hljs-built_in">print</span>(value)<br></code></pre></td></tr></table></figure>
-
 <p>在这个示例中，range() 只打印数1～4。</p>
 <p><u>这是编程语言中常见的差一行为的结果</u>。函数range() 让Python从指定的第一个值开始数， 并在到达你指定的第二个值时停止。因为它在第二个值处停止，所以输出不包含该值（这里为5）。</p>
 <p>要打印数1～5，需要使用range(1,6) 。</p>
 <p><strong>使用range() 创建数字列表</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">numbers = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">6</span>)) <br><span class="hljs-built_in">print</span>(numbers)<br></code></pre></td></tr></table></figure>
-
 <p><strong>使用函数range() 时，还可指定步长</strong>。为此，可给这个函数指定第 三个参数，Python将根据这个步长来生成数。</p>
 <p>例如，下面的代码打印1～10的偶数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">even_numbers = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>, <span class="hljs-number">11</span>, <span class="hljs-number">2</span>)) <br><span class="hljs-built_in">print</span>(even_numbers)<br></code></pre></td></tr></table></figure>
-
 <p>下面的代码演示了如何将前10个整数的平方加入一个列表中：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">squares=[]<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">11</span>):<br>	squares.append(i**<span class="hljs-number">2</span>)<br><span class="hljs-built_in">print</span>(squares)<br></code></pre></td></tr></table></figure>
-
 <p><strong>最大值、最小值和总和：</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">&gt;&gt;&gt; digits = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]<br>&gt;&gt;&gt; min(digits)<br>0<br>&gt;&gt;&gt; max(digits)<br>9<br>&gt;&gt;&gt; <span class="hljs-built_in">sum</span>(digits)<br>45<br></code></pre></td></tr></table></figure>
-
 <p><strong>列表解析：</strong></p>
 <p>列表解析将for循环和创建新元素的代码合并成一行，并自动附加新元素。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">squares=[i**<span class="hljs-number">2</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">11</span>)]<br><span class="hljs-built_in">print</span>(squares)<br></code></pre></td></tr></table></figure>
-
 <p>要使用这种语法，首先指定一个描述性的列表名，如squares 。然后定义一个表达式，用于生成要存储到列表中的值。接下来，编写一个for 循环，用于给表达式提供值。</p>
 <p><strong>元素切片：</strong></p>
 <p>要创建切片，指定要使用的第一个元素和最后一个元素的索引。 与函数range() 一样，Python在到达第二个索引之前的元素后停止。要输出列表中的前三个元素，需要指定索引0和3，这将返回索引为0、1和2的元素。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">players = [<span class="hljs-string">&#x27;charles&#x27;</span>, <span class="hljs-string">&#x27;martina&#x27;</span>, <span class="hljs-string">&#x27;michael&#x27;</span>, <span class="hljs-string">&#x27;florence&#x27;</span>, <span class="hljs-string">&#x27;eli&#x27;</span>]<br><span class="hljs-built_in">print</span>(players[<span class="hljs-number">0</span>:<span class="hljs-number">3</span>])<br></code></pre></td></tr></table></figure>
-
 <p>如果没有指定第一个索引，Python将自动从列表开头开始。要让切片终止于列表末尾，也可使用类似的语法。</p>
 <p>注意 　可在表示切片的方括号内指定第三个值为步长。</p>
 <p><strong>遍历切片</strong></p>
 <p>如果要遍历列表的部分元素，可在for循环中使用切片。下面的示例遍历前三名队员，并打印他们的名字：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">players = [<span class="hljs-string">&#x27;charles&#x27;</span>, <span class="hljs-string">&#x27;martina&#x27;</span>, <span class="hljs-string">&#x27;michael&#x27;</span>, <span class="hljs-string">&#x27;florence&#x27;</span>, <span class="hljs-string">&#x27;eli&#x27;</span>]<br><span class="hljs-keyword">for</span> player <span class="hljs-keyword">in</span> players[:<span class="hljs-number">3</span>]:<br>	<span class="hljs-built_in">print</span>(player.title())<br></code></pre></td></tr></table></figure>
-
 <p><strong>复制列表</strong></p>
 <p>要复制列表，可创建一个包含整个列表的切片，方法是同时省略起 始索引和终止索引（[:] ）。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">my_foods = [<span class="hljs-string">&#x27;pizza&#x27;</span>, <span class="hljs-string">&#x27;falafel&#x27;</span>, <span class="hljs-string">&#x27;carrot cake&#x27;</span>] <br>friend_foods = my_foods[:]<br></code></pre></td></tr></table></figure>
-
-<p>如果直接用&#x3D;赋值，相当于赋的指针，两个指针仍然指向同一个变量。</p>
+<p>如果直接用=赋值，相当于赋的指针，两个指针仍然指向同一个变量。</p>
 
               
             </div>

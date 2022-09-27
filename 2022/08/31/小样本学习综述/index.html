@@ -16,16 +16,16 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="要看的书 FSL综述 逃避自由">
+    <meta name="description" content="FSL综述 小样本学习：在样本很少的情况下，不足以训练一个神经网络，只能提供一些参考信息。 举个例子，下面这张图，人能根据左边这个很小的数据集总结出犰狳和穿山甲的区别，正确地对新的样本进行分类，但是机器不能。 FSL和传统机器学习的区别：FSL的目标不是让机器能够识别训练集里的图片，并泛化到测试集，而是让机器自己学会学习。  FSL的测试样本是以前从未见过的东西，而传统神经网络已经见了几百上千次">
 <meta property="og:type" content="article">
 <meta property="og:title" content="要看的书">
 <meta property="og:url" content="http://example.com/2022/08/31/%E5%B0%8F%E6%A0%B7%E6%9C%AC%E5%AD%A6%E4%B9%A0%E7%BB%BC%E8%BF%B0/index.html">
 <meta property="og:site_name" content="摸鱼之家">
-<meta property="og:description" content="要看的书 FSL综述 逃避自由">
+<meta property="og:description" content="FSL综述 小样本学习：在样本很少的情况下，不足以训练一个神经网络，只能提供一些参考信息。 举个例子，下面这张图，人能根据左边这个很小的数据集总结出犰狳和穿山甲的区别，正确地对新的样本进行分类，但是机器不能。 FSL和传统机器学习的区别：FSL的目标不是让机器能够识别训练集里的图片，并泛化到测试集，而是让机器自己学会学习。  FSL的测试样本是以前从未见过的东西，而传统神经网络已经见了几百上千次">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo14.jpeg">
 <meta property="article:published_time" content="2022-08-31T14:41:07.000Z">
-<meta property="article:modified_time" content="2022-09-19T10:39:09.168Z">
+<meta property="article:modified_time" content="2022-09-27T18:56:14.919Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="book">
 <meta name="twitter:card" content="summary_large_image">
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          13 words
+          7.1k words
         
       </span>
     
@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on 4 days ago
+                    Last updated on a few seconds ago
                   
                 
               </p>
@@ -298,9 +298,160 @@
             <div class="markdown-body">
               
               <hr>
-<p>要看的书</p>
 <p><a class="btn" target="_blank" rel="noopener" href="https://www.cnblogs.com/jiangxinyang/p/12163215.html#:~:text=Task-invariant%E6%98%AF%E5%9C%A8%E4%B8%80%E4%B8%AA%E5%A4%A7%E7%9A%84%E4%B8%94%E5%92%8C%E4%BB%BB%E5%8A%A1%E7%9B%B8%E4%BC%BC%E7%9A%84source,%E6%95%B0%E6%8D%AE%E9%9B%86%E4%B8%8A%E8%AE%AD%E7%BB%83%E4%B8%80%E4%B8%AA%E5%B5%8C%E5%85%A5%E6%A8%A1%E5%9E%8B%EF%BC%8C%E7%84%B6%E5%90%8E%E7%9B%B4%E6%8E%A5%E7%94%A8%E4%BA%8E%E5%BD%93%E5%89%8D%E4%BB%BB%E5%8A%A1%E7%9A%84%E8%AE%AD%E7%BB%83%E9%9B%86%E5%92%8C%E6%B5%8B%E8%AF%95%E9%9B%86%E5%B5%8C%E5%85%A5%E3%80%82" title="title">FSL综述</a></p>
-<p><a class="btn" target="_blank" rel="noopener" href="https://www.jianshu.com/p/8f73d05a93c3" title="title">逃避自由</a></p>
+<h3 id="小样本学习："><a href="#小样本学习：" class="headerlink" title="小样本学习："></a>小样本学习：</h3><p>在样本很少的情况下，不足以训练一个神经网络，只能提供一些参考信息。</p>
+<p>举个例子，下面这张图，人能根据左边这个很小的数据集总结出犰狳和穿山甲的区别，正确地对新的样本进行分类，但是机器不能。<img src="/../img/image-20220925163936847.png" srcset="/img/loading.gif" lazyload alt="image-20220925163936847"></p>
+<h3 id="FSL和传统机器学习的区别："><a href="#FSL和传统机器学习的区别：" class="headerlink" title="FSL和传统机器学习的区别："></a>FSL和传统机器学习的区别：</h3><p>FSL的目标不是让机器能够识别训练集里的图片，并泛化到测试集，而是让机器自己学会学习。</p>
+<ul>
+<li>FSL的测试样本是以前从未见过的东西，而传统神经网络已经见了几百上千次了</li>
+<li>FSL的训练集里没有query sample的类别</li>
+</ul>
+<p><img src="/../img/image-20220925164330392.png" srcset="/img/loading.gif" lazyload alt="image-20220925164330392"></p>
+<p>例如上面这个数据集，FSL的目标并不是让机器学习这些动物图片，并能够识别没见过的哈士奇或者鹦鹉。而是<strong>理解模型的异同，区分不同的事物。</strong>在训练完成后，我们问的问题是：下面这两张图片，是同一种东西吗？这时模型机已经学会了分辨异同，知道这两张图片都是同一种东西，但是如果没有告诉他这是松鼠，他并不知道，也不用知道他们其实是松鼠。</p>
+<p><img src="/../img/image-20220925164750331.png" srcset="/img/loading.gif" lazyload alt="image-20220925164750331"></p>
+<p>Support Set和训练集的区别：训练集是一个很大的，用来训练神经网络的数据集，但是Support Set只能训练提供一些额外信息。</p>
+<p>例如下图，FSL并不知道query是什么，但是在给出Support Set后，FSL开始把query和Support Set里的动物类型进行比对，发现query和Otter最相似，所以把query分类为Otter。</p>
+<p><img src="/../img/image-20220925165147799.png" srcset="/img/loading.gif" lazyload alt="image-20220925165147799"></p>
+<h3 id="元学习Meta-Learning"><a href="#元学习Meta-Learning" class="headerlink" title="元学习Meta Learning"></a>元学习Meta Learning</h3><p>笼统地说，FSL就是元学习。元学习和传统的监督学习不一样，传统学习要求模型去识别训练数据，并能泛化到测试数据。而元学习的目标是让模型学会怎么自己去学习。</p>
+<p><img src="/../img/image-20220925174038715.png" srcset="/img/loading.gif" lazyload alt="image-20220925174038715"></p>
+<p>如上图，小朋友的学习资料只有这堆卡片，如果只靠一张图片就能识别是不是Otter，就叫One-Shot-Learning。</p>
+<h3 id="FSL术语："><a href="#FSL术语：" class="headerlink" title="FSL术语："></a>FSL术语：</h3><p><img src="/../img/image-20220926012333714.png" srcset="/img/loading.gif" lazyload alt="image-20220926012333714"></p>
+<ul>
+<li>K-way：Support Set里有多少个类别，本例中有6个类别</li>
+<li>N-shot：每个类里有多少个样本，本例中有每个类里有1个样本</li>
+</ul>
+<p>因此，这是一个6-way 1-shot的Support Set。</p>
+<p><img src="/../img/image-20220926013140024.png" srcset="/img/loading.gif" lazyload alt="image-20220926013140024"></p>
+<p>如图所示，随着Support Set里的类别增加，FSL分类的准确性会降低，因为在给出一个样本，然后和Support Set里的每一个类进行比较的过程中，1/3的正确率明显要大于1/10。</p>
+<p><img src="/../img/image-20220926013730483.png" srcset="/img/loading.gif" lazyload alt="image-20220926013730483"></p>
+<p>随着每个类的样本数增加，做预测越容易，准确率越高。</p>
+<h3 id="FSL的中心思想："><a href="#FSL的中心思想：" class="headerlink" title="FSL的中心思想："></a>FSL的中心思想：</h3><p>学习一个函数，然后判断Similaritu相似度。把函数记为<script type="math/tex">sim(x,x')</script>，可以比较两张图片$x$和$x’$的相似度，两个图片越相似，输出值越高。</p>
+<p><img src="/../img/image-20220926014110093.png" srcset="/img/loading.gif" lazyload alt="image-20220926014110093"></p>
+<p>这里有三张图片，分别是斗牛犬、斗牛犬和狐狸，最理想的情况是把$x_1 , x_2$作为输入，sim函数输出1，意思是这两张图片是相同的动物，而把$x_1 ,x_3$或者$x_2,x_3$作为输入时，函数输出0，意思是这是两种完全不一样的动物。</p>
+<p>具体实现：从一个很大的数据集上学习一个相似度函数，可以判断两张图的相似度有多高。然后把query和Support Set里的图片逐一计算相似度，返回相似度最高的class为结果。</p>
+<p><img src="/../img/image-20220926014743390.png" srcset="/img/loading.gif" lazyload alt="image-20220926014743390"></p>
+<p>用这种方式，可以做到One-Shot-Learning。</p>
+<h3 id="常用数据集："><a href="#常用数据集：" class="headerlink" title="常用数据集："></a>常用数据集：</h3><ul>
+<li>Omniglot手写字体数据集，50个字母表，每个字母表24个字符，每个字符由20个人手写。</li>
+</ul>
+<p><img src="/../img/image-20220926014932600.png" srcset="/img/loading.gif" lazyload alt="image-20220926014932600"></p>
+<ul>
+<li><p>Mini-ImageNet</p>
+<p><img src="/../img/image-20220926015120240.png" srcset="/img/loading.gif" lazyload alt="image-20220926015120240"></p>
+</li>
+</ul>
+<h3 id="孪生-连体网络Siamese-Network"><a href="#孪生-连体网络Siamese-Network" class="headerlink" title="孪生/连体网络Siamese Network"></a>孪生/连体网络Siamese Network</h3><p>两种训练方法：</p>
+<h4 id="第一种训练方法："><a href="#第一种训练方法：" class="headerlink" title="第一种训练方法："></a>第一种训练方法：</h4><p>每次取两个样本，分别计算它们的相似度。</p>
+<p><img src="/../img/image-20220926015331293.png" srcset="/img/loading.gif" lazyload alt="image-20220926015331293"></p>
+<p>这是一个很大的数据集，我们需要用训练集来构造正样本和负样本，正样本告诉神经网络什么是同一类，负样本告诉神经网络事物之间的区别。</p>
+<p>Positive Samples：每次从训练集中随机抽取一张图片，然后从和这张照片的同一类里抽取另一张图片，并把标签设置为1，意思为相似度满分。 </p>
+<p>Negative Samples：每次从训练集中随机抽取一张图片，然后从和这张照片不同的类里抽取另一张图片，并把标签设置为0，意思是完全不相似。 </p>
+<p><img src="/../img/image-20220926015839134.png" srcset="/img/loading.gif" lazyload alt="image-20220926015839134"></p>
+<p>搭一个神经网络来提取特征，这个神经网络有很多卷积层，和一个平面层，输入是一张图片，输出是提取的特征向量。</p>
+<p><img src="/../img/image-20220926020017283.png" srcset="/img/loading.gif" lazyload alt="image-20220926020017283"></p>
+<p>现在开始训练一个神经网络，刚才已经准备好了训练数据，把两张图片作为输入，输进刚刚搭建好的卷积神经网络f，卷积神经网络输出刚刚提取的特征向量$h_1$，$h_2$。</p>
+<p>因为这两个输入共享了特征提取的部分，所以叫孪生/连体网络。</p>
+<p>然后拿$h_1$减去$h_2$得到一个向量，再对这个这个向量的所有元素求绝对，表示这两个向量的区别，即$z=|h_1-h_2|$，再用一些权连接层处理这个向量$z$，输出一个标量，然后用$Sigmoid$激活函数，得到的输出是一个介于0-1之间的实数，这个输出就可以用来衡量两个图片之间的相似度。</p>
+<p><img src="/../img/image-20220926173317759.png" srcset="/img/loading.gif" lazyload alt="image-20220926173317759"></p>
+<p>在输入两张图片的时候，我们已经准备好了标签，因为这是两张同类的图片，所以标签为1，而我们经过训练得到的函数输出可能不是1，将标签与预测值相减，得到的就是损失函数Loss。</p>
+<p>有了损失函数，就可以用反向传播计算梯度，然后用梯度下降来更新参数。</p>
+<p>模型主要有两个部分：</p>
+<ul>
+<li>一个是CNN卷积神经网络f，用来从图片汲取特征。</li>
+<li>另一部分是权连接层，用来预测相似度。</li>
+</ul>
+<p>训练的过程就是更新这两部分的参数。</p>
+<p><img src="/../img/image-20220926174827528.png" srcset="/img/loading.gif" lazyload alt="image-20220926174827528"></p>
+<p>作反向传播，梯度从Loss函数反向传播到梯度z，就可以更新权连接层的参数来，然后进一步传播到卷积层f，就可以进而更新卷积层的参数，这样就完成了一轮训练。</p>
+<p>做训练的时候，要准备同样数量的正样本和负样本，标签分别设为1和0。</p>
+<p>训练好模型后，就可以用这个模型来做One-Shot-Prediction，注意的是，这里Support Set里的类别都不在训练集里，然后给出Query，让模型在Support Set里进行多选一，这就是FSL的困难之处。</p>
+<p><img src="/../img/image-20220926175455066.png" srcset="/img/loading.gif" lazyload alt="image-20220926175455066"></p>
+<p>如上图，模型选择了小松鼠。</p>
+<h4 id="第二种训练方法："><a href="#第二种训练方法：" class="headerlink" title="第二种训练方法："></a>第二种训练方法：</h4><p>想要使用Triplet Loss，要这样准备训练数据：</p>
+<p><img src="/../img/image-20220926175943492.png" srcset="/img/loading.gif" lazyload alt="image-20220926175943492"></p>
+<p>在给定的数据集里，先随机选择一张图片作为锚点anchor，然后再从这张图片的同一类里随机选择另一种图片作正样本positive，再从别的随机一类里抽一张图片作负样本negative。</p>
+<p>把这三张图片一起输入同一个神经网络f（孪生网络的中心思想就是共用同一个卷积神经网络），分别提取这三个特征向量，然后计算正负样本和锚点在特征空间上的距离，相减后计算其二范数的平方，得到距离。</p>
+<p><img src="/../img/image-20220926180744654.png" srcset="/img/loading.gif" lazyload alt="image-20220926180744654"></p>
+<p>我们希望得到这样一个特征，相同类别的特征向量都聚在一起，不同类别的特征向量都分得很开，因此结果应该符合这样的特征：$d^+$很小，$d^-$很大。</p>
+<p>举个例子，卷积神经网络得出的特征向量映射出的特征图片如图所示。</p>
+<p><img src="/../img/image-20220926181021129.png" srcset="/img/loading.gif" lazyload alt="image-20220926181021129"></p>
+<p>基于我们的期望，我们这样定义损失函数：</p>
+<ul>
+<li>鼓励正样本接近锚点，$d^+$很小。</li>
+<li>鼓励负样本远离锚点，$d^-$很大。</li>
+</ul>
+<p>我们自己指定一个margin，记作$\alpha$，这是一个超参数，需要我们自己来调。</p>
+<p>如果$d^-$比$d^+$大了$\alpha$，我们就认为这一组样本分类是正确的，Loss等于0，如果不满足，就认为这个模型分不开正负样本，那么就会有Loss，把Loss定义为$d^+ +\alpha -d^-$。</p>
+<p>我们希望Loss越小越好，因此定义完整的Loss损失函数为：</p>
+<script type="math/tex; mode=display">
+Loss(x^a,x^+,x^-)=\max{\{0,d^+ +\alpha -d^-\}}</script><p>即使一下，意思是$x^a,x^+,x^-$为输入，定义损失函数为：如果$d^-&gt;d^+ +\alpha $，说明模型可以把正负样本分开，损失函数记为0，如果$d^-&lt;d^+ +\alpha $，说明模型是个废物，差异这么小，根本分不开，损失函数就记为$d^+ +\alpha -d^-$，直到损失函数变为0，能分开二者为止。</p>
+<p><img src="/../img/image-20220926183220869.png" srcset="/img/loading.gif" lazyload alt="image-20220926183220869"></p>
+<p>有了损失函数，就可以求损失函数关于CNN神经网络参数的梯度，然后做梯度下降来更新模型参数。训练好神经网络后，就可以进行OSL。</p>
+<p>如下图，在用做好的CNN提取特征向量后，把Support Set和Query的图片都变成特征向量，然后比较特征向量之间的距离，计算可得，和小松鼠的距离最小，因此这是一只小松鼠。</p>
+<p><img src="/../img/image-20220926183631963.png" srcset="/img/loading.gif" lazyload alt="image-20220926183631963"></p>
+<p>注意：孪生网络虽然很简单，但并不是准确率最高的做法，这几年发表的论文里，基本上都是inflecting，把图片映射成神经网络这种做法，思路和孪生网络还是很像的。</p>
+<h3 id="Pratraining-and-Fine-Tuning"><a href="#Pratraining-and-Fine-Tuning" class="headerlink" title="Pratraining and Fine Tuning"></a>Pratraining and Fine Tuning</h3><h4 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h4><p>这是一种很简单的方法，基本思想是在一个规模很大的数据集上先预训练模型，然后在小规模的Support Set上做fine-tuning，方法虽然简单但是准确率还是挺高的。</p>
+<h5 id="余弦相似度-——-Cosine-Similarity"><a href="#余弦相似度-——-Cosine-Similarity" class="headerlink" title="余弦相似度 —— Cosine Similarity"></a>余弦相似度 —— Cosine Similarity</h5><p>用向量空间中两个向量夹角的余弦值作为衡量两个个体间差异的大小。相比距离度量，余弦相似度更加注重两个向量在方向上的差异，而非距离或长度上。</p>
+<p>对于长度不等1的向量，用下面这个公式来计算Cosine Similarity：</p>
+<p><img src="/../img/image-20220927001733597.png" srcset="/img/loading.gif" lazyload alt="image-20220927001733597" style="zoom: 50%;"></p>
+<p><img src="/../img/image-20220927003427883.png" srcset="/img/loading.gif" lazyload alt="image-20220927003427883"></p>
+<p>如上图中，因为x和w的长度都为1，他们的二范数都为1，所以他们的余弦相似度就是他们的内积。可以这么理解向量相似度，把向量x投影到w这个方向上，这段投影的长度就是Cosine Similarity，投影的长度在-1到+1之间。</p>
+<h5 id="Softmax函数"><a href="#Softmax函数" class="headerlink" title="Softmax函数"></a>Softmax函数</h5><p>二分类问题必须用到的就是逻辑回归算法，它负责将线性模型输出的实数域映射到[0, 1]这个表示概率分布的有效实数空间。</p>
+<p>例如使用逻辑回归算法预测患者是否有恶性肿瘤的二分类问题中，输出层可以只设置一个节点，表示良性肿瘤发生的概率为 $P(A | x)$ ，其中x为患者的一些特征指标，作为输入。而双节点输出的二分类就相当于多了一个$P(\overline{A}|x)$表示的恶性肿瘤发生的概率，并满足约束各个输出节点的输出值的和为1。</p>
+<p>有没有将各个输出节点的输出值范围映射到[0, 1]，并且约束各个输出节点的输出值的和为1的函数呢？这个函数就是Softmax函数。</p>
+<p>给出Softmax函数的定义（以第i个节点输出为例）：</p>
+<script type="math/tex; mode=display">
+Softmax(z_i)=\frac{e^{z_i}}{∑_{c=1}^{C}e^{z_c}}</script><p>zi 为第i个节点的输出值，C为输出节点的个数，即分类的类别个数。通过Softmax函数就可以将多分类的输出值转换为范围在[0, 1]内的和为1的概率分布。</p>
+<p><img src="/../img/image-20220927005430747.png" srcset="/img/loading.gif" lazyload alt="image-20220927005430747"></p>
+<p>那么它是怎么把一个向量映射成一个概率分布的呢？</p>
+<p>Softmax的输入是$\phi$，它是任意的k维向量，每一个方向都是输入在这个类上的相似度，把$\phi$的每一个元素做指数变换，得到k个大于0的数，然后对结果做上面公式所示的归一化，让得到的k个数相加等于1，把得到的k个数记做向量p，这个向量p就是softmax函数的输出，因此，它们相加是肯定等于1的，所以，p也是一个概率分布，。</p>
+<p>softmax函数常用于分类器的输出层，如果有k个类别，那么softmax的输出就是k个概率值，每个概率值表示对一个类别的confidence，这里举个例子：</p>
+<p><img src="/../img/image-20220927011127183.png" srcset="/img/loading.gif" lazyload alt="image-20220927011127183"></p>
+<p>左边是输入，右边是输出。不同于max函数把最大值变1，其余值变0的操作，softmax()的作用是让最大值变大，其余值变小，但是最大值也没有大到1，这是指数化的作用。</p>
+<p><img src="/../img/image-20220927011517529.png" srcset="/img/loading.gif" lazyload alt="image-20220927011517529"></p>
+<p>softmax分类器是由一个权连接层加一个softmax函数组成的，分类器输入是向量x，输出是向量p，假如类别数量等于k，那么向量p就是k维的。</p>
+<p>矩阵W和向量b是这一层的参数，可以从训练数据中学习，所以W的每一行对应一个类别，每一列对应一个特征，输入x显示的是这个图片的不同特征，经过$Wx+b$变换后得到一个k维向量，对其使用Softmax激活函数后，得到的就是一个k维向量p。</p>
+<h5 id="cross-Entropy交叉熵"><a href="#cross-Entropy交叉熵" class="headerlink" title="cross Entropy交叉熵"></a>cross Entropy交叉熵</h5><p>香农提出的熵的定义：无损编码事件信息的最小平均编码长度。</p>
+<p><img src="/../img/v2-8de58ebed3434892762f5809c1320462_1440w.jpg" srcset="/img/loading.gif" lazyload alt="img" style="zoom:50%;"></p>
+<p>举个例子，下图传消息时，明显方式3编码长度最小，且是平均意义上的最小。方式3胜出的原因在于：对高可能性事件(Fine,Cloudy)用短编码，对低可能性事件(Rainy,Snow)用长编码。<img src="/../img/v2-73be23174f9ab59fe8ea5b2aa3e38f00_1440w.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h6 id="如何直接计算熵？"><a href="#如何直接计算熵？" class="headerlink" title="如何直接计算熵？"></a>如何直接计算熵？</h6><p>再举个例子，假设一个信息事件有8种可能的状态，且各状态等可能性，即每一种可能性都是12.5%=1/8。我们需要多少位来编码8个值呢？</p>
+<p>1位可以编码2个值(0或1)，2位可以编码2×2=4个值(00,01,10,11)，则8个值需要3位，2×2×2=8(000,001,010,011,100,101,110,111)。</p>
+<p>归纳来看，对于具有N种等可能性状态的信息，每种状态的可能性P = 1/N，编码该信息所需的最小编码长度为：</p>
+<script type="math/tex; mode=display">
+log_2 N=-log_2 P</script><p>那么计算平均最小长度，也就是熵的公式为：</p>
+<script type="math/tex; mode=display">
+Entropy=-\sum_i P(i)log_2 P(i)</script><p>其中P(i)是第i个信息状态的可能性。</p>
+<p>同理，对于连续变量 x 的概率分布P(x)，熵的公式可以表示为：</p>
+<script type="math/tex; mode=display">
+Entropy=-\int P(i)log_2 P(i)dx</script><p>因此，只要我们知道了任何事件的概率分布，我们就可以计算它的熵。但如果在不知道的情况下，我们需要对它做一个估计，这就引出了交叉熵。</p>
+<h6 id="熵的估计"><a href="#熵的估计" class="headerlink" title="熵的估计"></a>熵的估计</h6><h4 id="FSL思想："><a href="#FSL思想：" class="headerlink" title="FSL思想："></a>FSL思想：</h4><p>大多数FSL学习都基于类似的想法，先用一个大数据集来预训练一个神经网络，用来从图片中提取特征，然后用这个神经网络把query和Support Set中的图片都映射成特征向量，再比较特征空间上的相似度，比如可以计算两两之间的consine similarity，最后选择相似度最高的，作为对Query分类的结果。</p>
+<p>预训练有很多种方法，包括传统的监督学习，训练好之后把权连接层都去掉，也可以用孪生网络，都可以。但这个神经网络的结构和训练方法都会对最终结果产生影响。</p>
+<h4 id="FSL常用分类方法："><a href="#FSL常用分类方法：" class="headerlink" title="FSL常用分类方法："></a>FSL常用分类方法：</h4><p><img src="/../img/image-20220927013600678.png" srcset="/img/loading.gif" lazyload alt="image-20220927013600678"></p>
+<p>这是一个共三类，每类两个的Support set，对这六张图片分别进行特征提取。然后对相同类提取出的特征向量取均值，就作为小松鼠或者小狗狗这一总类的对照向量。然后对这个向量进行归一化（方法各异，可以采用不同的激活函数，怎么都可以），分别得到$\mu_1,\mu_2,\mu_3$，他们的二范数都等于1，这就是对这三个类别的表征。做分类的时候，就拿query的特征向量跟这三个向量分别作对比（可以采用cosine similarity，也是怎么都可以）。</p>
+<p><img src="/../img/image-20220927014332395.png" srcset="/img/loading.gif" lazyload alt="image-20220927014332395"></p>
+<p>把query特征提取再归一化后，得到一个向量q，然后再对Support set里的三个类做相同操作，把得到的三个$\mu$向量堆叠起来，作为矩阵M的三个行向量。把q乘到矩阵M上，然后再做softmax变换，得到一个概率分布的向量p，每个元素表示对该类别的confidence，这时候做内积就等于在求cosine similarity。</p>
+<p><img src="/../img/image-20220927014926040.png" srcset="/img/loading.gif" lazyload alt="image-20220927014926040"></p>
+<p>很明显是$\mu_1$，也就是模型认为结果是第一类——小松鼠。</p>
+<h4 id="Fine-Tuning"><a href="#Fine-Tuning" class="headerlink" title="Fine-Tuning"></a>Fine-Tuning</h4><p>一般训练完神经网络后就要直接开始预测了，这时候我们在这两部分之间插入fine-tuning，，用support set进一步做训练，可以更好的提高准确率。</p>
+<p>刚刚我们用的是神经网络在训练集上预训练好的W和b，在比较Support set和query时直接固定这些参数，但其实我们可以在support set上学习W和b，这就叫做Fine tuning。</p>
+<p><img src="/../img/image-20220928014751753.png" srcset="/img/loading.gif" lazyload alt="image-20220928014751753"></p>
+<p>学习过程：用交叉熵衡量真实标签(one-hot向量形式)与预测标签的差别有多大，得到一个损失函数，Support Set里有几个或者几十个这样的样本，每一个样本都对应一个交叉熵损失函数，把这些函数都加起来作为目标函数，对目标损失函数做最小化，让预测标签尽量接近真实标签。</p>
+<p>这个最小化是相对于分类器参数W和b求的，希望学习W和b。当然也可以让梯度反向传播会卷积神经网络，更新神经网络参数，让提取的特征向量更有效。</p>
+<p>但是由于Support Set通常很小，所以最好加一个regularization来防止过拟合。有多种regularization可供选择，其中entropy regularization较为合理。</p>
+<h5 id="技巧一：初始化参数："><a href="#技巧一：初始化参数：" class="headerlink" title="技巧一：初始化参数："></a>技巧一：初始化参数：</h5><p>做Fine-Tuning的时候，我们想要从Support Set中学习这样一个Softmax分类器：矩阵W和向量b是分类器的参数。但由于Support Set中的样本数量太少了，如果随机初始化参数，最终结果并不理想。</p>
+<p>因此，可以把W初始化为前面得出的矩阵M，把b初始化为全零向量。</p>
+<p><img src="/../img/image-20220928015328051.png" srcset="/img/loading.gif" lazyload alt="image-20220928015328051"></p>
+<p>在矩阵M中，有几个类就有几行，每一行代表的是该类的均值向量，之前我们用的就是固定M，并把b设为0向量进行softmax的方法，这样做的情况下，哪怕不做训练，用这样固定的设置就已经有了很好的效果。</p>
+<p>所以这是一个很合理的初始化方法。</p>
+<h5 id="技巧二：防止过拟合"><a href="#技巧二：防止过拟合" class="headerlink" title="技巧二：防止过拟合"></a>技巧二：防止过拟合</h5><p><img src="/../img/image-20220928022725476.png" srcset="/img/loading.gif" lazyload alt="image-20220928022725476"></p>
+<p>把query看作输入x，经过特征提取后得到f(x)，把f(x)输入softmax分类器，得到预测p向量，p是个概率分布，每一个元素都是一个概率值，可以用Entropy来衡量概率分布p的信息量，如第三行公式所示。这是用一个样本x求出的Entropy，通常会有多个query图片，对于每个query，求出一个Entropy，然后对其取平均，所有Entropy的均值就是Entropy regularization。</p>
+<p>我们希望Entropy regularization越小越好。</p>
+<p><img src="/../img/image-20220928023403969.png" srcset="/img/loading.gif" lazyload alt="image-20220928023403969"></p>
+<p>假设分类问题有三个类别，分类器输出每个类别的概率值，左图所示的情况三个概率值差不多，说明分类器判别不出query图片属于哪一类，我们不喜欢这种结果。右图分类器则认为query属于第二类，而且非常有信心，这就是我们想要的结果。</p>
+<h5 id="技巧三：结合consine-Similarity和softmax分类器"><a href="#技巧三：结合consine-Similarity和softmax分类器" class="headerlink" title="技巧三：结合consine Similarity和softmax分类器"></a>技巧三：结合consine Similarity和softmax分类器</h5><p>根据最新论文表明，这种方法可以显著提高分类准确率。</p>
+<p><img src="/../img/image-20220928024230677.png" srcset="/img/loading.gif" lazyload alt="image-20220928024230677"></p>
+<p>本来是直接向量相乘就softmax的，现在先把$w^Tq$作归一化处理，然后再和b向量相加。</p>
+<p>根据相关论文，这个很小的改动就可以大幅度提高准确率。</p>
 
               
             </div>
