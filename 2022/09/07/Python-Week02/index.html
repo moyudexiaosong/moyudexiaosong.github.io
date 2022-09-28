@@ -16,12 +16,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1. 元组不可变的列表被称为元组  元组使用圆括号而非中括号来标识，可使用索引来访问其元素。 例如，如果有一个大小不应改变的矩形，可将其长度和宽度存储在 一个元组中，从而确保它们是不能修改的： 123dimens&#x3D;(200,50)print(dimens[0])print(dimens[1]) 修改元素的值，会触发错误消息。 1TypeError: &amp;#x27;tuple&amp;#x27; objec">
+    <meta name="description" content="1. 元组不可变的列表被称为元组  元组使用圆括号而非中括号来标识，可使用索引来访问其元素。 例如，如果有一个大小不应改变的矩形，可将其长度和宽度存储在 一个元组中，从而确保它们是不能修改的： 123dimens&#x3D;(200,50)print(dimens[0])print(dimens[1])  修改元素的值，会触发错误消息。 1TypeError: &amp;#x27;tuple&amp;#x27; obje">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python Day02">
 <meta property="og:url" content="http://example.com/2022/09/07/Python-Week02/index.html">
 <meta property="og:site_name" content="摸鱼之家">
-<meta property="og:description" content="1. 元组不可变的列表被称为元组  元组使用圆括号而非中括号来标识，可使用索引来访问其元素。 例如，如果有一个大小不应改变的矩形，可将其长度和宽度存储在 一个元组中，从而确保它们是不能修改的： 123dimens&#x3D;(200,50)print(dimens[0])print(dimens[1]) 修改元素的值，会触发错误消息。 1TypeError: &amp;#x27;tuple&amp;#x27; objec">
+<meta property="og:description" content="1. 元组不可变的列表被称为元组  元组使用圆括号而非中括号来标识，可使用索引来访问其元素。 例如，如果有一个大小不应改变的矩形，可将其长度和宽度存储在 一个元组中，从而确保它们是不能修改的： 123dimens&#x3D;(200,50)print(dimens[0])print(dimens[1])  修改元素的值，会触发错误消息。 1TypeError: &amp;#x27;tuple&amp;#x27; obje">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo30.jpeg">
 <meta property="article:published_time" content="2022-09-07T14:22:42.000Z">
@@ -289,7 +289,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on 19 days ago
+                    Last updated on 20 days ago
                   
                 
               </p>
@@ -301,14 +301,19 @@
 <p>元组使用圆括号而非中括号来标识，可使用索引来访问其元素。</p>
 <p>例如，如果有一个大小不应改变的矩形，可将其长度和宽度存储在 一个元组中，从而确保它们是不能修改的：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">dimens=(<span class="hljs-number">200</span>,<span class="hljs-number">50</span>)<br><span class="hljs-built_in">print</span>(dimens[<span class="hljs-number">0</span>])<br><span class="hljs-built_in">print</span>(dimens[<span class="hljs-number">1</span>])<br></code></pre></td></tr></table></figure>
+
 <p>修改元素的值，会触发错误消息。</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-built_in">TypeError</span>: <span class="hljs-string">&#x27;tuple&#x27;</span> <span class="hljs-keyword">object</span> does not support item assignment<br></code></pre></td></tr></table></figure>
+
 <p>注意：严格地说，元组是由逗号标识的，如果你要定义只包含一个元素的元组，必须在这个元素后面加上逗号：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">my_t = (<span class="hljs-number">3</span>,)<br></code></pre></td></tr></table></figure>
+
 <p>遍历元组和列表一样：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">dimens=(<span class="hljs-number">200</span>,<span class="hljs-number">50</span>)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> dimens:<br>	<span class="hljs-built_in">print</span>(i)<br></code></pre></td></tr></table></figure>
+
 <p>虽然不能修改元组的元素，但可以重新定义整个元组：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">dimens=(<span class="hljs-number">200</span>,<span class="hljs-number">50</span>)<br>dimens=(<span class="hljs-number">300</span>,<span class="hljs-number">20</span>)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> dimens:<br>	<span class="hljs-built_in">print</span>(i)<br></code></pre></td></tr></table></figure>
+
 <p>相比于列表，元组是更简单的数据结构。如果需要存储的一组值在程序的整个生命周期内都不变，可以使用元组。</p>
 <h3 id="2-if-语句"><a href="#2-if-语句" class="headerlink" title="2. if 语句"></a>2. if 语句</h3><p><strong>区分大小写：</strong></p>
 <p>在Python中检查是否相等时区分大小写，两个大小写不同的值被视为不相等。</p>
@@ -316,6 +321,7 @@
 <p><strong>数值比较：</strong></p>
 <p>条件语句中可包含各种数学比较，如小于、小于等于、大于、大于等于、等于、不等于：</p>
 <figure class="highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs node-repl"><span class="hljs-meta prompt_">&gt;</span> <span class="language-javascript">&gt;= &lt; &lt;= == !=</span><br></code></pre></td></tr></table></figure>
+
 <p><strong>检查多个条件：</strong></p>
 <p>a. 使用and 检查多个条件</p>
 <p>b. 使用or检查多个条件</p>
@@ -325,6 +331,7 @@
 <p><strong>布尔表达式</strong> </p>
 <p>布尔值通常用于记录条件，如游戏是否正在运行，或者用户是否可以编辑网站的特定内容：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">game_active = <span class="hljs-literal">True</span> <br><br>can_edit = <span class="hljs-literal">False</span><br></code></pre></td></tr></table></figure>
+
 <p>在跟踪程序状态或程序中重要的条件方面，布尔值提供了一种高效的方式。</p>
 <p><strong>if语句结构：</strong></p>
 <ul>
@@ -335,113 +342,147 @@
 <p><strong>验证列表是否为空：</strong></p>
 <p>Python将在列表至少包含一个元素时返回True ， 并在列表为空时返回False 。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">lists=[]<br><span class="hljs-keyword">if</span> lists:<br>	<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;yes&#x27;</span>)<br><span class="hljs-keyword">else</span>:<br>	<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;no&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
 <h3 id="3-字典"><a href="#3-字典" class="headerlink" title="3. 字典"></a>3. 字典</h3><p>字典类似于列表，但是是是一系列键值对，让你能够将不同的信息关联起来，用中括号表示。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">alien=&#123;<span class="hljs-string">&#x27;color&#x27;</span>:<span class="hljs-string">&#x27;green&#x27;</span>,<span class="hljs-string">&#x27;points&#x27;</span>:<span class="hljs-number">5</span>&#125;<br><span class="hljs-built_in">print</span>(alien[<span class="hljs-string">&#x27;color&#x27;</span>])<br><span class="hljs-built_in">print</span>(alien[<span class="hljs-string">&#x27;points&#x27;</span>])<br></code></pre></td></tr></table></figure>
+
 <p>输出</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">green</span><br><span class="hljs-number">5</span><br></code></pre></td></tr></table></figure>
+
 <p>每个键都与一个值相关联， 你可使用键来访问相关联的值。与键相关联的值可以是数、字符串、列表乃至字典。事实上，可将任何Python对象用作字典中的值。</p>
 <p><strong>添加键值对：</strong></p>
 <p>字典是一种动态结构，可随时在其中添加键值对。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">alien=&#123;<span class="hljs-string">&#x27;color&#x27;</span>:<span class="hljs-string">&#x27;green&#x27;</span>,<span class="hljs-string">&#x27;points&#x27;</span>:<span class="hljs-number">5</span>&#125;<br><span class="hljs-built_in">print</span>(alien)<br>alien[<span class="hljs-string">&#x27;xpos&#x27;</span>]=<span class="hljs-number">100</span><br>alien[<span class="hljs-string">&#x27;ypos&#x27;</span>]=<span class="hljs-number">50</span><br><span class="hljs-built_in">print</span>(alien)<br></code></pre></td></tr></table></figure>
+
 <p>注意：字典中元素的排列顺序与定义时相同</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python">alien_0 = &#123;<span class="hljs-string">&#x27;x_position&#x27;</span>: <span class="hljs-number">0</span>, <span class="hljs-string">&#x27;y_position&#x27;</span>: <span class="hljs-number">25</span>, <span class="hljs-string">&#x27;speed&#x27;</span>: <span class="hljs-string">&#x27;medium&#x27;</span>&#125; <br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Original position: <span class="hljs-subst">&#123;alien_0[<span class="hljs-string">&#x27;x_position&#x27;</span>]&#125;</span>&quot;</span>)<br><span class="hljs-keyword">if</span> alien_0[<span class="hljs-string">&#x27;speed&#x27;</span>]==<span class="hljs-string">&#x27;slow&#x27;</span>:<br>	x_inc=<span class="hljs-number">1</span><br><span class="hljs-keyword">elif</span> alien_0[<span class="hljs-string">&#x27;speed&#x27;</span>]==<span class="hljs-string">&#x27;medium&#x27;</span>:<br>	x_inc=<span class="hljs-number">2</span><br><span class="hljs-keyword">else</span>:<br>	x_inc=<span class="hljs-number">3</span><br>alien_0[<span class="hljs-string">&#x27;x_position&#x27;</span>]+=x_inc<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;New position:<span class="hljs-subst">&#123;alien_0[<span class="hljs-string">&#x27;x_position&#x27;</span>]&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+
 <p><strong>删除键值对</strong></p>
 <p>使用del 语句，必须指定字典名和要删除的键。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">alien_0 = &#123;<span class="hljs-string">&#x27;x_position&#x27;</span>: <span class="hljs-number">0</span>, <span class="hljs-string">&#x27;y_position&#x27;</span>: <span class="hljs-number">25</span>, <span class="hljs-string">&#x27;speed&#x27;</span>: <span class="hljs-string">&#x27;medium&#x27;</span>&#125; <br><span class="hljs-keyword">del</span> alien_0[<span class="hljs-string">&#x27;speed&#x27;</span>]<br><span class="hljs-built_in">print</span>(alien_0)<br></code></pre></td></tr></table></figure>
+
 <p>注意 　删除的键值对会永远消失。</p>
 <p><strong>使用get() 来访问值</strong> </p>
 <p>用键搜索时，可能会引发问题：如果指定的键不存在就会出错。</p>
 <p>但就字典而言，可使用方法get() 在指定的键不存在时返回一个默认值，从而避免这样的错误。</p>
 <p>方法get() 的第一个参数用于指定键；第二个参数指定键不存在时要返回的值：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">alien_0 = &#123;<span class="hljs-string">&#x27;x_position&#x27;</span>: <span class="hljs-number">0</span>, <span class="hljs-string">&#x27;y_position&#x27;</span>: <span class="hljs-number">25</span>, <span class="hljs-string">&#x27;speed&#x27;</span>: <span class="hljs-string">&#x27;medium&#x27;</span>&#125; <br>msg=alien_0.get(<span class="hljs-string">&#x27;dgg&#x27;</span>,<span class="hljs-string">&#x27;no such value&#x27;</span>)<br><span class="hljs-built_in">print</span>(msg)<br></code></pre></td></tr></table></figure>
+
 <p>注意：调用get() 时，如果没有指定第二个参数，Python将返回值None 。</p>
 <p><strong>遍历字典</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">alien_0 = &#123;<span class="hljs-string">&#x27;x_position&#x27;</span>: <span class="hljs-number">0</span>, <span class="hljs-string">&#x27;y_position&#x27;</span>: <span class="hljs-number">25</span>, <span class="hljs-string">&#x27;speed&#x27;</span>: <span class="hljs-string">&#x27;medium&#x27;</span>&#125; <br><span class="hljs-keyword">for</span> i,j <span class="hljs-keyword">in</span> alien_0.items():<br>	<span class="hljs-built_in">print</span>(i)<br>	<span class="hljs-built_in">print</span>(j)<br></code></pre></td></tr></table></figure>
+
 <p><strong>遍历字典中的所有键</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">alien_0 = &#123;<span class="hljs-string">&#x27;x_position&#x27;</span>: <span class="hljs-number">0</span>, <span class="hljs-string">&#x27;y_position&#x27;</span>: <span class="hljs-number">25</span>, <span class="hljs-string">&#x27;speed&#x27;</span>: <span class="hljs-string">&#x27;medium&#x27;</span>&#125; <br><span class="hljs-built_in">print</span>(alien_0.keys())<br><span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> alien_0.keys():<br>	<span class="hljs-built_in">print</span>(x)<br></code></pre></td></tr></table></figure>
+
 <p>Keys()返回一个列表，因此可以用<code>sort()</code>等方法进行排序。</p>
 <p><strong>遍历字典中的所有值</strong></p>
 <p>方法values() 可以返回一 个值列表，不包含任何键。这种做法提取字典中所有的值，而没有考虑是否重复。为剔除重复项，可使用集合<code>set()</code>，集合中的每个元素都必须是独一无二的：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">favorite_languages = &#123; <span class="hljs-string">&#x27;jen&#x27;</span>: <span class="hljs-string">&#x27;python&#x27;</span>, <span class="hljs-string">&#x27;sarah&#x27;</span>: <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;edward&#x27;</span>: <span class="hljs-string">&#x27;ruby&#x27;</span>, <span class="hljs-string">&#x27;phil&#x27;</span>: <span class="hljs-string">&#x27;python&#x27;</span>, <span class="hljs-string">&#x27;sdf&#x27;</span>: <span class="hljs-string">&#x27;python&#x27;</span>,&#125;<br><span class="hljs-keyword">for</span> lang <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span>(favorite_languages.values()):<br>	<span class="hljs-built_in">print</span>(lang)<br></code></pre></td></tr></table></figure>
+
 <p>集合和字典很容易混淆，因为它们都是用一对花括号定义的。 当花括号内没有键值对时，定义的很可能是集合。不同于列表 和字典，集合不会以特定的顺序存储元素。</p>
 <p><strong>在列表中存储字典</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">alien_0 = &#123;<span class="hljs-string">&#x27;color&#x27;</span>: <span class="hljs-string">&#x27;green&#x27;</span>, <span class="hljs-string">&#x27;points&#x27;</span>: <span class="hljs-number">5</span>&#125; <br>alien_1 = &#123;<span class="hljs-string">&#x27;color&#x27;</span>: <span class="hljs-string">&#x27;yellow&#x27;</span>, <span class="hljs-string">&#x27;points&#x27;</span>: <span class="hljs-number">10</span>&#125; <br>alien_2 = &#123;<span class="hljs-string">&#x27;color&#x27;</span>: <span class="hljs-string">&#x27;red&#x27;</span>, <span class="hljs-string">&#x27;points&#x27;</span>: <span class="hljs-number">15</span>&#125;<br>aliens = [alien_0, alien_1, alien_2]<br><span class="hljs-keyword">for</span> alien <span class="hljs-keyword">in</span> aliens: <br>  <span class="hljs-built_in">print</span>(alien)<br></code></pre></td></tr></table></figure>
+
 <p><strong>在字典中存储列表</strong></p>
 <p>每当需要在字典中将一个键关联到多个值时，都可以在字典中嵌套 一个列表。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python">favorite_languages = &#123;<br><span class="hljs-string">&#x27;jen&#x27;</span>: [<span class="hljs-string">&#x27;python&#x27;</span>, <span class="hljs-string">&#x27;ruby&#x27;</span>], <br><span class="hljs-string">&#x27;sarah&#x27;</span>: [<span class="hljs-string">&#x27;c&#x27;</span>],<br><span class="hljs-string">&#x27;edward&#x27;</span>: [<span class="hljs-string">&#x27;ruby&#x27;</span>, <span class="hljs-string">&#x27;go&#x27;</span>], <br><span class="hljs-string">&#x27;phil&#x27;</span>: [<span class="hljs-string">&#x27;python&#x27;</span>, <span class="hljs-string">&#x27;haskell&#x27;</span>], &#125;<br><span class="hljs-keyword">for</span> name, languages <span class="hljs-keyword">in</span> favorite_languages.items():<br>	<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;\n<span class="hljs-subst">&#123;name.title()&#125;</span>&#x27;s favorite languages are:&quot;</span>) <br>	<span class="hljs-keyword">for</span> language <span class="hljs-keyword">in</span> languages: <br>		<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;\t<span class="hljs-subst">&#123;language.title()&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+
 <p>注意 　列表和字典的嵌套层级不应太多。如果嵌套层级比前 面的示例多得多，很可能有更简单的解决方案。</p>
 <p><strong>在字典中存储字典</strong></p>
 <p>可在字典中嵌套字典，但这样做时，代码可能很快复杂起来。</p>
 <p>最好储存的每项字典都具有相同的结构。虽然Python并没 有这样的要求，但这使得嵌套的字典处理起来更容易。倘若表示每个字典都包含不同的键，for 循环内部的代码将更复杂。</p>
 <h3 id="3-input和while循环"><a href="#3-input和while循环" class="headerlink" title="3. input和while循环"></a>3. input和while循环</h3><p><strong><code>input()</code>工作原理</strong></p>
-<p>函数<code>input()</code>让程序暂停运行，等待用户输入一些文本。获取用户输入后，Python将其赋给一个变量，以方便后面使用。</p>
-<p>函数<code>input()</code>的参数为要向用户显示的提示 （prompt） 或说明，让用户知道该如何做。</p>
+<p>函数<code>input() </code>让程序暂停运行，等待用户输入一些文本。获取用户输入后，Python将其赋给一个变量，以方便后面使用。</p>
+<p>函数<code>input() </code>的参数为要向用户显示的提示 （prompt） 或说明，让用户知道该如何做。</p>
 <p>注意：Sublime Text等众多编辑器不能运行用户输入程序，必须从终端运行它们。</p>
 <p><strong>将用户输入转化为数值<code>int()</code></strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">msg=<span class="hljs-built_in">input</span>(<span class="hljs-string">&#x27;plz give a num:\t&#x27;</span>)<br>num=<span class="hljs-built_in">int</span>(msg)<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(num))<br><span class="hljs-keyword">if</span> num&gt;=<span class="hljs-number">10</span>:<br>	<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;You are big&#x27;</span>)<br><span class="hljs-keyword">else</span>:<br>	<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;You are small&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
 <p><strong>while循环</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">num=<span class="hljs-number">0</span><br><span class="hljs-keyword">while</span> num&lt;=<span class="hljs-number">5</span>:<br>	<span class="hljs-built_in">print</span>(num)<br>	num+=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
 <p>while 循环运行，直到指定的条件<strong>不满足</strong>为止</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">prompt = <span class="hljs-string">&quot;\nTell me something, and I will repeat it back to you:&quot;</span><br>prompt += <span class="hljs-string">&quot;\nEnter &#x27;quit&#x27; to end the program. &quot;</span> <br>message = <span class="hljs-string">&quot;&quot;</span> <br><span class="hljs-keyword">while</span> message != <span class="hljs-string">&#x27;quit&#x27;</span>:<br>	message = <span class="hljs-built_in">input</span>(prompt)<br>	<span class="hljs-built_in">print</span>(message)<br></code></pre></td></tr></table></figure>
+
 <p><strong>使用标志作为条件</strong></p>
 <p>在要求很多条件都满足的程序中，在一条while 语句中检查所有这些条件，将既复杂又困难。</p>
 <p>因此可定义一个变量，用于判断整个程序是否处于活动状态。这个变量称为标志 （flag）。这样，在while 语句中就只需检查一个条件，从而让程序更整洁。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python">prompt = <span class="hljs-string">&quot;\nTell me something, and I will repeat it back to you:&quot;</span><br>prompt += <span class="hljs-string">&quot;\nEnter &#x27;quit&#x27; to end the program. &quot;</span> <br>active=<span class="hljs-literal">True</span><br><span class="hljs-keyword">while</span> active:<br>	message = <span class="hljs-built_in">input</span>(prompt)<br>	<span class="hljs-keyword">if</span> message==<span class="hljs-string">&#x27;quit&#x27;</span>:<br>		active=<span class="hljs-literal">False</span><br>	<span class="hljs-keyword">else</span>:<br>		<span class="hljs-built_in">print</span>(message)<br></code></pre></td></tr></table></figure>
+
 <p><strong>使用while 循环处理列表和字典</strong></p>
 <p>for 循环是一种遍历列表的有效方式，但不应在for 循环中修改列表，否则将导致Python难以跟踪其中的元素。要在遍历列表的同时对其进行修改，可使用while 循环。通过将while 循环同列表和字典结合起来使用，可收集、存储并组织大量输入，供以后查看和显示。</p>
 <p>(1) 列表间通过while移动元素</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python">unconfirmed_users = [<span class="hljs-string">&#x27;alice&#x27;</span>, <span class="hljs-string">&#x27;brian&#x27;</span>, <span class="hljs-string">&#x27;candace&#x27;</span>] <br>confirmed_users = []	<br><span class="hljs-keyword">while</span> unconfirmed_users:<br>	cur_user=unconfirmed_users.pop()<br>	<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Verifying user:<span class="hljs-subst">&#123;cur_user&#125;</span>&quot;</span>)<br>	confirmed_users.append(cur_user)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\nThe following users have been confirmed:&quot;</span>)<br><span class="hljs-keyword">for</span> user <span class="hljs-keyword">in</span> confirmed_users:<br>	<span class="hljs-built_in">print</span>(user)<br></code></pre></td></tr></table></figure>
+
 <p>(2) 删除特定值的所有列表元素</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python">pets = [<span class="hljs-string">&#x27;dog&#x27;</span>, <span class="hljs-string">&#x27;cat&#x27;</span>, <span class="hljs-string">&#x27;dog&#x27;</span>, <span class="hljs-string">&#x27;goldfish&#x27;</span>, <span class="hljs-string">&#x27;cat&#x27;</span>, <span class="hljs-string">&#x27;rabbit&#x27;</span>, <span class="hljs-string">&#x27;cat&#x27;</span>]<br><span class="hljs-built_in">print</span>(pets)<br><span class="hljs-keyword">while</span> <span class="hljs-string">&#x27;cat&#x27;</span> <span class="hljs-keyword">in</span> pets:<br>	pets.remove(<span class="hljs-string">&#x27;cat&#x27;</span>)<br><span class="hljs-built_in">print</span>(pets)<br></code></pre></td></tr></table></figure>
+
 <p>(3) 使用用户输入来填充字典</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python">responses=&#123;&#125;<br>active=<span class="hljs-literal">True</span><br><span class="hljs-keyword">while</span> active:<br>	name=<span class="hljs-built_in">input</span>(<span class="hljs-string">&#x27;what is your name?&#x27;</span>)<br>	response=<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;Which mountain would you like to climb someday?&quot;</span>)<br>	responses[name]=response<br>	repeate=<span class="hljs-built_in">input</span>(<span class="hljs-string">&#x27;Continue?(Y/N)&#x27;</span>)<br>	<span class="hljs-keyword">if</span> repeate==<span class="hljs-string">&#x27;N&#x27;</span>:<br>		active=<span class="hljs-literal">False</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;------result------&#x27;</span>)<br><span class="hljs-keyword">for</span> name,response <span class="hljs-keyword">in</span> responses.items():<br>	<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;<span class="hljs-subst">&#123;name&#125;</span> would like to climb <span class="hljs-subst">&#123;response&#125;</span>.&quot;</span>)<br></code></pre></td></tr></table></figure>
+
 <h3 id="4-函数"><a href="#4-函数" class="headerlink" title="4. 函数"></a>4. 函数</h3><p><strong>定义函数</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">greet_user</span>():<br>	<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Hello&#x27;</span>)<br>greet_user()<br></code></pre></td></tr></table></figure>
+
 <p><strong>含参函数</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">greet_user</span>(<span class="hljs-params">name</span>):<br>	<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;hello,<span class="hljs-subst">&#123;name&#125;</span>&quot;</span>)<br>greet_user(<span class="hljs-string">&#x27;xmm&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
 <p><strong>位置实参</strong></p>
 <p>调用函数时，Python必须将函数调用中的每个实参都关联到函数定义中的一个形参。为此，最简单的关联方式是基于实参的顺序。这种关联方式称为位置实参 。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">describe_pet</span>(<span class="hljs-params">animal_type, pet_name</span>):<br>	<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;\nI have a <span class="hljs-subst">&#123;animal_type&#125;</span>.&quot;</span>) <br>	<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;My <span class="hljs-subst">&#123;animal_type&#125;</span>&#x27;s name is <span class="hljs-subst">&#123;pet_name.title()&#125;</span>.&quot;</span>)<br>describe_pet(<span class="hljs-string">&#x27;hamster&#x27;</span>, <span class="hljs-string">&#x27;harry&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
 <p>位置实参的顺序很重要，如果实参的顺序不正确，结果可能出乎意料。</p>
 <p><strong>关键字实参</strong></p>
 <p>关键字实参让你无须考虑函数调用 中的实参顺序，还清楚地指出了函数调用中各个值的用途</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">describe_pet</span>(<span class="hljs-params">animal_type, pet_name</span>):<br>	<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;\nI have a <span class="hljs-subst">&#123;animal_type&#125;</span>.&quot;</span>) <br>	<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;My <span class="hljs-subst">&#123;animal_type&#125;</span>&#x27;s name is <span class="hljs-subst">&#123;pet_name.title()&#125;</span>.&quot;</span>)<br>describe_pet(pet_name=<span class="hljs-string">&#x27;lego&#x27;</span>, animal_type=<span class="hljs-string">&#x27;cat&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
 <p><strong>默认值</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">describe_pet</span>(<span class="hljs-params"> pet_name,animal_type=<span class="hljs-string">&#x27;dog&#x27;</span></span>):<br>	<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;\nI have a <span class="hljs-subst">&#123;animal_type&#125;</span>.&quot;</span>) <br>	<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;My <span class="hljs-subst">&#123;animal_type&#125;</span>&#x27;s name is <span class="hljs-subst">&#123;pet_name.title()&#125;</span>.&quot;</span>)<br>describe_pet(pet_name=<span class="hljs-string">&#x27;lego&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
 <p>注意：使用默认值时，必须先写没有默认值的形参，再写有默认值的实参，顺序不对会报错。</p>
 <p><strong>返回值</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">eat_food</span>(<span class="hljs-params">food,num</span>):<br>	msg=<span class="hljs-string">f&quot;<span class="hljs-subst">&#123;num&#125;</span> <span class="hljs-subst">&#123;food&#125;</span>s&quot;</span><br>	<span class="hljs-keyword">return</span> msg<br>word=eat_food(<span class="hljs-string">&#x27;burger&#x27;</span>,<span class="hljs-number">3</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Eat <span class="hljs-subst">&#123;word&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+
 <p><strong>让实参变成可选的</strong></p>
 <p>并非所有实参都需要提供，但不提供的话就不能正确运行。因此可以指定一个空的默认值，并将其移到形参列表的末尾。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">eat_food</span>(<span class="hljs-params">food,num,name=<span class="hljs-string">&#x27;&#x27;</span></span>):<br>	msg=<span class="hljs-string">f&quot;<span class="hljs-subst">&#123;name&#125;</span> Eats <span class="hljs-subst">&#123;num&#125;</span> <span class="hljs-subst">&#123;food&#125;</span>s&quot;</span><br>	<span class="hljs-keyword">return</span> msg<br><span class="hljs-built_in">print</span>(eat_food(<span class="hljs-string">&#x27;egg&#x27;</span>,<span class="hljs-number">6</span>))<br></code></pre></td></tr></table></figure>
+
 <p><strong>返回字典</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">full_name</span>(<span class="hljs-params">first_name,last_name,age=<span class="hljs-literal">None</span></span>):<br>	person=&#123;<span class="hljs-string">&#x27;first&#x27;</span>:first_name,<span class="hljs-string">&#x27;last&#x27;</span>:last_name&#125;<br>	<span class="hljs-keyword">if</span> age:<br>		person[<span class="hljs-string">&#x27;age&#x27;</span>]=age<br>	<span class="hljs-keyword">return</span> person<br>people=full_name(<span class="hljs-string">&#x27;love&#x27;</span>,<span class="hljs-string">&#x27;U&#x27;</span>,age=<span class="hljs-number">521</span>)<br><span class="hljs-built_in">print</span>(people)<br></code></pre></td></tr></table></figure>
+
 <p>可选形参age 设置为特殊值None，可将None 视为占位值。在条件测试中，None相当于False 。</p>
 <p><strong>结合使用函数和while 循环</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">full_name</span>(<span class="hljs-params">first_name,last_name</span>):<br>	person=&#123;<span class="hljs-string">&#x27;first&#x27;</span>:first_name,<span class="hljs-string">&#x27;last&#x27;</span>:last_name&#125;<br>	<span class="hljs-keyword">return</span> person<br><span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>	<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\nPlease tell me your name:&quot;</span>) <br>	f_name = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;First name: &quot;</span>) <br>	l_name = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;Last name: &quot;</span>)<br>	formatted_name = full_name(f_name, l_name) <br>	<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;\nHello, <span class="hljs-subst">&#123;formatted_name&#125;</span>!&quot;</span>)<br></code></pre></td></tr></table></figure>
+
 <p><strong>向函数中传递列表</strong></p>
 <p>需要参数过于复杂时，向函数传递列表很有用，</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">great</span>(<span class="hljs-params">names</span>):<br>	<span class="hljs-keyword">for</span> name <span class="hljs-keyword">in</span> names:<br>		msg=<span class="hljs-string">f&quot;Hello,<span class="hljs-subst">&#123;name.title()&#125;</span>&quot;</span><br>		<span class="hljs-built_in">print</span>(msg)<br>usernames=[<span class="hljs-string">&#x27;sfd&#x27;</span>,<span class="hljs-string">&#x27;sagf&#x27;</span>,<span class="hljs-string">&#x27;yth&#x27;</span>,<span class="hljs-string">&#x27;her&#x27;</span>,<span class="hljs-string">&#x27;sdg&#x27;</span>,<span class="hljs-string">&#x27;ewrt&#x27;</span>]<br>great(usernames)<br></code></pre></td></tr></table></figure>
+
 <p><strong>在函数中修改列表</strong> </p>
 <p>将列表传递给函数后，函数就可对其进行修改。在函数中对这个列表所做的任何修改都是永久性的，这让你能够高效地处理大量数据。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python">prev=[<span class="hljs-string">&#x27;phone case&#x27;</span>, <span class="hljs-string">&#x27;robot pendant&#x27;</span>, <span class="hljs-string">&#x27;dodecahedron&#x27;</span>]<br>cur=[]<br><span class="hljs-keyword">while</span> prev:<br>	item=prev.pop()<br>	<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Printing model: <span class="hljs-subst">&#123;item&#125;</span>&quot;</span>)<br>	cur.append(item)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\nThe following models have been printed:&quot;</span>)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> cur:<br>	<span class="hljs-built_in">print</span>(i)<br></code></pre></td></tr></table></figure>
+
 <p>为重新组织这些代码，可编写两个函数，每个都做一件具体的工作，这样的效率更高。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python">prev=[<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>]<br>cur=[]<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">copy</span>(<span class="hljs-params">prev,cur</span>):<br>	<span class="hljs-keyword">while</span> prev:<br>		item=prev.pop()<br>		<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Printing model: <span class="hljs-subst">&#123;item&#125;</span>&quot;</span>)<br>		cur.append(item)<br>	<span class="hljs-keyword">return</span> cur<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">prt</span>(<span class="hljs-params">cur</span>):<br>	<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\nThe following models have been printed:&quot;</span>)<br>	<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> cur:<br>		<span class="hljs-built_in">print</span>(i)<br>prt(copy(prev,cur))<br></code></pre></td></tr></table></figure>
+
 <p>由于列表作为参数传入函数后的修改是永久性的，因此不用设置中间变量，直接顺着写下来就行。</p>
 <p><strong>禁止函数修改列表</strong></p>
 <p>如果不想修改列表，可以向函数传递列表的副本而非原件。这样，函数所做的任何修改都只影响副本，而原件丝 毫不受影响。要将列表的副本传递给函数，可以像下面这样做：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">function_name(list_name_[:])<br></code></pre></td></tr></table></figure>
+
 <p>虽然向函数传递列表的副本可保留原始列表的内容，但除非有充分的理由，否则还是应该将原始列表传递给函数。这是因为让函数使用现成的列表可避免花时间和内存创建副本，从而提高效率，在处理大型列表时尤其如此。</p>
 <p><strong>传递任意数量的实参</strong></p>
 <p>有时候，预先不知道函数需要接受多少个实参，好在Python允许函数从调用语句中收集任意数量的实参。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">eat_food</span>(<span class="hljs-params">name,*food</span>):<br>	<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;<span class="hljs-subst">&#123;name&#125;</span> eats <span class="hljs-subst">&#123;food&#125;</span>&quot;</span>)<br>eat_food(<span class="hljs-string">&#x27;xmm&#x27;</span>,<span class="hljs-string">&#x27;burger&#x27;</span>,<span class="hljs-string">&#x27;rice&#x27;</span>,<span class="hljs-string">&#x27;chicken&#x27;</span>,<span class="hljs-string">&#x27;cola&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
 <p>形参名中的星号让Python创建一个名为<code>food</code>的空元组，并将收到的所有参数都封装到这个元组中。</p>
 <p>如果要让函数接受不同类型的实参，必须在函数定义中将接纳任意数量实参的形参放在最后。</p>
 <p><strong>使用任意数量的关键字实参</strong></p>
 <p>有时候，需要接受任意数量的实参，但预先不知道传递给函数的会是什么样的信息。</p>
 <p>在这种情况下，可将函数编写成能够接受任意数量的键值对——调用语句提供了多少就接受多少。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">build_dec</span>(<span class="hljs-params">first,last,**user_info</span>):<br>	user_info[<span class="hljs-string">&#x27;fn&#x27;</span>]=first<br>	user_info[<span class="hljs-string">&#x27;ln&#x27;</span>]=last<br>	<span class="hljs-keyword">return</span> user_info<br>dic=build_dec(<span class="hljs-string">&#x27;albert&#x27;</span>,<span class="hljs-string">&#x27;leo&#x27;</span>,location=<span class="hljs-string">&#x27;princeton&#x27;</span>, field=<span class="hljs-string">&#x27;physics&#x27;</span>)<br><span class="hljs-built_in">print</span>(dic)<br></code></pre></td></tr></table></figure>
-<p>函数定义要求提供名和姓，同时允许根据需要提供任意数量的名称值对。形参<code>**user_info</code>中的两个星号让 Python创建一个名为<code>user_info</code> 的空字典，并将收到的所有名称值对都放到这个字典中。</p>
+
+<p>函数定义要求提供名和姓，同时允许根据需要提供任意数量的名称值对。形参<code>**user_info </code>中的两个星号让 Python创建一个名为<code>user_info</code> 的空字典，并将收到的所有名称值对都放到这个字典中。</p>
 <p>注意：你经常会看到形参名<code>**kwargs</code> ，它用于收集任意数量的关键字实参。</p>
 <p><strong>将函数存储在模块中</strong></p>
 <p>使用函数的优点之一是可将代码块与主程序分离。通过给函数指定描述性名称，可让主程序容易理解得多。你还可以更进一步，将函数存储在称为模块的独立文件中，再将模块通过<code>import</code>导入到主程序 中。</p>
@@ -449,15 +490,20 @@
 <p>(1) 导入整个模块</p>
 <p>要让函数是可导入的，得先创建模块。模块是扩展名为.py的文件，包含要导入到程序中的代码。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#创建pizza.py，在主程序中导入</span><br><span class="hljs-keyword">import</span> pizza<br>pizza.f1()<br>pizza.f2()<br></code></pre></td></tr></table></figure>
+
 <p>(2) 导入特定的函数</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#创建pizza.py，在主程序中导入特定函数fn1()、fn2()</span><br><span class="hljs-keyword">from</span> pizza <span class="hljs-keyword">import</span> fn1,fn2<br>fn1()<br>fn2()<br></code></pre></td></tr></table></figure>
+
 <p><strong>使用as 给函数指定别名</strong></p>
 <p>如果要导入函数的名称可能与程序中现有的名称冲突，或者函数的名称太长，可指定简短而独一无二的别名：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pizza <span class="hljs-keyword">import</span> fn1 <span class="hljs-keyword">as</span> f1<br>f1()<br></code></pre></td></tr></table></figure>
+
 <p><strong>使用as 给模块指定别名</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pizza <span class="hljs-keyword">as</span> p<br>p.fn1()<br>p.fn2()<br></code></pre></td></tr></table></figure>
+
 <p><strong>导入模块中的所有函数</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> pizza <span class="hljs-keyword">import</span> *<br>fn1()<br>fn2()<br></code></pre></td></tr></table></figure>
+
 <p>最好不要采用这种导入方法，Python可能遇到多个名称相同的函数或变量，进而覆盖函数，而不是分别导入所有的函数。</p>
 <p>最佳的做法是，要么只导入需要使用的函数，要么导入整个模块并使用句点表示法。</p>
 
@@ -509,8 +555,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/09/01/Python%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" title="Python机器学习">
-                        <span class="hidden-mobile">Python机器学习</span>
+                      <a href="/2022/09/01/Python%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" title="要看的书">
+                        <span class="hidden-mobile">要看的书</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

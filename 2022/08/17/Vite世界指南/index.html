@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on 3 days ago
+                    Last updated on 4 days ago
                   
                 
               </p>
@@ -302,27 +302,35 @@
 <p>Vue 的组件可以按两种不同的风格书写：<strong>选项式 API</strong> 和<strong>组合式 API</strong>。</p>
 <h3 id="选项式-API-Options-API"><a href="#选项式-API-Options-API" class="headerlink" title="选项式 API (Options API)#"></a>选项式 API (Options API)<a target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/introduction.html#options-api">#</a></h3><p>选项式 API可以用对象来描述组件的逻辑，例如对象 <code>data</code>、<code>methods</code> 和 <code>mounted</code>。选项所定义的属性都会暴露在函数内部的 <code>this</code> 上，它会指向当前的组件实例。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;script&gt;<br>export default &#123;<br>  // data() 返回的属性将会成为响应式的状态<br>  // 并且暴露在 `this` 上<br>  data() &#123;<br>    return &#123;<br>      count: 0<br>    &#125;<br>  &#125;，<br>  // methods 是一些用来更改状态与触发更新的函数<br>  // 它们可以在模板中作为事件监听器绑定<br>  methods: &#123;<br>    increment() &#123;<br>      this.count++<br>    &#125;<br>  &#125;，<br>  // 生命周期钩子会在组件生命周期的各个不同阶段被调用<br>  // 例如这个函数就会在组件挂载完成后被调用<br>  mounted() &#123;<br>    console.log(`The initial count is $&#123;this.count&#125;.`)<br>  &#125;<br>&#125;<br>&lt;/script&gt;<br>&lt;template&gt;<br>  &lt;button @click=&quot;increment&quot;&gt;Count is: &#123;&#123; count &#125;&#125;&lt;/button&gt;<br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
+
 <h3 id="组合式-API-Composition-API"><a href="#组合式-API-Composition-API" class="headerlink" title="组合式 API (Composition API)#"></a>组合式 API (Composition API)<a target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/introduction.html#composition-api">#</a></h3><p>通过组合式 API，我们可以使用导入的 API 函数来描述组件逻辑。</p>
 <p>在单文件组件中，组合式 API 通常会与<code>&lt;script setup&gt;</code>搭配使用。这个 <code>setup</code> attribute 是一个标识，告诉 Vue 需要在编译时进行一些处理，让我们可以更简洁地使用组合式 API。比如，<code>&lt;script setup&gt;</code> 中的导入和顶层变量和函数都能够在模板中直接使用。</p>
 <p>当使用 <code>&lt;script setup&gt;</code> 的时候，任何在 <code>&lt;script setup&gt;</code> 声明的顶层的绑定 (包括变量，函数声明，以及 import 导入的内容) 都能在模板中直接使用：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;script setup&gt;<br>// 变量<br>const msg = &#x27;Hello!&#x27;<br><br>// 函数<br>function log() &#123;<br>  console.log(msg)<br>&#125;<br>&lt;/script&gt;<br><br>&lt;template&gt;<br>  &lt;button @click=&quot;log&quot;&gt;&#123;&#123; msg &#125;&#125;&lt;/button&gt;<br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
+
 <p>import 导入的内容也会以同样的方式暴露。这意味着我们可以在模板表达式中直接使用导入的 helper 函数，而不需要通过 <code>methods</code> 选项来暴露它：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;script setup&gt;<br>import &#123; capitalize &#125; from &#x27;./helpers&#x27;<br>&lt;/script&gt;<br><br>&lt;template&gt;<br>  &lt;div&gt;&#123;&#123; capitalize(&#x27;hello&#x27;) &#125;&#125;&lt;/div&gt;<br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
+
 <p>下面是使用了组合式 API 与 <code>&lt;script setup&gt;</code> 改造后和上面的模板完全一样的组件：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;script setup&gt;<br>import &#123; ref， onMounted &#125; from &#x27;vue&#x27;<br><br>// 响应式状态<br>const count = ref(0)<br><br>// 用来修改状态、触发更新的函数<br>function increment() &#123;<br>  count.value++<br>&#125;<br><br>// 生命周期钩子<br>onMounted(() =&gt; &#123;<br>  console.log(`The initial count is $&#123;count.value&#125;.`)<br>&#125;)<br>&lt;/script&gt;<br><br>&lt;template&gt;<br>  &lt;button @click=&quot;increment&quot;&gt;Count is: &#123;&#123; count &#125;&#125;&lt;/button&gt;<br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
+
 <h2 id="根组件"><a href="#根组件" class="headerlink" title="根组件#"></a>根组件<a target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/essentials/application.html#the-root-component">#</a></h2><p>如果你使用的是单文件组件，我们可以直接从另一个文件中导入根组件。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; createApp &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><span class="hljs-comment">// 从一个单文件组件中导入根组件</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">App</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./App.vue&#x27;</span><br><span class="hljs-keyword">const</span> app = <span class="hljs-title function_">createApp</span>(<span class="hljs-title class_">App</span>)<br></code></pre></td></tr></table></figure>
+
 <h2 id="挂载应用"><a href="#挂载应用" class="headerlink" title="挂载应用#"></a>挂载应用<a target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/essentials/application.html#mounting-the-app">#</a></h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&#x27;#app&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
 <p>应用根组件的内容将会被渲染在容器元素里面。容器元素自己将<strong>不会</strong>被视为应用的一部分。</p>
 <p><code>.mount()</code> 方法应该始终在整个应用配置和资源注册完成后被调用。同时请注意，不同于其他资源注册方法，它的返回值是<strong>根组件</strong>实例而非应用实例。</p>
 <h2 id="什么是组合式-API？"><a href="#什么是组合式-API？" class="headerlink" title="什么是组合式 API？#"></a>什么是组合式 API？<a target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/extras/composition-api-faq.html#what-is-composition-api">#</a></h2><p>组合式 API (Composition API) 是一系列 API 的集合，使我们可以使用函数而不是声明选项的方式书写 Vue 组件。它是一个概括性的术语，涵盖了以下方面的 API：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://cn.vuejs.org/api/reactivity-core.html">响应式 API</a>：例如 <code>ref()</code> 和 <code>reactive()</code>，使我们可以直接创建响应式状态、计算属性和侦听器。<strong><code>ref</code>接受参数并返回它包装在一个带有value属性的对象中，然后可以使用该属性访问或改变反应变量的值</strong></li>
+<li><a target="_blank" rel="noopener" href="https://cn.vuejs.org/api/reactivity-core.html">响应式 API</a>：例如 <code>ref()</code> 和 <code>reactive()</code>，使我们可以直接创建响应式状态、计算属性和侦听器。**<code>ref</code>接受参数并返回它包装在一个带有value属性的对象中，然后可以使用该属性访问或改变反应变量的值**</li>
 <li><a target="_blank" rel="noopener" href="https://cn.vuejs.org/api/composition-api-lifecycle.html">生命周期钩子</a>：例如 <code>onMounted()</code> 和 <code>onUnmounted()</code>，使我们可以在组件各个生命周期阶段添加逻辑。</li>
 <li><a target="_blank" rel="noopener" href="https://cn.vuejs.org/api/composition-api-dependency-injection.html">依赖注入</a>：例如 <code>provide()</code> 和 <code>inject()</code>，使我们可以在使用响应式 API 时，利用 Vue 的依赖注入系统。</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;script setup&gt;<br>import &#123; ref， onMounted &#125; from &#x27;vue&#x27;<br><br>// 响应式状态<br>const count = ref(0)<br><br>// 更改状态、触发更新的函数<br>function increment() &#123;<br>  count.value++<br>&#125;<br><br>// 生命周期钩子<br>onMounted(() =&gt; &#123;<br>  console.log(`计数器初始值为 $&#123;count.value&#125;。`)<br>&#125;)<br>&lt;/script&gt;<br><br>&lt;template&gt;<br>  &lt;button @click=&quot;increment&quot;&gt;点击了：&#123;&#123; count &#125;&#125; 次&lt;/button&gt;<br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
+
 <h3 id="Vue3-中-ref-访问元素"><a href="#Vue3-中-ref-访问元素" class="headerlink" title="Vue3 中 ref 访问元素"></a>Vue3 中 ref 访问元素</h3><ul>
 <li>让数据变成响应式，即改变会引发视图层的变化</li>
 <li>ref通过给value属性设置setter和getter实现数据劫持</li>
@@ -330,26 +338,39 @@
 </ul>
 <p>使用ref：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vue">import &#123; ref &#125; from &#x27;vue&#x27;<br></code></pre></td></tr></table></figure>
+
 <p>调用：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs vue">setup()&#123;<br>	const xx =ref(初始值)   <br></code></pre></td></tr></table></figure>
+
 <p>若无初始值则设置为null，返回一个Ref对象，即reference引用对象</p>
-<p>如果传入<code>.value</code>赋值的是对象，将自动调用reactive方法进行深层响应转换，在模板中需要<code>&#123;&#123;xx.属性&#125;&#125;</code>调用，不需要<code>xx.value.属性</code>这么麻烦    </p>
+<p>如果传入<code>.value</code>赋值的是对象，将自动调用reactive方法进行深层响应转换，在模板中需要<code>&#123;&#123;xx.属性&#125;&#125;</code>调用，不需要<code>xx.value.属性</code>这么麻烦	</p>
 <p>调用方式：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs vue">xx.value<br>let count = $ref(0)<br></code></pre></td></tr></table></figure>
+
 <p>之后的操作都不需要.value，直接操作count就行</p>
 <p>自动解套(即不需要xx.value获取值)：</p>
 <p>在setup的<code>return&#123;xx&#125;</code>中，在template中直接<code>&#123;&#123;xx&#125;&#125;</code>，模板会自动加上<code>.value</code>，深层次依旧需要.value</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs vue">setup()&#123;<br>	let conut =ref(0)<br>	let isActive=ref(true)<br>	let hasError=ref(false)<br>	<br>	return &#123;<br>		nested:&#123;<br>			count，<br>			isActive，<br>			hasError<br>		&#125;<br>	&#125;<br>&#125;<br>&#123;&#123;count&#125;&#125;<br>:class=&quot;&#123; active: isActive， &#x27;text-danger&#x27;: hasError &#125;&quot;				<br></code></pre></td></tr></table></figure>
+
 <p>使用模板语法遍历获取dom：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs vue">template中:<br>			 &lt;li v-for=&#x27;(item，index) in 3&#x27; <br>			 :key=index :ref=&quot;el=&gt;&#123;divs[index]=el&#125;&quot;&gt;<br>		          &#123;&#123;item&#125;&#125;<br>		      &lt;/li&gt;<br>		     或：<br>		     &lt;li v-for=&#x27;(item，index) in 3&#x27; :key=index :ref=&quot;divs&quot;&gt;<br>		          &#123;&#123;item&#125;&#125;<br>		      &lt;/li&gt;<br></code></pre></td></tr></table></figure>
+
 <p>组件挂载后，即能通过divs.value获取遍历元素的所有dom：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs vue">const divs = ref([])<br>return&#123;<br>					divs<br>				&#125;<br>	&#125;<br></code></pre></td></tr></table></figure>
+
 <p>类型声明:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vue">Ref对象:<br>		interface Ref&lt;T&gt; &#123;<br>		  value: T<br>		&#125;<br></code></pre></td></tr></table></figure>
+
 <p>ref函数:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vue">function ref&lt;T&gt;(value: T): Ref&lt;T&gt;<br></code></pre></td></tr></table></figure>
+
 <p>类型约束:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs vue">const foo = ref&lt;string | number&gt;(&#x27;foo&#x27;)<br>	未知类型:<br>	function useState&lt;T&gt;(initial: T) &#123;<br>	  const state = ref(initial) as Ref&lt;T&gt; <br>	  return state<br>	&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
 
               
             </div>

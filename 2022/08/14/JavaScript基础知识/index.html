@@ -306,6 +306,7 @@
 <p>请确保 <code>&quot;use strict&quot;</code> 出现在脚本的最顶部，否则严格模式可能无法启用。</p>
 <p>这里的严格模式就没有被启用：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;some code&quot;</span>);<br><span class="hljs-comment">// 下面的 &quot;use strict&quot; 会被忽略，必须在最顶部。</span><br><br><span class="hljs-meta">&quot;use strict&quot;</span>;<br><br><span class="hljs-comment">// 严格模式没有被激活</span><br></code></pre></td></tr></table></figure>
+
 <p>只有注释可以出现在 <code>&quot;use strict&quot;</code> 的上面。</p>
 <p><strong>没有办法取消 <code>use strict</code></strong></p>
 <p>没有类似于 <code>&quot;no use strict&quot;</code> 这样的指令可以使程序返回默认模式。</p>
@@ -346,26 +347,34 @@
 <p>如果第一个参数不是 <code>null/undefined</code>，则 <code>??</code> 返回第一个参数。否则，返回第二个参数。</p>
 <p>我们可以使用我们已知的运算符重写 <code>result = a ?? b</code>，像这样：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">result = (a !== <span class="hljs-literal">null</span> &amp;&amp; a !== <span class="hljs-literal">undefined</span>) ? a : b;<br></code></pre></td></tr></table></figure>
+
 <p><code>??</code> 的常见使用场景是提供默认值。</p>
 <p>例如，在这里，如果 <code>user</code> 的值不为 <code>null/undefined</code> 则显示 <code>user</code>，否则显示 <code>匿名</code>：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> user;<br><br><span class="hljs-title function_">alert</span>(user ?? <span class="hljs-string">&quot;匿名&quot;</span>); <span class="hljs-comment">// 匿名（user 未定义）</span><br></code></pre></td></tr></table></figure>
+
 <p>在下面这个例子中，我们将一个名字赋值给了 <code>user</code>：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> user = <span class="hljs-string">&quot;John&quot;</span>;<br><br><span class="hljs-title function_">alert</span>(user ?? <span class="hljs-string">&quot;匿名&quot;</span>); <span class="hljs-comment">// John（user 已定义）</span><br></code></pre></td></tr></table></figure>
+
 <p>我们还可以使用 <code>??</code> 序列从一系列的值中选择出第一个非 <code>null/undefined</code> 的值。</p>
 <p>假设我们在变量 <code>firstName</code>、<code>lastName</code> 或 <code>nickName</code> 中存储着一个用户的数据。如果用户决定不填写相应的值，则所有这些变量的值都可能是未定义的。</p>
 <p>我们想使用这些变量之一显示用户名，如果这些变量的值都是 <code>null/undefined</code>，则显示 “匿名”。</p>
 <p>让我们使用 <code>??</code> 运算符来实现这一需求：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> firstName = <span class="hljs-literal">null</span>;<br><span class="hljs-keyword">let</span> lastName = <span class="hljs-literal">null</span>;<br><span class="hljs-keyword">let</span> nickName = <span class="hljs-string">&quot;Supercoder&quot;</span>;<br><br><span class="hljs-comment">// 显示第一个已定义的值：</span><br><span class="hljs-title function_">alert</span>(firstName ?? lastName ?? nickName ?? <span class="hljs-string">&quot;匿名&quot;</span>); <span class="hljs-comment">// Supercoder</span><br></code></pre></td></tr></table></figure>
+
 <h2 id="四、箭头函数，基础知识"><a href="#四、箭头函数，基础知识" class="headerlink" title="四、箭头函数，基础知识"></a>四、箭头函数，基础知识</h2><p>创建函数还有另外一种非常简单的语法，并且这种方法通常比函数表达式更好。</p>
 <p>函数表达式：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> sayHi = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-title function_">alert</span>( <span class="hljs-string">&quot;Hello&quot;</span> );<br>&#125;;<br></code></pre></td></tr></table></figure>
+
 <p>箭头函数：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> <span class="hljs-title function_">func</span> = (<span class="hljs-params">arg1, arg2, ..., argN</span>) =&gt; expression;<br></code></pre></td></tr></table></figure>
+
 <p>这里创建了一个函数 <code>func</code>，它接受参数 <code>arg1..argN</code>，然后使用参数对右侧的 <code>expression</code> 求值并返回其结果。</p>
 <p>换句话说，它是下面这段代码的更短的版本：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> func = <span class="hljs-keyword">function</span>(<span class="hljs-params">arg1, arg2, ..., argN</span>) &#123;<br>  <span class="hljs-keyword">return</span> expression;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
 <p>让我们来看一个具体的例子：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> <span class="hljs-title function_">sum</span> = (<span class="hljs-params">a, b</span>) =&gt; a + b;<br><br><span class="hljs-comment">/* 这个箭头函数是下面这个函数的更短的版本：</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">let sum = function(a, b) &#123;</span><br><span class="hljs-comment">  return a + b;</span><br><span class="hljs-comment">&#125;;</span><br><span class="hljs-comment">*/</span><br><br><span class="hljs-title function_">alert</span>( <span class="hljs-title function_">sum</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>) ); <span class="hljs-comment">// 3</span><br></code></pre></td></tr></table></figure>
+
 <p>可以看到 <code>(a, b) =&gt; a + b</code> 表示一个函数接受两个名为 <code>a</code> 和 <code>b</code> 的参数。在执行时，它将对表达式 <code>a + b</code> 求值，并返回计算结果。</p>
 <ul>
 <li><p>如果我们只有一个参数，还可以省略掉参数外的圆括号，使代码更短。</p>
@@ -373,12 +382,12 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> <span class="hljs-title function_">double</span> = n =&gt; n * <span class="hljs-number">2</span>;<br><span class="hljs-comment">// 差不多等同于：let double = function(n) &#123; return n * 2 &#125;</span><br><br><span class="hljs-title function_">alert</span>( <span class="hljs-title function_">double</span>(<span class="hljs-number">3</span>) ); <span class="hljs-comment">// 6</span><br></code></pre></td></tr></table></figure>
 </li>
 <li><p>如果没有参数，括号则是空的（但括号必须保留）：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> <span class="hljs-title function_">sayHi</span> = (<span class="hljs-params"></span>) =&gt; <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Hello!&quot;</span>);<br><br><span class="hljs-title function_">sayHi</span>();<br></code></pre></td></tr></table></figure>
-</li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> <span class="hljs-title function_">sayHi</span> = (<span class="hljs-params"></span>) =&gt; <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Hello!&quot;</span>);<br><br><span class="hljs-title function_">sayHi</span>();<br></code></pre></td></tr></table></figure></li>
 </ul>
 <p>箭头函数可以像函数表达式一样使用。</p>
 <p>例如，动态创建一个函数：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> age = <span class="hljs-title function_">prompt</span>(<span class="hljs-string">&quot;What is your age?&quot;</span>, <span class="hljs-number">18</span>);<br><br><span class="hljs-keyword">let</span> welcome = (age &lt; <span class="hljs-number">18</span>) ?<br>  <span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">alert</span>(<span class="hljs-string">&#x27;Hello!&#x27;</span>) :<br>  <span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;Greetings!&quot;</span>);<br><br><span class="hljs-title function_">welcome</span>();<br></code></pre></td></tr></table></figure>
+
 <p>一开始，箭头函数可能看起来并不熟悉，也不容易读懂，但一旦我们看习惯了之后，这种情况很快就会改变。</p>
 <p>箭头函数对于简单的单行行为（action）来说非常方便，尤其是当我们懒得打太多字的时候。</p>
 <h3 id="多行的箭头函数"><a href="#多行的箭头函数" class="headerlink" title="多行的箭头函数"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/arrow-functions-basics#duo-hang-de-jian-tou-han-shu">多行的箭头函数</a></h3><p>到目前为止，我们看到的箭头函数非常简单。它们从 <code>=&gt;</code> 的左侧获取参数，计算并返回右侧表达式的计算结果。</p>
@@ -386,6 +395,7 @@
 <p>在这种情况下，我们可以使用花括号将它们括起来。主要区别在于，用花括号括起来之后，需要包含 <code>return</code> 才能返回值（就像常规函数一样）。</p>
 <p>就像这样：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> <span class="hljs-title function_">sum</span> = (<span class="hljs-params">a, b</span>) =&gt; &#123;  <span class="hljs-comment">// 花括号表示开始一个多行函数</span><br>  <span class="hljs-keyword">let</span> result = a + b;<br>  <span class="hljs-keyword">return</span> result; <span class="hljs-comment">// 如果我们使用了花括号，那么我们需要一个显式的 “return”</span><br>&#125;;<br><br><span class="hljs-title function_">alert</span>( <span class="hljs-title function_">sum</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>) ); <span class="hljs-comment">// 3</span><br></code></pre></td></tr></table></figure>
+
 <h2 id="五、回调函数"><a href="#五、回调函数" class="headerlink" title="五、回调函数"></a>五、回调函数</h2><p>让我们多举几个例子，看看如何将函数作为值来传递以及如何使用函数表达式。</p>
 <p>我们写一个包含三个参数的函数 <code>ask(question, yes, no)</code>：</p>
 <ul>
@@ -401,11 +411,13 @@
 </ul>
 <p>函数需要提出 <code>question</code>（问题），并根据用户的回答，调用 <code>yes()</code> 或 <code>no()</code>：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">ask</span>(<span class="hljs-params">question, yes, no</span>) &#123;<br>  <span class="hljs-keyword">if</span> (<span class="hljs-title function_">confirm</span>(question)) <span class="hljs-title function_">yes</span>()<br>  <span class="hljs-keyword">else</span> <span class="hljs-title function_">no</span>();<br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">showOk</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-title function_">alert</span>( <span class="hljs-string">&quot;You agreed.&quot;</span> );<br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">showCancel</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-title function_">alert</span>( <span class="hljs-string">&quot;You canceled the execution.&quot;</span> );<br>&#125;<br><br><span class="hljs-comment">// 用法：函数 showOk 和 showCancel 被作为参数传入到 ask</span><br><span class="hljs-title function_">ask</span>(<span class="hljs-string">&quot;Do you agree?&quot;</span>, showOk, showCancel);<br></code></pre></td></tr></table></figure>
+
 <p>在实际开发中，这样的函数是非常有用的。实际开发与上述示例最大的区别是，实际开发中的函数会通过更加复杂的方式与用户进行交互，而不是通过简单的 <code>confirm</code>。在浏览器中，这样的函数通常会绘制一个漂亮的提问窗口。但这是另外一件事了。</p>
 <p><code>ask</code> 的两个参数值 <code>showOk</code> 和 <code>showCancel</code> 可以被称为 <strong>回调函数</strong> 或简称 <strong>回调</strong>。</p>
 <p>主要思想是我们传递一个函数，并期望在稍后必要时将其“回调”。在我们的例子中，<code>showOk</code> 是回答 “yes” 的回调，<code>showCancel</code> 是回答 “no” 的回调。</p>
 <p>我们可以使用函数表达式来编写一个等价的、更简洁的函数：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">ask</span>(<span class="hljs-params">question, yes, no</span>) &#123;<br>  <span class="hljs-keyword">if</span> (<span class="hljs-title function_">confirm</span>(question)) <span class="hljs-title function_">yes</span>()<br>  <span class="hljs-keyword">else</span> <span class="hljs-title function_">no</span>();<br>&#125;<br><br><span class="hljs-title function_">ask</span>(<br>  <span class="hljs-string">&quot;Do you agree?&quot;</span>,<br>  <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123; <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;You agreed.&quot;</span>); &#125;,<br>  <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123; <span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;You canceled the execution.&quot;</span>); &#125;<br>);<br></code></pre></td></tr></table></figure>
+
 <p>这里直接在 <code>ask(...)</code> 调用内进行函数声明。这两个函数没有名字，所以叫 <strong>匿名函数</strong>。这样的函数在 <code>ask</code> 外无法访问（因为没有对它们分配变量），不过这正是我们想要的。</p>
 <p>这样的代码在我们的脚本中非常常见，这正符合 JavaScript 语言的思想。</p>
 <p><strong>一个函数是表示一个“行为”的值</strong></p>

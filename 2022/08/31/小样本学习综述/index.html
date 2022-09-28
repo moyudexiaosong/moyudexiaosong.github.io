@@ -18,14 +18,14 @@
   
     <meta name="description" content="FSL综述 小样本学习：在样本很少的情况下，不足以训练一个神经网络，只能提供一些参考信息。 举个例子，下面这张图，人能根据左边这个很小的数据集总结出犰狳和穿山甲的区别，正确地对新的样本进行分类，但是机器不能。 FSL和传统机器学习的区别：FSL的目标不是让机器能够识别训练集里的图片，并泛化到测试集，而是让机器自己学会学习。  FSL的测试样本是以前从未见过的东西，而传统神经网络已经见了几百上千次">
 <meta property="og:type" content="article">
-<meta property="og:title" content="要看的书">
+<meta property="og:title" content="小样本学习综述">
 <meta property="og:url" content="http://example.com/2022/08/31/%E5%B0%8F%E6%A0%B7%E6%9C%AC%E5%AD%A6%E4%B9%A0%E7%BB%BC%E8%BF%B0/index.html">
 <meta property="og:site_name" content="摸鱼之家">
 <meta property="og:description" content="FSL综述 小样本学习：在样本很少的情况下，不足以训练一个神经网络，只能提供一些参考信息。 举个例子，下面这张图，人能根据左边这个很小的数据集总结出犰狳和穿山甲的区别，正确地对新的样本进行分类，但是机器不能。 FSL和传统机器学习的区别：FSL的目标不是让机器能够识别训练集里的图片，并泛化到测试集，而是让机器自己学会学习。  FSL的测试样本是以前从未见过的东西，而传统神经网络已经见了几百上千次">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo14.jpeg">
 <meta property="article:published_time" content="2022-08-31T14:41:07.000Z">
-<meta property="article:modified_time" content="2022-09-27T18:56:14.919Z">
+<meta property="article:modified_time" content="2022-09-28T09:39:24.622Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="book">
 <meta name="twitter:card" content="summary_large_image">
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>要看的书 - 摸鱼之家</title>
+  <title>小样本学习综述 - 摸鱼之家</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -214,7 +214,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="要看的书"></span>
+            <span id="subtitle" data-typed-text="小样本学习综述"></span>
           
         </div>
 
@@ -285,7 +285,7 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">要看的书</h1>
+            <h1 style="display: none">小样本学习综述</h1>
             
               <p class="note note-info">
                 
@@ -375,11 +375,7 @@
 <p>我们希望得到这样一个特征，相同类别的特征向量都聚在一起，不同类别的特征向量都分得很开，因此结果应该符合这样的特征：$d^+$很小，$d^-$很大。</p>
 <p>举个例子，卷积神经网络得出的特征向量映射出的特征图片如图所示。</p>
 <p><img src="/../img/image-20220926181021129.png" srcset="/img/loading.gif" lazyload alt="image-20220926181021129"></p>
-<p>基于我们的期望，我们这样定义损失函数：</p>
-<ul>
-<li>鼓励正样本接近锚点，$d^+$很小。</li>
-<li>鼓励负样本远离锚点，$d^-$很大。</li>
-</ul>
+<p>基于我们的期望，我们这样定义损失函数：鼓励正样本接近锚点，$d^+$很小，鼓励负样本远离锚点，$d^-$很大。</p>
 <p>我们自己指定一个margin，记作$\alpha$，这是一个超参数，需要我们自己来调。</p>
 <p>如果$d^-$比$d^+$大了$\alpha$，我们就认为这一组样本分类是正确的，Loss等于0，如果不满足，就认为这个模型分不开正负样本，那么就会有Loss，把Loss定义为$d^+ +\alpha -d^-$。</p>
 <p>我们希望Loss越小越好，因此定义完整的Loss损失函数为：</p>
@@ -498,9 +494,9 @@ Entropy=-\int P(i)log_2 P(i)dx</script><p>因此，只要我们知道了任何�
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/09/01/Python%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" title="Python机器学习">
+                      <a href="/2022/09/01/Python%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" title="要看的书">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Python机器学习</span>
+                        <span class="hidden-mobile">要看的书</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
