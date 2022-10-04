@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo14.jpeg">
 <meta property="article:published_time" content="2022-08-31T14:41:07.000Z">
-<meta property="article:modified_time" content="2022-09-29T10:22:23.130Z">
+<meta property="article:modified_time" content="2022-10-01T12:37:29.704Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="book">
 <meta name="twitter:card" content="summary_large_image">
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.2k words
+          7.7k words
         
       </span>
     
@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on a few seconds ago
+                    Last updated on 3 days ago
                   
                 
               </p>
@@ -404,7 +404,8 @@
 <p><img src="/../img/image-20220927011517529.png" srcset="/img/loading.gif" lazyload alt="image-20220927011517529"></p>
 <p>softmax分类器是由一个权连接层加一个softmax函数组成的，分类器输入是向量x，输出是向量p，假如类别数量等于k，那么向量p就是k维的。</p>
 <p>矩阵W和向量b是这一层的参数，可以从训练数据中学习，所以W的每一行对应一个类别，每一列对应一个特征，输入x显示的是这个图片的不同特征，经过$Wx+b$变换后得到一个k维向量，对其使用Softmax激活函数后，得到的就是一个k维向量p。</p>
-<h5 id="cross-Entropy交叉熵"><a href="#cross-Entropy交叉熵" class="headerlink" title="cross Entropy交叉熵"></a>cross Entropy交叉熵</h5><p>香农提出的熵的定义：无损编码事件信息的最小平均编码长度。</p>
+<h5 id="cross-Entropy交叉熵"><a href="#cross-Entropy交叉熵" class="headerlink" title="cross Entropy交叉熵"></a>cross Entropy交叉熵</h5><p>有时，我们可能希望预测的概率分布接近我们观察到的数据的分布，也就是说，我们希望一种分布（可以是概率向量）与另一种分布接近， 而交叉熵为我们提供了一种自然的方法测量两个分布之间的差距，这个差距就可以被当作损失函数。</p>
+<p>香农提出的<strong>熵的定义</strong>：无损编码事件信息的最小平均编码长度。</p>
 <img src="/../img/v2-8de58ebed3434892762f5809c1320462_1440w.jpg" srcset="/img/loading.gif" lazyload alt="img" style="zoom:50%;">
 
 <p>举个例子，下图传消息时，明显方式3编码长度最小，且是平均意义上的最小。方式3胜出的原因在于：对高可能性事件(Fine,Cloudy)用短编码，对低可能性事件(Rainy,Snow)用长编码。<img src="/../img/v2-73be23174f9ab59fe8ea5b2aa3e38f00_1440w.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
@@ -440,6 +441,13 @@
 <p><img src="/../img/image-20220928024230677.png" srcset="/img/loading.gif" lazyload alt="image-20220928024230677"></p>
 <p>本来是直接向量相乘就softmax的，现在先把$w^Tq$作归一化处理，然后再和b向量相加。</p>
 <p>根据相关论文，这个很小的改动就可以大幅度提高准确率。</p>
+<h3 id="小样本学习综述"><a href="#小样本学习综述" class="headerlink" title="小样本学习综述"></a>小样本学习综述</h3><p>本文根据机器学习中的误差分解理论，认为FSL任务中最小化经验风险是不可信的，这也是FSL难以训练的原因。</p>
+<h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><h6 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h6><p>通常而言将FSL考虑为一个N-way K-shot的分类任务，假定任务的真实分布为𝑝(𝑥,𝑦)，而对于这个真实分布有一个最优假设ℎ̂可以描述它。通常的做法是给定一个假设空间𝐻，然后从里面找一个接近ℎ̂ 的假设ℎ，在这里𝐻是由你选择的模型和参数的初始化分布决定的，用一些优化方法（通常为梯度下降）来逼近这个最优假设。</p>
+<h6 id="Problem-Definition"><a href="#Problem-Definition" class="headerlink" title="Problem Definition"></a>Problem Definition</h6><p>在经典机器学习中，给定一个任务T，任务的性能P，给定一些额外的条件E，比如标注的训练数据，可以提升任务T的性能P，FSL任务本质也是这样。</p>
+<h6 id="Core-Issue"><a href="#Core-Issue" class="headerlink" title="Core Issue"></a>Core Issue</h6><p>在机器学习中寻找最适合的假设时，通常都是通过找到一组最优的参数来确定这个假设，并通过给定的训练集，最小化损失函数这一目标来指示最优参数的搜索，最小化损失函数如下所示：</p>
+<p>　　　　<img src="/../img/1335117-20200107180341483-79584449.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>在训练模型中，我们是通过训练集来拟合真实分布，我们训练出来的分布和真实分布往往不一样，这中间的差值称为期望风险（期望损失），表达式如下：</p>
+<p>　　　　<img src="/../img/1335117-20200107181052551-1263293547.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 
               
             </div>

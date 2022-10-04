@@ -1,0 +1,852 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.jpg">
+  <link rel="icon" href="/img/icon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="基础知识数据处理机器学习处理的数据通常有categorical特征，我们需要把它转化为数值特征，数值特征的特点是可以比较大小。  举个例子，上面的数据集每一行代表一个人的个人信息。第一列的年龄信息已经是可以比较大小的数值特征，第二列的性别是二元数值，需要转换成0和1，第三列的国籍无法比较大小，所以不能用字典做映射，要用one-hot向量来代表国籍类别，有197个国家，所以每个one-hot向量都">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Machine Learning">
+<meta property="og:url" content="http://example.com/2022/09/30/Machine-Learning/index.html">
+<meta property="og:site_name" content="摸鱼之家">
+<meta property="og:description" content="基础知识数据处理机器学习处理的数据通常有categorical特征，我们需要把它转化为数值特征，数值特征的特点是可以比较大小。  举个例子，上面的数据集每一行代表一个人的个人信息。第一列的年龄信息已经是可以比较大小的数值特征，第二列的性别是二元数值，需要转换成0和1，第三列的国籍无法比较大小，所以不能用字典做映射，要用one-hot向量来代表国籍类别，有197个国家，所以每个one-hot向量都">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/photo37.jpeg">
+<meta property="article:published_time" content="2022-09-30T07:55:54.000Z">
+<meta property="article:modified_time" content="2022-10-01T11:40:05.389Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="机器学习基础理论">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/photo37.jpeg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Machine Learning - 摸鱼之家</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/shubiao.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.1","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":false},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"AwHBUAjSP1GvDVpiBgxfS2Pg-gzGzoHsz","app_key":"kMsGLN3hzkQJuLrmqQBgquFF","server_url":"https://awhbuajs.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>快乐老家</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                档案馆
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                目录
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/photo37.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Machine Learning"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-30 15:55" pubdate>
+          September 30, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.3k words
+        
+      </span>
+    
+
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> views
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Machine Learning</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    Last updated on 3 days ago
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <hr>
+<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><h4 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h4><p>机器学习处理的数据通常有categorical特征，我们需要把它转化为数值特征，数值特征的特点是可以比较大小。</p>
+<p><img src="/../img/image-20220930165440724.png" srcset="/img/loading.gif" lazyload alt="image-20220930165440724"></p>
+<p>举个例子，上面的数据集每一行代表一个人的个人信息。第一列的年龄信息已经是可以比较大小的数值特征，第二列的性别是二元数值，需要转换成0和1，第三列的国籍无法比较大小，所以不能用字典做映射，要用one-hot向量来代表国籍类别，有197个国家，所以每个one-hot向量都是一个197维的向量。并且要保留0向量，用来保存未知或者缺失的国籍。数据库里经常会有缺失国际。举例，下面是两个人的全部信息：</p>
+<p><img src="/../img/image-20221001094116657.png" srcset="/img/loading.gif" lazyload alt="image-20221001094116657"></p>
+<p>为什么要用one-hot向量，而不是用字典映射？</p>
+<p><img src="/../img/image-20221001094227047.png" srcset="/img/loading.gif" lazyload alt="image-20221001094227047"></p>
+<p>因此，做机器学习的时候，不能用一个标量来表示categorical feature。 </p>
+<h3 id="文本处理与词嵌入"><a href="#文本处理与词嵌入" class="headerlink" title="文本处理与词嵌入"></a>文本处理与词嵌入</h3><p>在自然语言处理的应用中，数据都是文本，文本可以分割成单词，每个单词都是一个类别，可以作为categorical feature来使用one-hot向量表示。如果有一万个单词，就有一万个类别。</p>
+<p><img src="/../img/image-20221001094540144.png" srcset="/img/loading.gif" lazyload alt="image-20221001094540144"></p>
+<p><img src="/../img/image-20221001094716842.png" srcset="/img/loading.gif" lazyload alt="image-20221001094716842"></p>
+<p>完成统计后，对哈希表里的单词做一个排序，按照词频递减的顺序排列，然后把词频换成index，这个表就叫做字典，可以把单词映射成一个数字。字典里单词的个数叫做词汇量(vocabulary)。</p>
+<p>如果词汇量过于庞大，可能有几十w个，通常会按词频只保留1w个，删去低频词汇，减小向量维度，防止计算过慢。</p>
+<p><img src="/../img/image-20221001095416022.png" srcset="/img/loading.gif" lazyload alt="image-20221001095416022"></p>
+<p>因为低频次在字典里找不到，所以在做one-hot encoding的时候，可以把它直接忽略，也可以编码成0。</p>
+<h4 id="Text-Processing-and-Word-Embedding"><a href="#Text-Processing-and-Word-Embedding" class="headerlink" title="Text Processing and Word Embedding"></a>Text Processing and Word Embedding</h4><p><img src="/../img/image-20221001104029698.png" srcset="/img/loading.gif" lazyload alt="image-20221001104029698"></p>
+<p>做一个自然语言识别的模型，来判断评论是正面还是负面的，收集了5w条评论，其中2.5w用来训练模型，2.5w用来测试。</p>
+<p>在做文字嵌入和搭机器学习之前，应该先文本处理，把文本变成序列(Text to Sequence)。文本处理的好坏直接影响机器学习的结果。</p>
+<p>文本处理步骤：</p>
+<ol>
+<li><p>Tokenization代号化</p>
+<p>如果把文本分割成单词，则一个token就是一个单词，如果把文本分割成字符，则一个token就是一个字符。这一步看似简单，但是其实有很多坑。<img src="/../img/image-20221001103550038.png" srcset="/img/loading.gif" lazyload alt="image-20221001103550038"></p>
+</li>
+<li><p>建立字典：把每一个单词对应成一个向量</p>
+</li>
+<li><p>one-hot编码：编码成一个sequence序列</p>
+<p><img src="/../img/image-20221001103744907.png" srcset="/img/loading.gif" lazyload alt="image-20221001103744907"></p>
+</li>
+</ol>
+<p>每条电影评论都会转换成一个sequence，电影评论有长有短，所以得到的sequence长度也不一样，无法对齐，做机器学习的时候，我们需要把数据存储在矩阵或者张量里，这就需要数据对齐。对其原则是指定一个长度w，超过w的sequence就砍掉前面或者后面的词，不足w的就用0来补齐。<img src="/../img/image-20221001104646834.png" srcset="/img/loading.gif" lazyload alt="image-20221001104646834"></p>
+<p>Word Embedding：</p>
+<p>指的是将词转化成一种分布式表示，又称词向量。它把高维one-hot向量映射到低维向量，但是one-hot通常可以达到1w多维，这样每层就需要10w多个参数，太过复杂，需要简化它，具体做法是把one-hot向量$e_i$乘到参数矩阵$P^T$上，d是词向量的维度，由用户自己定义，v是字典里单词的数量。矩阵乘法的结果$x_i$就是一个词向量，维度是d。如果$e_i$的第三个元素是1，那么$x_i$的结果就是参数矩阵$P^T$的第三列，可以看出参数矩阵$P^T$的每一列都是一个词向量。</p>
+<p><img src="/../img/image-20221001111331225.png" srcset="/img/loading.gif" lazyload alt="image-20221001111331225"></p>
+<p><img src="/../img/image-20221001110640912.png" srcset="/img/loading.gif" lazyload alt="image-20221001110640912"></p>
+<p>同理，这个参数矩阵的每一行都是一个词向量，矩阵的行数是词汇量v，每一行对应一个单词，矩阵的列数d由用户自己决定，会影响模型表现，应该用cross validation选出一个比较好的d。字典里的第一个词是”movie”，那么参数矩阵的第一行就对应”movie”的词向量，以此类推。</p>
+<p>我们的任务是判断评论是正面还是负面的，这个参数矩阵是从训练数据中学习出来的，所以学出来的词向量会带有感情色彩，假如这些词向量都是二维的$(x_1,x_2)$，可以在平面坐标系中标出这些词向量，好词放一块，坏词放一块，并且二者尽量远离，中性词放在中间地带。</p>
+<p><img src="/../img/image-20221001112116783.png" srcset="/img/loading.gif" lazyload alt="image-20221001112116783"></p>
+<p>代码实现：</p>
+<p><img src="/../img/image-20221001113437985.png" srcset="/img/loading.gif" lazyload alt="image-20221001113437985"></p>
+<p>参数分别是词汇量&#x3D;10k，cross validation选出的维数d&#x3D;8，指定矩阵长度w&#x3D;20，embedding层的输出是一个20x8的矩阵，每条评论20个单词，每个单词用8维的词向量表示，embedding层的参数数量等于8w，是$P^T$矩阵的行数乘上列数。</p>
+<p>Logistic regression:</p>
+<p>逻辑回归法做二分类，判断电影评价是正面的还是负面的。keras代码如下：</p>
+<p><img src="/../img/image-20221001150240572.png" srcset="/img/loading.gif" lazyload alt="image-20221001150240572"></p>
+<p>从keras里导入Sequential，把神经网络的层按顺序搭起来。</p>
+<p>设置词向量维度等于8，调用Sequential，返回model对象，然后往model里依次添加各种层，第一层是embedding层，该层输出是一个20x8的矩阵，每条评论中取20个单词，每个单词用8维的词向量来表示。第二层是flatten层，把20x8的矩阵压扁，变成160维的向量和一个偏移量。最后一层是Dense权连接层，输出是一维的，用Sigmoid激活函数，里面全是0-1之间的数，0代表负面，1代表正面。然后用summary打印出模型的概要，显示每一层的名字，输出的形状和参数数量。</p>
+<p>接下来用compile编译model，指定优化算法RMSprop和损失函数，评价标准acc。</p>
+<p><img src="/../img/image-20221001151124355.png" srcset="/img/loading.gif" lazyload alt="image-20221001151124355"></p>
+<p>为什么选择进行50次迭代？</p>
+<p><img src="/../img/image-20221001151307454.png" srcset="/img/loading.gif" lazyload alt="image-20221001151307454"></p>
+<p>如果用20次，validation还没有达到最优，如果用1000次，也不会更好，只会浪费时间。</p>
+<p>完成训练后，在测试集上检验model表现。</p>
+<p><img src="/../img/image-20221001151504677.png" srcset="/img/loading.gif" lazyload alt="image-20221001151504677"></p>
+<p>用x_test作为输入，evaluate模型的准确率，函数会返回一个loss和一个acc。结果acc返回0.75，比随机瞎猜的0.5好上很多，说明模型学到了东西。</p>
+<p>总结：</p>
+<ol>
+<li>Texts to Sequences</li>
+</ol>
+<p><img src="/../img/image-20221001151747291.png" srcset="/img/loading.gif" lazyload alt="image-20221001151747291"></p>
+<ol start="2">
+<li>Embedding</li>
+</ol>
+<p><img src="/../img/image-20221001152217041.png" srcset="/img/loading.gif" lazyload alt="image-20221001152217041"></p>
+<h3 id="Simple-RNN模型"><a href="#Simple-RNN模型" class="headerlink" title="Simple RNN模型"></a>Simple RNN模型</h3><p>现在的RNN没有以前流行，尤其是在自然语言处理的方面，RNN已经有些过时了，如果训练数据足够多，RNN的效果不如Transformer模型，但是在小规模的问题上，RNN还是很有用的。</p>
+<p>机器学习中，经常会用到文本，语音等sequential data持续数据，那么怎样对持续数据建模？</p>
+<p>上一节输入一段文字，让model来做二分类，判断正面或者负面，这属于one-to-one模型，一个输入对应一个输出，权连接和卷积神经网络都属于one-to-one模型，但是人脑并不会这样处理数据，而是逐渐积累信息，得到一段话的意思。</p>
+<p>One-to-one模型很适用于图片问题，输入一张图片，输出每一类的概率值，但是不适合文本问题。对于文本问题，输入和输出的长度并不固定，比如中英互译等等，更适用于many-to-one或者many-to-many模型，RNN就是这样的模型，很适用于文本，语音领域。</p>
+<p>RNN和人的阅读习惯比较类似，人每次看一个词，逐渐在大脑里积累信息，RNN每次也看一个词，然后用状态向量h来积累阅读过的信息，并且参数矩阵A只有一个，A随机初始化，然后用训练数据来学习A。</p>
+<p><img src="/../img/image-20221001155448355.png" srcset="/img/loading.gif" lazyload alt="image-20221001155448355"></p>
+<h5 id="简单循环神经网络Simple-RNN-Model"><a href="#简单循环神经网络Simple-RNN-Model" class="headerlink" title="简单循环神经网络Simple RNN Model"></a>简单循环神经网络Simple RNN Model</h5><p>主要思想：把输入的x结合到状态向量h里，上一个状态记做$h_{t-1}$，新输入的词向量记做$x_t$，二者做兼容，得到一个维数更高的向量，A是RNN的模型参数，相乘得到一个单列的向量，把激活函数tanh用在向量的每一个元素上，这个激活函数是hyperbolic tangent function双曲正切函数，输出在-1到+1之间。因此，新的$h_t$就是新的$x_t$和旧的$h_{t-1}$做A变换后的激活函数。</p>
+<p><img src="/../img/image-20221001172843395.png" srcset="/img/loading.gif" lazyload alt="image-20221001172843395"></p>
+<p>为什么需要双曲正切函数？</p>
+<p>假设输入的词向量x全都是0，就相当于把蓝色和深蓝色的部分都去掉，因此，第100个状态向量$h_{100}$逐步递推就等于$A^{100}h_0$，假设矩阵A最大的特征值是0.9小于1，0.9的100次方几乎是一个全零的矩阵，那么新的状态$h_{100}$也会是一个全零的向量，假如矩阵A最大的特征值是1.2大于1，100次方后得到的值是八千多万，超级大，状态向量简直blow up。</p>
+<p>因此，没有激活函数的话，计算出的值很可能出问题，要么全等于0，要么爆炸了，数值全是not a number，所以每次更新完状态h后都要做一个normalization，让h恢复到一个合适的区间里。</p>
+<p>Simple RNN有多少个模型参数？</p>
+<p>h的维度加x的维度的向量作为每次迭代的输入，所以A的列数&#x3D;h的行数+x的行数，A的行数&#x3D;h的行数，行和列数的乘积就是模型参数的数量。</p>
+<p><img src="/../img/image-20221001174035546.png" srcset="/img/loading.gif" lazyload alt="image-20221001174035546"></p>
+<p>上节用的是逻辑回归的方法来判断评论是正面还是负面，这节用RNN来解决。</p>
+<p>先搭一个神经网络，最底层是word embedding，把词映射到向量x，词向量维度自己设置，用cross validation来选择最优的维度，这里设置x的维度是32，然后搭一层simple RNN layer，输入的是词向量x，输出的是状态h，h也用cross validation来选择最优的维度，这里设置32。我们可以选择让karas输出所有状态向量，也可以选择只输出最后一个状态向量。因为最后一个状态向量积累了整句话的信息，所以只用最后一个状态向量$h_t$就可以了。$h_t$相当于从文本中提取的特征向量，把$h_t$输入分类器，分类器就会输出一个0-1之间的数值，0代表正面评价，1代表负面评价。</p>
+<p><img src="/../img/image-20221001180125331.png" srcset="/img/loading.gif" lazyload alt="image-20221001180125331"></p>
+<p><img src="/../img/image-20221001180448482.png" srcset="/img/loading.gif" lazyload alt="image-20221001180448482"></p>
+<p>Return_sequence参数为true输出全部状态向量，为False只输出最后一个状态向量。</p>
+<p>输出结果：</p>
+<p><img src="/../img/image-20221001183240171.png" srcset="/img/loading.gif" lazyload alt="image-20221001183240171"></p>
+<p>搭好模型后编译模型，然后用训练数据拟合模型，只让算法运行3个epochs，因为出现了over-fitting，之后validating会变差，提前让算法停止运行(early-stopping)。</p>
+<p><img src="/../img/image-20221001183718987.png" srcset="/img/loading.gif" lazyload alt="image-20221001183718987"></p>
+<p>最后，用测试data来评价model表现，输出得到：</p>
+<p><img src="/../img/image-20221001183802525.png" srcset="/img/loading.gif" lazyload alt="image-20221001183802525"></p>
+<p>比上节的逻辑回归高多了。</p>
+<p> 如果让karas返回所有状态向量，RNN的输出就是一个矩阵，矩阵每一行就是一个状态向量h，如果用所有状态，就要加一个flatten层，把状态矩阵变成一个向量，然后把向量作为分类器的输入，输出正面或负面。需要对前面的代码更改两行：</p>
+<p><img src="/../img/image-20221001184204134.png" srcset="/img/loading.gif" lazyload alt="image-20221001184204134"></p>
+<p>输出网络结构从一个32维的向量变成了一个500x32的矩阵，因为有500个单词，所以有500个状态向量，每个向量状态都是32维的。 </p>
+<p>最后测试结果，用了所有状态向量和只用最后一个状态向量准确率并没有什么提升。</p>
+<p>Simple RNN特点：</p>
+<ol>
+<li><p>擅长Short-term dependence短期依赖，对短句的预测效果很出色。<img src="/../img/image-20221001185108392.png" srcset="/img/loading.gif" lazyload alt="image-20221001185108392"></p>
+</li>
+<li><p>不擅长Long-term dependence长期依赖，RNN中的h跟之前所有输入的x都有函数依赖关系，但实际上离得越远，相关性越差，俗称读不懂上下文，LSTM就做得好很多。</p>
+</li>
+</ol>
+<p><img src="/../img/image-20221001185425574.png" srcset="/img/loading.gif" lazyload alt="image-20221001185425574"></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" class="category-chain-item">人工智能</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/">#机器学习基础理论</a>
+      
+    </div>
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/09/28/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" title="深度强化学习">
+                        <span class="hidden-mobile">深度强化学习</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="vcomment" class="comment"></div> 
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+  <script>
+    var notify = '' == true ? true : false;
+    var verify = '' == true ? true : false;
+      window.onload = function() {
+          new Valine({
+              el: '#vcomment',
+              app_id: "AwHBUAjSP1GvDVpiBgxfS2Pg-gzGzoHsz",
+              app_key: "kMsGLN3hzkQJuLrmqQBgquFF",
+              placeholder: "说点什么",
+              avatar:"retro",
+              visitor: true       
+
+          });
+      }
+  </script>
+
+ 
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  
+      <script>
+        MathJax = {
+          tex    : {
+            inlineMath: { '[+]': [['$', '$']] }
+          },
+          loader : {
+            load: ['ui/lazy']
+          },
+          options: {
+            renderActions: {
+              findScript    : [10, doc => {
+                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                  const display = !!node.type.match(/; *mode=display/);
+                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                  const text = document.createTextNode('');
+                  node.parentNode.replaceChild(text, node);
+                  math.start = { node: text, delim: '', n: 0 };
+                  math.end = { node: text, delim: '', n: 0 };
+                  doc.math.push(math);
+                });
+              }, '', false],
+              insertedScript: [200, () => {
+                document.querySelectorAll('mjx-container').forEach(node => {
+                  let target = node.parentNode;
+                  if (target.nodeName.toLowerCase() === 'li') {
+                    target.parentNode.classList.add('has-jax');
+                  }
+                });
+              }, '', false]
+            }
+          }
+        };
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.1/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/yinghua.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxingxing.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":-15,"vOffset":-15},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

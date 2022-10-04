@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo14.jpeg">
 <meta property="article:published_time" content="2022-09-28T10:26:43.000Z">
-<meta property="article:modified_time" content="2022-09-29T10:19:16.825Z">
+<meta property="article:modified_time" content="2022-09-30T07:50:59.142Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="book">
 <meta name="twitter:card" content="summary_large_image">
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.6k words
+          9.2k words
         
       </span>
     
@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on 3 minutes ago
+                    Last updated on 4 days ago
                   
                 
               </p>
@@ -316,7 +316,7 @@
 <p>采用随机策略的目的不仅为了增加随机性，也是为了增加探索性。</p>
 <h5 id="reward-R："><a href="#reward-R：" class="headerlink" title="reward R："></a>reward R：</h5><p>agent做出一个动作，游戏就会给一个奖励，这个奖励通常需要我们自己来定义，这个奖励定义的好坏非常影响强化学习的效果，举个例子：</p>
 <p><img src="/../img/image-20220928202145557.png" srcset="/img/loading.gif" lazyload alt="image-20220928202145557"></p>
-<p>吃个奖励奖励1，但是为了赢下游戏，赢比赛的奖励要定的断层的高，而强化学习的目的就是为了得到更多的奖励。</p>
+<p>吃个金币奖励1，但是为了赢下游戏，赢比赛的奖励要定的断层的高，而强化学习的目的就是为了得到更多的奖励。</p>
 <h5 id="state-transition状态转移："><a href="#state-transition状态转移：" class="headerlink" title="state transition状态转移："></a>state transition状态转移：</h5><p>举个例子，当前状态下，Mario跳一下，屏幕就发生改变了，也就是state变了，这个过程就叫状态转移。它可以是确定的，也可以是随机的，通常我们认为是随机的。</p>
 <p><img src="/../img/image-20220928220108934.png" srcset="/img/loading.gif" lazyload alt="image-20220928220108934"></p>
 <p>状态转移的随机性是从环境里来的，在这个程序里，Mario往上跳一下，确定会吃到金币，但我们不确定的是屎蛋在下个state里会往左还是往右，这就是下个state的随机性。</p>
@@ -386,7 +386,7 @@
 <li>环境做出action，并更新state，给出一个reward，返回done和info</li>
 <li>如果done&#x3D;1游戏结束，直接结束循环</li>
 </ol>
-<h3 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h3><p>机器学习的核心内容就是把数据喂给一个人工设计的模型，然后让模型自动的“学习”，从而优化模型自身的各种参数，最终使得在某一组参数下该模型能够最佳的匹配该学习任务。</p>
+<h5 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h5><p>机器学习的核心内容就是把数据喂给一个人工设计的模型，然后让模型自动的“学习”，从而优化模型自身的各种参数，最终使得在某一组参数下该模型能够最佳的匹配该学习任务。</p>
 <p>梯度下降法就是实现该“学习”过程的一种最常见的方式，尤其是在深度学习(神经网络)模型中，BP反向传播方法的核心就是对每层的权重参数不断使用梯度下降来进行优化。</p>
 <p>梯度下降法(gradient descent)是一种常用的一阶(first-order)优化方法，是求解无约束优化问题最简单、最经典的方法之一。我们来考虑一个无约束优化问题 $\min_xf(x) $, 其中 f(x) 为连续可微函数，如果我们能够构造一个序列$ x_0,x_1,x_2,… $，并能够满足：</p>
 <p>$f(x^{t+1})&lt;f(x^t),t&#x3D;0,1,2,…$</p>
@@ -401,6 +401,20 @@
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs tex">8.000000000004661<br>6.400000000004837<br>5.120000000003557<br>4.0960000000043095<br>3.276800000005622<br>2.6214400000032967<br>2.097152000001259<br>1.6777216000003392<br>1.3421772800004028<br>1.0737418240003205<br>0.8589934592002546<br>0.6871947673602241<br>0.5497558138881831<br>0.4398046511105336<br>0.35184372088844174<br>0.2814749767107627<br>0.22517998136861533<br>0.18014398509489674<br>0.14411518807592116<br>0.11529215046073862<br>0.09223372036859068<br>0.07378697629487216<br>0.05902958103589708<br>0.047223664828717364<br>0.03777893186297355<br>0.03022314549037856<br>0.024178516392302875<br>0.019342813113842325<br>0.015474250491073885<br>0.012379400392859128<br>initial x = 10.0<br>arg min f(x) of x = 0.012379400392859128<br>f(x) = 0.00015324955408672073<br></code></pre></td></tr></table></figure>
 
 <p>经过30次迭代 x 从初始点10.0逐步逼近最小点 f(0) .</p>
+<h5 id="无偏估计"><a href="#无偏估计" class="headerlink" title="无偏估计"></a>无偏估计</h5><p>不论总体服从什么分布，样本均值是总体均值的无偏估计量。</p>
+<h5 id="蒙特卡洛近似"><a href="#蒙特卡洛近似" class="headerlink" title="蒙特卡洛近似"></a>蒙特卡洛近似</h5><p>来源：蒙特卡洛模拟是在计算机上模拟项目上实施了成千上万次，每次输入都随机选择输入值。由于每个输入很多时候本身就是一个估计区间，因此计算机模型会随机选取每个输入的该区间内的任意值，通过大量成千上万甚至百万次的模拟次数，最终得出一个<strong>累计概率分布图</strong>，这个就是蒙特卡洛模拟。</p>
+<p>举例：敌人以两门火炮为单位对我方进行干扰，进并经常变换射击地点。经过长期观察发现，我方指挥所对敌方目标的指示有50%是准确的，而我方火力单位在指示正确时，有1&#x2F;3的射击效果能毁伤敌人1门火炮，有1&#x2F;6的射击效果能全部消灭敌人。</p>
+<p>解：希望能用某种方法把我方将要对敌人实施的20次打击结果显示出来，确定有效射击的比率及毁伤敌方火炮的平均值。这是一个概率问题，可以通过理论计算得到相应的概率和期望值。但这样只能给出作战行动的最终静态结果，而显示不出作战行动的动态过程。</p>
+<p>为了显示我方20次射击的过程，必须用某种方式模拟出以下两件事：一是观察所对目标的指示正确或不正确；二是当指示正确时，我方火力单位的射击结果。对第一件事进行模拟试验时有两种结果，每一种结果出现的概率都是1&#x2F;2。因此，可用投掷1枚硬币的方式予以确定。当硬币出现正面时为指示正确，反之为不正确。对第二件事进行模拟试验时有3种结果，毁伤1门火炮的可能为1&#x2F;3，毁伤2门火炮的可能为1&#x2F;6，没能毁伤敌火炮的可能为1&#x2F;2。这时，可用投掷骰子的办法来确定，如果出现的是1、2、3三个点则认为没能击中敌人，如果出现的是4、5点则认为毁伤敌1门火炮，如果出现6点则认为毁伤敌2门火炮。</p>
+<p>通过上面的方式，就可把我方20次射击的过程动态地显现出来。</p>
+<p>使用蒙特卡罗法的基本步骤如下：</p>
+<p>(1)根据作战过程的特点构造模拟模型；</p>
+<p>(2)确定所需要的各项基础数据；</p>
+<p>(3)使用可提高模拟精度和收敛速度的方法；</p>
+<p>(4)估计模拟次数；</p>
+<p>(5)编制程序并在计算机上运行；</p>
+<p>(6)统计处理数据，给出问题的模拟结果及其精度估计。</p>
+<p>在蒙特卡罗法中，对同一个问题或现象可采用多种不同的模拟方法，它们有好有差，精度有高有低，计算量有大有小，收敛速度有快有慢，在方法的选择上有一定的技巧。</p>
 <h3 id="价值学习"><a href="#价值学习" class="headerlink" title="价值学习"></a>价值学习</h3><p>$U_t$是一个随机变量，为了消除它的随机性，求它的积分并取期望得到动作价值函数$Q_\pi$，来反映当前状态下做动作的好坏。动作的随机性是由$\pi$函数随机抽样得到的，状态的随机性是由p函数环境机制随机抽样得到的。</p>
 <p> <img src="/../img/image-20220929144820687.png" srcset="/img/loading.gif" lazyload alt="image-20220929144820687"></p>
 <h5 id="Deep-Q-Network-DQN-深度神经网络"><a href="#Deep-Q-Network-DQN-深度神经网络" class="headerlink" title="Deep Q-Network(DQN)深度神经网络"></a>Deep Q-Network(DQN)深度神经网络</h5><p>其实就是神经网络用了近似$Q^\star$函数，因为$Q^\star$其实是不存在的，除非存在一个先知，我们只能用神经网络去近似的学习它。</p>
@@ -442,6 +456,49 @@
 </ol>
 <p>每得到一次r，就可以完成一次迭代，更新一次参数。</p>
 <p><img src="/../img/image-20220929181756642.png" srcset="/img/loading.gif" lazyload alt="image-20220929181756642"></p>
+<h3 id="策略学习"><a href="#策略学习" class="headerlink" title="策略学习"></a>策略学习</h3><p>我们用一个神经网络来近似这个策略函数，这个神经网络叫做策略网络(Policy-Network)，可以用来控制agent运动，训练这个网络需要用到Policy-gredient算法。</p>
+<p>$\pi(a|s)$函数是一个PDF函数，s作为输入，输出每种动作的可能性。我们可以直接学习这个函数吗？如果s是有限的，我们只需要把所有s列举出来，归纳总结就可以，但是在超级玛丽这个游戏中，s明显是无限的，所以我们需要建立一个策略网络来学习这个策略函数。</p>
+<p>策略网络$\pi(a|s;\theta)$中，$\theta$是策略网络的参数。</p>
+<p><img src="/../img/image-20220930084506357.png" srcset="/img/loading.gif" lazyload alt="image-20220930084506357"></p>
+<p>因为$\pi$是一个PDF函数，所以必须保证加和等于1，因此需要用一个Softmax函数，来做归一化。</p>
+<h5 id="策略学习主要思想"><a href="#策略学习主要思想" class="headerlink" title="策略学习主要思想"></a>策略学习主要思想</h5><p>用策略网络来近似策略函数，这样状态价值函数就可以写成如下形式，s的形势越好，V就越大，那怎么样让策略网络越变越好？我们可以改进模型参数$\theta$，让$V(s;\theta)$来变大。基于这个想法，我们可以把目标函数定义为V的关于S的期望，把S当作是随机变量，求期望的时候积分掉。这样$$J(\theta)$$就是对策略网络的期望，策略网络越好，$J(\theta)$就越大。</p>
+<p>怎么样改进$\theta$呢？我们要用到策略梯度算法。让agent玩游戏，每观测到一个s，就相当于从状态中随机抽样出了一个状态，对V求导得到策略梯度，乘上学习率，用梯度上升的方法来迭代$\theta$。</p>
+<p><img src="/../img/image-20220930100055379.png" srcset="/img/loading.gif" lazyload alt="image-20220930100055379"> </p>
+<p>为什么是梯度上升不是梯度下降呢？因为这又不是损失函数，我们是想让$J(\theta)$越变越大的。</p>
+<h5 id="怎么计算策略梯度"><a href="#怎么计算策略梯度" class="headerlink" title="怎么计算策略梯度"></a>怎么计算策略梯度</h5><p><img src="/../img/image-20220930101048159.png" srcset="/img/loading.gif" lazyload alt="image-20220930101048159"></p>
+<p>看以上计算过程，虽然Q显然不能直接做常数处理，因为$\theta$神经网络参数也来源于动作价值函数，但是不管了，直接近似了。将原式作下面的变换，得到一个新的展开式。乘了每一个情况下a的PDF函数，就可以变换成对A的期望了。</p>
+<p><img src="/../img/image-20220930101456099.png" srcset="/img/loading.gif" lazyload alt="image-20220930101456099"></p>
+<p>由此得到了策略梯度。</p>
+<h5 id="蒙特卡洛近似策略梯度"><a href="#蒙特卡洛近似策略梯度" class="headerlink" title="蒙特卡洛近似策略梯度"></a>蒙特卡洛近似策略梯度</h5><p>如果是离散变量，我们可以直接把每个动作都枚举出来，但实际上通常不是。</p>
+<p><img src="/../img/image-20220930102130793.png" srcset="/img/loading.gif" lazyload alt="image-20220930102130793"></p>
+<p>如果是连续变量，计算太复杂了，Q是一个神经网络，很难把它积出来，所以我们只好用蒙特卡洛近似QAQ，把这个期望近似算出来。</p>
+<p>步骤：</p>
+<ol>
+<li><p>随机抽样得到一个动作$\hat{a}$，抽样是根据PDF函数$\pi$来抽的。</p>
+</li>
+<li><p>这里把期望公式记做$g(\hat{a},\theta)$，因为这里的$\hat{a}$是一个确定的动作，所以直接算出g的具体值就可以了。</p>
+</li>
+</ol>
+<p><img src="/../img/image-20220930150738529.png" srcset="/img/loading.gif" lazyload alt="image-20220930150738529"></p>
+<p>根据定义，$g(A,\theta)$关于A求期望，就等于策略梯度。并且由于$\hat{a}$是根据PDF函数$\pi$随机抽出来的，所以$g(\hat{a},\theta)$是关于策略梯度函数的一个无偏估计，因此，可以用它来近似策略梯度，这就是蒙特卡洛近似。</p>
+<p>蒙特卡洛近似就是抽一个或者很多个随机样本，用随机样本来近似期望，更新模型参数的时候，用$g(\hat{a},\theta)$来作为近似的梯度就可以了，不用计算出精确的策略梯度。</p>
+<p>总结</p>
+<ol>
+<li>在第t个时间点，观测到状态$s_t$。</li>
+<li>把策略网络$\pi(*|s_t;\theta_t)$作为概率密度函数，用它随机抽样得到一个动作$a_t$。</li>
+<li>计算价值函数$Q_\pi(s_t,a_t)$的值。</li>
+<li>对策略网络求导，算出$\log\pi$关于参数$\theta$的导数。</li>
+<li>蒙特卡洛近似算出策略梯度。</li>
+<li>用策略梯度来更新策略网络。</li>
+</ol>
+<p><img src="/../img/image-20220930153220538.png" srcset="/img/loading.gif" lazyload alt="image-20220930153220538"></p>
+<p>如何计算$Q_\pi(s_t,a_t)$？</p>
+<p>方法一：Reinforce</p>
+<p>用策略网络$\pi$来控制agent运动，从一开始一直玩到游戏结束，记录整个游戏的轨迹，就可以计算出整个游戏的$u_t$，而$Q_\pi(s_t,a_t)$又是$U_t$的期望，可以用观测值$u_t$来近似$Q_\pi(s_t,a_t)$。</p>
+<p>所以，该方法就是用观测到的$u_t$来代替$Q_\pi(s_t,a_t)$。</p>
+<p>方法二：用一个神经网络来做近似</p>
+<p>不是已经有了一个神经网络用来近似策略函数了吗，现在再用一个神经网络来近似动作价值函数$Q_\pi$。一个actor演员，一个critic评论员，也叫actor critic算法。</p>
+<p><img src="/../img/image-20220930154240239.png" srcset="/img/loading.gif" lazyload alt="image-20220930154240239"></p>
 
               
             </div>
@@ -488,12 +545,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2022/09/30/Machine-Learning/" title="Machine Learning">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Machine Learning</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/09/21/vue3-x-%E5%8A%A8%E7%94%BB%E7%AF%87/" title="vue3.x 动画篇">
-                        <span class="hidden-mobile">vue3.x 动画篇</span>
+                      <a href="/2022/09/28/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" title="神经网络">
+                        <span class="hidden-mobile">神经网络</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
