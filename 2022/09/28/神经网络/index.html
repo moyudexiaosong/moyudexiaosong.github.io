@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo14.jpeg">
 <meta property="article:published_time" content="2022-09-28T10:26:43.000Z">
-<meta property="article:modified_time" content="2022-10-04T07:43:09.352Z">
+<meta property="article:modified_time" content="2022-10-04T07:50:28.115Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="book">
 <meta name="twitter:card" content="summary_large_image">
@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on 6 minutes ago
+                    Last updated on a few seconds ago
                   
                 
               </p>
@@ -303,7 +303,7 @@
 <p>在这个式子里，x的量纲是1，y的量纲是-0.69，每份y贡献-0.69，每份x贡献1，贡献度正好是x,y的系数。依此类推，当出现更多影响因素时，<script type="math/tex">f(价格，面积，距离，楼层，环境，......)</script>，每个维度都可以看作一个变量，最终决定这个房子值不值得购买。</p>
 <p>写成变量的形式：$f(x_1,x_2,x_3,x_4,x_5,……)=w_1x_1+w_2x_2+w_3x_3+w_4x_4+w_5x_5+…+b=y$$，其中$w_i$决定$x_i$对y的贡献程度，也叫权重系数，b决定的事阈值的偏移程度，也叫偏置系数。</p>
 <p>在坐标图上看样本点，一条分界线$0.0018x_1-0.0012x_2-1.78=0$将数据分割成上下两部分，在确定分界线后，数据划分也就确定了。所以我们的目标就是找到这条分界线。</p>
-<p><img src="/神经网络.assets/image-20221002002558453.png" srcset="/img/loading.gif" lazyload alt="image-20221002002558453"></p>
+<p><img src="/神经网络/image-20221002002558453.png" srcset="/img/loading.gif" lazyload alt="image-20221002002558453"></p>
 <p>神经网络分为两部分：</p>
 <ol>
 <li>决策/预测：在分界线确定之后，对于任意一个新数据，我们都可以根据它在分界线上的位置来判断它属于哪一类。但是机器不会看图，所以就会根据将x代入y后大于或者小于0来分类。f(x)&gt;0则在直线上方，反之在下方。</li>
@@ -315,7 +315,7 @@
 <script type="math/tex; mode=display">
 M(W)=\min_{i=1,2,...,N}\frac{1}{||W||_2}|f(X^{(i)}|</script><p>我们要找的是使最小间隔最大的那一组系数<script type="math/tex">W=w_1,w_2,...w_N,b</script>，在不考虑算力的情况下，计算机可以自己完成这样的选择。</p>
 <p>公设二：</p>
-<p><img src="/神经网络.assets/image-20221002005643117.png" srcset="/img/loading.gif" lazyload alt="image-20221002005643117"></p>
+<p><img src="/神经网络/image-20221002005643117.png" srcset="/img/loading.gif" lazyload alt="image-20221002005643117"></p>
 <p>等式左边的意思是在给定系数的条件下，取到该数据点的概率是多少，把数据点输入f(x)，通过sigmoid激活函数后，f(x)值越大，输出越接近于1，左边的概率值也就越接近于1。因为f(x)&gt;0时分类为北京，f(x)<0时分类为郑州，所以当f(x)>0大于的越多，该地属于北京的概率就越大，而-f(x)&gt;0大于的越多，就代表该地属于郑州的概率就越大。</0时分类为郑州，所以当f(x)></p>
 <p>因此得到公设：让所有的数据点对应的似然值同时最大的时候最好。因为在这里变动的不是随机变量X，而是条件W，所以不叫概率值，叫似然值。</p>
 <blockquote>
@@ -323,93 +323,93 @@ M(W)=\min_{i=1,2,...,N}\frac{1}{||W||_2}|f(X^{(i)}|</script><p>我们要找的�
 <p>有时我们不能在实验前获取随机变量概率分布函数中的具体参数值，这个时候我们通过大量试验收集样本数据，统计样本结果，来推测<strong>参数取值的可能性</strong>，此时这个<strong>可能性大小就是似然值</strong>，这个推测参数取值最大可能性的过程也就是后面我们要讲解的<strong>最大似然估计</strong>。</p>
 </blockquote>
 <p>因为是所有概率值同时最大，所以是一个相乘的关系，列出如下表达式，并用log把连乘变成连加。</p>
-<p><img src="/神经网络.assets/image-20221002011344066.png" srcset="/img/loading.gif" lazyload alt="image-20221002011344066"></p>
+<p><img src="/神经网络/image-20221002011344066.png" srcset="/img/loading.gif" lazyload alt="image-20221002011344066"></p>
 <p>公设三：</p>
 <p>假设存在一个可以完美将数据分类的T(x)函数，用图像表示：</p>
 <script type="math/tex; mode=display">
-T(X)=\begin{cases} 1:X\in\{北京\}\\  0:X\in\{长治\}， \end{cases}</script><p><img src="/神经网络.assets/image-20221002163443188.png" srcset="/img/loading.gif" lazyload alt="image-20221002163443188"></p>
+T(X)=\begin{cases} 1:X\in\{北京\}\\  0:X\in\{长治\}， \end{cases}</script><p><img src="/神经网络/image-20221002163443188.png" srcset="/img/loading.gif" lazyload alt="image-20221002163443188"></p>
 <p>现实中会有噪声存在，对T叠加一个噪声后，就不再是非0即1的情况了，</p>
 <script type="math/tex; mode=display">
 T(X)+\epsilon=\begin{cases} 1+\epsilon:X\in\{北京\}\\  0+\epsilon:X\in\{长治\}， \end{cases}</script><p>这时候sigmoid函数又可以发挥作用了,</p>
 <script type="math/tex; mode=display">
-T(X)+\epsilon=sigmoid(f(X))</script><p><img src="/神经网络.assets/image-20221002164927433.png" srcset="/img/loading.gif" lazyload alt="image-20221002164927433"></p>
+T(X)+\epsilon=sigmoid(f(X))</script><p><img src="/神经网络/image-20221002164927433.png" srcset="/img/loading.gif" lazyload alt="image-20221002164927433"></p>
 <p> 对f(X)取值sigmoid后与T(X)的偏差，就是定义的误差项$\epsilon$，我们希望这个误差越小越好，也就是说，方差越小越好。</p>
-<p><img src="/神经网络.assets/image-20221002165207081.png" srcset="/img/loading.gif" lazyload alt="image-20221002165207081"></p>
+<p><img src="/神经网络/image-20221002165207081.png" srcset="/img/loading.gif" lazyload alt="image-20221002165207081"></p>
 <p>还有更多的公设，在数学上都可以证明。</p>
-<h3 id="数学知识"><a href="#数学知识" class="headerlink" title="数学知识"></a>数学知识</h3><p>sigmoid函数：<img src="/神经网络.assets/image-20221002174627021.png" srcset="/img/loading.gif" lazyload alt="image-20221002174627021"></p>
+<h3 id="数学知识"><a href="#数学知识" class="headerlink" title="数学知识"></a>数学知识</h3><p>sigmoid函数：<img src="/神经网络/image-20221002174627021.png" srcset="/img/loading.gif" lazyload alt="image-20221002174627021"></p>
 <p> 做指数变形，把$\hat{y}$从实数域投射到$(0,\infty)$ </p>
-<p><img src="/神经网络.assets/image-20221002174851249.png" srcset="/img/loading.gif" lazyload alt="image-20221002174851249"></p>
-<p>softmax函数：<img src="/神经网络.assets/image-20221002175019842.png" srcset="/img/loading.gif" lazyload alt="image-20221002175019842"></p>
+<p><img src="/神经网络/image-20221002174851249.png" srcset="/img/loading.gif" lazyload alt="image-20221002174851249"></p>
+<p>softmax函数：<img src="/神经网络/image-20221002175019842.png" srcset="/img/loading.gif" lazyload alt="image-20221002175019842"></p>
 <p>选择哪一种判断标准，也就是选择哪一种公设，在机器学习上叫做策略。<strong>算法（反向传播——梯度下降法）、策略（输出层）加上模型（隐藏层），就是机器学习的三大要素。</strong></p>
 <h2 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h2><p>线性方程在坐标图上的表现就是一条直线，增加多次项就相当于增加曲度，只要增加足够的多次项，无论多么奇怪的形状都能够表示出来，举个例子：</p>
-<p><img src="/神经网络.assets/image-20221002165841885.png" srcset="/img/loading.gif" lazyload alt="image-20221002165841885"></p>
+<p><img src="/神经网络/image-20221002165841885.png" srcset="/img/loading.gif" lazyload alt="image-20221002165841885"></p>
 <p>可见，随着次数的增加，曲线会越来越复杂，模型的复杂程度也会提高。 </p>
 <p>虽然我们讨论的是分类问题，但是在曲线的拟合方面，和回归在模型上并没有什么本质的区别。当我们拟合出一条回归曲线后，任意给出一个$x_1$的值，我们都可以预测出它对应的$x_2$的数值。这时候完成的就是预测而不是分类。</p>
 <p> 既然直线这么不好用，我们就提高模型的复杂程度来分类，神经网络做的就是这样的工作。</p>
-<p><img src="/神经网络.assets/image-20221002170454030.png" srcset="/img/loading.gif" lazyload alt="image-20221002170454030"></p>
+<p><img src="/神经网络/image-20221002170454030.png" srcset="/img/loading.gif" lazyload alt="image-20221002170454030"></p>
 <p>神经网络最左边是输入层，对应的是数据的维度，神经网络里任意一个神经元，都会和上一层，下一层所有的节点相连，所以叫全连接神经网络。</p>
-<p><img src="/神经网络.assets/image-20221002170733234.png" srcset="/img/loading.gif" lazyload alt="image-20221002170733234"></p>
+<p><img src="/神经网络/image-20221002170733234.png" srcset="/img/loading.gif" lazyload alt="image-20221002170733234"></p>
 <p>看个最简单的，每一条线就代表一个权重，连起来就是一个线性方程。</p>
-<p><img src="/神经网络.assets/image-20221002170823104.png" srcset="/img/loading.gif" lazyload alt="image-20221002170823104"></p>
+<p><img src="/神经网络/image-20221002170823104.png" srcset="/img/loading.gif" lazyload alt="image-20221002170823104"></p>
 <p> 然后它的结果z要经过激活函数后才会传给下一层，激活过程用神经元统一表示。</p>
 <p>以二维输入向量举例，这个过程就是这样的：</p>
-<p><img src="/神经网络.assets/image-20221002171950200.png" srcset="/img/loading.gif" lazyload alt="image-20221002171950200"></p>
-<p><img src="/神经网络.assets/image-20221002171058240.png" srcset="/img/loading.gif" lazyload alt="image-20221002171058240"></p>
+<p><img src="/神经网络/image-20221002171950200.png" srcset="/img/loading.gif" lazyload alt="image-20221002171950200"></p>
+<p><img src="/神经网络/image-20221002171058240.png" srcset="/img/loading.gif" lazyload alt="image-20221002171058240"></p>
 <p>在经过激活函数前：</p>
-<p><img src="/神经网络.assets/image-20221002171434650.png" srcset="/img/loading.gif" lazyload alt="image-20221002171434650"></p>
+<p><img src="/神经网络/image-20221002171434650.png" srcset="/img/loading.gif" lazyload alt="image-20221002171434650"></p>
 <p>经过激活函数后：</p>
-<p><img src="/神经网络.assets/image-20221002171111001.png" srcset="/img/loading.gif" lazyload alt="image-20221002171111001"></p>
+<p><img src="/神经网络/image-20221002171111001.png" srcset="/img/loading.gif" lazyload alt="image-20221002171111001"></p>
 <p>再加一层神经元：上一层的输出是下一层的输入：</p>
-<p><img src="/神经网络.assets/image-20221002171809601.png" srcset="/img/loading.gif" lazyload alt="image-20221002171809601"></p>
-<p><img src="/神经网络.assets/image-20221002171623928.png" srcset="/img/loading.gif" lazyload alt="image-20221002171623928"></p>
+<p><img src="/神经网络/image-20221002171809601.png" srcset="/img/loading.gif" lazyload alt="image-20221002171809601"></p>
+<p><img src="/神经网络/image-20221002171623928.png" srcset="/img/loading.gif" lazyload alt="image-20221002171623928"></p>
 <p>给第一层多加一个神经元：，每层的输出就从单值变成向量了：</p>
-<p><img src="/神经网络.assets/image-20221002171914583.png" srcset="/img/loading.gif" lazyload alt="image-20221002171914583"></p>
-<p><img src="/神经网络.assets/image-20221002172231769.png" srcset="/img/loading.gif" lazyload alt="image-20221002172231769"></p>
+<p><img src="/神经网络/image-20221002171914583.png" srcset="/img/loading.gif" lazyload alt="image-20221002171914583"></p>
+<p><img src="/神经网络/image-20221002172231769.png" srcset="/img/loading.gif" lazyload alt="image-20221002172231769"></p>
 <p> 依此类推，神经元数量越多，模型越复杂：</p>
-<p><img src="/神经网络.assets/image-20221002173141748.png" srcset="/img/loading.gif" lazyload alt="image-20221002173141748"></p>
+<p><img src="/神经网络/image-20221002173141748.png" srcset="/img/loading.gif" lazyload alt="image-20221002173141748"></p>
 <p>只要增加的够多，什么形状都能编出来，这就叫 万能逼近定理。实现这个定理最关键的是一个非线性的激活函数，否则再怎么增加神经元得到的也只是一个多维的平面。</p>
 <blockquote>
 <p>总之，神经网络的复杂性来自于激活函数。</p>
 </blockquote>
 <p>不同的激活函数会拟合出不同的形状，它们可以是这些：</p>
-<p><img src="/神经网络.assets/image-20221002173432075.png" srcset="/img/loading.gif" lazyload alt="image-20221002173432075"></p>
+<p><img src="/神经网络/image-20221002173432075.png" srcset="/img/loading.gif" lazyload alt="image-20221002173432075"></p>
 <p>原理：举个例子，加入输入只是一个二维向量，经过矩阵运算后，相当于把它从二维升到了三维，原本不可分的数据，现在即使用更简单的模型也可以把它们分开。</p>
-<p><img src="/神经网络.assets/image-20221002174123794.png" srcset="/img/loading.gif" lazyload alt="image-20221002174123794"></p>
+<p><img src="/神经网络/image-20221002174123794.png" srcset="/img/loading.gif" lazyload alt="image-20221002174123794"></p>
 <p>所以我们可以把中间的层看做是对输入的一个升维操作，有多少神经元就会把数据升到多少维。只要维度够高，一定能找到一个超平面，完成对数据的划分。因此，最后一层神经元只需要考虑策略的问题就可以了，该层是否需要激活函数由策略决定。</p>
-<p>但如果只从隐藏层的作用是升维这一角度去理解，通常会发现隐藏层的神经元要少于输入个数，比如：<img src="/神经网络.assets/image-20221002175255234.png" srcset="/img/loading.gif" lazyload alt="image-20221002175255234"></p>
+<p>但如果只从隐藏层的作用是升维这一角度去理解，通常会发现隐藏层的神经元要少于输入个数，比如：<img src="/神经网络/image-20221002175255234.png" srcset="/img/loading.gif" lazyload alt="image-20221002175255234"></p>
 <p>举个例子，在人脸识别中，图片的每个像素都是一个输入，最后对这些输入进行抽象，提取特征，才是我们需要的东西，真实的输入像素反而不是。</p>
-<p><img src="/神经网络.assets/image-20221002175534642.png" srcset="/img/loading.gif" lazyload alt="image-20221002175534642"></p>
+<p><img src="/神经网络/image-20221002175534642.png" srcset="/img/loading.gif" lazyload alt="image-20221002175534642"></p>
 <p>再举个例子，在字符识别中，把字符分割成不同大小，分割的最小最具体的一层作为最外层神经元，可复用性最强，个数也最多，越往里分割的部分越抽象，神经元个数也越小，因此隐藏层越深，抽象程度越高。</p>
-<p><img src="/神经网络.assets/image-20221002175642701.png" srcset="/img/loading.gif" lazyload alt="image-20221002175642701"></p>
+<p><img src="/神经网络/image-20221002175642701.png" srcset="/img/loading.gif" lazyload alt="image-20221002175642701"></p>
 <h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p>在预测的时候，用到的是正向传播$f_W(X)=\hat{Y}$，只不过这个f是一个神经网络，运算特别复杂。在训练的时候，这个关系就会反过来，用来训练的是已知的真实数据X和Y，作为变量需要我们求解的是系数。</p>
-<p><img src="/神经网络.assets/image-20221002181308051.png" srcset="/img/loading.gif" lazyload alt="image-20221002181308051"></p>
+<p><img src="/神经网络/image-20221002181308051.png" srcset="/img/loading.gif" lazyload alt="image-20221002181308051"></p>
 <p>这个曲面的最高点就是我们在选择策略后想要达到的目标。但是在初始化时，系数可能出现在任何一个点上，理想情况下，它到最优点的距离就是我们希望求解的目标，但是白想，没有用。</p>
 <p>但是有一点，那就是在这个曲面上任何一点， 我们都可以求出一个向量，这个向量总是指向上升最快的方向，这个向量在参数平面上的投影就叫做梯度。</p>
-<p><img src="/神经网络.assets/image-20221002182458208.png" srcset="/img/loading.gif" lazyload alt="image-20221002182458208"></p>
+<p><img src="/神经网络/image-20221002182458208.png" srcset="/img/loading.gif" lazyload alt="image-20221002182458208"></p>
 <p> 梯度下降法：梯度总是指向上升最快的方向，但是有的策略是求最大，有的是求最小，为了统一他们，即便是求最大的问题。也会在函数前面加一个负号，转换成求最小。</p>
-<p><img src="/神经网络.assets/image-20221002182914297.png" srcset="/img/loading.gif" lazyload alt="image-20221002182914297"></p>
+<p><img src="/神经网络/image-20221002182914297.png" srcset="/img/loading.gif" lazyload alt="image-20221002182914297"></p>
 <p>这里曲面虽然反了，但是梯度仍然是指向上升最快的方向，所以会先对梯度求反，让他指向下降最快的方法。</p>
-<p><img src="/神经网络.assets/image-20221002183649863.png" srcset="/img/loading.gif" lazyload alt="image-20221002183649863"></p>
+<p><img src="/神经网络/image-20221002183649863.png" srcset="/img/loading.gif" lazyload alt="image-20221002183649863"></p>
 <p>通过这个梯度进行反向传播，更新W的参数：</p>
-<p><img src="/神经网络.assets/image-20221002183846639.png" srcset="/img/loading.gif" lazyload alt="image-20221002183846639"></p>
+<p><img src="/神经网络/image-20221002183846639.png" srcset="/img/loading.gif" lazyload alt="image-20221002183846639"></p>
 <p>反向传播表达式：</p>
-<p><img src="/神经网络.assets/image-20221002184116647.png" srcset="/img/loading.gif" lazyload alt="image-20221002184116647"></p>
-<p><img src="/神经网络.assets/image-20221002184128040.png" srcset="/img/loading.gif" lazyload alt="image-20221002184128040"></p>
+<p><img src="/神经网络/image-20221002184116647.png" srcset="/img/loading.gif" lazyload alt="image-20221002184116647"></p>
+<p><img src="/神经网络/image-20221002184128040.png" srcset="/img/loading.gif" lazyload alt="image-20221002184128040"></p>
 <h2 id="支持向量机SVM"><a href="#支持向量机SVM" class="headerlink" title="支持向量机SVM"></a>支持向量机SVM</h2><p>软间隔：</p>
-<p><img src="/神经网络.assets/image-20221002191511910.png" srcset="/img/loading.gif" lazyload alt="image-20221002191511910"></p>
+<p><img src="/神经网络/image-20221002191511910.png" srcset="/img/loading.gif" lazyload alt="image-20221002191511910"></p>
 <p>延伸到多维平面：</p>
-<p><img src="/神经网络.assets/image-20221002191712109.png" srcset="/img/loading.gif" lazyload alt="image-20221002191712109"></p>
+<p><img src="/神经网络/image-20221002191712109.png" srcset="/img/loading.gif" lazyload alt="image-20221002191712109"></p>
 <p>求x到平面的间距，先求和平面垂直的法向量，也就是下降最快的向量——梯度W，把f(X)对X求导，把X约掉，得到梯度W。</p>
-<p><img src="/神经网络.assets/image-20221003011038872.png" srcset="/img/loading.gif" lazyload alt="image-20221003011038872"></p>
+<p><img src="/神经网络/image-20221003011038872.png" srcset="/img/loading.gif" lazyload alt="image-20221003011038872"></p>
 <p>求距离公式=法向量x该点到平面上一点的向量/法向量的二范数。原理：两向量相乘，二者内积就等于一个是一方对另一方的贡献 ，几何意义就是A向量在B向量上的投影再乘上B向量。</p>
 <p>推导过程：</p>
-<p><img src="/神经网络.assets/image-20221003011103574.png" srcset="/img/loading.gif" lazyload alt="image-20221003011103574"></p>
+<p><img src="/神经网络/image-20221003011103574.png" srcset="/img/loading.gif" lazyload alt="image-20221003011103574"></p>
 <p>以上，是间隔最大的证明过程，但还需要保证分类也是正确的，即蓝色的点f(X)都要大于0，黄色的点f(X)都要小于0。</p>
-<p><img src="/神经网络.assets/image-20221003011547492.png" srcset="/img/loading.gif" lazyload alt="image-20221003011547492"></p>
+<p><img src="/神经网络/image-20221003011547492.png" srcset="/img/loading.gif" lazyload alt="image-20221003011547492"></p>
 <p>推导过程：</p>
-<p><img src="/神经网络.assets/image-20221003011613894.png" srcset="/img/loading.gif" lazyload alt="image-20221003011613894"></p>
+<p><img src="/神经网络/image-20221003011613894.png" srcset="/img/loading.gif" lazyload alt="image-20221003011613894"></p>
 <p>整理以上两个条件可得：</p>
-<p><img src="/神经网络.assets/image-20221003011646310.png" srcset="/img/loading.gif" lazyload alt="image-20221003011646310"></p>
+<p><img src="/神经网络/image-20221003011646310.png" srcset="/img/loading.gif" lazyload alt="image-20221003011646310"></p>
 
               
             </div>
@@ -456,9 +456,9 @@ T(X)+\epsilon=sigmoid(f(X))</script><p><img src="/神经网络.assets/image-2022
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/09/28/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" title="深度强化学习">
+                      <a href="/2022/09/30/Machine-Learning/" title="Machine Learning">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">深度强化学习</span>
+                        <span class="hidden-mobile">Machine Learning</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -466,8 +466,8 @@ T(X)+\epsilon=sigmoid(f(X))</script><p><img src="/神经网络.assets/image-2022
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/09/21/vue3-x-%E5%8A%A8%E7%94%BB%E7%AF%87/" title="vue3.x 动画篇">
-                        <span class="hidden-mobile">vue3.x 动画篇</span>
+                      <a href="/2022/09/28/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" title="深度强化学习">
+                        <span class="hidden-mobile">深度强化学习</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
