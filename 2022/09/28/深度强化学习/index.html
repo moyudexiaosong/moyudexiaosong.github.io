@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo14.jpeg">
 <meta property="article:published_time" content="2022-09-28T10:26:43.000Z">
-<meta property="article:modified_time" content="2022-09-30T07:50:59.142Z">
+<meta property="article:modified_time" content="2022-10-04T07:43:25.034Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="book">
 <meta name="twitter:card" content="summary_large_image">
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          9.2k words
+          9.1k words
         
       </span>
     
@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on 4 days ago
+                    Last updated on a few seconds ago
                   
                 
               </p>
@@ -309,7 +309,7 @@
 <h5 id="随机抽样："><a href="#随机抽样：" class="headerlink" title="随机抽样："></a>随机抽样：</h5><p><img src="/../img/image-20220928184217776.png" srcset="/img/loading.gif" lazyload alt="image-20220928184217776"></p>
 <h3 id="专业术语"><a href="#专业术语" class="headerlink" title="专业术语"></a>专业术语</h3><h5 id="state和action："><a href="#state和action：" class="headerlink" title="state和action："></a>state和action：</h5><p>state可以理解为当前场景，action就是智能体(Agent)的动作。举个例子，假设我们在玩超级马里奥，整个画面就是现在的state，马里奥就是智能体，他能做的上下左右运动就是action。</p>
 <p><img src="/../img/image-20220928184404914.png" srcset="/img/loading.gif" lazyload alt="image-20220928184404914"></p>
-<h5 id="policy："><a href="#policy：" class="headerlink" title="policy："></a>policy：</h5><p>policy可以理解为决策在这个例子中，就是在我们观测到屏幕上这个画面的时候，我们该让Mario做什么动作。在数学上，policy函数这么定义：$\pi(a|s)&#x3D;P(A&#x3D;a|S&#x3D;s)$。它是一个概率密度函数，意思是给定状态s，做出动作a的概率密度。</p>
+<h5 id="policy："><a href="#policy：" class="headerlink" title="policy："></a>policy：</h5><p>policy可以理解为决策在这个例子中，就是在我们观测到屏幕上这个画面的时候，我们该让Mario做什么动作。在数学上，policy函数这么定义：$\pi(a|s)=P(A=a|S=s)$。它是一个概率密度函数，意思是给定状态s，做出动作a的概率密度。</p>
 <p><img src="/../img/image-20220928193308974.png" srcset="/img/loading.gif" lazyload alt="image-20220928193308974"></p>
 <p>如果让policy自己完成这个决策，它就会做一个随机抽样，但是向上的概率最大。</p>
 <p>强化学习学的就是这个policy函数，只要有了这个函数，就可以自动操作Mario来自动打游戏了。这个policy函数可以是固定，也可以是随机的，但是在个人博弈的情况下最好还是随机的。举个例子，在玩石头剪刀布时，如果你的出拳顺序是固定的，别人很容易就可以猜到你会出什么，因此最好还是采用概率密度函数作决策函数，随机抽样得到这个动作。</p>
@@ -351,7 +351,9 @@
 <p>$U_t$是个随机变量，依赖于t时刻之后所有的动作$A_t,A_{t+1},A_{t+2},…$和未来所有的状态$S_t,S_{t+1},S_{t+2},…$，所以我们并不知道t时刻的$U_t$是什么。</p>
 <p>那我们该如何评估当前的形势呢？我们可以对$U_t$求期望，把里面的随机性$A_{t+1},A_{t+2},…,S_{t+1},S_{t+2},…$都用积分积掉，得到的就是一个实数。这样$Q_\pi$就只与当前动作和状态有关，并且积分的时候，还会用到policy函数$\pi$和p。</p>
 <p>动作价值函数的意义就是，如果用policy函数$\pi$，那么在当前状态$s_t$下做动作$a_t$是好还是坏。已知policy函数$\pi$的情况下，$Q_\pi$就会给当前状态下所有的动作打分，然后我们就知道哪个动作好哪个动作不好。因此，有不同的policy函数$\pi$，就会有不同的$Q_\pi$。</p>
-<p>怎么把$Q_\pi$里的$\pi$去掉呢？可以对$Q_\pi$关于$\pi$求最大化，意思是我们有无数种policy函数$\pi$，而我们要求最好的那种，也就是可以让$Q_\pi$最大化的那种。<br>$$<br>Q^\star(s_t,a_t)&#x3D;\max_\pi Q_\pi(s_t,a_t)<br>$$<br>我们把得到的这个最大化的函数称为最优动作价值函数，它的直观意义就是不管用什么样的决策函数，得到的最大期望也就是这。</p>
+<p>怎么把$Q_\pi$里的$\pi$去掉呢？可以对$Q_\pi$关于$\pi$求最大化，意思是我们有无数种policy函数$\pi$，而我们要求最好的那种，也就是可以让$Q_\pi$最大化的那种。</p>
+<script type="math/tex; mode=display">
+Q^\star(s_t,a_t)=\max_\pi Q_\pi(s_t,a_t)</script><p>我们把得到的这个最大化的函数称为最优动作价值函数，它的直观意义就是不管用什么样的决策函数，得到的最大期望也就是这。</p>
 <p><img src="/../img/image-20220929104613868.png" srcset="/img/loading.gif" lazyload alt="image-20220929104613868"></p>
 <p>状态价值函数$V_\pi$，它是动作价值函数的期望，可以把这里的动作A作为随机变量，然后关于动作A求期望，A的概率密度函数为$\pi$，根据期望定义，可以把它写成积分（假设动作是连续的形势，比如汽车驾驶方向盘的角度）或者连加（假设动作是上下左右这种离散的形式）的形式，把A消掉。它的意义是告诉我们当前的形势好不好，举个例子，如果在下围棋，让$V_\pi$看一眼棋盘，它就可以告诉我们当前的胜算有多大。</p>
 <p>总结：$Q_\pi$衡量当前状态下使用$\pi$决策的话a动作的好坏，和$\pi,s,a$都有关，是$U_t$的条件期望。</p>
@@ -384,28 +386,26 @@
 <li>每一轮循环里，先渲染环境，将画面展示给人看</li>
 <li>算出一个action，这里是均匀抽样</li>
 <li>环境做出action，并更新state，给出一个reward，返回done和info</li>
-<li>如果done&#x3D;1游戏结束，直接结束循环</li>
+<li>如果done=1游戏结束，直接结束循环</li>
 </ol>
 <h5 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h5><p>机器学习的核心内容就是把数据喂给一个人工设计的模型，然后让模型自动的“学习”，从而优化模型自身的各种参数，最终使得在某一组参数下该模型能够最佳的匹配该学习任务。</p>
 <p>梯度下降法就是实现该“学习”过程的一种最常见的方式，尤其是在深度学习(神经网络)模型中，BP反向传播方法的核心就是对每层的权重参数不断使用梯度下降来进行优化。</p>
 <p>梯度下降法(gradient descent)是一种常用的一阶(first-order)优化方法，是求解无约束优化问题最简单、最经典的方法之一。我们来考虑一个无约束优化问题 $\min_xf(x) $, 其中 f(x) 为连续可微函数，如果我们能够构造一个序列$ x_0,x_1,x_2,… $，并能够满足：</p>
-<p>$f(x^{t+1})&lt;f(x^t),t&#x3D;0,1,2,…$</p>
+<p>$f(x^{t+1})&lt;f(x^t),t=0,1,2,…$</p>
 <p>那么我们就能够不断执行该过程即可收敛到局部极小点，可参考下图。</p>
 <p><img src="/../img/image-20220929150613619.png" srcset="/img/loading.gif" lazyload alt="image-20220929150613619"></p>
 <p>现在我们随机找了一个初始的点 x1 ，对于一元函数来说，函数值只会随着 x 的变化而变化，那么我们就设计<strong>下一个 $x^{t+1 }$是从上一个$ x^t $沿着某一方向走一小步$ Δx $得到的。此处的关键问题就是：这一小步的方向是朝向哪里？</strong></p>
 <p><img src="/../img/v2-5e43a5099214417029720384e5ac4a17_r.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>代码实现：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><br>//返回x的平方<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">f</span>(<span class="hljs-params">x</span>):<br>    <span class="hljs-keyword">return</span> np.power(x, <span class="hljs-number">2</span>)<br>//返回2x<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">d_f_1</span>(<span class="hljs-params">x</span>):<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">2.0</span> * x<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">d_f_2</span>(<span class="hljs-params">f, x, delta=<span class="hljs-number">1e-4</span></span>):<br>		//返回x处的斜率<br>    <span class="hljs-keyword">return</span> (f(x+delta) - f(x-delta)) / (<span class="hljs-number">2</span> * delta)<br><br><br><span class="hljs-comment"># plot the function</span><br>//返回一个-<span class="hljs-number">10</span>到<span class="hljs-number">10</span>的数组<br>xs = np.arange(-<span class="hljs-number">10</span>, <span class="hljs-number">11</span>)<br>//画出-<span class="hljs-number">10</span>到<span class="hljs-number">10</span>的x平方的图像<br>plt.plot(xs, f(xs))<br>plt.show()<br><br>learning_rate = <span class="hljs-number">0.1</span><br>max_loop = <span class="hljs-number">30</span><br>//用梯度下降法迭代<span class="hljs-number">30</span>次求f(x)=x^<span class="hljs-number">2</span>的最小值<br>x_init = <span class="hljs-number">10.0</span><br>x = x_init<br>lr = <span class="hljs-number">0.1</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(max_loop):<br>    <span class="hljs-comment"># d_f_x = d_f_1(x)</span><br>    //把x处的斜率付给d_f_x<br>    d_f_x = d_f_2(f, x)<br>    //更新x，减去步长alpha*d_f_x<br>    x = x - learning_rate * d_f_x<br>    <span class="hljs-built_in">print</span>(x)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;initial x =&#x27;</span>, x_init)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;arg min f(x) of x =&#x27;</span>, x)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;f(x) =&#x27;</span>, f(x))<br></code></pre></td></tr></table></figure>
-
 <p>输出内容如下：</p>
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs tex">8.000000000004661<br>6.400000000004837<br>5.120000000003557<br>4.0960000000043095<br>3.276800000005622<br>2.6214400000032967<br>2.097152000001259<br>1.6777216000003392<br>1.3421772800004028<br>1.0737418240003205<br>0.8589934592002546<br>0.6871947673602241<br>0.5497558138881831<br>0.4398046511105336<br>0.35184372088844174<br>0.2814749767107627<br>0.22517998136861533<br>0.18014398509489674<br>0.14411518807592116<br>0.11529215046073862<br>0.09223372036859068<br>0.07378697629487216<br>0.05902958103589708<br>0.047223664828717364<br>0.03777893186297355<br>0.03022314549037856<br>0.024178516392302875<br>0.019342813113842325<br>0.015474250491073885<br>0.012379400392859128<br>initial x = 10.0<br>arg min f(x) of x = 0.012379400392859128<br>f(x) = 0.00015324955408672073<br></code></pre></td></tr></table></figure>
-
 <p>经过30次迭代 x 从初始点10.0逐步逼近最小点 f(0) .</p>
 <h5 id="无偏估计"><a href="#无偏估计" class="headerlink" title="无偏估计"></a>无偏估计</h5><p>不论总体服从什么分布，样本均值是总体均值的无偏估计量。</p>
 <h5 id="蒙特卡洛近似"><a href="#蒙特卡洛近似" class="headerlink" title="蒙特卡洛近似"></a>蒙特卡洛近似</h5><p>来源：蒙特卡洛模拟是在计算机上模拟项目上实施了成千上万次，每次输入都随机选择输入值。由于每个输入很多时候本身就是一个估计区间，因此计算机模型会随机选取每个输入的该区间内的任意值，通过大量成千上万甚至百万次的模拟次数，最终得出一个<strong>累计概率分布图</strong>，这个就是蒙特卡洛模拟。</p>
-<p>举例：敌人以两门火炮为单位对我方进行干扰，进并经常变换射击地点。经过长期观察发现，我方指挥所对敌方目标的指示有50%是准确的，而我方火力单位在指示正确时，有1&#x2F;3的射击效果能毁伤敌人1门火炮，有1&#x2F;6的射击效果能全部消灭敌人。</p>
+<p>举例：敌人以两门火炮为单位对我方进行干扰，进并经常变换射击地点。经过长期观察发现，我方指挥所对敌方目标的指示有50%是准确的，而我方火力单位在指示正确时，有1/3的射击效果能毁伤敌人1门火炮，有1/6的射击效果能全部消灭敌人。</p>
 <p>解：希望能用某种方法把我方将要对敌人实施的20次打击结果显示出来，确定有效射击的比率及毁伤敌方火炮的平均值。这是一个概率问题，可以通过理论计算得到相应的概率和期望值。但这样只能给出作战行动的最终静态结果，而显示不出作战行动的动态过程。</p>
-<p>为了显示我方20次射击的过程，必须用某种方式模拟出以下两件事：一是观察所对目标的指示正确或不正确；二是当指示正确时，我方火力单位的射击结果。对第一件事进行模拟试验时有两种结果，每一种结果出现的概率都是1&#x2F;2。因此，可用投掷1枚硬币的方式予以确定。当硬币出现正面时为指示正确，反之为不正确。对第二件事进行模拟试验时有3种结果，毁伤1门火炮的可能为1&#x2F;3，毁伤2门火炮的可能为1&#x2F;6，没能毁伤敌火炮的可能为1&#x2F;2。这时，可用投掷骰子的办法来确定，如果出现的是1、2、3三个点则认为没能击中敌人，如果出现的是4、5点则认为毁伤敌1门火炮，如果出现6点则认为毁伤敌2门火炮。</p>
+<p>为了显示我方20次射击的过程，必须用某种方式模拟出以下两件事：一是观察所对目标的指示正确或不正确；二是当指示正确时，我方火力单位的射击结果。对第一件事进行模拟试验时有两种结果，每一种结果出现的概率都是1/2。因此，可用投掷1枚硬币的方式予以确定。当硬币出现正面时为指示正确，反之为不正确。对第二件事进行模拟试验时有3种结果，毁伤1门火炮的可能为1/3，毁伤2门火炮的可能为1/6，没能毁伤敌火炮的可能为1/2。这时，可用投掷骰子的办法来确定，如果出现的是1、2、3三个点则认为没能击中敌人，如果出现的是4、5点则认为毁伤敌1门火炮，如果出现6点则认为毁伤敌2门火炮。</p>
 <p>通过上面的方式，就可把我方20次射击的过程动态地显现出来。</p>
 <p>使用蒙特卡罗法的基本步骤如下：</p>
 <p>(1)根据作战过程的特点构造模拟模型；</p>
@@ -461,7 +461,7 @@
 <p>策略网络$\pi(a|s;\theta)$中，$\theta$是策略网络的参数。</p>
 <p><img src="/../img/image-20220930084506357.png" srcset="/img/loading.gif" lazyload alt="image-20220930084506357"></p>
 <p>因为$\pi$是一个PDF函数，所以必须保证加和等于1，因此需要用一个Softmax函数，来做归一化。</p>
-<h5 id="策略学习主要思想"><a href="#策略学习主要思想" class="headerlink" title="策略学习主要思想"></a>策略学习主要思想</h5><p>用策略网络来近似策略函数，这样状态价值函数就可以写成如下形式，s的形势越好，V就越大，那怎么样让策略网络越变越好？我们可以改进模型参数$\theta$，让$V(s;\theta)$来变大。基于这个想法，我们可以把目标函数定义为V的关于S的期望，把S当作是随机变量，求期望的时候积分掉。这样$$J(\theta)$$就是对策略网络的期望，策略网络越好，$J(\theta)$就越大。</p>
+<h5 id="策略学习主要思想"><a href="#策略学习主要思想" class="headerlink" title="策略学习主要思想"></a>策略学习主要思想</h5><p>用策略网络来近似策略函数，这样状态价值函数就可以写成如下形式，s的形势越好，V就越大，那怎么样让策略网络越变越好？我们可以改进模型参数$\theta$，让$V(s;\theta)$来变大。基于这个想法，我们可以把目标函数定义为V的关于S的期望，把S当作是随机变量，求期望的时候积分掉。这样<script type="math/tex">J(\theta)</script>就是对策略网络的期望，策略网络越好，$J(\theta)$就越大。</p>
 <p>怎么样改进$\theta$呢？我们要用到策略梯度算法。让agent玩游戏，每观测到一个s，就相当于从状态中随机抽样出了一个状态，对V求导得到策略梯度，乘上学习率，用梯度上升的方法来迭代$\theta$。</p>
 <p><img src="/../img/image-20220930100055379.png" srcset="/img/loading.gif" lazyload alt="image-20220930100055379"> </p>
 <p>为什么是梯度上升不是梯度下降呢？因为这又不是损失函数，我们是想让$J(\theta)$越变越大的。</p>
@@ -545,9 +545,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/09/30/Machine-Learning/" title="Machine Learning">
+                      <a href="/2022/09/28/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" title="神经网络">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Machine Learning</span>
+                        <span class="hidden-mobile">神经网络</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -555,8 +555,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/09/28/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" title="神经网络">
-                        <span class="hidden-mobile">神经网络</span>
+                      <a href="/2022/09/21/vue3-x-%E5%8A%A8%E7%94%BB%E7%AF%87/" title="vue3.x 动画篇">
+                        <span class="hidden-mobile">vue3.x 动画篇</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

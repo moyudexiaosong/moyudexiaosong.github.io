@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo37.jpeg">
 <meta property="article:published_time" content="2022-09-30T07:55:54.000Z">
-<meta property="article:modified_time" content="2022-10-01T11:40:05.389Z">
+<meta property="article:modified_time" content="2022-10-04T07:43:16.742Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="机器学习基础理论">
 <meta name="twitter:card" content="summary_large_image">
@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on 3 days ago
+                    Last updated on a few seconds ago
                   
                 
               </p>
@@ -336,7 +336,7 @@
 <p><img src="/../img/image-20221001112116783.png" srcset="/img/loading.gif" lazyload alt="image-20221001112116783"></p>
 <p>代码实现：</p>
 <p><img src="/../img/image-20221001113437985.png" srcset="/img/loading.gif" lazyload alt="image-20221001113437985"></p>
-<p>参数分别是词汇量&#x3D;10k，cross validation选出的维数d&#x3D;8，指定矩阵长度w&#x3D;20，embedding层的输出是一个20x8的矩阵，每条评论20个单词，每个单词用8维的词向量表示，embedding层的参数数量等于8w，是$P^T$矩阵的行数乘上列数。</p>
+<p>参数分别是词汇量=10k，cross validation选出的维数d=8，指定矩阵长度w=20，embedding层的输出是一个20x8的矩阵，每条评论20个单词，每个单词用8维的词向量表示，embedding层的参数数量等于8w，是$P^T$矩阵的行数乘上列数。</p>
 <p>Logistic regression:</p>
 <p>逻辑回归法做二分类，判断电影评价是正面的还是负面的。keras代码如下：</p>
 <p><img src="/../img/image-20221001150240572.png" srcset="/img/loading.gif" lazyload alt="image-20221001150240572"></p>
@@ -355,7 +355,7 @@
 <li>Texts to Sequences</li>
 </ol>
 <p><img src="/../img/image-20221001151747291.png" srcset="/img/loading.gif" lazyload alt="image-20221001151747291"></p>
-<ol start="2">
+<ol>
 <li>Embedding</li>
 </ol>
 <p><img src="/../img/image-20221001152217041.png" srcset="/img/loading.gif" lazyload alt="image-20221001152217041"></p>
@@ -371,7 +371,7 @@
 <p>假设输入的词向量x全都是0，就相当于把蓝色和深蓝色的部分都去掉，因此，第100个状态向量$h_{100}$逐步递推就等于$A^{100}h_0$，假设矩阵A最大的特征值是0.9小于1，0.9的100次方几乎是一个全零的矩阵，那么新的状态$h_{100}$也会是一个全零的向量，假如矩阵A最大的特征值是1.2大于1，100次方后得到的值是八千多万，超级大，状态向量简直blow up。</p>
 <p>因此，没有激活函数的话，计算出的值很可能出问题，要么全等于0，要么爆炸了，数值全是not a number，所以每次更新完状态h后都要做一个normalization，让h恢复到一个合适的区间里。</p>
 <p>Simple RNN有多少个模型参数？</p>
-<p>h的维度加x的维度的向量作为每次迭代的输入，所以A的列数&#x3D;h的行数+x的行数，A的行数&#x3D;h的行数，行和列数的乘积就是模型参数的数量。</p>
+<p>h的维度加x的维度的向量作为每次迭代的输入，所以A的列数=h的行数+x的行数，A的行数=h的行数，行和列数的乘积就是模型参数的数量。</p>
 <p><img src="/../img/image-20221001174035546.png" srcset="/img/loading.gif" lazyload alt="image-20221001174035546"></p>
 <p>上节用的是逻辑回归的方法来判断评论是正面还是负面，这节用RNN来解决。</p>
 <p>先搭一个神经网络，最底层是word embedding，把词映射到向量x，词向量维度自己设置，用cross validation来选择最优的维度，这里设置x的维度是32，然后搭一层simple RNN layer，输入的是词向量x，输出的是状态h，h也用cross validation来选择最优的维度，这里设置32。我们可以选择让karas输出所有状态向量，也可以选择只输出最后一个状态向量。因为最后一个状态向量积累了整句话的信息，所以只用最后一个状态向量$h_t$就可以了。$h_t$相当于从文本中提取的特征向量，把$h_t$输入分类器，分类器就会输出一个0-1之间的数值，0代表正面评价，1代表负面评价。</p>
@@ -447,8 +447,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/09/28/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" title="深度强化学习">
-                        <span class="hidden-mobile">深度强化学习</span>
+                      <a href="/2022/09/28/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" title="神经网络">
+                        <span class="hidden-mobile">神经网络</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
