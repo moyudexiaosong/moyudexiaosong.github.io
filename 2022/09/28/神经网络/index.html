@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo14.jpeg">
 <meta property="article:published_time" content="2022-09-28T10:26:43.000Z">
-<meta property="article:modified_time" content="2022-10-06T11:17:38.600Z">
+<meta property="article:modified_time" content="2022-10-06T11:25:55.653Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="book">
 <meta name="twitter:card" content="summary_large_image">
@@ -606,7 +606,7 @@ L(\hat{y},y)=-[y\log\hat{y}+(1-y)\log(1-\hat{y})]</script><p>这里的$\hat{y}$�
 <p><img src="/../img/image-20221006182040984.png" srcset="/img/loading.gif" lazyload alt="image-20221006182040984"></p>
 <p>拉格朗日乘数法求极值有一个基础，原本的问题是求当$P,\lambda$等于多少的时候，L的值为最小值，具体过程是，先把$\lambda$当作需要调整的参数，P当作一个参数，找到L的最大值，然后再在最大值的情况下，再去调整P，找到L的最小值。对偶问题则是先把P当作参数，再把$\lambda$当作参数。二者结果是一样的，具体求解如下：</p>
 <p><img src="/../img/image-20221006183112036.png" srcset="/img/loading.gif" lazyload alt="image-20221006183112036"></p>
-<p>因为$\lambda$项没有$\tilde{P}(x)$系数，为了把$\tilde{P}(x)$提出来，乘上一个它的加和，易知是等于1。这时候就需要偏导等于0来求极值，因为后半部分始终同号，所以求和所有项都是同号，要求和为0，所以要每项都为0。</p>
+<p>因为$\lambda$项没有$\tilde{P}(x)$系数，为了把$\tilde{P}(x)$提出来，乘上一个它的加和，易知是等于1。这时候就需要偏导等于0来求极值，因为后半部分始终同号，所以求和所有项都是同号，要求和为0，所以要每项都为0。因为L对所有的$P(y_j|x_i)$的偏导都要为0才能保证是可能的极值点。这块的实质是变分，<u>不知道是啥，再看看。</u></p>
 <p><img src="/../img/image-20221006183804353.png" srcset="/img/loading.gif" lazyload alt="image-20221006183804353"></p>
 <p>把结果化简成感知机进行线性运算的形式，因为$\lambda_0$是归一化条件的系数，所以条件概率最后是归一的，并且样本空间所有样本概率求和结果为1，因此分子分母应该相等。</p>
 <p><img src="https://gitee.com/labulavish/blog/raw/master/img/202210061841725.png" srcset="/img/loading.gif" lazyload alt="image-20221006184118190" style="zoom:50%;"></p>
@@ -623,6 +623,7 @@ L(\hat{y},y)=-[y\log\hat{y}+(1-y)\log(1-\hat{y})]</script><p>这里的$\hat{y}$�
 <p><img src="/../img/image-20221006191000121.png" srcset="/img/loading.gif" lazyload alt="image-20221006191000121"></p>
 <p>确定形式后代回原式来求$\lambda$的具体值，这个$\lambda$是一个向量，维数非常多，仅凭计算是求不出来的，常用方法是构建一个损失函数，用梯度下降法训练得到。</p>
 <p><img src="/../img/image-20221006191420978.png" srcset="/img/loading.gif" lazyload alt="image-20221006191420978"></p>
+<p>整理思路：1、设定样本的概率模型与目标概率模型一致（两个模型特性函数一致）建立服从伯努利分布的变量（此处需要理解样本空间及变量的关系）对两个模型进行降维（降维后两个概率模型依旧一致），由于降维后的两个概率模型只有一阶矩不为零，可以产生一个条件用于后面的计算：降维后样本模型与目标模型的一阶矩相等；2、在满足第一个条件后（降维后样本模型与目标模型的一阶矩相等），可大胆的地将目标概率模型的条件熵转换公式用样本概率模型的经验概率替换，然后计算目标概率模型的条件熵最大值（即满足最大熵原理），计算过程使用了拉格朗日乘数法以及概率论的基本知识。</p>
 <p>只能说为了水论文看这个不合适，想要自己设计算法，知道谁是谁的爹谁和谁有血缘关系太重要了。</p>
 <p>我觉得他们最终归一其实就是为了解决机器学习，但针对不同工程问题而设计出来的算法，极大似然和交叉熵这种计算简单，可以用在直观数据的机器学习，而softmax这种适合更加复杂的问题，比如图片。</p>
 
@@ -671,9 +672,9 @@ L(\hat{y},y)=-[y\log\hat{y}+(1-y)\log(1-\hat{y})]</script><p>这里的$\hat{y}$�
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/09/30/Machine-Learning/" title="Machine Learning">
+                      <a href="/2022/09/28/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" title="深度强化学习">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Machine Learning</span>
+                        <span class="hidden-mobile">深度强化学习</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -681,8 +682,8 @@ L(\hat{y},y)=-[y\log\hat{y}+(1-y)\log(1-\hat{y})]</script><p>这里的$\hat{y}$�
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/09/28/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" title="深度强化学习">
-                        <span class="hidden-mobile">深度强化学习</span>
+                      <a href="/2022/09/21/vue3-x-%E5%8A%A8%E7%94%BB%E7%AF%87/" title="vue3.x 动画篇">
+                        <span class="hidden-mobile">vue3.x 动画篇</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
