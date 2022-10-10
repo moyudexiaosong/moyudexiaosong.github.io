@@ -16,16 +16,16 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="基础知识数据处理机器学习处理的数据通常有categorical特征，我们需要把它转化为数值特征，数值特征的特点是可以比较大小。  举个例子，上面的数据集每一行代表一个人的个人信息。第一列的年龄信息已经是可以比较大小的数值特征，第二列的性别是二元数值，需要转换成0和1，第三列的国籍无法比较大小，所以不能用字典做映射，要用one-hot向量来代表国籍类别，有197个国家，所以每个one-hot向量都">
+    <meta name="description" content="绪论这章介绍了专用名词和两个原理。 数据集里一个样本在属性空间里被称为一个特征向量，每个特征对应一个维度，维度的总数称为维数。 从数据中学得模型的过程叫做“学习”和“训练”，学到的潜在规律叫做“假设”，训练结果作为标记，所有标记的集合叫做“标记空间”或者“输出空间”。 预测值为离散变量时称为“分类”，预测值为连续变量时称为“回归”，将训练集中样本按照某种内在规律分成若干组，每组称为一个“簇”，叫">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Machine Learning">
-<meta property="og:url" content="http://example.com/2022/09/30/Machine-Learning/index.html">
+<meta property="og:title" content="重刷周志华">
+<meta property="og:url" content="http://example.com/2022/10/10/%E5%91%A8%E5%BF%97%E5%8D%8E%E9%87%8D%E5%88%B7%E2%80%9C/index.html">
 <meta property="og:site_name" content="摸鱼之家">
-<meta property="og:description" content="基础知识数据处理机器学习处理的数据通常有categorical特征，我们需要把它转化为数值特征，数值特征的特点是可以比较大小。  举个例子，上面的数据集每一行代表一个人的个人信息。第一列的年龄信息已经是可以比较大小的数值特征，第二列的性别是二元数值，需要转换成0和1，第三列的国籍无法比较大小，所以不能用字典做映射，要用one-hot向量来代表国籍类别，有197个国家，所以每个one-hot向量都">
+<meta property="og:description" content="绪论这章介绍了专用名词和两个原理。 数据集里一个样本在属性空间里被称为一个特征向量，每个特征对应一个维度，维度的总数称为维数。 从数据中学得模型的过程叫做“学习”和“训练”，学到的潜在规律叫做“假设”，训练结果作为标记，所有标记的集合叫做“标记空间”或者“输出空间”。 预测值为离散变量时称为“分类”，预测值为连续变量时称为“回归”，将训练集中样本按照某种内在规律分成若干组，每组称为一个“簇”，叫">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo37.jpeg">
-<meta property="article:published_time" content="2022-09-30T07:55:54.000Z">
-<meta property="article:modified_time" content="2022-10-10T02:23:34.117Z">
+<meta property="article:published_time" content="2022-10-10T02:22:53.000Z">
+<meta property="article:modified_time" content="2022-10-10T03:02:37.208Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="机器学习基础理论">
 <meta name="twitter:card" content="summary_large_image">
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Machine Learning - 摸鱼之家</title>
+  <title>重刷周志华 - 摸鱼之家</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -214,7 +214,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Machine Learning"></span>
+            <span id="subtitle" data-typed-text="重刷周志华"></span>
           
         </div>
 
@@ -225,8 +225,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-09-30 15:55" pubdate>
-          September 30, 2022 pm
+        <time datetime="2022-10-10 10:22" pubdate>
+          October 10, 2022 am
         </time>
       </span>
     
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.3k words
+          444 words
         
       </span>
     
@@ -285,12 +285,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Machine Learning</h1>
+            <h1 style="display: none">重刷周志华</h1>
             
               <p class="note note-info">
                 
                   
-                    Last updated on 39 minutes ago
+                    Last updated on a few seconds ago
                   
                 
               </p>
@@ -298,105 +298,14 @@
             <div class="markdown-body">
               
               <hr>
-<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><h4 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h4><p>机器学习处理的数据通常有categorical特征，我们需要把它转化为数值特征，数值特征的特点是可以比较大小。</p>
-<p><img src="/../img/image-20220930165440724.png" srcset="/img/loading.gif" lazyload alt="image-20220930165440724"></p>
-<p>举个例子，上面的数据集每一行代表一个人的个人信息。第一列的年龄信息已经是可以比较大小的数值特征，第二列的性别是二元数值，需要转换成0和1，第三列的国籍无法比较大小，所以不能用字典做映射，要用one-hot向量来代表国籍类别，有197个国家，所以每个one-hot向量都是一个197维的向量。并且要保留0向量，用来保存未知或者缺失的国籍。数据库里经常会有缺失国际。举例，下面是两个人的全部信息：</p>
-<p><img src="/../img/image-20221001094116657.png" srcset="/img/loading.gif" lazyload alt="image-20221001094116657"></p>
-<p>为什么要用one-hot向量，而不是用字典映射？</p>
-<p><img src="/../img/image-20221001094227047.png" srcset="/img/loading.gif" lazyload alt="image-20221001094227047"></p>
-<p>因此，做机器学习的时候，不能用一个标量来表示categorical feature。 </p>
-<h3 id="文本处理与词嵌入"><a href="#文本处理与词嵌入" class="headerlink" title="文本处理与词嵌入"></a>文本处理与词嵌入</h3><p>在自然语言处理的应用中，数据都是文本，文本可以分割成单词，每个单词都是一个类别，可以作为categorical feature来使用one-hot向量表示。如果有一万个单词，就有一万个类别。</p>
-<p><img src="/../img/image-20221001094540144.png" srcset="/img/loading.gif" lazyload alt="image-20221001094540144"></p>
-<p><img src="/../img/image-20221001094716842.png" srcset="/img/loading.gif" lazyload alt="image-20221001094716842"></p>
-<p>完成统计后，对哈希表里的单词做一个排序，按照词频递减的顺序排列，然后把词频换成index，这个表就叫做字典，可以把单词映射成一个数字。字典里单词的个数叫做词汇量(vocabulary)。</p>
-<p>如果词汇量过于庞大，可能有几十w个，通常会按词频只保留1w个，删去低频词汇，减小向量维度，防止计算过慢。</p>
-<p><img src="/../img/image-20221001095416022.png" srcset="/img/loading.gif" lazyload alt="image-20221001095416022"></p>
-<p>因为低频次在字典里找不到，所以在做one-hot encoding的时候，可以把它直接忽略，也可以编码成0。</p>
-<h4 id="Text-Processing-and-Word-Embedding"><a href="#Text-Processing-and-Word-Embedding" class="headerlink" title="Text Processing and Word Embedding"></a>Text Processing and Word Embedding</h4><p><img src="/../img/image-20221001104029698.png" srcset="/img/loading.gif" lazyload alt="image-20221001104029698"></p>
-<p>做一个自然语言识别的模型，来判断评论是正面还是负面的，收集了5w条评论，其中2.5w用来训练模型，2.5w用来测试。</p>
-<p>在做文字嵌入和搭机器学习之前，应该先文本处理，把文本变成序列(Text to Sequence)。文本处理的好坏直接影响机器学习的结果。</p>
-<p>文本处理步骤：</p>
-<ol>
-<li><p>Tokenization代号化</p>
-<p>如果把文本分割成单词，则一个token就是一个单词，如果把文本分割成字符，则一个token就是一个字符。这一步看似简单，但是其实有很多坑。<img src="/../img/image-20221001103550038.png" srcset="/img/loading.gif" lazyload alt="image-20221001103550038"></p>
-</li>
-<li><p>建立字典：把每一个单词对应成一个向量</p>
-</li>
-<li><p>one-hot编码：编码成一个sequence序列</p>
-<p><img src="/../img/image-20221001103744907.png" srcset="/img/loading.gif" lazyload alt="image-20221001103744907"></p>
-</li>
-</ol>
-<p>每条电影评论都会转换成一个sequence，电影评论有长有短，所以得到的sequence长度也不一样，无法对齐，做机器学习的时候，我们需要把数据存储在矩阵或者张量里，这就需要数据对齐。对其原则是指定一个长度w，超过w的sequence就砍掉前面或者后面的词，不足w的就用0来补齐。<img src="/../img/image-20221001104646834.png" srcset="/img/loading.gif" lazyload alt="image-20221001104646834"></p>
-<p>Word Embedding：</p>
-<p>指的是将词转化成一种分布式表示，又称词向量。它把高维one-hot向量映射到低维向量，但是one-hot通常可以达到1w多维，这样每层就需要10w多个参数，太过复杂，需要简化它，具体做法是把one-hot向量$e_i$乘到参数矩阵$P^T$上，d是词向量的维度，由用户自己定义，v是字典里单词的数量。矩阵乘法的结果$x_i$就是一个词向量，维度是d。如果$e_i$的第三个元素是1，那么$x_i$的结果就是参数矩阵$P^T$的第三列，可以看出参数矩阵$P^T$的每一列都是一个词向量。</p>
-<p><img src="/../img/image-20221001111331225.png" srcset="/img/loading.gif" lazyload alt="image-20221001111331225"></p>
-<p><img src="/../img/image-20221001110640912.png" srcset="/img/loading.gif" lazyload alt="image-20221001110640912"></p>
-<p>同理，这个参数矩阵的每一行都是一个词向量，矩阵的行数是词汇量v，每一行对应一个单词，矩阵的列数d由用户自己决定，会影响模型表现，应该用cross validation选出一个比较好的d。字典里的第一个词是”movie”，那么参数矩阵的第一行就对应”movie”的词向量，以此类推。</p>
-<p>我们的任务是判断评论是正面还是负面的，这个参数矩阵是从训练数据中学习出来的，所以学出来的词向量会带有感情色彩，假如这些词向量都是二维的$(x_1,x_2)$，可以在平面坐标系中标出这些词向量，好词放一块，坏词放一块，并且二者尽量远离，中性词放在中间地带。</p>
-<p><img src="/../img/image-20221001112116783.png" srcset="/img/loading.gif" lazyload alt="image-20221001112116783"></p>
-<p>代码实现：</p>
-<p><img src="/../img/image-20221001113437985.png" srcset="/img/loading.gif" lazyload alt="image-20221001113437985"></p>
-<p>参数分别是词汇量=10k，cross validation选出的维数d=8，指定矩阵长度w=20，embedding层的输出是一个20x8的矩阵，每条评论20个单词，每个单词用8维的词向量表示，embedding层的参数数量等于8w，是$P^T$矩阵的行数乘上列数。</p>
-<p>Logistic regression:</p>
-<p>逻辑回归法做二分类，判断电影评价是正面的还是负面的。keras代码如下：</p>
-<p><img src="/../img/image-20221001150240572.png" srcset="/img/loading.gif" lazyload alt="image-20221001150240572"></p>
-<p>从keras里导入Sequential，把神经网络的层按顺序搭起来。</p>
-<p>设置词向量维度等于8，调用Sequential，返回model对象，然后往model里依次添加各种层，第一层是embedding层，该层输出是一个20x8的矩阵，每条评论中取20个单词，每个单词用8维的词向量来表示。第二层是flatten层，把20x8的矩阵压扁，变成160维的向量和一个偏移量。最后一层是Dense权连接层，输出是一维的，用Sigmoid激活函数，里面全是0-1之间的数，0代表负面，1代表正面。然后用summary打印出模型的概要，显示每一层的名字，输出的形状和参数数量。</p>
-<p>接下来用compile编译model，指定优化算法RMSprop和损失函数，评价标准acc。</p>
-<p><img src="/../img/image-20221001151124355.png" srcset="/img/loading.gif" lazyload alt="image-20221001151124355"></p>
-<p>为什么选择进行50次迭代？</p>
-<p><img src="/../img/image-20221001151307454.png" srcset="/img/loading.gif" lazyload alt="image-20221001151307454"></p>
-<p>如果用20次，validation还没有达到最优，如果用1000次，也不会更好，只会浪费时间。</p>
-<p>完成训练后，在测试集上检验model表现。</p>
-<p><img src="/../img/image-20221001151504677.png" srcset="/img/loading.gif" lazyload alt="image-20221001151504677"></p>
-<p>用x_test作为输入，evaluate模型的准确率，函数会返回一个loss和一个acc。结果acc返回0.75，比随机瞎猜的0.5好上很多，说明模型学到了东西。</p>
-<p>总结：</p>
-<ol>
-<li>Texts to Sequences</li>
-</ol>
-<p><img src="/../img/image-20221001151747291.png" srcset="/img/loading.gif" lazyload alt="image-20221001151747291"></p>
-<ol>
-<li>Embedding</li>
-</ol>
-<p><img src="/../img/image-20221001152217041.png" srcset="/img/loading.gif" lazyload alt="image-20221001152217041"></p>
-<h3 id="Simple-RNN模型"><a href="#Simple-RNN模型" class="headerlink" title="Simple RNN模型"></a>Simple RNN模型</h3><p>现在的RNN没有以前流行，尤其是在自然语言处理的方面，RNN已经有些过时了，如果训练数据足够多，RNN的效果不如Transformer模型，但是在小规模的问题上，RNN还是很有用的。</p>
-<p>机器学习中，经常会用到文本，语音等sequential data持续数据，那么怎样对持续数据建模？</p>
-<p>上一节输入一段文字，让model来做二分类，判断正面或者负面，这属于one-to-one模型，一个输入对应一个输出，权连接和卷积神经网络都属于one-to-one模型，但是人脑并不会这样处理数据，而是逐渐积累信息，得到一段话的意思。</p>
-<p>One-to-one模型很适用于图片问题，输入一张图片，输出每一类的概率值，但是不适合文本问题。对于文本问题，输入和输出的长度并不固定，比如中英互译等等，更适用于many-to-one或者many-to-many模型，RNN就是这样的模型，很适用于文本，语音领域。</p>
-<p>RNN和人的阅读习惯比较类似，人每次看一个词，逐渐在大脑里积累信息，RNN每次也看一个词，然后用状态向量h来积累阅读过的信息，并且参数矩阵A只有一个，A随机初始化，然后用训练数据来学习A。</p>
-<p><img src="/../img/image-20221001155448355.png" srcset="/img/loading.gif" lazyload alt="image-20221001155448355"></p>
-<h5 id="简单循环神经网络Simple-RNN-Model"><a href="#简单循环神经网络Simple-RNN-Model" class="headerlink" title="简单循环神经网络Simple RNN Model"></a>简单循环神经网络Simple RNN Model</h5><p>主要思想：把输入的x结合到状态向量h里，上一个状态记做$h_{t-1}$，新输入的词向量记做$x_t$，二者做兼容，得到一个维数更高的向量，A是RNN的模型参数，相乘得到一个单列的向量，把激活函数tanh用在向量的每一个元素上，这个激活函数是hyperbolic tangent function双曲正切函数，输出在-1到+1之间。因此，新的$h_t$就是新的$x_t$和旧的$h_{t-1}$做A变换后的激活函数。</p>
-<p><img src="/../img/image-20221001172843395.png" srcset="/img/loading.gif" lazyload alt="image-20221001172843395"></p>
-<p>为什么需要双曲正切函数？</p>
-<p>假设输入的词向量x全都是0，就相当于把蓝色和深蓝色的部分都去掉，因此，第100个状态向量$h_{100}$逐步递推就等于$A^{100}h_0$，假设矩阵A最大的特征值是0.9小于1，0.9的100次方几乎是一个全零的矩阵，那么新的状态$h_{100}$也会是一个全零的向量，假如矩阵A最大的特征值是1.2大于1，100次方后得到的值是八千多万，超级大，状态向量简直blow up。</p>
-<p>因此，没有激活函数的话，计算出的值很可能出问题，要么全等于0，要么爆炸了，数值全是not a number，所以每次更新完状态h后都要做一个normalization，让h恢复到一个合适的区间里。</p>
-<p>Simple RNN有多少个模型参数？</p>
-<p>h的维度加x的维度的向量作为每次迭代的输入，所以A的列数=h的行数+x的行数，A的行数=h的行数，行和列数的乘积就是模型参数的数量。</p>
-<p><img src="/../img/image-20221001174035546.png" srcset="/img/loading.gif" lazyload alt="image-20221001174035546"></p>
-<p>上节用的是逻辑回归的方法来判断评论是正面还是负面，这节用RNN来解决。</p>
-<p>先搭一个神经网络，最底层是word embedding，把词映射到向量x，词向量维度自己设置，用cross validation来选择最优的维度，这里设置x的维度是32，然后搭一层simple RNN layer，输入的是词向量x，输出的是状态h，h也用cross validation来选择最优的维度，这里设置32。我们可以选择让karas输出所有状态向量，也可以选择只输出最后一个状态向量。因为最后一个状态向量积累了整句话的信息，所以只用最后一个状态向量$h_t$就可以了。$h_t$相当于从文本中提取的特征向量，把$h_t$输入分类器，分类器就会输出一个0-1之间的数值，0代表正面评价，1代表负面评价。</p>
-<p><img src="/../img/image-20221001180125331.png" srcset="/img/loading.gif" lazyload alt="image-20221001180125331"></p>
-<p><img src="/../img/image-20221001180448482.png" srcset="/img/loading.gif" lazyload alt="image-20221001180448482"></p>
-<p>Return_sequence参数为true输出全部状态向量，为False只输出最后一个状态向量。</p>
-<p>输出结果：</p>
-<p><img src="/../img/image-20221001183240171.png" srcset="/img/loading.gif" lazyload alt="image-20221001183240171"></p>
-<p>搭好模型后编译模型，然后用训练数据拟合模型，只让算法运行3个epochs，因为出现了over-fitting，之后validating会变差，提前让算法停止运行(early-stopping)。</p>
-<p><img src="/../img/image-20221001183718987.png" srcset="/img/loading.gif" lazyload alt="image-20221001183718987"></p>
-<p>最后，用测试data来评价model表现，输出得到：</p>
-<p><img src="/../img/image-20221001183802525.png" srcset="/img/loading.gif" lazyload alt="image-20221001183802525"></p>
-<p>比上节的逻辑回归高多了。</p>
-<p> 如果让karas返回所有状态向量，RNN的输出就是一个矩阵，矩阵每一行就是一个状态向量h，如果用所有状态，就要加一个flatten层，把状态矩阵变成一个向量，然后把向量作为分类器的输入，输出正面或负面。需要对前面的代码更改两行：</p>
-<p><img src="/../img/image-20221001184204134.png" srcset="/img/loading.gif" lazyload alt="image-20221001184204134"></p>
-<p>输出网络结构从一个32维的向量变成了一个500x32的矩阵，因为有500个单词，所以有500个状态向量，每个向量状态都是32维的。 </p>
-<p>最后测试结果，用了所有状态向量和只用最后一个状态向量准确率并没有什么提升。</p>
-<p>Simple RNN特点：</p>
-<ol>
-<li><p>擅长Short-term dependence短期依赖，对短句的预测效果很出色。<img src="/../img/image-20221001185108392.png" srcset="/img/loading.gif" lazyload alt="image-20221001185108392"></p>
-</li>
-<li><p>不擅长Long-term dependence长期依赖，RNN中的h跟之前所有输入的x都有函数依赖关系，但实际上离得越远，相关性越差，俗称读不懂上下文，LSTM就做得好很多。</p>
-</li>
-</ol>
-<p><img src="/../img/image-20221001185425574.png" srcset="/img/loading.gif" lazyload alt="image-20221001185425574"></p>
+<h3 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h3><p>这章介绍了专用名词和两个原理。</p>
+<p><strong>数据集</strong>里一个<strong>样本</strong>在<strong>属性空间</strong>里被称为一个<strong>特征向量</strong>，每个<strong>特征</strong>对应一个<strong>维度</strong>，维度的总数称为<strong>维数</strong>。</p>
+<p>从数据中学得模型的过程叫做“<strong>学习</strong>”和“<strong>训练</strong>”，学到的潜在规律叫做“<strong>假设</strong>”，训练结果作为<strong>标记</strong>，所有标记的集合叫做“<strong>标记空间</strong>”或者“<strong>输出空间</strong>”。</p>
+<p>预测值为离散变量时称为“<strong>分类</strong>”，预测值为连续变量时称为“<strong>回归</strong>”，将训练集中样本按照某种内在规律分成若干组，每组称为一个“簇”，叫做“<strong>聚类</strong>”。</p>
+<p>通过有标记的训练样本学习叫做“<strong>监督学习</strong>”，通过无标记的训练样本学习叫做“<strong>无监督学习</strong>”。分类和回归属于前者，聚类属于后者。</p>
+<p>假设空间指一个<strong>机器学习算法可以生成的所有函数的集合</strong>。</p>
+<p><u>奥卡姆剃刀原理：若有多个假设和观察一致，选最简单的那个。</u>在曲线中，平滑意味着简单。</p>
+<p><u>没有免费的午餐NFL定理：无论学习算法的“聪明”或“笨拙”与否，它们的期望性能都相同。</u>但这是建立在所有问题机会均等的条件下的，现实中我们肯定只会关心我们需要关心的问题，因此肯定有算法会在某个问题上表现的更好，我们要做的就是找到它。</p>
 
               
             </div>
@@ -443,18 +352,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/10/%E5%91%A8%E5%BF%97%E5%8D%8E%E9%87%8D%E5%88%B7%E2%80%9C/" title="重刷周志华">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">重刷周志华</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/09/28/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" title="深度强化学习">
-                        <span class="hidden-mobile">深度强化学习</span>
+                      <a href="/2022/09/30/Machine-Learning/" title="Machine Learning">
+                        <span class="hidden-mobile">Machine Learning</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo14.jpeg">
 <meta property="article:published_time" content="2022-08-31T14:41:07.000Z">
-<meta property="article:modified_time" content="2022-10-04T07:43:36.156Z">
+<meta property="article:modified_time" content="2022-10-09T16:52:31.167Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="book">
 <meta name="twitter:card" content="summary_large_image">
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.6k words
+          11k words
         
       </span>
     
@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on 3 days ago
+                    Last updated on 10 hours ago
                   
                 
               </p>
@@ -449,12 +449,70 @@ Entropy=-\int P(i)log_2 P(i)dx</script><p>因此，只要我们知道了任何�
 <p>本来是直接向量相乘就softmax的，现在先把$w^Tq$作归一化处理，然后再和b向量相加。</p>
 <p>根据相关论文，这个很小的改动就可以大幅度提高准确率。</p>
 <h3 id="小样本学习综述"><a href="#小样本学习综述" class="headerlink" title="小样本学习综述"></a>小样本学习综述</h3><p>本文根据机器学习中的误差分解理论，认为FSL任务中最小化经验风险是不可信的，这也是FSL难以训练的原因。</p>
-<h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><h6 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h6><p>通常而言将FSL考虑为一个N-way K-shot的分类任务，假定任务的真实分布为𝑝(𝑥,𝑦)，而对于这个真实分布有一个最优假设ℎ̂可以描述它。通常的做法是给定一个假设空间𝐻，然后从里面找一个接近ℎ̂ 的假设ℎ，在这里𝐻是由你选择的模型和参数的初始化分布决定的，用一些优化方法（通常为梯度下降）来逼近这个最优假设。</p>
+<h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><h6 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h6><p>通常而言，一个N-way K-shot的分类任务，假定任务的真实分布为$𝑝(𝑥,𝑦)$，而这个真实分布有一个最优假设$ℎ̂$可以描述它。通常的做法是给定一个假设空间𝐻，然后从里面找一个接近$ℎ̂$的假设$ℎ$，在这里𝐻是由你选择的模型和参数的初始化分布决定的，用一些优化方法（通常为梯度下降）来逼近这个最优假设。</p>
 <h6 id="Problem-Definition"><a href="#Problem-Definition" class="headerlink" title="Problem Definition"></a>Problem Definition</h6><p>在经典机器学习中，给定一个任务T，任务的性能P，给定一些额外的条件E，比如标注的训练数据，可以提升任务T的性能P，FSL任务本质也是这样。</p>
-<h6 id="Core-Issue"><a href="#Core-Issue" class="headerlink" title="Core Issue"></a>Core Issue</h6><p>在机器学习中寻找最适合的假设时，通常都是通过找到一组最优的参数来确定这个假设，并通过给定的训练集，最小化损失函数这一目标来指示最优参数的搜索，最小化损失函数如下所示：</p>
+<h6 id="Relevant-Learning-Problems"><a href="#Relevant-Learning-Problems" class="headerlink" title="Relevant Learning Problems"></a>Relevant Learning Problems</h6><p>FSL可以是各种形式的学习，监督，半监督，强化学习，迁移学习等等，本质上的定义取决于可用的数据。</p>
+<p>当然，大多数时候用的都是meta learning，直接把它看作meta learning就行。</p>
+<h5 id="Core-Issue"><a href="#Core-Issue" class="headerlink" title="Core Issue"></a>Core Issue</h5><p>在机器学习中寻找最适合的模型时，通常都是通过找到一组最优的参数来确定这个模型，并通过给定的训练集，最小化损失函数这一目标来指示最优参数的搜索，最小化损失函数如下所示：</p>
 <p>　　　　<img src="/../img/1335117-20200107180341483-79584449.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>h就是我们企图逼近最优模型$ℎ̂$的模型，y是真实标签，l是损失函数，对每一个训练样本的损失函数进行求和，找到这个和的最小值。</p>
 <p>在训练模型中，我们是通过训练集来拟合真实分布，我们训练出来的分布和真实分布往往不一样，这中间的差值称为期望风险（期望损失），表达式如下：</p>
 <p>　　　　<img src="/../img/1335117-20200107181052551-1263293547.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>p为真实分布，要求对损失函数求期望，需要将它放到以真实分布为坐标轴的维度上，它与坐标轴围成的面积就是期望损失，<u>看不懂这个公式，不过感觉也没关系。</u></p>
+<p>理论上说，让期望风险最小化才能逼近真实分布，但因为真实分布只有神知道，因此最小化期望风险是无法实现的，而在机器学习中通常用经验风险来替换期望风险，经验风险就是在训练集上预测的结果和真实结果的差异，也是我们常说的损失函数，表达式如下：</p>
+<p><img src="/../img/image-20221009224149062.png" srcset="/img/loading.gif" lazyload alt="image-20221009224149062" style="zoom:50%;"></p>
+<p>给出符号描述：</p>
+<p><img src="/../img/image-20221009224256524.png" srcset="/img/loading.gif" lazyload alt="image-20221009224256524"></p>
+<p>$ℎ̂ $是真实分布的模型，$ℎ∗$是假设空间$𝐻$中最接近$ℎ̂ $的模型，而$h_I$是通过最小化经验损失得到的模型。根据机器学习中的误差分解可得：</p>
+<p><img src="/../img/1335117-20200107181555284-1137027787.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>等式右边第一项只能靠玄学，我们能做到的只有选个合适的模型，有时候模型选择的简单了，给再多的数据也训练不好，欠拟合。</p>
+<p>第二项就是我们训练得到的模型和𝐻中最优模型的误差，有时候训练的太好会陷入局部最优，或者提供的训练数据分布有偏差，导致无法到全局最优。</p>
+<p>但理论上对于第二项，当样本数量𝐼足够大时，有：</p>
+<p><img src="/../img/1335117-20200107182014950-124597622.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>即只要样本够多，没有做不出来的模型。</p>
+<p>传统的机器学习都是建立在大规模的训练数据上的，因此𝜀𝑒𝑠𝑡(𝐻,𝐼)是很小的，但是在FSL任务上，训练数据很小，因此𝜀𝑒𝑠𝑡(𝐻,𝐼)是很大的，所以此时采用传统的训练模式，如softmax+交叉熵，是极容易陷入过拟合的，这个应该很好理解。</p>
+<p>针对上面的问题再去拓展寻求解决方案，在机器学习中正则化是一项，正则化可以约束你的假设空间𝐻，但是在FSL中不行，它的约束是没有指示性的，而FSL中的约束是需要有指示性的，即能指示你更好的接近真实假设。引入霍夫丁不等式：</p>
+<p><img src="/../img/1335117-20200107183222190-1115277030.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>给定样本复杂度为S，保证上述不等式能在ϵ很小且δ很小时成立时，需要给定的样本数I大于S，给定<a target="_blank" rel="noopener" href="https://blog.csdn.net/shenxiaoming77/article/details/51881321">VC维理论</a>：</p>
+<p><img src="/../img/image-20221010001459061.png" srcset="/img/loading.gif" lazyload alt="image-20221010001459061" style="zoom:50%;"></p>
+<p>知道就行了，算是对降低模型复杂度的理论支撑。</p>
+<h4 id="Taxonomy"><a href="#Taxonomy" class="headerlink" title="Taxonomy"></a><strong>Taxonomy</strong></h4><p>在FSL任务中，我们期待使用先验知识来弥补样本的不足。</p>
+<p>在这里作者将解决这个问题的方法分为了三类：Data，Model，Algorithm。具体的图如下：</p>
+<p><img src="/../img/1335117-20200107184200179-1606317169.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>​        <strong>Data</strong></p>
+<p>　　Data就是通过先验知识来做数据增强，数据量增大自然能解决上述问题。</p>
+<p>　　<strong>Model</strong></p>
+<p>　　通过先验知识来限制模型复杂度，降低假设空间𝐻的大小，减小VC维，使得当前的数据集可以满足。</p>
+<p>　　<strong>Algorithm</strong></p>
+<p>　　通过先验知识来提供一个好的搜索策略，可以是一个好的搜索起始点，也可以是一个明确的搜索策略，来寻找最优点。</p>
+<p>接下来的工作都是围绕这几个方向展开来求解FSL问题。</p>
+<p><img src="/../img/1335117-20200107185138248-285067125.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h5 id="DATA"><a href="#DATA" class="headerlink" title="DATA"></a>DATA</h5><p>　　数据增强的方式有很多种，平时也被使用的比较多，在这里作者将数据增强的方法概括成4类：　<img src="/../img/1335117-20200107195137257-1424668420.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>　　总之，数据增强没有什么神秘感，也是大家比较熟悉的，无论是手动在数据上修改，比如图片的旋转，句子中的同义词替换等，以及复杂的生成模型生成和真实数据相近的数据。数据增强的方式有很多种，大量的合适的增强一定程度上可以缓解FSL问题，但其能力还是有限的。</p>
+<h5 id="MODEL"><a href="#MODEL" class="headerlink" title="MODEL"></a>MODEL</h5><p>　　为了完美收集样本的所有特征，我们一开始给一个假设空间𝐻很大的模型，然后通过一些先验知识将这个空间中无效的hypothesis去掉，缩小假设空间𝐻，这样做感觉很绕，但实际上和<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/8e1209d3127a">模型剪枝</a>中的理念类似，你一开始给一个小的模型，这个模型空间离真实假设太远了，而你给一个大的模型空间，它离真实假设近的概率比较大，然后通过先验知识去掉哪些离真实假设远的假设。</p>
+<p>　　作者根据使用不同的先验知识将MODEL的方法分成4类：　　　　<img src="/../img/1335117-20200107200328079-2038936314.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>​        其中，<strong>多任务学习</strong>是比较常见的，对于多个共享信息的任务，可以是数据相同任务不同，也可以是数据和任务都不同，但是数据具有领域性等等，都可以用多任务学习来训练，多任务分为硬参数共享和软参数共享两种模式：<img src="/../img/1335117-20200107201451814-1465095916.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>　　硬参数共享认为任务之间的假设空间是有部分重叠的，体现在模型上就是有部分参数是共享的，而共享的参数可以是模型的前面一些层，表征任务的低阶信息。也可以是在嵌入层之后，不同的嵌入层将不同任务嵌入到同一不变任务空间，然后共享模型参数等等。</p>
+<p>　　软参数共享不再显式的共享模型参数，而是让不同任务的参数相似，这就可以通过不同任务的参数正则，或者通过损失来影响参数的相似，以此让不同任务的假设空间类似。</p>
+<p>　　多任务学习通过多个任务来限制模型的假设空间，对于硬参数共享，多个任务会有一个共享的假设空间，然后每个任务还有自己特定的假设空间；对于软参数共享也类似，软参数更灵活，但也需要精心设计。</p>
+<p>​        <strong>嵌入学习</strong>很好理解，将训练集中所有的样本通过一个函数𝑓(.)嵌入到一个低维可分的空间𝑍，然后将测试集中的样本通过一个函数𝑔(.)嵌入到这个低维空间𝑍，然后计算测试样本和所有训练样本的相似度，选择相似度最高的样本的标签作为测试样本的标签，根据task-specific和task-invariant，以及两者的结合可以分为三种，嵌入学习如下：</p>
+<p>　　　　<img src="/../img/1335117-20200107203731133-1752571664.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>　　Task-specific是在任务自身的训练集上训练的，通过构造“同类样本相同，不同类样本不同”的<strong>样本对</strong>作为数据集，这样数据集会有一个爆炸式的扩充，可以提高样本的复杂度，然后可以用如siamese network孪生网络等来训练，前面有讲。</p>
+<p>　　Task-invariant是在一个大的且和任务相似的source数据集上训练一个嵌入模型，然后直接用于当前任务的训练集和测试集嵌入，前面也有讲。</p>
+<p>　　但实际上现在用的比较多的还是两者的结合，既可以利用大的通用数据集学习通用特征，又可以在特定任务上学习特定的特征，而现在常用的训练模式是meta learning中的metric-based的方式，此类常见的模型有match network，prototypical network ，relation network等，详细可以见<a target="_blank" rel="noopener" href="https://www.cnblogs.com/jiangxinyang/p/11346764.html">小样本学习（few-shot learning）在文本分类中的应用</a>。</p>
+<p>​    <u>用具有外部存储机制的网络和生成式模型来学习不是很熟，学了迁移学习再看看。</u></p>
+<h5 id="ALGORITHM"><a href="#ALGORITHM" class="headerlink" title="ALGORITHM"></a><strong>ALGORITHM</strong></h5><p>在FSL任务中，样本数量很少，许多梯度下降的优化方法都会失效。因此我们不再限制假设空间，根据使用不同的先验知识，可以将ALGORITHM分为下面3类：</p>
+<h6 id="Refine-Existing-Parameters-theta-0"><a href="#Refine-Existing-Parameters-theta-0" class="headerlink" title="Refine Existing Parameters ${\theta} ^ {0}$"></a><img src="/../img/1335117-20200107211620794-1625958996.png" srcset="/img/loading.gif" lazyload alt="img">Refine Existing Parameters ${\theta} ^ {0}$</h6><p>　　本质上就是我们常用的pretrained + fine-tuning的模式，最常见的就是直接在pretrianed的模型上直接fine-tuning参数，其他的还有可以在一个新的网络上使用pretrained的部分参数来初始化等等。</p>
+<h6 id="Refine-Meta-learned-𝜃"><a href="#Refine-Meta-learned-𝜃" class="headerlink" title="Refine Meta-learned 𝜃"></a><strong>Refine Meta-learned 𝜃</strong></h6><p>基于meta learning的解决方法，利用元学习器<u>学习一个好的初始化参数</u>，之后在新的任务上，只要对这个初始化参数少量迭代更新就能很好的适应新的任务。</p>
+<p>元学习区别于机器学习的是，机器学习通常是在拟合一个数据的分布，而元学习是在拟合一系列相似任务的分布，因此元学习的训练样本其实是一系列任务。</p>
+<p>但这样的方式也有一个问题，就是新的任务的特性必须要和元训练中的任务相近，这样𝜃值才能作为一个较好的初始化值。否则效果会很差。因此也就有不少研究在根据新任务的数据集来动态的生成一个适合它的初始化参数。</p>
+<h6 id="Learn-Search-Steps"><a href="#Learn-Search-Steps" class="headerlink" title="Learn Search Steps"></a><strong>Learn Search Steps</strong></h6><p>还没看RNN，不是很懂。</p>
+<h4 id="FUTURE-WORKS"><a href="#FUTURE-WORKS" class="headerlink" title="FUTURE WORKS"></a><strong>FUTURE WORKS</strong></h4><p>未来的方向可以从：</p>
+<ul>
+<li>先验数据：例如利用更多的先验知识，多模态的数据等。</li>
+<li>模型方法：用一些新的网络结构去替换以前的，比如用transformer替换RNN会不会有更好的结果</li>
+<li>使用的场景：现在FSL也只是在字符识别，图像识别等取得不错的效果，在CV其他方向，如目标检测，目标跟踪，NLP中的各项任务上又是什么样的表现，该怎样改进；理论分析等。</li>
+</ul>
 
               
             </div>
