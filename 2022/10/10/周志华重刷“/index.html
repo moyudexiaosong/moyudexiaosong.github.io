@@ -16,16 +16,16 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="绪论这章介绍了专用名词和两个原理。 数据集里一个样本在属性空间里被称为一个特征向量，每个特征对应一个维度，维度的总数称为维数。 从数据中学得模型的过程叫做“学习”和“训练”，学到的潜在规律叫做“假设”，训练结果作为标记，所有标记的集合叫做“标记空间”或者“输出空间”。 预测值为离散变量时称为“分类”，预测值为连续变量时称为“回归”，将训练集中样本按照某种内在规律分成若干组，每组称为一个“簇”，叫">
+    <meta name="description" content="一、绪论这章介绍了专用名词和两个原理。 数据集里一个样本在属性空间里被称为一个特征向量，每个特征对应一个维度，维度的总数称为维数。 从数据中学得模型的过程叫做“学习”和“训练”，学到的潜在规律叫做“假设”，训练结果作为标记，所有标记的集合叫做“标记空间”或者“输出空间”。 预测值为离散变量时称为“分类”，预测值为连续变量时称为“回归”，将训练集中样本按照某种内在规律分成若干组，每组称为一个“簇”">
 <meta property="og:type" content="article">
 <meta property="og:title" content="重刷周志华">
 <meta property="og:url" content="http://example.com/2022/10/10/%E5%91%A8%E5%BF%97%E5%8D%8E%E9%87%8D%E5%88%B7%E2%80%9C/index.html">
 <meta property="og:site_name" content="摸鱼之家">
-<meta property="og:description" content="绪论这章介绍了专用名词和两个原理。 数据集里一个样本在属性空间里被称为一个特征向量，每个特征对应一个维度，维度的总数称为维数。 从数据中学得模型的过程叫做“学习”和“训练”，学到的潜在规律叫做“假设”，训练结果作为标记，所有标记的集合叫做“标记空间”或者“输出空间”。 预测值为离散变量时称为“分类”，预测值为连续变量时称为“回归”，将训练集中样本按照某种内在规律分成若干组，每组称为一个“簇”，叫">
+<meta property="og:description" content="一、绪论这章介绍了专用名词和两个原理。 数据集里一个样本在属性空间里被称为一个特征向量，每个特征对应一个维度，维度的总数称为维数。 从数据中学得模型的过程叫做“学习”和“训练”，学到的潜在规律叫做“假设”，训练结果作为标记，所有标记的集合叫做“标记空间”或者“输出空间”。 预测值为离散变量时称为“分类”，预测值为连续变量时称为“回归”，将训练集中样本按照某种内在规律分成若干组，每组称为一个“簇”">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo37.jpeg">
 <meta property="article:published_time" content="2022-10-10T02:22:53.000Z">
-<meta property="article:modified_time" content="2022-10-10T03:02:37.208Z">
+<meta property="article:modified_time" content="2022-10-11T16:54:46.396Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="机器学习基础理论">
 <meta name="twitter:card" content="summary_large_image">
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          444 words
+          6.2k words
         
       </span>
     
@@ -298,7 +298,7 @@
             <div class="markdown-body">
               
               <hr>
-<h3 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h3><p>这章介绍了专用名词和两个原理。</p>
+<h3 id="一、绪论"><a href="#一、绪论" class="headerlink" title="一、绪论"></a>一、绪论</h3><p>这章介绍了专用名词和两个原理。</p>
 <p><strong>数据集</strong>里一个<strong>样本</strong>在<strong>属性空间</strong>里被称为一个<strong>特征向量</strong>，每个<strong>特征</strong>对应一个<strong>维度</strong>，维度的总数称为<strong>维数</strong>。</p>
 <p>从数据中学得模型的过程叫做“<strong>学习</strong>”和“<strong>训练</strong>”，学到的潜在规律叫做“<strong>假设</strong>”，训练结果作为<strong>标记</strong>，所有标记的集合叫做“<strong>标记空间</strong>”或者“<strong>输出空间</strong>”。</p>
 <p>预测值为离散变量时称为“<strong>分类</strong>”，预测值为连续变量时称为“<strong>回归</strong>”，将训练集中样本按照某种内在规律分成若干组，每组称为一个“簇”，叫做“<strong>聚类</strong>”。</p>
@@ -306,6 +306,143 @@
 <p>假设空间指一个<strong>机器学习算法可以生成的所有函数的集合</strong>。</p>
 <p><u>奥卡姆剃刀原理：若有多个假设和观察一致，选最简单的那个。</u>在曲线中，平滑意味着简单。</p>
 <p><u>没有免费的午餐NFL定理：无论学习算法的“聪明”或“笨拙”与否，它们的期望性能都相同。</u>但这是建立在所有问题机会均等的条件下的，现实中我们肯定只会关心我们需要关心的问题，因此肯定有算法会在某个问题上表现的更好，我们要做的就是找到它。</p>
+<h3 id="二、模型评估与选择"><a href="#二、模型评估与选择" class="headerlink" title="二、模型评估与选择"></a>二、模型评估与选择</h3><p>“模型选择”问题最理想的解决方案是对候选模型的泛化性能进行评估，选择性能最好的那个。泛化性能的评估不仅需要<strong>实验估计方法</strong>，还需要有衡量泛化能力的<strong>评判标准</strong>。</p>
+<h4 id="实验估计方法"><a href="#实验估计方法" class="headerlink" title="实验估计方法"></a>实验估计方法</h4><h5 id="留出法（hold-out）"><a href="#留出法（hold-out）" class="headerlink" title="留出法（hold-out）"></a>留出法（hold-out）</h5><p>将$D$划分为互斥的两部分$S和T$，在$S$上训练出模型后，用$T$来评估测试误差，划分时采用<strong>分层采样</strong>，保证训练集和测试集中正反类的比例一致。</p>
+<p>为了平衡模型的准确性与测试结果的保真性，常见做法是将大约 2/3～ 4/5 的样本用于训练，剩余样本用于测试。</p>
+<h5 id="交叉验证法（cross-validation）"><a href="#交叉验证法（cross-validation）" class="headerlink" title="交叉验证法（cross validation）"></a>交叉验证法（cross validation）</h5><p>将数据集 $D $划 分为 $k $个互斥子集，即$D=D_1\cup D_2\cup ……\cup D_k$，$D_i\cap D_j=\empty $，每次用$k-1 $个子集的并集作为训练集，余下的那个子集作为测试集；对获得的 $k$组训练/测试集进行 $k$ 次训练和测试，得到这 $k$ 个测试结果的均值。</p>
+<p><img src="/../img/image-20221011194409037.png" srcset="/img/loading.gif" lazyload alt="image-20221011194409037" style="zoom:50%;"></p>
+<p>交叉验证法的一 个特例：留一法(Leave-One-Out，简称 LOO) </p>
+<p>假定数据集 $D$ 中包含 $m$ 个样本，令 $k=m$ ，即每个子集只包含一个样本。</p>
+<h5 id="自助法（bootstrapping）"><a href="#自助法（bootstrapping）" class="headerlink" title="自助法（bootstrapping）"></a>自助法（bootstrapping）</h5><p>从$D$中随机复制一个样本到$D’$中，复制$m$次，会得到一个拥有$m$个数据样本的$D’$数据集。</p>
+<p>根据平均分布概率计算，大约有36.8%的数据不会被复制到$D’$中，因此$D$覆盖的样本要多于$D’$，把$D’$拿来当训练集，$D$用来当测试集。这样的测试结果，亦称”包外估计” (out-of-bag estimate)。</p>
+<blockquote>
+<p>样本在 $m$ 次采样中始终不被采到的概率是 $(1-\frac{1}{m})^m$， 取极限得到$\lim_{m\to \infin}(1-\frac{1}{m})^m \to \frac{1}{e} \approx. 0.368$</p>
+</blockquote>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>自助法在<strong>数据集较小、难以有效划分训练/测试集时</strong>很有用，另外两个都是采用分层采样的。</p>
+<p>自助法产生的数据集改变了初始数据集的分布，这会引入估计偏差。因此，<u>在初始数据量足够时，留出法和交叉验证法更常用一些。</u></p>
+<p>留出法和交叉验证法由于都把数据集中的一部分用来测试，没有参与训练，因此必然会引入一些因训练样本规模不同而导致的估计偏差，留一法受影响较小，但计算复杂度又太高了。</p>
+<h4 id="调参"><a href="#调参" class="headerlink" title="调参"></a>调参</h4><p>一般参数分两种：一类是算法的参数，亦称“超参数”；一类是模型的参数，如神经网络中每个节点的权重。前者多为人工选择一组候选，后者是让机器自己学习，常用的做法是对每个参数选定一个范围和变化步长，这种做法选出的参数往往不是最佳的，但却是在计算开销与性能估计之间折中的最好结果。</p>
+<p>一般调参过程中，会将训练数据再次划分为训练集和验证集(validation set)，训练集用来训练出模型，验证集用来进行模型评估与选择，对比不同算法的泛化性能。</p>
+<p><u>验证集和测试集有啥区别？</u></p>
+<p>使用验证集是为了快速调参，也就是用验证集选择超参数（网络层数，网络节点数，迭代次数，学习率这些）。另外用验证集还可以监控模型是否异常（过拟合啦什么的），然后决定是不是要提前停止训练。</p>
+<p>验证集的关键在于选择超参数，我们手动调参是为了让模型在验证集上的表现越来越好，如果把测试集作为验证集，调参去拟合测试集，就有点像作弊了。</p>
+<p>而测试集既不参与参数的学习过程，也不参与参数的选择过程，仅仅用于模型评价。</p>
+<p><u>验证集的正确打开方式：</u></p>
+<p>验证集可以看做参与了 “人工调参” 的训练过程。一般训练几个 epoch 就跑一次验证看看效果（大部分网络自带这个功能）。</p>
+<p>这样做的第一个好处是：可以及时发现模型或者参数的问题，比如模型在验证集上发散啦、出现很奇怪的结果啦（Inf）、mAP不增长或者增长很慢啦等等情况，这时可以及时终止训练，重新调参或者调整模型，而不需要等到训练结束。</p>
+<p>另一个好处是验证模型的泛化能力，如果在验证集上的效果比训练集上差很多，就该考虑模型是否过拟合了。同时，还可以通过验证集对比不同的模型。</p>
+<h4 id="评判标准"><a href="#评判标准" class="headerlink" title="评判标准"></a>评判标准</h4><p>模型好坏是相对的，任务不同，使用的性能度量也不同，以下是几种常用的：</p>
+<p>在预测任务中，给定样例集 $D = {(x_1 , y_1) , (x_2 ， y_2)， . . . , (x_m, y_m)} $， 其中 $y_i$ 是示例 $x_i$ 的真实标记。要评估学习器 $f$ 的性能，就要把学习器预测结果 $f(x)$  与真实标记  $y$ 进行比较。</p>
+<ol>
+<li>均方误差：回归任务常用</li>
+</ol>
+<p>离散变量：</p>
+<script type="math/tex; mode=display">
+E(f;D)=\frac{1}{m}\sum_{i=1}^{m}(f(xi)-yi)^2</script><p>连续变量：</p>
+<script type="math/tex; mode=display">
+E(f;Ð)=\int_{x～Ð}(f(x)-y)^2p(x)dx</script><ol>
+<li>错误率与精度：分类任务常用</li>
+</ol>
+<p>离散变量：</p>
+<script type="math/tex; mode=display">
+错误率：E(f;D)=\frac{1}{m}\sum_{i=1}^{m}\amalg(f(xi)\ne yi)</script><script type="math/tex; mode=display">
+精度：acc(f;D)=\frac{1}{m}\sum_{i=1}^{m}\amalg(f(xi)= yi)=1-E(f;D)</script><blockquote>
+<p>$\amalg$是指示函数（indicator function），含义是：当输入为True的时候，输出为1，输入为False的时候，输出为0。</p>
+</blockquote>
+<p>连续变量：</p>
+<script type="math/tex; mode=display">
+错误率：E(f;Ð)=\int_{x～Ð}\amalg(f(x)\ne y)p(x)dx</script><script type="math/tex; mode=display">
+精度：acc(f;Ð)=\int_{x～Ð}\amalg(f(x)= y)p(x)dx=1-E(f;Ð)</script><ol>
+<li>查准率、查全率与$F1$</li>
+</ol>
+<p>查准率和查全率可以理解为”检索出的信息中有多少比例是用户感兴趣的” 和”用户感兴趣的信息中有多少被检索出来了”。</p>
+<p>查准率 $P $ 与查全率 $R$ 分别定义为：</p>
+<p>$P=\frac{TP}{TP+FP}$  =  真正例 / 预测出的正例</p>
+<p>$R=\frac{TP}{TP+FN}$  =  真正例 / 实际上的正例</p>
+<p>二者通常呈反比。</p>
+<p><img src="/../img/image-20221011214808636.png" srcset="/img/loading.gif" lazyload alt="image-20221011214808636" style="zoom:33%;"></p>
+<p>在进行比较时，若一个学习器的P-R曲线B把另一个学习器C的曲线完全“包住”，则可断言B的性能优于C。很好理解，查全率一致的情况下，查准率越好的学习器性能越好。因此，ROC曲线越接近左上角，分类效果越好。</p>
+<p>当曲线有相交时，就很难断言两者的优劣。平衡点(Break-Event Point，简称 BEP)是” 查准率=查全率”时的取值，例如图中基于 BEP的比较，可认为学习器 A 优于 B。</p>
+<p>但 BEP 还是过于简化了些，更常用的是 F1 度量，基于查准率与查全率的调和平均 (harinonic mean)定义：</p>
+<script type="math/tex; mode=display">
+\frac{1}{F1}=\frac{1}{2}.(\frac{1}{P}+\frac{1}{R})</script><p>为了表达出对查准率/查全率的不同偏好，定义了$F1 $度量的一般形式：</p>
+<script type="math/tex; mode=display">
+F_\beta=\frac{(1+\beta^2)\times P \times R}{(\beta^2 \times P)+R}</script><p>$ß&gt; 1$ 时查全率有更大影响 ; $ß &lt; 1$ 时查准率有更大影响。</p>
+<blockquote>
+<p>混淆矩阵就是TP、TN、FP、FN组成的2x2矩阵。</p>
+</blockquote>
+<p>有多个二分类混淆矩阵的情况，例如：</p>
+<ul>
+<li>进行多次训练/测试，每次得到一个混淆矩阵。</li>
+<li>在多个数据集上进行训练/测试，希望估计算法的”全局” 性能。</li>
+<li>多分类任务每两两类别的组合都对应一个混淆矩阵。</li>
+</ul>
+<p>有两种做法：</p>
+<p>一、在各混淆矩阵上分别计算出查准率和查全率，记为 $(Pn ， Rn)$ ，再计算平均值，这样就得到”宏查准率” ($macro-P$) 、”宏查全率” ($macro-R$) ，以及相应的”宏 $F1$” ($macro-F1$):</p>
+<script type="math/tex; mode=display">
+macro-P=\frac{1}{n}\sum^n_{i=1}P_i</script><script type="math/tex; mode=display">
+macro-R=\frac{1}{n}\sum^n_{i=1}R_i</script><script type="math/tex; mode=display">
+macro-F1=\frac{2\times macro-P \times macro-R}{macro-P+macro-R}</script><p>二、求各混淆矩阵 $TP 、FP 、 TN 、FN$ 的平均值，分别记为 $\overline{TP}、 \overline{FP}、 \overline{TN}、 \overline{FN}$，再基于这些平均值计算出”微查准率 “($micro-P$) 、 “微查全率” ($micro-R$)和”微F1” ($micro-F1$):</p>
+<script type="math/tex; mode=display">
+micro-P=\frac{\overline{TP}}{\overline{TP}+\overline{FP}}</script><script type="math/tex; mode=display">
+micro-P=\frac{\overline{TP}}{\overline{TP}+\overline{FN}}</script><script type="math/tex; mode=display">
+micro-F1=\frac{2\times micro-P\times micro-R}{micro-P+micro-R}</script><p>以此综合考虑这个模型的查准率、查全率及二者的综合$F_1$。</p>
+<ol>
+<li>ROC 与 AUC</li>
+</ol>
+<p>ROC：“受试者工作特征”（receiver operating characteristic）曲线，取用“真正率”（TPR ）作为纵轴，“假正率”（FPR）作为横轴 ，两者分别定义为：</p>
+<script type="math/tex; mode=display">
+TPR=\frac{TP}{TP+FN},FPR=\frac{FP}{TN+FP}</script><p>学习器得出的预测通常会设置一个阈值来做分类，我们对这些测试样本进行排序，最可能是正类的排在前面，最不可能是正类的排在后面，以某个截断点将这些样本分为两部分，重视准确率就采用靠前的截断点，重视“查全率”就采用靠后的截断点。</p>
+<p>显然，假正率越小越好，真正率越大越好。</p>
+<p>体现在ROC图中就是把样本排序，依次选择它们作为阈值（或称为“截断点”），画出全部的关键点以后，再连接关键点即可最终得到ROC曲线，如下图所示。</p>
+<p><img src="/../img/webp" srcset="/img/loading.gif" lazyload alt="img" style="zoom: 33%;"></p>
+<p>若要把两个学习器进行比较，简单方法是如果一个学习器A的 ROC 曲线把另一个学习器B的曲线完全”包住”， 则可断言A的性能优于B；较为合理的判据是比较 ROC 曲线下的面积，即 AUC (Area Under ROC Curve) 。</p>
+<script type="math/tex; mode=display">
+AUC=\frac{1}{2}\sum^{m-1}_{i=1}(x_{i+1}-x_i).(y_i+y_{i+1})</script><p>AUC考虑的是样本预测的排序质量，显然是越大越好。</p>
+<ol>
+<li>代价敏感错误率与代价曲线</li>
+</ol>
+<p>现实任务中，不同类型的错误所造成的后果不同，设定一个”代价矩阵” (cost matrix) ，其中 $cost_{ij} $表示将第$ i $类样本预测为第 $j $类样本的代价， $cost_{ii} = 0$​，我们的目标是最小化“总体代价”，以二分类任务为例，期望总体代价为：</p>
+<script type="math/tex; mode=display">
+E(f;D;cost)=\frac{1}{m}(\sum_{x_i\in D^+}I(f(x_i)\ne y_i)\times cost_{01}+\sum_{x_i\in D^-}I(f(x_i)\ne y_i)\times cost_{10})</script><ol>
+<li>注意事项</li>
+</ol>
+<p>（1）性能指标常常因为不可微分，无法作为优化的loss函数，因此多采用如cross-entropy, rmse等“距离”可微函数作为优化目标。</p>
+<p>（2）实际中还需要考虑时间开销，存储开销和可解释性等问题。比如DDoS防御中实际上最困难的不是检测到DDoS攻击，而是准确的，高性能的检测DDoS流量，并进行清洗。</p>
+<p>（3）医学，信息检索，web搜索引擎，网络安全等领域都有自己的专用术语，但都与传统的机器学习的名词概念有所重合，只是叫法不同。</p>
+<p>以上指标在sklearn库里基本都有现成的模块可以直接使用，相关API可查阅doc，可参考<a target="_blank" rel="noopener" href="https://yq.aliyun.com/articles/623375">https://yq.aliyun.com/articles/623375</a></p>
+<h4 id="比较检验"><a href="#比较检验" class="headerlink" title="比较检验"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45666566/article/details/106674542">比较检验</a></h4><p>在测得学习器的性能度量后，如何进行比较比我们想象中的复杂得多，存在着多个问题：</p>
+<ol>
+<li>我们要的是<strong>泛化性能</strong>，但是能用的只是测试性能；</li>
+<li>测试性能和测试集的选择对测试结果有很大影响；</li>
+<li>有的机器学习算法本身也有随机性，对同一测试集的多次测试结果也可能会不同。</li>
+</ol>
+<p>为了解决这些问题，统计假设检验（hypothesis test）为我们提供了重要的依据。<strong>基于假设检验结果，我们可以推断出，若在测试集上观察到模型A优于B，则A的泛化性能是否在统计意义上也优于B，以及做这个结论的把握有多大。</strong></p>
+<p>在数理统计中，假设检验是根据一定条件由样本推断总体的一种方法。</p>
+<p>几个基础概念：</p>
+<ul>
+<li><strong>置信度</strong>：表示有多大的把握认为假设是正确的。</li>
+<li><strong>显著度</strong>：也称“显著性水平”，表示假设出错的概率。显著度越大，假设被拒绝的可能性越大。</li>
+<li><strong>自由度</strong>：不被限制的样本数，也可以理解为能自由取值的样本数，记为 vvv 或 dfdfdf。</li>
+</ul>
+<p>看不懂，不看了。</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_63309778/article/details/124309616，https://zhuanlan.zhihu.com/p/57866029，https://zhuanlan.zhihu.com/p/54178491">https://blog.csdn.net/m0_63309778/article/details/124309616，https://zhuanlan.zhihu.com/p/57866029，https://zhuanlan.zhihu.com/p/54178491</a></p>
+<h4 id="偏差—方差分解"><a href="#偏差—方差分解" class="headerlink" title="偏差—方差分解"></a>偏差—方差分解</h4><p>偏差——方差分解是解释学习算法泛化性能的一种重要工具，同时也对如何在模型的拟合能力和复杂度之间取得一个较好的平衡问题提供了一个很好的分析和指导。</p>
+<p>省略推导过程，偏差——方差分解是对学习算法的期望泛化错误率的分解：</p>
+<p>$E(f;D)=bias^2(x)+var(x)+\varepsilon^2$</p>
+<p>也就是说，泛化误差可分解为偏差、方差与噪声之和，三者共同决定泛化误差。</p>
+<p>这三者的含义是这样的：</p>
+<ul>
+<li><p>偏差：度量学习算法的期望预测与真实结果的偏离程度，代表学习算法本身的拟合能力；</p>
+</li>
+<li><p>方差：度量了训练集变动所导致的学习性能的变化，代表数据扰动所造成的影响；</p>
+</li>
+<li><p>噪声：表达当前任务上任何学习算法所能达到的期望泛化误差的下界，代表学习问题本身的难度；</p>
+</li>
+</ul>
+<p>在给定学习任务的条件下，为了取得好的泛化性能，偏差和方差越小越好。但这两者其实是有冲突的，这称为偏差-方差窘境（bias-variance dilemma）。</p>
+<p>给定学习任务，训练不足时，拟合能力不够强，训练数据的扰动对学习器的影响不大，此时偏差主导了泛化错误率； 随着训练程度的加深，学习器的拟合能力逐渐增强，训练数据发生的扰动渐渐能被学习器学到，方差逐渐主导了泛化错误率； 在训练程度充足后，学习器的拟合能力已非常强，训练数据发生的轻微扰动都会导致学习器发生显著变化，若训练数据自身没什么用的特性也被学习器学到了，则将发生过拟合。</p>
+<p>以上是从回归任务中推导得出的公式和结论，告诉我们训练的太过容易发生过拟合。对于分类任务，由于0/1损失函数的跳变性，理论上推导出偏差和方差很困难，但是可以通过实验来估计。</p>
 
               
             </div>
