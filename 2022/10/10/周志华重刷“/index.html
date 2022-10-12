@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo37.jpeg">
 <meta property="article:published_time" content="2022-10-10T02:22:53.000Z">
-<meta property="article:modified_time" content="2022-10-11T16:54:46.396Z">
+<meta property="article:modified_time" content="2022-10-12T13:12:57.863Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="机器学习基础理论">
 <meta name="twitter:card" content="summary_large_image">
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.2k words
+          6.8k words
         
       </span>
     
@@ -309,7 +309,7 @@
 <h3 id="二、模型评估与选择"><a href="#二、模型评估与选择" class="headerlink" title="二、模型评估与选择"></a>二、模型评估与选择</h3><p>“模型选择”问题最理想的解决方案是对候选模型的泛化性能进行评估，选择性能最好的那个。泛化性能的评估不仅需要<strong>实验估计方法</strong>，还需要有衡量泛化能力的<strong>评判标准</strong>。</p>
 <h4 id="实验估计方法"><a href="#实验估计方法" class="headerlink" title="实验估计方法"></a>实验估计方法</h4><h5 id="留出法（hold-out）"><a href="#留出法（hold-out）" class="headerlink" title="留出法（hold-out）"></a>留出法（hold-out）</h5><p>将$D$划分为互斥的两部分$S和T$，在$S$上训练出模型后，用$T$来评估测试误差，划分时采用<strong>分层采样</strong>，保证训练集和测试集中正反类的比例一致。</p>
 <p>为了平衡模型的准确性与测试结果的保真性，常见做法是将大约 2/3～ 4/5 的样本用于训练，剩余样本用于测试。</p>
-<h5 id="交叉验证法（cross-validation）"><a href="#交叉验证法（cross-validation）" class="headerlink" title="交叉验证法（cross validation）"></a>交叉验证法（cross validation）</h5><p>将数据集 $D $划 分为 $k $个互斥子集，即$D=D_1\cup D_2\cup ……\cup D_k$，$D_i\cap D_j=\empty $，每次用$k-1 $个子集的并集作为训练集，余下的那个子集作为测试集；对获得的 $k$组训练/测试集进行 $k$ 次训练和测试，得到这 $k$ 个测试结果的均值。</p>
+<h5 id="交叉验证法（cross-validation）"><a href="#交叉验证法（cross-validation）" class="headerlink" title="交叉验证法（cross validation）"></a>交叉验证法（cross validation）</h5><p>将数据集 $D $划分为$k$个互斥子集，即$D=D_1\cup D_2\cup ……\cup D_k$，$D_i\cap D_j=\empty $，每次用$k-1 $个子集的并集作为训练集，余下的那个子集作为测试集；对获得的 $k$组训练/测试集进行 $k$ 次训练和测试，得到这 $k$ 个测试结果的均值。</p>
 <p><img src="/../img/image-20221011194409037.png" srcset="/img/loading.gif" lazyload alt="image-20221011194409037" style="zoom:50%;"></p>
 <p>交叉验证法的一 个特例：留一法(Leave-One-Out，简称 LOO) </p>
 <p>假定数据集 $D$ 中包含 $m$ 个样本，令 $k=m$ ，即每个子集只包含一个样本。</p>
@@ -333,17 +333,11 @@
 <p>另一个好处是验证模型的泛化能力，如果在验证集上的效果比训练集上差很多，就该考虑模型是否过拟合了。同时，还可以通过验证集对比不同的模型。</p>
 <h4 id="评判标准"><a href="#评判标准" class="headerlink" title="评判标准"></a>评判标准</h4><p>模型好坏是相对的，任务不同，使用的性能度量也不同，以下是几种常用的：</p>
 <p>在预测任务中，给定样例集 $D = {(x_1 , y_1) , (x_2 ， y_2)， . . . , (x_m, y_m)} $， 其中 $y_i$ 是示例 $x_i$ 的真实标记。要评估学习器 $f$ 的性能，就要把学习器预测结果 $f(x)$  与真实标记  $y$ 进行比较。</p>
-<ol>
-<li>均方误差：回归任务常用</li>
-</ol>
-<p>离散变量：</p>
+<h5 id="1-均方误差：回归任务常用"><a href="#1-均方误差：回归任务常用" class="headerlink" title="1.均方误差：回归任务常用"></a>1.均方误差：回归任务常用</h5><p>离散变量：</p>
 <script type="math/tex; mode=display">
 E(f;D)=\frac{1}{m}\sum_{i=1}^{m}(f(xi)-yi)^2</script><p>连续变量：</p>
 <script type="math/tex; mode=display">
-E(f;Ð)=\int_{x～Ð}(f(x)-y)^2p(x)dx</script><ol>
-<li>错误率与精度：分类任务常用</li>
-</ol>
-<p>离散变量：</p>
+E(f;Ð)=\int_{x～Ð}(f(x)-y)^2p(x)dx</script><h5 id="2-错误率与精度：分类任务常用"><a href="#2-错误率与精度：分类任务常用" class="headerlink" title="2.错误率与精度：分类任务常用"></a>2.错误率与精度：分类任务常用</h5><p>离散变量：</p>
 <script type="math/tex; mode=display">
 错误率：E(f;D)=\frac{1}{m}\sum_{i=1}^{m}\amalg(f(xi)\ne yi)</script><script type="math/tex; mode=display">
 精度：acc(f;D)=\frac{1}{m}\sum_{i=1}^{m}\amalg(f(xi)= yi)=1-E(f;D)</script><blockquote>
@@ -352,10 +346,7 @@ E(f;Ð)=\int_{x～Ð}(f(x)-y)^2p(x)dx</script><ol>
 <p>连续变量：</p>
 <script type="math/tex; mode=display">
 错误率：E(f;Ð)=\int_{x～Ð}\amalg(f(x)\ne y)p(x)dx</script><script type="math/tex; mode=display">
-精度：acc(f;Ð)=\int_{x～Ð}\amalg(f(x)= y)p(x)dx=1-E(f;Ð)</script><ol>
-<li>查准率、查全率与$F1$</li>
-</ol>
-<p>查准率和查全率可以理解为”检索出的信息中有多少比例是用户感兴趣的” 和”用户感兴趣的信息中有多少被检索出来了”。</p>
+精度：acc(f;Ð)=\int_{x～Ð}\amalg(f(x)= y)p(x)dx=1-E(f;Ð)</script><h5 id="3-查准率、查全率与-F1"><a href="#3-查准率、查全率与-F1" class="headerlink" title="3.查准率、查全率与$F1$"></a>3.查准率、查全率与$F1$</h5><p>查准率和查全率可以理解为”检索出的信息中有多少比例是用户感兴趣的” 和”用户感兴趣的信息中有多少被检索出来了”。</p>
 <p>查准率 $P $ 与查全率 $R$ 分别定义为：</p>
 <p>$P=\frac{TP}{TP+FP}$  =  真正例 / 预测出的正例</p>
 <p>$R=\frac{TP}{TP+FN}$  =  真正例 / 实际上的正例</p>
@@ -387,10 +378,7 @@ macro-F1=\frac{2\times macro-P \times macro-R}{macro-P+macro-R}</script><p>二�
 micro-P=\frac{\overline{TP}}{\overline{TP}+\overline{FP}}</script><script type="math/tex; mode=display">
 micro-P=\frac{\overline{TP}}{\overline{TP}+\overline{FN}}</script><script type="math/tex; mode=display">
 micro-F1=\frac{2\times micro-P\times micro-R}{micro-P+micro-R}</script><p>以此综合考虑这个模型的查准率、查全率及二者的综合$F_1$。</p>
-<ol>
-<li>ROC 与 AUC</li>
-</ol>
-<p>ROC：“受试者工作特征”（receiver operating characteristic）曲线，取用“真正率”（TPR ）作为纵轴，“假正率”（FPR）作为横轴 ，两者分别定义为：</p>
+<h5 id="4-ROC-与-AUC"><a href="#4-ROC-与-AUC" class="headerlink" title="4.ROC 与 AUC"></a>4.ROC 与 AUC</h5><p>ROC：“受试者工作特征”（receiver operating characteristic）曲线，取用“真正率”（TPR ）作为纵轴，“假正率”（FPR）作为横轴 ，两者分别定义为：</p>
 <script type="math/tex; mode=display">
 TPR=\frac{TP}{TP+FN},FPR=\frac{FP}{TN+FP}</script><p>学习器得出的预测通常会设置一个阈值来做分类，我们对这些测试样本进行排序，最可能是正类的排在前面，最不可能是正类的排在后面，以某个截断点将这些样本分为两部分，重视准确率就采用靠前的截断点，重视“查全率”就采用靠后的截断点。</p>
 <p>显然，假正率越小越好，真正率越大越好。</p>
@@ -399,15 +387,9 @@ TPR=\frac{TP}{TP+FN},FPR=\frac{FP}{TN+FP}</script><p>学习器得出的预测通
 <p>若要把两个学习器进行比较，简单方法是如果一个学习器A的 ROC 曲线把另一个学习器B的曲线完全”包住”， 则可断言A的性能优于B；较为合理的判据是比较 ROC 曲线下的面积，即 AUC (Area Under ROC Curve) 。</p>
 <script type="math/tex; mode=display">
 AUC=\frac{1}{2}\sum^{m-1}_{i=1}(x_{i+1}-x_i).(y_i+y_{i+1})</script><p>AUC考虑的是样本预测的排序质量，显然是越大越好。</p>
-<ol>
-<li>代价敏感错误率与代价曲线</li>
-</ol>
-<p>现实任务中，不同类型的错误所造成的后果不同，设定一个”代价矩阵” (cost matrix) ，其中 $cost_{ij} $表示将第$ i $类样本预测为第 $j $类样本的代价， $cost_{ii} = 0$​，我们的目标是最小化“总体代价”，以二分类任务为例，期望总体代价为：</p>
+<h5 id="5-代价敏感错误率与代价曲线"><a href="#5-代价敏感错误率与代价曲线" class="headerlink" title="5.代价敏感错误率与代价曲线"></a>5.代价敏感错误率与代价曲线</h5><p>现实任务中，不同类型的错误所造成的后果不同，设定一个”代价矩阵” (cost matrix) ，其中 $cost_{ij} $表示将第$ i $类样本预测为第 $j $类样本的代价， $cost_{ii} = 0$​，我们的目标是最小化“总体代价”，以二分类任务为例，期望总体代价为：</p>
 <script type="math/tex; mode=display">
-E(f;D;cost)=\frac{1}{m}(\sum_{x_i\in D^+}I(f(x_i)\ne y_i)\times cost_{01}+\sum_{x_i\in D^-}I(f(x_i)\ne y_i)\times cost_{10})</script><ol>
-<li>注意事项</li>
-</ol>
-<p>（1）性能指标常常因为不可微分，无法作为优化的loss函数，因此多采用如cross-entropy, rmse等“距离”可微函数作为优化目标。</p>
+E(f;D;cost)=\frac{1}{m}(\sum_{x_i\in D^+}I(f(x_i)\ne y_i)\times cost_{01}+\sum_{x_i\in D^-}I(f(x_i)\ne y_i)\times cost_{10})</script><h5 id="6-注意事项"><a href="#6-注意事项" class="headerlink" title="6.注意事项"></a>6.注意事项</h5><p>（1）loss函数往往要求有更好的数学性质，比如连续、可导、微分，性能指标常常因为不可微分，无法作为优化的loss函数，因此多采用如cross-entropy, rmse等“距离”可微函数作为优化目标。</p>
 <p>（2）实际中还需要考虑时间开销，存储开销和可解释性等问题。比如DDoS防御中实际上最困难的不是检测到DDoS攻击，而是准确的，高性能的检测DDoS流量，并进行清洗。</p>
 <p>（3）医学，信息检索，web搜索引擎，网络安全等领域都有自己的专用术语，但都与传统的机器学习的名词概念有所重合，只是叫法不同。</p>
 <p>以上指标在sklearn库里基本都有现成的模块可以直接使用，相关API可查阅doc，可参考<a target="_blank" rel="noopener" href="https://yq.aliyun.com/articles/623375">https://yq.aliyun.com/articles/623375</a></p>
@@ -426,7 +408,10 @@ E(f;D;cost)=\frac{1}{m}(\sum_{x_i\in D^+}I(f(x_i)\ne y_i)\times cost_{01}+\sum_{
 <li><strong>自由度</strong>：不被限制的样本数，也可以理解为能自由取值的样本数，记为 vvv 或 dfdfdf。</li>
 </ul>
 <p>看不懂，不看了。</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_63309778/article/details/124309616，https://zhuanlan.zhihu.com/p/57866029，https://zhuanlan.zhihu.com/p/54178491">https://blog.csdn.net/m0_63309778/article/details/124309616，https://zhuanlan.zhihu.com/p/57866029，https://zhuanlan.zhihu.com/p/54178491</a></p>
+<p>参考阅读：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_63309778/article/details/124309616">https://blog.csdn.net/m0_63309778/article/details/124309616</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/57866029">https://zhuanlan.zhihu.com/p/57866029</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/54178491">https://zhuanlan.zhihu.com/p/54178491</a></p>
 <h4 id="偏差—方差分解"><a href="#偏差—方差分解" class="headerlink" title="偏差—方差分解"></a>偏差—方差分解</h4><p>偏差——方差分解是解释学习算法泛化性能的一种重要工具，同时也对如何在模型的拟合能力和复杂度之间取得一个较好的平衡问题提供了一个很好的分析和指导。</p>
 <p>省略推导过程，偏差——方差分解是对学习算法的期望泛化错误率的分解：</p>
 <p>$E(f;D)=bias^2(x)+var(x)+\varepsilon^2$</p>
@@ -442,7 +427,25 @@ E(f;D;cost)=\frac{1}{m}(\sum_{x_i\in D^+}I(f(x_i)\ne y_i)\times cost_{01}+\sum_{
 </ul>
 <p>在给定学习任务的条件下，为了取得好的泛化性能，偏差和方差越小越好。但这两者其实是有冲突的，这称为偏差-方差窘境（bias-variance dilemma）。</p>
 <p>给定学习任务，训练不足时，拟合能力不够强，训练数据的扰动对学习器的影响不大，此时偏差主导了泛化错误率； 随着训练程度的加深，学习器的拟合能力逐渐增强，训练数据发生的扰动渐渐能被学习器学到，方差逐渐主导了泛化错误率； 在训练程度充足后，学习器的拟合能力已非常强，训练数据发生的轻微扰动都会导致学习器发生显著变化，若训练数据自身没什么用的特性也被学习器学到了，则将发生过拟合。</p>
+<p>过拟合的意思就是模型对训练集中所有的样本点都有非常好的预测能力，但是对于非训练集中的新数据预测能力非常差。<strong>为了防止过拟合现象的出现，就要降低决策函数的复杂度，通常的做法是给经验风险后面加一个<u>正则化项</u>（惩罚项）</strong>，这个后面章节有。</p>
 <p>以上是从回归任务中推导得出的公式和结论，告诉我们训练的太过容易发生过拟合。对于分类任务，由于0/1损失函数的跳变性，理论上推导出偏差和方差很困难，但是可以通过实验来估计。</p>
+<h3 id="三、线性模型"><a href="#三、线性模型" class="headerlink" title="三、线性模型"></a>三、线性模型</h3><h4 id="凸函数"><a href="#凸函数" class="headerlink" title="凸函数"></a>凸函数</h4><p>凸集简单地说，可以想象成一种形状，其中任何连接2点的线都不会超出凸集。</p>
+<p><img src="/../img/image-20221012124524306.png" srcset="/img/loading.gif" lazyload alt="image-20221012124524306" style="zoom:50%;"></p>
+<p>用数学表达一个凸集 C ：</p>
+<p><img src="/../img/v2-4090ea412f86a30442930dcc06afc335_r.jpg" srcset="/img/loading.gif" lazyload alt="img" style="zoom: 67%;"></p>
+<p>epigraph 是在函数中或其上的所有点，$f(x)$的epigraph如下：</p>
+<p><img src="/../img/image-20221012130232456.png" srcset="/img/loading.gif" lazyload alt="image-20221012130232456" style="zoom:50%;"></p>
+<p>如果一个函数 f 的 epigraph 是凸集（如左下方绿色图所示)），则称该函数为凸函数。这意味着在这个 <em>epigraph</em> 上画的每个两点间线段<strong>总是</strong>等于或高于函数图。</p>
+<p><img src="/../img/image-20221012135304781.png" srcset="/img/loading.gif" lazyload alt="image-20221012135304781" style="zoom:50%;"></p>
+<p>凸性检验：在神经网络中，大多数的成本函数是非凸的。因此，如果想优化学习器的话，必须先测试一下函数的凸性。</p>
+<blockquote>
+<p>只有一个样本时叫损失函数，对于m个样本，叫成本函数。</p>
+</blockquote>
+<p>如果函数 f 的二阶导数$f’’(x)$大于或等于0，则称该函数为凸函数。如果$ -f(x) $是一个凸函数，那么函数 f 称为凹函数。</p>
+<p>凸函数在神经网络里的作用：</p>
+<p>一个凸函数意味着没有局部极小值，只有全局极小值。因此，梯度下降法将会收敛到全局极小值。</p>
+<p>如果不是凸函数，可以看到梯度下降法将停止在局部极小值，而不是收敛到全局极小值。因为这一点的梯度已经到零了，而且还是附近区域的极小值，解决这个问题的一个方法是使用动量。</p>
+<p><img src="/../img/image-20221012145230982.png" srcset="/img/loading.gif" lazyload alt="image-20221012145230982" style="zoom:50%;"></p>
 
               
             </div>
