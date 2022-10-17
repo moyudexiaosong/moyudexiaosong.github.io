@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo37.jpeg">
 <meta property="article:published_time" content="2022-09-28T10:26:43.000Z">
-<meta property="article:modified_time" content="2022-10-12T13:09:47.610Z">
+<meta property="article:modified_time" content="2022-10-14T04:00:26.855Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="机器学习基础理论">
 <meta name="twitter:card" content="summary_large_image">
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          21k words
+          24k words
         
       </span>
     
@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on 3 minutes ago
+                    Last updated on 3 days ago
                   
                 
               </p>
@@ -836,7 +836,77 @@ L(\hat{y},y)=-[y\log\hat{y}+(1-y)\log(1-\hat{y})]</script><p>这里的$\hat{y}$�
 <p>以前学的拉格朗日方法总结一下就是帮助我们求最值的，让函数的导数或梯度等于0，得到一堆极值点，然后在里面去挑极大值或极小值。</p>
 <p>拉格朗日乘数法加了一个约束空间，函数的变量只能在我们规定的范围内取值，在这个范围内找到极值。打个比方，以前是从A地到B地怎么快怎么走，现在加了一个路费100块，就只能挑选在这个价格范围内合适的路线了。</p>
 <p>这样的话，有可能会发生在规定范围内根本没有我们想要的梯度等于0的点，这个时候就可以用拉格朗日乘数法，把原来的函数和约束条件写到一个式子里，对这个式子又可以继续用求导求梯度的方法来求最值了。</p>
-<p>这时候原来问题的函数就叫做</p>
+<p>这时候原来问题的函数就叫做目标函数，目标函数在约束条件下自变量的取值范围叫做可行域，写成拉格朗日乘数法形式就是下图，其中$\lambda$是一个待定的系数，我们把它叫做拉格朗日乘子。</p>
+<p><img src="/../img/image-20221012211851188.png" srcset="/img/loading.gif" lazyload alt="image-20221012211851188" style="zoom:50%;"></p>
+<p>注：拉格朗日函数和拉格朗日方程是两个东西。</p>
+<h4 id="互补松弛条件"><a href="#互补松弛条件" class="headerlink" title="互补松弛条件"></a>互补松弛条件</h4><p>拉格朗日函数求出的最值和目标函数求出的最值是一样的，两个问题是等价的，都和梯度有关，举个例子：图中圆圈是$f(x,y)$的等高线，中心位置的值最小，越往外值越大，黄线是约束条件的等高线，等高线的法线就是梯度方向，只有在黄线和等高线相切的位置，目标函数的梯度方向和约束条件的梯度方向一致。</p>
+<blockquote>
+<p>等高线就是等值线，就是函数值取相同值时的那些输入$(x,y)$</p>
+</blockquote>
+<p>只有方向一致，它们相加才有可能为0，然后再通过拉格朗日乘子去调整两个梯度的长短，让它们两个可以大小相等，方向相反，这样子的话梯度就等于0，极值点就找到了。除了相切的这一点，其他任何地方都没有办法实现这一点。</p>
+<p><img src="/../img/image-20221012215652662.png" srcset="/img/loading.gif" lazyload alt="image-20221012215652662" style="zoom:50%;"></p>
+<p>以上是只有一个约束条件的情况，如果有多个约束条件，比如下图有5个约束条件，则要找到所有约束条件的梯度的一个线性组合，这个线性组合为原目标函数的梯度的等长反向向量。</p>
+<p><img src="/../img/image-20221013111625956.png" srcset="/img/loading.gif" lazyload alt="image-20221013111625956"></p>
+<p>反映在图形上就是围成的橙色区域，真正起到约束作用的只有$g_\alpha(x)$和$g_\beta(x)$两条直线，只考虑它们两个的梯度，在线性组合代入拉格朗日函数后应该能正好和$f(x)$抵消，因此$\lambda$是不能等于0的。</p>
+<p>再看剩下三个没起到约束条件的直线，区域内的任何点反映在它们那里都是小于0的，因为区域内的每一个点都是五个边界条件同时&lt;0的范围，某条边界上的点对这个约束条件=0，对其他约束条件&lt;0。（线的两侧图形的内外侧分别是大于0和小于0）为了让它们的梯度对整体梯度不要造成影响，所以让它们的$\lambda$都等于0。</p>
+<blockquote>
+<p>alpha和beta的线性组合要能够和目标函数的梯度共面，而其他的三个方向的向量，引入任何一个，都会破坏共面的条件（三个非零向量共面行列式要为0）。</p>
+</blockquote>
+<p><img src="/../img/image-20221013122657881.png" srcset="/img/loading.gif" lazyload alt="image-20221013122657881"></p>
+<blockquote>
+<p>考研数学的话，区域内的点是去掉约束条件，直接求是否有极值点（就是原目标函数的极值点），然后与边界比较。</p>
+</blockquote>
+<p>上面这个就叫做互补松弛条件，当极值点就在橙色区域内的话，这个时候就相当于是所有的约束条件都是松弛的，直接就是目标函数的极值点。</p>
+<p><img src="/../img/image-20221013123045477.png" srcset="/img/loading.gif" lazyload alt="image-20221013123045477" style="zoom:50%;"></p>
+<p>虽然但是，这样求出的极值点或者鞍点可能并不是最值点，但如果是凸问题的话，就可以认为它就是最值点了。</p>
+<blockquote>
+<p>凸问题要求目标函数和可行域都是凸的，第一个图里那个曲里拐弯的线明显不是凸的。</p>
+</blockquote>
+<p>因此，在一个凸函数上求最小值或者在一个凹函数上求最大值都是简单的，所以遇到凹函数一般都会在前面加个负号变成凸函数，然后再求最小值。举个例子，熵函数就是个凹函数，因此我们经常去掉它的负号，把它变成一个凸函数。</p>
+<p><img src="/../img/image-20221013124003283.png" srcset="/img/loading.gif" lazyload alt="image-20221013124003283" style="zoom: 25%;"></p>
+<blockquote>
+<p>为什么我们这么喜欢用墒函数就是因为很多熵本身就是一个凸问题，求最值非常容易，比如交叉熵和最大熵。</p>
+<p>但是放到神经网络里可能就不一定了。</p>
+</blockquote>
+<p>那么非凸问题的最值怎么求解？看拉格朗日的对偶问题。</p>
+<p>先把x当作常数，$\lambda$和$\mu$这两个拉格朗日乘子当作变量，去求拉格朗日函数的最大值。然后再把x当作变量，去求拉格朗日函数的最小值。</p>
+<p>因为约束条件都是小于等于零的，而且乘子是非负的，要求最小，那就要减掉一个最大的数。</p>
+<p>说的简单点是这样，但其实不是先后求，是循环的过程。</p>
+<h4 id="对偶问题"><a href="#对偶问题" class="headerlink" title="对偶问题"></a>对偶问题</h4><p><img src="/../img/image-20221013175308351.png" srcset="/img/loading.gif" lazyload alt="image-20221013175308351"></p>
+<p>当x不在可行域内的时候，不满足约束条件，所以后两项是大于0的，要求拉格朗日函数的最大值，后两项可以达到无穷。</p>
+<p>当x在可行域内，满足约束条件，后两项是小于0的，为了使拉格朗日函数最大，就要让乘子等于0，于是得到的函数的最大值形式如右边所示，其实是和最上面的式子是等价的，令$f_i(x)$小于0得到一个凸问题，约束条件等于0保证函数取得最大值。</p>
+<p>拉格朗日对偶函数是拉格朗日函数在x处取得的下界，而拉格朗日对偶问题是拉格朗日对偶函数如何取最大值的问题。</p>
+<p><img src="/../img/image-20221014000940530.png" srcset="/img/loading.gif" lazyload alt="image-20221014000940530"></p>
+<p>对偶函数相当于把原函数中先求x再求乘子的操作颠倒了一下，先把乘子看作常数，求变量x，再在对偶函数上求参数。</p>
+<p>看求函数最小值的部分，相当于是把这部分的x当作变量求梯度，梯度等于0的时候就是函数的最小值。</p>
+<p><img src="/../img/image-20221014002430811.png" srcset="/img/loading.gif" lazyload alt="image-20221014002430811" style="zoom:50%;"></p>
+<p>不论原问题是什么，只要变成对偶问题，就都是凸问题。</p>
+<h4 id="凸函数"><a href="#凸函数" class="headerlink" title="凸函数"></a>凸函数</h4><p>凸集简单地说，可以想象成一种形状，其中任何连接2点的线都不会超出凸集。</p>
+<p><img src="/../img/image-20221012124524306.png" srcset="/img/loading.gif" lazyload alt="image-20221012124524306" style="zoom:50%;"></p>
+<p>用数学表达一个凸集 C ：</p>
+<p><img src="/../img/image-20221014002740515.png" srcset="/img/loading.gif" lazyload alt="image-20221014002740515" style="zoom:50%;"></p>
+<p>去掉$\theta$的约束条件后，线段就变成了一条直线，如果是多维的话，那线段就成了一个超平面，这时候的C就是仿射集，仿射集一定是一个凸集。</p>
+<p><img src="/../img/image-20221014003039652.png" srcset="/img/loading.gif" lazyload alt="image-20221014003039652" style="zoom:50%;"></p>
+<p>这里把上图的线性关系写成了这样的形式，我们看着就更熟悉了。</p>
+<blockquote>
+<p>如果$C_1,C_2,C_3$都是仿射集，那么三者相交仍然是凸集。</p>
+</blockquote>
+<p>如果规定一个直线，把某个空间切割了一半，那一半的空间也是凸集，半空间相交的部分也是凸集。</p>
+<p><img src="/../img/image-20221014003521184.png" srcset="/img/loading.gif" lazyload alt="image-20221014003521184" style="zoom:50%;"></p>
+<p>epigraph 是在函数中或其上的所有点，$f(x)$的epigraph如下：</p>
+<p><img src="/../img/image-20221012130232456.png" srcset="/img/loading.gif" lazyload alt="image-20221012130232456" style="zoom:50%;"></p>
+<p>如果一个函数 f 的 epigraph 是凸集（如左下方绿色图所示)），则称该函数为凸函数。这意味着在这个 <em>epigraph</em> 上画的每个两点间线段<strong>总是</strong>等于或高于函数图。</p>
+<p><img src="/../img/image-20221012135304781.png" srcset="/img/loading.gif" lazyload alt="image-20221012135304781" style="zoom:50%;"></p>
+<p>凸性检验：在神经网络中，大多数的成本函数是非凸的。因此，如果想优化学习器的话，必须先测试一下函数的凸性。</p>
+<blockquote>
+<p>只有一个样本时叫损失函数，对于m个样本，叫成本函数。</p>
+</blockquote>
+<p>如果函数 f 的二阶导数$f’’(x)$大于或等于0，则称该函数为凸函数。如果$ -f(x) $是一个凸函数，那么函数 f 称为凹函数。</p>
+<p>凸函数在神经网络里的作用：</p>
+<p>一个凸函数意味着没有局部极小值，只有全局极小值。因此，梯度下降法将会收敛到全局极小值。</p>
+<p>如果不是凸函数，可以看到梯度下降法将停止在局部极小值，而不是收敛到全局极小值。因为这一点的梯度已经到零了，而且还是附近区域的极小值，解决这个问题的一个方法是使用动量。</p>
+<p><img src="/../img/image-20221012145230982.png" srcset="/img/loading.gif" lazyload alt="image-20221012145230982" style="zoom:50%;"></p>
+<p>原问题本身和约束条件都是凸函数组成的问题才是凸优化问题。</p>
 
               
             </div>
@@ -883,9 +953,9 @@ L(\hat{y},y)=-[y\log\hat{y}+(1-y)\log(1-\hat{y})]</script><p>这里的$\hat{y}$�
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/09/30/Machine-Learning/" title="Machine Learning">
+                      <a href="/2022/09/28/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" title="深度强化学习">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Machine Learning</span>
+                        <span class="hidden-mobile">深度强化学习</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -893,8 +963,8 @@ L(\hat{y},y)=-[y\log\hat{y}+(1-y)\log(1-\hat{y})]</script><p>这里的$\hat{y}$�
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/09/28/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" title="深度强化学习">
-                        <span class="hidden-mobile">深度强化学习</span>
+                      <a href="/2022/09/21/vue3-x-%E5%8A%A8%E7%94%BB%E7%AF%87/" title="vue3.x 动画篇">
+                        <span class="hidden-mobile">vue3.x 动画篇</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

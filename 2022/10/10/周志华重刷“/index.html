@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo37.jpeg">
 <meta property="article:published_time" content="2022-10-10T02:22:53.000Z">
-<meta property="article:modified_time" content="2022-10-12T13:12:57.863Z">
+<meta property="article:modified_time" content="2022-10-17T15:44:22.791Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="机器学习基础理论">
 <meta name="twitter:card" content="summary_large_image">
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.8k words
+          17k words
         
       </span>
     
@@ -316,7 +316,7 @@
 <h5 id="自助法（bootstrapping）"><a href="#自助法（bootstrapping）" class="headerlink" title="自助法（bootstrapping）"></a>自助法（bootstrapping）</h5><p>从$D$中随机复制一个样本到$D’$中，复制$m$次，会得到一个拥有$m$个数据样本的$D’$数据集。</p>
 <p>根据平均分布概率计算，大约有36.8%的数据不会被复制到$D’$中，因此$D$覆盖的样本要多于$D’$，把$D’$拿来当训练集，$D$用来当测试集。这样的测试结果，亦称”包外估计” (out-of-bag estimate)。</p>
 <blockquote>
-<p>样本在 $m$ 次采样中始终不被采到的概率是 $(1-\frac{1}{m})^m$， 取极限得到$\lim_{m\to \infin}(1-\frac{1}{m})^m \to \frac{1}{e} \approx. 0.368$</p>
+<p>样本在 $m$ 次采样中始终不被采到的概率是 $(1-\frac{1}{m})^m$， 取极限得到$\lim_{m\to \infty}(1-\frac{1}{m})^m \to \frac{1}{e} \approx. 0.368$</p>
 </blockquote>
 <h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>自助法在<strong>数据集较小、难以有效划分训练/测试集时</strong>很有用，另外两个都是采用分层采样的。</p>
 <p>自助法产生的数据集改变了初始数据集的分布，这会引入估计偏差。因此，<u>在初始数据量足够时，留出法和交叉验证法更常用一些。</u></p>
@@ -429,23 +429,269 @@ E(f;D;cost)=\frac{1}{m}(\sum_{x_i\in D^+}I(f(x_i)\ne y_i)\times cost_{01}+\sum_{
 <p>给定学习任务，训练不足时，拟合能力不够强，训练数据的扰动对学习器的影响不大，此时偏差主导了泛化错误率； 随着训练程度的加深，学习器的拟合能力逐渐增强，训练数据发生的扰动渐渐能被学习器学到，方差逐渐主导了泛化错误率； 在训练程度充足后，学习器的拟合能力已非常强，训练数据发生的轻微扰动都会导致学习器发生显著变化，若训练数据自身没什么用的特性也被学习器学到了，则将发生过拟合。</p>
 <p>过拟合的意思就是模型对训练集中所有的样本点都有非常好的预测能力，但是对于非训练集中的新数据预测能力非常差。<strong>为了防止过拟合现象的出现，就要降低决策函数的复杂度，通常的做法是给经验风险后面加一个<u>正则化项</u>（惩罚项）</strong>，这个后面章节有。</p>
 <p>以上是从回归任务中推导得出的公式和结论，告诉我们训练的太过容易发生过拟合。对于分类任务，由于0/1损失函数的跳变性，理论上推导出偏差和方差很困难，但是可以通过实验来估计。</p>
-<h3 id="三、线性模型"><a href="#三、线性模型" class="headerlink" title="三、线性模型"></a>三、线性模型</h3><h4 id="凸函数"><a href="#凸函数" class="headerlink" title="凸函数"></a>凸函数</h4><p>凸集简单地说，可以想象成一种形状，其中任何连接2点的线都不会超出凸集。</p>
-<p><img src="/../img/image-20221012124524306.png" srcset="/img/loading.gif" lazyload alt="image-20221012124524306" style="zoom:50%;"></p>
-<p>用数学表达一个凸集 C ：</p>
-<p><img src="/../img/v2-4090ea412f86a30442930dcc06afc335_r.jpg" srcset="/img/loading.gif" lazyload alt="img" style="zoom: 67%;"></p>
-<p>epigraph 是在函数中或其上的所有点，$f(x)$的epigraph如下：</p>
-<p><img src="/../img/image-20221012130232456.png" srcset="/img/loading.gif" lazyload alt="image-20221012130232456" style="zoom:50%;"></p>
-<p>如果一个函数 f 的 epigraph 是凸集（如左下方绿色图所示)），则称该函数为凸函数。这意味着在这个 <em>epigraph</em> 上画的每个两点间线段<strong>总是</strong>等于或高于函数图。</p>
-<p><img src="/../img/image-20221012135304781.png" srcset="/img/loading.gif" lazyload alt="image-20221012135304781" style="zoom:50%;"></p>
-<p>凸性检验：在神经网络中，大多数的成本函数是非凸的。因此，如果想优化学习器的话，必须先测试一下函数的凸性。</p>
-<blockquote>
-<p>只有一个样本时叫损失函数，对于m个样本，叫成本函数。</p>
+<h3 id="三、线性模型"><a href="#三、线性模型" class="headerlink" title="三、线性模型"></a>三、线性模型</h3><p>线性模型的本质就是通过训练数据学习出一个通过样本数据的属性的线性组合来进行预测的函数。</p>
+<p>其中参数$w,b$分别代表特征的权重和偏执系数，如果训练样本共有 $d$ 个属性，将描述为：$x=(x_1;x_2;……;x_d)$ 。</p>
+<p>线性模型试图学得$x$的预测函数，即$f(x)=w_1x_1+w_2x_2+……+w_dx_d+b$ ，一般用向量形式写成$f(x)=w^Tx+b$ ，其中$w=(w_1;w_2;…;w_d;b)$ 。</p>
+<p>本章介绍几种经典的线性模型，先从回归任务开始，然后讨论二分类和多分类任务。</p>
+<h4 id="回归任务"><a href="#回归任务" class="headerlink" title="回归任务"></a>回归任务</h4><p>线性回归预测实值不止可以用于连续属性，也可以用于离散属性。</p>
+<p>对离散属性，若属性值间存在”<strong>序</strong>“ (order)关系，可通过连续化将其转化为连续值，例如二值属性”身高”的取值——“高” “矮”可转化为 {1,0}，三值属性”高” “中” “低”可转化为 {1, 0.5, 0}。</p>
+<p>若属性值间不存在序关系，则通常转化为 $k$ 维向量，例如属性”瓜类”的取值”西瓜”、”南瓜”、”黄瓜”可转化为(0,0,1)、(0,1,0)、(1,0,0)。</p>
+<h5 id="最小二乘"><a href="#最小二乘" class="headerlink" title="最小二乘"></a>最小二乘</h5><p>确定W和b的方法通常是用它模型分布的某个参数来构造损失函数，均方误差是回归任务中最常用的衡量参数，也就是我们常说的”欧式距离“和“平方损失”。</p>
+<script type="math/tex; mode=display">
+(w^*,b^*)=arg\min_{(w,b)}\sum^m_{i=1}(f(x_i)-y_i)^2=arg\min_{(w,b)}\sum^m_{i=1}(y_i-wx_i-b)^2</script><p>这种基于均方误差最小化来求解模型的方法称为“最小二乘法”，可将上式对 $ω $和 $b$ 分别求导，得到</p>
+<script type="math/tex; mode=display">
+s.t. \frac{\partial{E_{w,b}}}{\partial w}=2(w\sum^m_{i=1}x_i^2-\sum^m_{i=1}x_i(y_i-b))=0</script><script type="math/tex; mode=display">
+s.t.\frac{\partial{E_{w,b}}}{\partial b}=2(mb-\sum^m_{i=1}(y_i-wx_i))=0</script><p>得到$w$和$b$最优解的闭式(解析)解：</p>
+<script type="math/tex; mode=display">
+w=\frac{\sum^m_{i=1}y_i(x_i-\overline{x})}{\sum^m_{i=1}x_i^2-\frac{1}{m}(\sum^m_{i=1}x_i)^2}</script><script type="math/tex; mode=display">
+b=\frac{1}{m}\sum^m_{i=1}(y_i-wx_i)</script><blockquote>
+<p><strong>数值解是在特定条件下通过近似计算得出来的一个数值，而解析解就是给出解的具体函数形式，从解的表达式中就可以算出任何对应值。</strong>eg: $x^2=2$   $\rightarrow x=sqrt(2)$ — <strong>（解析解）</strong></p>
+<p>$\rightarrow x=1.414$ — <strong>（数值解）</strong></p>
 </blockquote>
-<p>如果函数 f 的二阶导数$f’’(x)$大于或等于0，则称该函数为凸函数。如果$ -f(x) $是一个凸函数，那么函数 f 称为凹函数。</p>
-<p>凸函数在神经网络里的作用：</p>
-<p>一个凸函数意味着没有局部极小值，只有全局极小值。因此，梯度下降法将会收敛到全局极小值。</p>
-<p>如果不是凸函数，可以看到梯度下降法将停止在局部极小值，而不是收敛到全局极小值。因为这一点的梯度已经到零了，而且还是附近区域的极小值，解决这个问题的一个方法是使用动量。</p>
-<p><img src="/../img/image-20221012145230982.png" srcset="/img/loading.gif" lazyload alt="image-20221012145230982" style="zoom:50%;"></p>
+<p>上述过程对应的是一个样本只有一个特征的问题，当问题中存在的不止一个特征，我们称之为多元线性回归。</p>
+<p>形式与上述过程类似。把$w,b$吸入向量模式，表示为$\hat{w}=(w;b)$，然后把容量为$m$的数据集$D$表示为一个$m*(d+1)$的大小矩阵，每个样本就是其中的一行$x$，$d$对应属性个数，最后一列元素置为$1$，用来乘偏置系数，即</p>
+<script type="math/tex; mode=display">
+X=\left|
+    \begin{matrix}
+    x_{11} & x_{12} & \cdots & x_{1d} & 1\\
+    x_{21} & x_{22} & \cdots & x_{2d} & 1\\
+    \vdots & \vdots & \ddots & \vdots & \vdots\\
+    x_{m1} & x_{m2} & \cdots & x_{md} & 1 \\
+    \end{matrix}
+    \right|=\left|
+    \begin{matrix}
+    x_1^T &1\\
+    x_2^T &1\\
+    \vdots & \vdots\\
+    x_m^T &1\\
+    \end{matrix}
+    \right|</script><p>再把标记也写成向量形式$y=(y_1;y_2;…;y_m)$，则类似于单变量线性回归模型，有</p>
+<script type="math/tex; mode=display">
+\hat{w}^*=argmin_{\hat{w}}(y-X\hat{w})^T{}(y-X\hat{w})</script><p>令$E_\hat{w}=(y-X\hat{w})^T{}(y-X\hat{w})$，对$\hat{w}$求导得到：</p>
+<script type="math/tex; mode=display">
+\frac{\partial E_{\hat{w}}}{ \partial\hat w}=2X^T(X\hat w-y)</script><p>假设$E_\hat{w}$为满秩矩阵或正定矩阵时<script type="math/tex">\hat{w^*}=(X^TX)^{-1}X^Ty</script>，回归模型为<script type="math/tex">f(\hat{x_i})=\hat{x_i}(X^TX)^{-1}X^Ty</script>。 <strong>【注】现实任务中，会遇到大量的变量，甚至会超过样本数，导致列数多于行数，<script type="math/tex">X^TX</script>不满秩，所以会有多个$\hat{w}$，此时结果由算法的学习偏好决定。</strong></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/273729929">矩阵求导法则</a></p>
+<p>几个公式：</p>
+<p><img src="/../img/image-20221014152313021.png" srcset="/img/loading.gif" lazyload alt="image-20221014152313021" style="zoom:50%;"></p>
+<p>其中， a 为常数向量， a=(a1,a2,⋯,an)T 。</p>
+<p><img src="/../img/image-20221014152338461.png" srcset="/img/loading.gif" lazyload alt="image-20221014152338461" style="zoom:50%;"></p>
+<p><img src="/../img/image-20221014153030829.png" srcset="/img/loading.gif" lazyload alt="image-20221014153030829" style="zoom:50%;"></p>
+<p><img src="/../img/image-20221014153049266.png" srcset="/img/loading.gif" lazyload alt="image-20221014153049266" style="zoom:50%;"></p>
+<h5 id="联系函数"><a href="#联系函数" class="headerlink" title="联系函数"></a>联系函数</h5><p>有时候$y$和$x$之间不是线性变化，这就导致$y=w<em>x+b$​不能再表示他们之间的关系，就需要通过一个“<em>*联系函数</em></em>”让他们可以线性表示，考虑单调可微函数$ g(.) $， 令</p>
+<script type="math/tex; mode=display">
+y=g^{-1}(w^Tx+b)</script><p>$g(.) $连续且充分光滑，这样得到的模型称为”广义线性模型” (generalized linear model) ，其中函数$g(.)$ 就称为”联系函数” (link function)。</p>
+<p>这实际上是一种空间映射，起到了<u>将线性回归模型的预测值与真实标记联系起来的作用</u>。</p>
+<h5 id="对数几率函数sigmoid"><a href="#对数几率函数sigmoid" class="headerlink" title="对数几率函数sigmoid"></a>对数几率函数sigmoid</h5><p>之前讲的是回归学习，训练模型来预测出一个实值，如果要做分类任务的话，就要加一个联系函数把预测值和真实输出标签[0,1]联系起来，最理想的是”单位阶跃函数”。</p>
+<script type="math/tex; mode=display">
+y=
+\left\{
+\begin{array}{c}
+    0,z<0\\
+    0.5,z=0\\
+    1,z>0
+\end{array}
+\right.</script><p>但是它并不连续，需要用对数几率函数这种近似单位阶跃函数且单调可微的函数来作为其替代函数。</p>
+<script type="math/tex; mode=display">
+y=\frac{1}{1+e^{-z}}</script><p>将线性函数代入对数几率函数并写成如下形式：</p>
+<script type="math/tex; mode=display">
+ln\frac{y}{1-y}=-z=w^Tx+b</script><p>y是正例的概率，1-y就是反例的概率，两者的比值就是“<strong>几率</strong>”，反映了x作为正例的<strong>相对可能性</strong>，对这个几率取的对数就叫做对数几率。</p>
+<p>我们所要做的就是让预测输出，也就是右边部分，尽可能的去逼近真实标签y，由此就用极大似然法得到了目标函数，一个任意阶可导的凸函数，拥有非常好的数学性能。</p>
+<script type="math/tex; mode=display">
+y=\frac{1}{1+e^{-(w^Tx+b)}}</script><p>求解<script type="math/tex">w,b</script>用了<strong>极大似然法</strong>，最后得到一个关于β的高阶可导连续凸函数</p>
+<script type="math/tex; mode=display">
+l(β)=\sum_{i=1}^m(-y_iβ^T\hat{x_i}+\ln(1+e^{β^T\hat{x_i}}))</script><p>通过梯度下降法、牛顿法等都可求得这个函数的最优解<script type="math/tex">β^*=argmin_βl(β)</script>，逐步迭代找到最优下降路径。</p>
+<h5 id="线性判别分析（LDA）"><a href="#线性判别分析（LDA）" class="headerlink" title="线性判别分析（LDA）"></a>线性判别分析（LDA）</h5><p>讲正例尽量投在一起，反例投一起，正反例尽可能远离，拿到新样例投上去看更接近哪。</p>
+<p><img src="/../img/image-20221016130515153.png" srcset="/img/loading.gif" lazyload alt="image-20221016130515153" style="zoom: 33%;"></p>
+<p>椭圆表示数据簇的外轮廓，虚线表示投影， 红色实心园和实心三角形分别表示两类样本投影后的中心点。</p>
+<p>LDA常常用于二分类问题以及多分类的降维处理，举例如图本来一个二维数据投到直线上就变成一个一维数据了，LDA的基本思想就是找到一条这样可以将两类数据分开到两边的直线，并确定一个分界点。</p>
+<p><img src="/../img/image-20221016130906359.png" srcset="/img/loading.gif" lazyload alt="image-20221016130906359"></p>
+<p>如图，右边天蓝色的分界点就做的很好，左图就做不到。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41876213/article/details/107695663">PCA降维</a></p>
+<p>这里引入协方差矩阵的概念，若要做数据降维，直接简单粗暴的删掉一维数据必然不合理，因此有两种方案：</p>
+<ol>
+<li><p>先看每一维数据的方差，对于分散程度较小的因素而言(极端情况为一个不变的数值)说明分析的价值不大，所以可以舍弃。</p>
+</li>
+<li><p>但是由于各个特征之间可能是充满联系的，比如说空气质量可能会影响上班时间，一些方差小的原因可能不是该因素本身的原因，而是其它因素影响造成的，需要将这些因素之间的影响去除掉，在除掉之前先引进协方差的概念，将各维数据去中心化后得到：</p>
+<p><img src="/../img/image-20221016131555712.png" srcset="/img/loading.gif" lazyload alt="image-20221016131555712" style="zoom:50%;"></p>
+<p>大于0正相关，等于0不相关，小于0负相关。协方差矩阵对角线位置上的数值表示方差，非对角线位置上的数值表示各因素之间的相关性。</p>
+<p><img src="/../img/image-20221016131717029.png" srcset="/img/loading.gif" lazyload alt="image-20221016131717029"></p>
+</li>
+</ol>
+<p>为使各个因素之间不相关，需要一种方法对各个因素进行<strong>坐标转换</strong>使协方差矩阵转换为对角矩阵，<strong>这就是我们的求解目标。</strong></p>
+<p>在m维空间中，令$P=[e_1 e_2 … e_m]$，求$x$在$P$组成的m维标准正交基中的坐标公式如下：</p>
+<script type="math/tex; mode=display">
+[e_1 e_2 ... e_m]^T x=P^Tx</script><p>保留特征值较大的特征向量，不知道降低到多少维合适时一般按照经验判断保留到特征值所在比例为95%左右，有时候为了可视化比例可能远低于这个数值，最终降维之后的坐标为$y_j =P’^Tx_j$。</p>
+<p><strong>二分类线性判别分析</strong></p>
+<p>通过尽量增大两类样本中心点的距离，并尽量减小正类或反类样本各自内部的协方差，得到一个“广义瑞利商”，这就是LDA想要最大化的目标。</p>
+<p>LDA可以从贝叶斯决策论理论的角度来阐述，并可证明，当两类数据同先验、满足高斯分布并且协方差相等时，LDA可达到最优分类。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">from</span> sklearn.datasets <span class="hljs-keyword">import</span> load_iris<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">LDA</span>(<span class="hljs-params">data, target, n_dim</span>):<br>    <span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">    :param data: (n_samples, n_features)</span><br><span class="hljs-string">    :param target: data class</span><br><span class="hljs-string">    :param n_dim: target dimension</span><br><span class="hljs-string">    :return: (n_samples, n_dims)</span><br><span class="hljs-string"> 	&#x27;&#x27;&#x27;</span>   <br>    clusters = np.unique(target)<br><br>    <span class="hljs-keyword">if</span> n_dim &gt; <span class="hljs-built_in">len</span>(clusters)-<span class="hljs-number">1</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;K is too much&quot;</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;please input again&quot;</span>)<br>        exit(<span class="hljs-number">0</span>)<br><br>    <span class="hljs-comment">#within_class scatter matrix</span><br>    Sw = np.zeros((data.shape[<span class="hljs-number">1</span>],data.shape[<span class="hljs-number">1</span>]))<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> clusters:<br>        datai = data[target == i]<br>        datai = datai-datai.mean(<span class="hljs-number">0</span>)<br>        Swi = np.mat(datai).T*np.mat(datai)<br>        Sw += Swi<br><br>    <span class="hljs-comment">#between_class scatter matrix</span><br>    SB = np.zeros((data.shape[<span class="hljs-number">1</span>],data.shape[<span class="hljs-number">1</span>]))<br>    u = data.mean(<span class="hljs-number">0</span>)  <span class="hljs-comment">#所有样本的平均值</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> clusters:<br>        Ni = data[target == i].shape[<span class="hljs-number">0</span>]<br>        ui = data[target == i].mean(<span class="hljs-number">0</span>)  <span class="hljs-comment">#某个类别的平均值</span><br>        SBi = Ni*np.mat(ui - u).T*np.mat(ui - u)<br>        SB += SBi<br>    S = np.linalg.inv(Sw)*SB<br>    eigVals,eigVects = np.linalg.eig(S)  <span class="hljs-comment">#求特征值，特征向量</span><br>    eigValInd = np.argsort(eigVals)<br>    eigValInd = eigValInd[:(-n_dim-<span class="hljs-number">1</span>):-<span class="hljs-number">1</span>]<br>    w = eigVects[:,eigValInd]<br>    data_ndim = np.dot(data, w)<br>    <span class="hljs-keyword">return</span> data_ndim<br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    iris = load_iris()<br>    X = iris.data<br>    Y = iris.target<br>    target_names = iris.target_names<br>    X_r2 = LDA(X, Y, <span class="hljs-number">2</span>)<br>    colors = [<span class="hljs-string">&#x27;navy&#x27;</span>, <span class="hljs-string">&#x27;turquoise&#x27;</span>, <span class="hljs-string">&#x27;darkorange&#x27;</span>]<br>    <span class="hljs-keyword">for</span> color, i, target_name <span class="hljs-keyword">in</span> <span class="hljs-built_in">zip</span>(colors, [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>], target_names):<br>        plt.scatter(X_r2[Y == i, <span class="hljs-number">0</span>], X_r2[Y == i, <span class="hljs-number">1</span>], alpha=<span class="hljs-number">.8</span>, color=color,<br>                label=target_name)<br>    plt.legend(loc=<span class="hljs-string">&#x27;best&#x27;</span>, shadow=<span class="hljs-literal">False</span>, scatterpoints=<span class="hljs-number">1</span>)<br>    plt.title(<span class="hljs-string">&#x27;LDA of IRIS dataset by Python&#x27;</span>)<br>    plt.show()<br></code></pre></td></tr></table></figure>
+<p>多分类LDA的均值向量仍然是所有样本的均值向量，类内散度矩阵则重定义为每个类别的散度矩阵之和，最后常见的采用的优化目标是最大化</p>
+<p><img src="/../img/image-20221016144004468.png" srcset="/img/loading.gif" lazyload alt="image-20221016144004468" style="zoom: 50%;"></p>
+<p>看下图，全局均值到类内均值的距离就是$S_b$，类内样本间的距离就是$S_w$，也就是说，尽量增加每一类中心点到全局中心点的距离，尽量缩小每一类内部样本的协方差。</p>
+<p><img src="/../img/image-20221016142851974.png" srcset="/img/loading.gif" lazyload alt="image-20221016142851974" style="zoom:33%;"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#coding=utf-8</span><br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">from</span> sklearn.datasets <span class="hljs-keyword">import</span> load_iris<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-comment"># 这是sklearn中实现的LDA，待会我们会比较自己实现的LDA和它的区别</span><br><span class="hljs-keyword">from</span> sklearn.discriminant_analysis <span class="hljs-keyword">import</span> LinearDiscriminantAnalysis<br><br><span class="hljs-comment"># k为目标</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">LDA</span>(<span class="hljs-params">X, y, k</span>):<br>    label_ = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">set</span>(y))<br>    X_classify = &#123;&#125;<br>    <span class="hljs-keyword">for</span> label <span class="hljs-keyword">in</span> label_:<br>        X1 = np.array([X[i] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(X)) <span class="hljs-keyword">if</span> y[i] == label])<br>        X_classify[label] = X1<br><br>    miu = np.mean(X, axis=<span class="hljs-number">0</span>)<br>    miu_classify = &#123;&#125;<br>    <span class="hljs-keyword">for</span> label <span class="hljs-keyword">in</span> label_:<br>        miu1 = np.mean(X_classify[label], axis=<span class="hljs-number">0</span>)<br>        miu_classify[label] = miu1<br><br>    <span class="hljs-comment"># St = np.dot((X - mju).T, X - mju)</span><br>    <span class="hljs-comment"># 计算类内散度矩阵Sw</span><br>    Sw = np.zeros((<span class="hljs-built_in">len</span>(miu), <span class="hljs-built_in">len</span>(miu)))<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> label_:<br>        Sw += np.dot((X_classify[i] - miu_classify[i]).T, X_classify[i] - miu_classify[i])<br><br>    <span class="hljs-comment">#Sb = St-Sw</span><br>    <span class="hljs-comment"># 计算类内散度矩阵Sb</span><br>    Sb = np.zeros((<span class="hljs-built_in">len</span>(miu), <span class="hljs-built_in">len</span>(miu)))<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> label_:<br>        Sb += <span class="hljs-built_in">len</span>(X_classify[i]) * np.dot((miu_classify[i] - miu).reshape(<br>            (<span class="hljs-built_in">len</span>(miu), <span class="hljs-number">1</span>)), (miu_classify[i] - miu).reshape((<span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(miu))))<br><br>    <span class="hljs-comment"># 计算S_w^&#123;-1&#125;S_b的特征值和特征矩阵</span><br>    eig_vals, eig_vecs = np.linalg.eig(np.linalg.inv(Sw).dot(Sb))<br>    sorted_indices = np.argsort(eig_vals)<br>    <span class="hljs-comment"># 提取前k个特征向量</span><br>    topk_eig_vecs = eig_vecs[:, sorted_indices[:-k - <span class="hljs-number">1</span>:-<span class="hljs-number">1</span>]]<br>    <span class="hljs-keyword">return</span> topk_eig_vecs<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():<br>    iris = load_iris()<br>    X = iris.data<br>    y = iris.target<br><br>    W = LDA(X, y, <span class="hljs-number">2</span>)<br>    X_new = np.dot(X, W)<br>    plt.scatter(X_new[:, <span class="hljs-number">0</span>], X_new[:, <span class="hljs-number">1</span>], marker=<span class="hljs-string">&#x27;o&#x27;</span>, c=y)<br>    plt.show()<br><br>    <span class="hljs-comment"># 和sklearn的函数对比</span><br>    lda = LinearDiscriminantAnalysis(n_components=<span class="hljs-number">2</span>)<br>    lda.fit(X, y)<br>    X_new = lda.transform(X)<br>    plt.scatter(X_new[:, <span class="hljs-number">0</span>], X_new[:, <span class="hljs-number">1</span>], marker=<span class="hljs-string">&#x27;o&#x27;</span>, c=y)<br>    plt.show()<br>main()<br><br></code></pre></td></tr></table></figure>
+<h4 id="多分类学习"><a href="#多分类学习" class="headerlink" title="多分类学习"></a>多分类学习</h4><p>多分类学习有两个思路。一种是将二分类算法变形之后推广到多分类，比如上一节讲到的LDA。另一种则是利用二分类的学习器来解决多分类问题。下面讨论第二种，即用拆解法将多分类任务拆为若干个二分类任务求解。</p>
+<p><strong>拆解法步骤：</strong></p>
+<ol>
+<li><p>通过拆分策略对问题进行【<strong>拆分】</strong>；</p>
+</li>
+<li><p>为拆分出的每个二分类任务【<strong>训练】</strong>一个分类器；</p>
+</li>
+<li><p>对各个分类器的结果进行【<strong>集成】</strong>，以获得多分类结果。</p>
+</li>
+</ol>
+<p><strong>［1］“一对一”（One vs One，简称OvO）</strong></p>
+<p>OvO将所有类别两两配对，一个作为正类，一个作为反类，从而产生$N(N-1)/2$个二分类任务。把最后得到的每个分类结果进行统计，被预测次数最多的类别作为最终结果。</p>
+<p><strong>［2］“一对其余”（One vs Rest，简称OvR）</strong></p>
+<p>将N个分类中的一个类作为正例，其余均设置为反例，从而【拆分】成N个分类任务；【训练】得到N个分类结果；【集成】的方法是考虑各被判为正例的分类器的置信度，选择置信度大的类别标记作为分类的结果。</p>
+<p><img src="/../img/image-20221016145205366.png" srcset="/img/loading.gif" lazyload alt="image-20221016145205366" style="zoom:50%;"></p>
+<p>二者对比：OVO的分类器数量很大，存储开销和测试时间开销通常比OvR更大，但是OVO用到的训练样本很少，因此，在类别很多时，OvO的训练时间开销通常比OvR更小。至于预测性能，则取决于具体的数据分布，在多数情形下两者差不多。</p>
+<p><strong>［3］“多对多”（Many vs Many，简称MvM）</strong></p>
+<p>每次将若干个类别作为正类，若干个其它类作为反类。分类方法采用ECOC编码，不想看了。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lafengxiaoyu/article/details/107886065">ECOC编码详解</a></p>
+<h4 id="类别不平衡问题"><a href="#类别不平衡问题" class="headerlink" title="类别不平衡问题"></a>类别不平衡问题</h4><p>目前类别不平衡性学习的一个基本策略是“再缩放”（rescaling），现有技术大体上有以下三种做法：</p>
+<p><strong>［1］欠采样（undersampling）</strong></p>
+<p>哪类样本多，去掉哪一类，让两类样本数目接近。</p>
+<p>代表性算法EasyEnsemble：在反例多的情况下，把反例分给多个学习器，这样每个学习器学到的正反类样本数目就差不多了，而且还不会丢失重要信息。</p>
+<p><strong>［2］过采样（oversampling）</strong></p>
+<p>哪类样本多，增加哪一类，让两类样本数目接近。</p>
+<p>但也不能简单地对初始正例样本进行重复采样，否则会招致严重的过拟合。代表性算法SMOTE是通过对训练集里的正例进行插值来产生额外的正例。</p>
+<p><strong>［3］阈值移动（threshold-moving）</strong></p>
+<p>一般我们认为正反类发生的概率都是0.5，但是在两类样本不平衡的条件下，分类器决策规则为</p>
+<script type="math/tex; mode=display">
+\frac{ y'} { (1 - y') }= \frac{y} {(1 - y)} \times \frac{m^-}{m^+} > 1</script><p>时，预测为正例——这就是“再缩放”。</p>
+<p>当正类概率大于反类概率时，我们判定结果为正类，也就是：</p>
+<p><img src="/../img/image-20221016154116050.png" srcset="/img/loading.gif" lazyload alt="image-20221016154116050" style="zoom:50%;"></p>
+<h3 id="四、决策树"><a href="#四、决策树" class="headerlink" title="四、决策树"></a>四、决策树</h3><p>决策树需要分类结果已知的监管学习，决策树在逻辑上以树的形式存在，包含<strong>根节点、内部结点和叶节点</strong>。</p>
+<ul>
+<li>根节点：包含数据集中的所有数据</li>
+<li>内部节点：一个包含符合该判断条件的所有数据的集合。</li>
+<li>叶节点：可以得出最终分类结果的节点。</li>
+</ul>
+<p>一般的原则是，希望通过不断划分节点，使得一个分支节点包含的数据尽可能的属于同一个类别，即“纯度“越来越高，举个例子：</p>
+<p><img src="/../img/image-20221016174520050.png" srcset="/img/loading.gif" lazyload alt="image-20221016174520050" style="zoom:50%;"></p>
+<p><img src="/../img/image-20221016174536199.png" srcset="/img/loading.gif" lazyload alt="image-20221016174536199" style="zoom:50%;"></p>
+<p><img src="/../img/image-20221016174557843.png" srcset="/img/loading.gif" lazyload alt="image-20221016174557843" style="zoom:50%;"></p>
+<p><img src="/../img/image-20221016174620982.png" srcset="/img/loading.gif" lazyload alt="image-20221016174620982" style="zoom:50%;"></p>
+<p><img src="/../img/image-20221016174637143.png" srcset="/img/loading.gif" lazyload alt="image-20221016174637143" style="zoom:50%;"></p>
+<p>可知决策树的生成只需要两步：</p>
+<ol>
+<li>节点的分裂：当该节点无法给出最终分类结果，会继续生成判断条件。</li>
+<li>阈值的确定：选择适当的阈值使得分类错误率最小 （Training Error）。</li>
+</ol>
+<p>停止分裂的三种情况：</p>
+<ul>
+<li>没必要分裂：所有样本在当前节点有相同的标签，比如图中分到最后每一类里只有一种类别了。</li>
+<li>没办法分裂：当前分布集合是空的或者所有样本在所有的分布都相同</li>
+<li>没数据分裂：当前节点是空的或者由父节点直接分配了主标签</li>
+</ul>
+<p>决策树学习的关键在于如何选择最好的划分属性，即确定这个阈值，使决策树随着划分过程的进行，使得一个分支节点包含的数据尽可能的属于同一个类别，也就是节点的“纯度”能越来越高。</p>
+<p>常用的最优属性选取方法有三种：</p>
+<ul>
+<li>信息增益：在 ID3 决策树中使用</li>
+<li>信息增益率：在 C4.5 决策树中使用</li>
+<li>基尼系数：在 CART 决策树中使用</li>
+</ul>
+<h4 id="常用划分准则"><a href="#常用划分准则" class="headerlink" title="常用划分准则"></a>常用划分准则</h4><h5 id="信息增益准则"><a href="#信息增益准则" class="headerlink" title="信息增益准则"></a>信息增益准则</h5><p>我们先对一个节点的纯度进行定义，我们将其称之为<strong>信息熵</strong>，代表着一种信息的混乱程度，当它的确定性越大，它的信息熵就越小。</p>
+<p><img src="/../img/image-20221016175531401.png" srcset="/img/loading.gif" lazyload alt="image-20221016175531401" style="zoom:50%;"></p>
+<p>其中$p_k$代表当前节点D的数据中第k类样本所占的比例，</p>
+<p><img src="/../img/image-20221016181555097.png" srcset="/img/loading.gif" lazyload alt="image-20221016181555097" style="zoom:50%;"></p>
+<p>蓝线是基尼系数的分布，黑线是熵的分布，这是一个二分类的布局，最小值为0，最大值为各类概率相等时，混乱程度最大。</p>
+<p>定义一个信息增益，$D$代表整个数据集，$D^v$代表第$v$个节点下的数据集。</p>
+<p><img src="/../img/image-20221016220629446.png" srcset="/img/loading.gif" lazyload alt="image-20221016220629446" style="zoom:50%;"></p>
+<p>光看这个式子可能难以理解，看书上的例子：</p>
+<p><img src="/../img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzU5NTI0ODk3,size_16,color_FFFFFF,t_70.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>举例以“a=色泽”的情况下，可以分成三个子集合v={绿，白，黑}，分别有{6,6,5}个样本，没个集合中正例和反例的数量分别代入信息熵可得：</p>
+<p><img src="/../img/image-20221017163045713.png" srcset="/img/loading.gif" lazyload alt="image-20221017163045713" style="zoom: 33%;"></p>
+<p>最后计算总的<strong>色泽</strong>的信息增益：</p>
+<p><img src="/../img/20201123212936414.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom:67%;"></p>
+<p>然后继续分裂。</p>
+<p>也就是说，对每一个节点信息增益的计算包括：</p>
+<ul>
+<li>对该层正反例进行计数，算出该层节点的信息熵。</li>
+<li>选择下一层的划分属性，对每一个划分属性计算信息熵。</li>
+<li>乘以该属性的样本数量占上一层总样本数量的权重，代入信息增益公式。</li>
+<li>比较每一种划分属性的信息增益大小，选择最大的为该层划分属性。</li>
+</ul>
+<p>观察该过程，可以得到：</p>
+<ol>
+<li>第一项$Ent(D)$是确定的，是整个节点的信息熵，可以当成定值。</li>
+<li>$D^v/D$表示分支节点所占比例的大小，数据集越大的分支节点权重越高。</li>
+<li>分支节点整体纯度越大，分类越好，信息熵越小，后一项就越小，信息增益Gain就变得越大，所以我们的目标是如何<strong>最大化信息增益</strong>。</li>
+</ol>
+<p>由此，我们依据这个，<strong>计算以每个属性进行划分子节点得到的信息增益，选择其中最大的作为选择的属性。</strong></p>
+<h5 id="信息增益率准则"><a href="#信息增益率准则" class="headerlink" title="信息增益率准则"></a>信息增益率准则</h5><p>当分支节点很多时，每个节点的数据量就会变得很小，得到的Gain值就越大，这样会导致<strong>信息熵准则偏爱那些分类数目较多的属性</strong>。</p>
+<p>为了解决该问题，这里引入了信息增益率，定义如下：</p>
+<p><img src="/../img/image-20221016224649861.png" srcset="/img/loading.gif" lazyload alt="image-20221016224649861" style="zoom:50%;"></p>
+<p>引入修正项IV(a)，它是是分布a的固有属性。属性a的可能取值越多（即V越大），则IV(a)的值通常会越大（以此调整也越大的信息增益），</p>
+<p><img src="/../img/image-20221016224832567.png" srcset="/img/loading.gif" lazyload alt="image-20221016224832567" style="zoom:50%;"></p>
+<p>需注意，信息增益率对可取值数目较少的属性有所偏好，因此C4.5算法并不是直接根据增益率选择最优划分属性，而是使用了一个启发式：</p>
+<ol>
+<li>先从候选划分属性中选择出信息增益高于平均水平的几个属性</li>
+<li>再从选择出的属性中选择增益率最高的属性作为划分属性</li>
+</ol>
+<p>即C4.5选择的最优划分属性是<strong>信息增益高于平均水平且信息增益率最大</strong>的属性。</p>
+<h5 id="基尼指数-Gini-index"><a href="#基尼指数-Gini-index" class="headerlink" title="基尼指数(Gini index)"></a>基尼指数(Gini index)</h5><p>数据集<em>D</em>的纯度可用基尼值来度量：</p>
+<p><img src="/../img/image-20221017165621389.png" srcset="/img/loading.gif" lazyload alt="image-20221017165621389" style="zoom: 50%;"></p>
+<p>直观来说，Gini(D)反映了从数据集D中随机抽取两个样本，其类别标记不同的概率。因此，Gini(D)越小，抽到的样例类别相同的概率越大，数据集D的纯度越高。属性<em>a</em>的基尼指数定义为：</p>
+<p><img src="/../img/image-20221017165923354.png" srcset="/img/loading.gif" lazyload alt="image-20221017165923354" style="zoom:50%;"></p>
+<p>以西瓜集中“a=触感”举例，基尼值为：</p>
+<p><img src="/../img/image-20221017171024738.png" srcset="/img/loading.gif" lazyload alt="image-20221017171024738" style="zoom:50%;"></p>
+<p>我们在候选属性中选择使得划分后基尼指数最小的属性作为最优划分属性。</p>
+<h4 id="剪枝处理"><a href="#剪枝处理" class="headerlink" title="剪枝处理"></a>剪枝处理</h4><p>过拟合</p>
+<ul>
+<li><p>太多的分支会让数据集在训练集上做的过好，而泛化能力不咋地。</p>
+</li>
+<li><p>过拟合的风险可以通过剪枝来解决。</p>
+</li>
+</ul>
+<p>剪枝策略</p>
+<ul>
+<li>前剪枝(Pre-pruning)，在生成过程就对每个节点进行估计，如果不能提高泛化能力，就提前停止分支的增长。</li>
+<li>后剪枝(Post-pruning)，在生成决策树之后，再自下而上地对子节点进行考察，如果替换成叶节点可以提高泛化能力，那就替换。</li>
+<li>将分支剪除就相当于把它替换成叶节点。</li>
+</ul>
+<p>如何决定要不要剪枝呢？也就是说，如何判断泛化性能是否能提升呢？</p>
+<p>把训练集预留一部分做验证集，这就叫做留出法(hold-out)。具体做法为：</p>
+<ol>
+<li>把数据集分成两部分训练集和测试集</li>
+<li>分层采样(Stratified sampling)，让训练集和测试集有相似的分布</li>
+<li>多次随机采样，用平均分数来评价训练集的泛化指标</li>
+</ol>
+<h5 id="预剪枝"><a href="#预剪枝" class="headerlink" title="预剪枝"></a>预剪枝</h5><p><img src="/../img/5bc728ec80d34.png" srcset="/img/loading.gif" lazyload alt="8.png"></p>
+<p>这是原决策树，现在用预剪枝看脐部这个属性节点，把下属节点全标记为叶节点，按正反比率分个类，再把验证集带进去。</p>
+<p>对1节点，随便设它为一个分类为正类的叶节点，发现划分正确率仅为42.9%，远没有划分一下正确率高，因此我们还是决定对脐部进行分类。</p>
+<p>对2,3,4节点，看看是之前分的非常细的决策树准确率高还是直接分的准确率高，如果是直接分更高或者差不了多少的话，相当于它之前的活就白干了，直接在这分类就行了。</p>
+<p><img src="/../img/5bc728ec9e330.png" srcset="/img/loading.gif" lazyload alt="9.png"></p>
+<p>得出的结果是1节点要分，2节点别分了，直接确定为一个“好瓜”的叶节点，3节点也别分，直接确定为一个“好瓜”的叶节点，4节点本来就分到头了，不用再看了。</p>
+<p>最后得到一棵仅有一层划分的决策树，也叫做“决策树桩”。</p>
+<h5 id="后剪枝"><a href="#后剪枝" class="headerlink" title="后剪枝"></a>后剪枝</h5><p><img src="/../img/5bc728ec9d497.png" srcset="/img/loading.gif" lazyload alt="10.png"></p>
+<p>预剪枝的顺序是1-2-3-4-5，后剪枝则是5-2-3-4-1。</p>
+<p>最终得到的决策树如上图所示，可以看出其保留分支明显多于预剪枝。并且是在生成决策树后再进行剪枝的，因此欠拟合风险很小，泛化性能往往优于预剪枝，但由于其自下而上的进行剪枝，相当于遍历了所有的节点，训练开支要远大于预剪枝。</p>
+<h4 id="连续值与缺失值处理"><a href="#连续值与缺失值处理" class="headerlink" title="连续值与缺失值处理"></a>连续值与缺失值处理</h4><h5 id="连续值处理"><a href="#连续值处理" class="headerlink" title="连续值处理"></a>连续值处理</h5><p>前面用的都是“好瓜”“坏瓜”这样的离散值来生成决策树，但现实任务中常会遇到连续属性。</p>
+<p>最简单的策略是采用二分法，相当于该连续属性是每次都只有两个取值（小于等于 t 和大于 t）的离散属性，以此来划分样本。</p>
+<p>对样本的所有连续值进行排序，依次对连续的两个样本值取中位数，然后对这些候选中位数t选取信息增益最大的一个。</p>
+<p><img src="/../img/20190522235120722.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p>需注意，和离散属性只分一次不同，连续属性可多次划分，例如在父节点判断”密度&gt;0.33”之后，子节点还可以判断”密度&gt;0.66”。</p>
+<h5 id="缺失值处理"><a href="#缺失值处理" class="headerlink" title="缺失值处理"></a>缺失值处理</h5><p>如何在属性值缺失的情况下进行划分属性选择？</p>
+<p>为了不浪费数据，将总样本分布视为无缺失分布，用无缺失值的样本所占比例 p 来修正计算出的无缺失样本集的信息增益$Gain(\tilde D, a )$ ，以此来近似为全部样本的信息增益$Gain( D , a )$：</p>
+<p><img src="/../img/image-20221017204027501.png" srcset="/img/loading.gif" lazyload alt="image-20221017204027501" style="zoom:50%;"></p>
+<p>得到该属性的信息增益后就可以进行与其他属性的比较，选择划分属性。</p>
+<p>样本在划分属性上缺失值，如何对样本进行划分？</p>
+<p>将缺值样本划入所有子节点，且以不同的概率划分到子节点中，权重大小由$r_v$决定。</p>
+<h4 id="多变量决策树"><a href="#多变量决策树" class="headerlink" title="多变量决策树"></a>多变量决策树</h4><p>将每个属性视为坐标空间中的一个维度，也就是一个坐标轴，对样本分类就意味着在这个坐标空间中寻找不同类样本的分类边界。</p>
+<p>决策树形成的分类边界由若干个与坐标轴平行的分段组成，这些分类边界使得学习结果有较好的可解释性，因为每一段划分都对应了一个属性的取值的划分，比如：</p>
+<p><img src="/../img/image-20221017214852110.png" srcset="/img/loading.gif" lazyload alt="image-20221017214852110" style="zoom:50%;"></p>
+<p>但是，当学习任务的真实分类边界比较复杂时，就需要有很多的分段才能有较好的近似，此时的决策树会相当复杂，需进行大量属性测试，时间开销很大。</p>
+<p><img src="/../img/image-20221017221146620.png" srcset="/img/loading.gif" lazyload alt="image-20221017221146620" style="zoom:50%;"></p>
+<p>多变量决策树正是适合能实现这样的“斜划分”甚至更复杂划分的决策树，从简单的判断属性变成一个$\sum w_ia_i =t$这样的线性分类器。</p>
+<p><img src="/../img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NoaWNoZW5zdXl1,size_16,color_FFFFFF,t_70.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h4 id="阅读材料"><a href="#阅读材料" class="headerlink" title="阅读材料"></a>阅读材料</h4><p>除了信息增益，增益率，基尼指数之外，还有许多其他准则用于决策树划分选择，要注意的是，虽然这些准则对决策树的尺寸有较大影响，但<strong>对泛化性能影响很有限</strong>。</p>
+<p>本质上，各种特征选择方法均可用于决策树的划分属性选择。</p>
+<p>信息增益和基尼指数仅在2%的情况下会有所不同。</p>
+<p><strong>剪枝方法和程度对决策树的泛化性能的影响相当显著</strong>，在数据带有噪声时通过剪枝甚至可将决策树的泛化性能提高25%。</p>
+<p>OC1先贪心地寻找每个属性的最优权值，在局部优化的基础上再对分类边界进行随机扰动以试图找到更好的边界。</p>
+<p>一些多变量决策树算法在决策树的叶结点上嵌入神经网络，以结合这两种学习机制的优势（如感知机树）。</p>
 
               
             </div>
