@@ -18,14 +18,14 @@
   
     <meta name="description" content="一、绪论这章介绍了专用名词和两个原理。 数据集里一个样本在属性空间里被称为一个特征向量，每个特征对应一个维度，维度的总数称为维数。 从数据中学得模型的过程叫做“学习”和“训练”，学到的潜在规律叫做“假设”，训练结果作为标记，所有标记的集合叫做“标记空间”或者“输出空间”。 预测值为离散变量时称为“分类”，预测值为连续变量时称为“回归”，将训练集中样本按照某种内在规律分成若干组，每组称为一个“簇”">
 <meta property="og:type" content="article">
-<meta property="og:title" content="重刷周志华">
+<meta property="og:title" content="西瓜书重刷">
 <meta property="og:url" content="http://example.com/2022/10/10/%E5%91%A8%E5%BF%97%E5%8D%8E%E9%87%8D%E5%88%B7%E2%80%9C/index.html">
 <meta property="og:site_name" content="摸鱼之家">
 <meta property="og:description" content="一、绪论这章介绍了专用名词和两个原理。 数据集里一个样本在属性空间里被称为一个特征向量，每个特征对应一个维度，维度的总数称为维数。 从数据中学得模型的过程叫做“学习”和“训练”，学到的潜在规律叫做“假设”，训练结果作为标记，所有标记的集合叫做“标记空间”或者“输出空间”。 预测值为离散变量时称为“分类”，预测值为连续变量时称为“回归”，将训练集中样本按照某种内在规律分成若干组，每组称为一个“簇”">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo37.jpeg">
 <meta property="article:published_time" content="2022-10-10T02:22:53.000Z">
-<meta property="article:modified_time" content="2022-10-17T15:44:22.791Z">
+<meta property="article:modified_time" content="2022-10-18T16:49:19.759Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="机器学习基础理论">
 <meta name="twitter:card" content="summary_large_image">
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>重刷周志华 - 摸鱼之家</title>
+  <title>西瓜书重刷 - 摸鱼之家</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -214,7 +214,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="重刷周志华"></span>
+            <span id="subtitle" data-typed-text="西瓜书重刷"></span>
           
         </div>
 
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          17k words
+          21k words
         
       </span>
     
@@ -285,7 +285,7 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">重刷周志华</h1>
+            <h1 style="display: none">西瓜书重刷</h1>
             
               <p class="note note-info">
                 
@@ -692,6 +692,79 @@ l(β)=\sum_{i=1}^m(-y_iβ^T\hat{x_i}+\ln(1+e^{β^T\hat{x_i}}))</script><p>通过
 <p><strong>剪枝方法和程度对决策树的泛化性能的影响相当显著</strong>，在数据带有噪声时通过剪枝甚至可将决策树的泛化性能提高25%。</p>
 <p>OC1先贪心地寻找每个属性的最优权值，在局部优化的基础上再对分类边界进行随机扰动以试图找到更好的边界。</p>
 <p>一些多变量决策树算法在决策树的叶结点上嵌入神经网络，以结合这两种学习机制的优势（如感知机树）。</p>
+<h3 id="五、神经网络"><a href="#五、神经网络" class="headerlink" title="五、神经网络"></a>五、神经网络</h3><p>神经网络原理：当神经网络中的某个神经元的电位超过了一个阈值(threshold)，那么它就会被激活，向其他神经元发送化学物质。把许多这样的神经元按一定的层次结构连接起来，就得到了神经网络。</p>
+<p>M-P神经元模型就是从生物神经网络中抽象出来的。</p>
+<h4 id="感知机与多层网络"><a href="#感知机与多层网络" class="headerlink" title="感知机与多层网络"></a>感知机与多层网络</h4><p>感知机(Perception)由两层神经元组成，输入层接受外界输入信号后传递给输出层。学习过程：通过逐个样本输入来更新权重，先初始化权重(一般为随机)，再逐个地输入样本数据，若输出值与真实标记一致则继续输入下一个样本，否则更新权重，再开始重新逐个检验，直到所有的样本的输出值与真实标记一致。</p>
+<p>感知机只拥有一层功能神经元，其学习能力非常有限，只能处理线性可分的问题。</p>
+<blockquote>
+<p>如果用一个线性函数可以将两类样本完全分开，就称这些样本是“线性可分”的。</p>
+</blockquote>
+<ul>
+<li>对于线性可分的问题，感知机的学习过程总能收敛而找到合适的模型参数，即感知机模型总能将训练数据(不是测试数据)的每一个样本都预测正确，但也容易产生过拟合问题。</li>
+<li>对于线性不可分的问题(如异或问题，需要两条平行的分割线)，则需要用多层功能神经元，把原本不可分的数据投射到高维上，可能就变得可分了。</li>
+</ul>
+<p>考虑到现实任务的复杂性，常见的神经网络是层级结构，这样的神经网络结构通常称为“多层前馈神经网络”(multi-layer feedforward neural networks)。</p>
+<p><img src="/../img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NoaWNoZW5zdXl1,size_16,color_FFFFFF,t_70-20221018215403315.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>神经网络的学习过程就是：根据训练数据来调整神经元之间的连接权和每个功能神经元的阈值，直到每个数据都能够分类正确，或误差在标准之内。</p>
+<h4 id="BP算法"><a href="#BP算法" class="headerlink" title="BP算法"></a>BP算法</h4><p>多层网络比单层的感知机复杂多了，因此需要更强大的学习算法，误差逆传播(error BackPropagation，简称BP)算法是迄今为止最成功的神经网络学习算法。</p>
+<p><img src="/../img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NoaWNoZW5zdXl1,size_16,color_FFFFFF,t_70-20221018215735459.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>随机初始化模型参数，根据输入预测出实值向量$\hat y_j$后，得到它和实际$y_j$的均方误差，通过最小化这个均方误差来获得最优的模型参数。</p>
+<p>迭代过程选择梯度下降法，找到均方误差函数每一个参数的最速下降方向，用一个0-1之间的学习率$\mu$来乘这个梯度，每次沿着这个梯度下降$\mu$，直到达到停止条件。为达到精细调节的目的，每个参数的$\mu$不一定要相等。</p>
+<p>以下是BP算法的工作流程：</p>
+<p><img src="/../img/image-20221018220608802.png" srcset="/img/loading.gif" lazyload alt="image-20221018220608802" style="zoom:50%;"></p>
+<p>从repeat循环和for循环可以看出，一旦某个样例$(x_k,y_k)$的预测输出与实际$y$值不一样，使得各参数做出更新，就要开始新一轮迭代，重新从$y_1$开始检验，直到每一个样例的预测输出都符合我们的预期为止。</p>
+<p>具体的数据流过程为：输入示例传给输入层，正向传递到输出层产生一个输出结果，然后计算与实际$y$值的误差(第4-5行)，再将误差反向传播到隐层神经元算出这一步神经元的梯度(第6行)，根据梯度和学习率对模型参数进行调整后(第7行)，再回到第3行。</p>
+<p>这是基于for循环下的单个训练数据的$E_k$而进行的（虽然最终效果还是最小化累积误差），若类似地推导出基于累积误差最小化的更新规则（即在读取整个训练集一遍后才对参数进行更新），就得到了累积误差逆传播算法。但在很多任务中，累积误差下降到一定程度之后，进一步下降会非常缓慢，这时标准BP往往会更快获得较好的解，尤其是在训练集D非常大时更明显。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mynameisgt/article/details/115644410?spm=1001.2101.3001.6650.5&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-5-115644410-blog-89704075.pc_relevant_3mothn_strategy_recovery&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-5-115644410-blog-89704075.pc_relevant_3mothn_strategy_recovery&amp;utm_relevant_index=8">标准BP和累积BP的区别代码</a></p>
+<p>两种方法的缺点？<strong>标准BP</strong>：震荡；<strong>累积BP</strong>：大样本时下降速度慢。</p>
+<p>多层前馈神经网络有强大的表示能力，已证明只要隐层包含的神经元数量足够多，它就能以任意精度逼近任意复杂度的连续函数。</p>
+<p>但是，如何设置隐层神经元的个数仍是个未决问题，实际应用中通常靠“试错法”(trail-by-error)调整。</p>
+<blockquote>
+<p>试错法：为了追求达到理想目标而通过不断试验和消除误差，探索具有黑箱性质的系统的方法。统称为试错法</p>
+</blockquote>
+<p>BP神经网络过拟合的缓解方法：</p>
+<p>由于多层前馈网络的强大表示能力，经常遇到这样的情况：训练误差持续降低，但测试误差却在上升，这就是BP神经网络经常遭遇的过拟合问题。通常，有以下两种方法缓解BP网络的过拟合：</p>
+<ol>
+<li>“早停(early stopping)”：将数据分成训练集和验证集，训练集用来训练神经网络，验证集用来估计误差。若训练集误差降低但验证集误差升高，则停止训练，同时返回具有最小验证集误差的连接权和阈值。</li>
+<li>“正则化(regularization)”：其基本思想是在误差目标函数中增加一个用于描述网络复杂度的部分，例如连接权与阈值的平方和。</li>
+</ol>
+<p>仍令$E_k$表示第k个训练样例上的误差，则误差目标函数改变为：</p>
+<p><img src="/../img/20190708143448576.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom:50%;"></p>
+<p>其中$λ ∈ ( 0 , 1 )$用于对经验误差与网络复杂度这两项进行折中，常通过交叉验证法来估计。</p>
+<blockquote>
+<p><strong>将数据划分为n份，依次使用其中一份作为测试集，其他n-1份作为训练集，多次计算模型的精确性来评估模型的平均准确程度</strong>。</p>
+</blockquote>
+<h4 id="全局最小与局部最小"><a href="#全局最小与局部最小" class="headerlink" title="全局最小与局部最小"></a>全局最小与局部最小</h4><p>看这个图就已经非常形象了，梯度下降是最常用的参数寻优方法，在此类方法中，我们从某些初始解出发，迭代寻找最优参数值，每次迭代中，我们先计算误差函数在当前点的梯度，然后根据梯度确定搜索方向。</p>
+<p><img src="/../img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NoMTgzMjgwNzE1ODA=,size_16,color_FFFFFF,t_70.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述" style="zoom:67%;"></p>
+<p>如果误差函数具有多个局部极小，则不能保证找到的解是全局最小，这显然不是我们所希望的。</p>
+<p>在现实任务中，通常采用以下策略来试图“跳出”局部极小，从而进一步接近全局最小：</p>
+<ol>
+<li>采用多个不同参数值初始化多个神经网络，按标准方法训练后，取其中误差最小的解作为最终参数。</li>
+<li>使用模拟退火技术。模拟退火在每一步都以一定的概率接受比当前解更差的结果，从而有助于“跳出”局部极小。在每步迭代过程中，接受“次优解”的概率要随着时间的推移而逐渐降低，从而保证算法稳定。</li>
+<li>使用随机梯度下降，与标准梯度下降法精确计算梯度不同，随机梯度下降法在计算梯度时加入了随机因素（随机选取训练数据中的特例），相当于是梯度下降的平滑版本，减少了非常多的计算量，并且即便陷入局部极小点，它计算出的梯度仍可能不为零，这样就有机会跳出局部极小继续搜索。</li>
+<li>此外，遗传算法也常用来训练神经网络以更好地逼近全局最小。</li>
+</ol>
+<p>模拟退火具体步骤：设置一个初始高温，当温度越大的时候，分子运动越剧烈，也就是说，x移动的幅度也就越大，在移动一次后，当得到的新的$f(x)$值更好的话，我们要么直接用新的x取代当前位置，要么以一个概率接受原来不怎么好的旧值，打个比方，如果基于贪心的思想，让x永远只接受更好的新位置，那么在下图中，随着迭代次数增多，温度下降，分子运动越微弱，x能移动的距离越小，$x_0$就很容易会陷入左边那个局部最大值，但是如果它没有接受新值，而是在旧的位置上，那么它下一次运动时就有更大的概率可以摇摆到左边那座山上去，找到真正的全局最优值。</p>
+<p><img src="/../img/image-20221019000546114.png" srcset="/img/loading.gif" lazyload alt="image-20221019000546114" style="zoom:50%;"></p>
+<h4 id="BP算法的改进"><a href="#BP算法的改进" class="headerlink" title="BP算法的改进"></a>BP算法的改进</h4><h5 id="引入动量法"><a href="#引入动量法" class="headerlink" title="引入动量法"></a>引入动量法</h5><p>标准BP算法实质上是一种简单的最速下降静态寻优算法，没有考虑积累的经验，即以前的梯度方向，从而使学习过程振荡，收敛缓慢。</p>
+<p>我们的目的是，假如梯度下降得到的路径一直是沿着一个向右的方向前进着，只不过会在上下方向上来回做没用的震荡，我们会基于前面这些步的经验，考虑在算法上减少上下分量的影响，增加左右方向上的影响，这就是动量法的基本思想。</p>
+<p><img src="/../img/2019070814472366.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom:67%;"></p>
+<p>$D(k)$为k时刻的梯度，$\alpha$为学习率，$\mu$为动量项因子，通常介于0-1之间。</p>
+<p>所加入的动量项实质上相当于阻尼项，它减小了学习过程的振荡趋势，改善了收敛性，是一种应用比较广泛的改进算法。</p>
+<h5 id="尺度变换法"><a href="#尺度变换法" class="headerlink" title="尺度变换法"></a>尺度变换法</h5><p>标准BP学习算法采用的是一阶梯度法，因而收敛较慢。若采用二阶梯度法，则可以大大提高收敛性。</p>
+<p><img src="/../img/20190708144956306.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom:80%;"></p>
+<p>虽然二阶梯度法具有较好的收敛性，但是需要计算E对w的 二阶导数，这个计算量很大。所以一般不直接采用二阶梯度法，而常常采用变尺度法或共轭梯度法，它们具有如二阶梯度法收敛较快的优点，又无需直接计算二阶梯度。<br><img src="/../img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NoMTgzMjgwNzE1ODA=,size_16,color_FFFFFF,t_70-20221019003334577.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom:80%;"></p>
+<h5 id="自适应学习率调整法"><a href="#自适应学习率调整法" class="headerlink" title="自适应学习率调整法"></a>自适应学习率调整法</h5><p>在BP算法中，网络权值的调整取决于学习速率和梯度。</p>
+<p><strong>自适应学习率调整准则是</strong>：检查权值的修正是否真正降低了误差函数，当连续两次迭代其梯度方向相同时，表明下降太慢，这时可使步长加倍；当连续两次迭代其梯度方向相反时，表明下降过头，这时可使步长减半。</p>
+<p><img src="/../img/20190708145150247.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h4 id="深度学习"><a href="#深度学习" class="headerlink" title="深度学习"></a>深度学习</h4><p>理论上，参数越多的模型复杂度越高，容量越大，能完成更复杂的任务。但一般情况下，复杂模型的训练效率低，易陷入过拟合。训练效率低可由算力的提升解决，过拟合可由数据规模的增大有所缓解。因此，以深度学习为代表的复杂模型开始受到关注。</p>
+<p>对于神经网络模型，提高容量的一个简单方法就是增加隐层的数量。从增加模型复杂度的角度看，增加隐层的数目显然比增加隐层神经元的数目更有效。因为增加隐层数不仅增加了拥有激活函数的神经元数目，还增加了激活函数嵌套的层数。</p>
+<p>多隐层神经网络难以直接用经典算法（如标准BP算法）进行训练，因为误差在多隐层内逆传播往往会发散而不能收敛。</p>
+<p>无监督逐层训练（unsupervised layer-wise training）是多隐层神经网的训练的有效手段，其基本思想是：</p>
+<p>每次训练一层隐结点，训练时将上一层隐结点的输出作为输入，而本层隐结点的输出又作为下一层隐结点的输入，这称为“预训练”(pre-training)。</p>
+<p>预训练全部完成后，再对整个网络进行微调（fine-tuning）训练，预训练+微调的做法可视为：对每组先找到局部看起来比较好的设置，然后再基于这些局部较优的结果联合起来进行全局寻优。<br>这样就在利用模型大量参数所提供的自由度的同时，有效地节省了训练开销。</p>
+<p>还有一种节省训练开销的策略是权共享(weight sharing)，即让一组神经元使用相同的连接权。这种策略在卷积神经网络（CNN）中发挥了重要作用。</p>
+<h3 id="项目实战"><a href="#项目实战" class="headerlink" title="项目实战"></a>项目实战</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ch18328071580/article/details/95048420">BP神经网络</a></p>
 
               
             </div>
