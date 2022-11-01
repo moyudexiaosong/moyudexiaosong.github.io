@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo37.jpeg">
 <meta property="article:published_time" content="2022-10-10T02:22:53.000Z">
-<meta property="article:modified_time" content="2022-10-18T16:49:19.759Z">
+<meta property="article:modified_time" content="2022-10-19T12:43:39.855Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="机器学习基础理论">
 <meta name="twitter:card" content="summary_large_image">
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          21k words
+          24k words
         
       </span>
     
@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on a few seconds ago
+                    Last updated on 13 days ago
                   
                 
               </p>
@@ -764,7 +764,67 @@ l(β)=\sum_{i=1}^m(-y_iβ^T\hat{x_i}+\ln(1+e^{β^T\hat{x_i}}))</script><p>通过
 <p>每次训练一层隐结点，训练时将上一层隐结点的输出作为输入，而本层隐结点的输出又作为下一层隐结点的输入，这称为“预训练”(pre-training)。</p>
 <p>预训练全部完成后，再对整个网络进行微调（fine-tuning）训练，预训练+微调的做法可视为：对每组先找到局部看起来比较好的设置，然后再基于这些局部较优的结果联合起来进行全局寻优。<br>这样就在利用模型大量参数所提供的自由度的同时，有效地节省了训练开销。</p>
 <p>还有一种节省训练开销的策略是权共享(weight sharing)，即让一组神经元使用相同的连接权。这种策略在卷积神经网络（CNN）中发挥了重要作用。</p>
+<h3 id="六、支持向量机"><a href="#六、支持向量机" class="headerlink" title="六、支持向量机"></a>六、支持向量机</h3><p>支持向量机（Support Vector Machine），简称SVM，是一种经典的二分类模型，属于监督学习算法。因为很多损失函数都不是凸优化问题，容易陷入局部最优，SVM把优化目标定为间隔最大化，就转化为了一个凸二次规划求解的问题。</p>
+<h4 id="间隔与支持向量"><a href="#间隔与支持向量" class="headerlink" title="间隔与支持向量"></a>间隔与支持向量</h4><p>对于二分类问题，其基本思想就是基于训练集$D$在样本空间中找到一个用来划分的超平面，将不同类别的样本分开。</p>
+<p>但仅仅是将样本分开的话，可以找到许多个划分超平面。从几何意义易知，粗线对训练样本局部的<strong>扰动的容忍性</strong>最好（考虑到噪声等因素，其他的超平面训练样本很容易越界，分类结果很不稳定），也是最<strong>鲁棒</strong>的（即当新的数据点加入时，超平面对这些点的适应性最强，出错的可能性最小）。于是<strong>同时离两类样本都尽量远</strong>的粗线就是我们想要的最优划分超平面。</p>
+<p><img src="/../img/image-20221019132945679.png" srcset="/img/loading.gif" lazyload alt="image-20221019132945679" style="zoom:50%;"></p>
+<p><strong>超平面方程</strong>：样本空间中，用来描述超平面的线性方程为：</p>
+<script type="math/tex; mode=display">
+W^TX+b=0</script><p>其中$W=(w_1;w_2;…;w_d)$为法向量，决定了超平面的方向；$b$为位移项，决定了超平面与原点之间的距离。</p>
+<p><strong>约束条件</strong>：假设超平面$(W，b)$能将训练样本正确分类，即对于$(x_i,y_i)\in D$，若$y_i=+1$，则有$w^Tx_i+b&gt;0$；若$y_i=-1$，则有$w^Tx_i+b&lt;0$​，令</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+w^Tx_i+b\geq+1, & y_i=+1\\
+w^Tx_i+b\leq-1, &  y_i=-1
+\end{cases}</script><p>为超平面将训练样本正确分类的约束条件，如下图所示，距离超平面最近的三个训练样本使得约束条件中的等号成立，它们就是支持向量，支持向量到超平面的距离就是软间隔。</p>
+<p><img src="/../img/image-20221019134926382.png" srcset="/img/loading.gif" lazyload alt="image-20221019134926382" style="zoom:50%;"></p>
+<p>我们的目标是最大化这个软间隔，因此只用关注支持向量就可以了，别的点可以都忽略，因为只要支持向量满足约束条件，别的点一定都能满足。</p>
+<p>SVM公式推导</p>
+<p>目标函数：$\max margin(W,b)$，其中$margin$就是所有点中离平面最近的点到平面的距离：</p>
+<script type="math/tex; mode=display">
+margin(W,b)=\min_ {i=1,2,...,N} \frac{1}{||W||_2}\cdot|W^TX^{(i)}+b|</script><p>点到平面距离公式的推导：</p>
+<p><img src="/../img/image-20221019141221799.png" srcset="/img/loading.gif" lazyload alt="image-20221019141221799" style="zoom:50%;"></p>
+<p>求$x$到平面$f(x)$的间距，先求$x$到$f(x)$的梯度，单位化之后得到一个单位法向量，再乘$x$到$f(x)$上任意一点的向量，得到在法向量方向上的投影，就是点到平面的距离。</p>
+<p>原理：两向量相乘，二者内积就等于一个是一方对另一方的贡献 。几何意义就是向量a在向量b方向上的投影与向量b的模的乘积。</p>
+<p>以上是软间隔的推导过程，但还需要保证分类也是正确的，即保证Y=+1类f(x)都大于0，Y=-1类f(x)都小于0，即$Y^i(W^TX^i+b)&gt;0$，$(X^i,Y^i)$是样本数据。有了这个约束条件，保证了分类的正确后，还可以把距离$H$更简化，</p>
+<p><img src="/../img/image-20221004160750128-6161181.png" srcset="/img/loading.gif" lazyload alt="image-20221004160750128" style="zoom: 67%;"></p>
+<p>做出左边最后一行的变形，虽然$H$的结果不变，但是括号内的直线部分却发生了变化，为了缩小我们想要的$H$的范围，我们直接把样本点限定在位于边界的支持向量上，令绝对值里的部分强行等于1，于是就又多了一个约束条件。</p>
+<p>因为有绝对值的存在，所以要加上标签$Y$，这样在分类正确的前提下，若$(W^TX^i+b)&gt;0$属于正类，标签就是+1，若$(W^TX^i+b)&lt;0$属于反类，标签就是-1，标签$Y$就起到了绝对值的作用，保证了函数的连续可微性。</p>
+<p>因此，最后就得到了SVM的目标函数：</p>
+<script type="math/tex; mode=display">
+min \frac{1}{2}||w||^2\\
+s.t.\ Y^i(W^TX^i+b)\geq1,\ i=1,2,...,N</script><p>这也是支持向量机的基本形式。</p>
+<h4 id="对偶问题"><a href="#对偶问题" class="headerlink" title="对偶问题"></a>对偶问题</h4><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/90zeng/p/Lagrange_duality.html">具体思想</a></p>
+<p>​     在得到SVM的基本形式之后，因为其带有一个不等式约束，为了方便计算，我们利用拉格朗日乘子法将其转化为无约束问题，再求解$L(w,b,\alpha)$对$w,b$的偏导令其等于0，代回上式，得到SVM的对偶问题：</p>
+<p><img src="/../img/image-20221019171826241.png" srcset="/img/loading.gif" lazyload alt="image-20221019171826241" style="zoom: 50%;"></p>
+<p>对于上述的转换对偶问题求解过程，需满足KKT(Karush-Kuhn-Tucker)条件，即要求：</p>
+<p><img src="/../img/20190530120814493.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom:80%;"></p>
+<p>这样才能保证对偶问题可以得到和原问题一样的最优解。</p>
+<p>最后得出支持向量机重要结论：<strong>训练完成后，大部分的训练样本都不需要保留，最终模型仅与支持向量有关。</strong></p>
+<p>如何求解对偶问题？</p>
+<p>我们采用二次规划算法SMO进行求解。我们现在的目标是求解使得对偶问题结果最小的拉格朗日乘子$\alpha$，SMO的基本思想：先固定$α_i$之外的所有参数，然后求$α_i$上的极值，它的思想与坐标上升算法的思想类似。</p>
+<p>坐标上升算法每次通过更新多元函数中的一维，经过多次迭代直到收敛来达到优化函数的目的。简单的讲就是不断地选中一个变量做一维最优化直到函数达到局部最优点。</p>
+<p>例子：</p>
+<p>若我们的优化目标为一个二元函数：$arg\min f(x_1,x_2)=−x_1^2−3x_2^2+2x_1x_2+6$</p>
+<p>我们先给一个$ (x_1,x_2)$ 的初值然后开始迭代。</p>
+<ol>
+<li>先固定 $x_1$ ，把$ f$ 看做$ x_2$ 的一元函数求最优值，可以简单的进行求导获取解析解:<br>$∂f/∂x_1=−2x_1+2x_2=0→x1=x2$</li>
+<li>再固定$x_2$, 把$f$看成$x_1$的一元函数求最优值，得到$x_1$的解析解:<br>$∂f/∂x_2=−6x_2+2x_1→x_2=\frac13x1$</li>
+</ol>
+<p>按照上面两个过程不断交替的优化$ x_1 $和$ x_2 $，直到函数收敛。</p>
+<p>通过下面的图就可以看出，优化的过程，因为每次只优化一个变量，每次迭代的方向都是沿着坐标轴方向的。</p>
+<p><img src="/../img/v2-6a95f54ca97a7f0a87924172794af2d7_r.jpg" srcset="/img/loading.gif" lazyload alt="img" style="zoom: 33%;"></p>
+<p>SMO的思想类似坐标上升算法，我们需要优化一系列的$α$的值，我们每次选择尽量少的$ α $来优化，不断迭代直到函数收敛到最优值。</p>
+<p>来到SVM的对偶问题上，其中我们需要对$ (α_1,α_2,…,α_N) $进行求解，SMO算法可以高效的求解这个对偶问题，只需要把原始问题的求解 N 个参数二次规划问题分解成多个二次规划问题求解，每个子问题只需要求解两个参数，节省了时间成本和内存需求。</p>
+<blockquote>
+<p>二次规划(QP, Quadratic Programming)定义：目标函数为二次函数，约束条件为线性约束，属于最简单的一种非线性规划。</p>
+</blockquote>
+<p>与坐标上升算法不同的是，我们在SMO算法中每次需要选择<strong>一对</strong>变量$ (α_i,α_j) $，因为在SVM中，$ α $c乘子并不是完全独立的，而是具有约束的：$∑_{i=1}^Nα_iy_i=0$</p>
+<p>因此一个$ α $改变，另一个也要随之变化以满足条件，<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/29212107">具体推导过程</a>。</p>
+<h4 id="核函数"><a href="#核函数" class="headerlink" title="核函数"></a>核函数</h4><p>前两节是在样本在其原始样本空间线性可分的假设下进行讨论的。</p>
+<p>针对原始样本空间线性不可分的问题，基于<strong>有限维原始样本空间一定存在一个高维特征空间使样本线性可分</strong>这一定理，引出了原始空间和特征空间的桥梁——核函数。</p>
 <h3 id="项目实战"><a href="#项目实战" class="headerlink" title="项目实战"></a>项目实战</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ch18328071580/article/details/95048420">BP神经网络</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/29212107">SMO算法实现</a></p>
 
               
             </div>

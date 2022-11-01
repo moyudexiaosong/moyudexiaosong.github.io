@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo14.jpeg">
 <meta property="article:published_time" content="2022-08-31T14:41:07.000Z">
-<meta property="article:modified_time" content="2022-10-09T16:52:31.167Z">
+<meta property="article:modified_time" content="2022-10-21T06:55:34.467Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="book">
 <meta name="twitter:card" content="summary_large_image">
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          11k words
+          12k words
         
       </span>
     
@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on 9 days ago
+                    Last updated on 11 days ago
                   
                 
               </p>
@@ -340,7 +340,8 @@
 <p><img src="/../img/image-20220926015120240.png" srcset="/img/loading.gif" lazyload alt="image-20220926015120240"></p>
 </li>
 </ul>
-<h3 id="孪生-连体网络Siamese-Network"><a href="#孪生-连体网络Siamese-Network" class="headerlink" title="孪生/连体网络Siamese Network"></a>孪生/连体网络Siamese Network</h3><p>两种训练方法：</p>
+<h3 id="孪生-连体网络Siamese-Network"><a href="#孪生-连体网络Siamese-Network" class="headerlink" title="孪生/连体网络Siamese Network"></a>孪生/连体网络Siamese Network</h3><p>这个方法对输入的结构进行限制并自动发现可以从新样本上泛化的特征。通过一个有监督的基于孪生网络的度量学习来训练，然后重用那个网络所提取的特征进行one/few-shot学习。</p>
+<p>两种训练方法：</p>
 <h4 id="第一种训练方法："><a href="#第一种训练方法：" class="headerlink" title="第一种训练方法："></a>第一种训练方法：</h4><p>每次取两个样本，分别计算它们的相似度。</p>
 <p><img src="/../img/image-20220926015331293.png" srcset="/img/loading.gif" lazyload alt="image-20220926015331293"></p>
 <p>这是一个很大的数据集，我们需要用训练集来构造正样本和负样本，正样本告诉神经网络什么是同一类，负样本告诉神经网络事物之间的区别。</p>
@@ -429,6 +430,7 @@ Entropy=-\int P(i)log_2 P(i)dx</script><p>因此，只要我们知道了任何�
 <p><img src="/../img/image-20220927014926040.png" srcset="/img/loading.gif" lazyload alt="image-20220927014926040"></p>
 <p>很明显是$\mu_1$，也就是模型认为结果是第一类——小松鼠。</p>
 <h4 id="Fine-Tuning"><a href="#Fine-Tuning" class="headerlink" title="Fine-Tuning"></a>Fine-Tuning</h4><p>一般训练完神经网络后就要直接开始预测了，这时候我们在这两部分之间插入fine-tuning，，用support set进一步做训练，可以更好的提高准确率。</p>
+<p>这种方法已被广泛地应用。获得一定量的标注数据，然后基于一个基础网络进行微调。这个基础网络是通过含有丰富标签的大规模数据集获得的，比如imagenet，我们的淘宝电商数据，称为通用数据域。然后在特定数据域上进行训练。训练时，会固定基础网络部分的参数，对领域特定的网络参数进行训练（这里有很多训练的trick，包括如何设置固定层和学习率等）。这个方法相对较快，依赖数据量也不必太多，效果还行。</p>
 <p>刚刚我们用的是神经网络在训练集上预训练好的W和b，在比较Support set和query时直接固定这些参数，但其实我们可以在support set上学习W和b，这就叫做Fine tuning。</p>
 <p><img src="/../img/image-20220928014751753.png" srcset="/img/loading.gif" lazyload alt="image-20220928014751753"></p>
 <p>学习过程：用交叉熵衡量真实标签(one-hot向量形式)与预测标签的差别有多大，得到一个损失函数，Support Set里有几个或者几十个这样的样本，每一个样本都对应一个交叉熵损失函数，把这些函数都加起来作为目标函数，对目标损失函数做最小化，让预测标签尽量接近真实标签。</p>
@@ -451,14 +453,14 @@ Entropy=-\int P(i)log_2 P(i)dx</script><p>因此，只要我们知道了任何�
 <h3 id="小样本学习综述"><a href="#小样本学习综述" class="headerlink" title="小样本学习综述"></a>小样本学习综述</h3><p>本文根据机器学习中的误差分解理论，认为FSL任务中最小化经验风险是不可信的，这也是FSL难以训练的原因。</p>
 <h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><h6 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h6><p>通常而言，一个N-way K-shot的分类任务，假定任务的真实分布为$𝑝(𝑥,𝑦)$，而这个真实分布有一个最优假设$ℎ̂$可以描述它。通常的做法是给定一个假设空间𝐻，然后从里面找一个接近$ℎ̂$的假设$ℎ$，在这里𝐻是由你选择的模型和参数的初始化分布决定的，用一些优化方法（通常为梯度下降）来逼近这个最优假设。</p>
 <h6 id="Problem-Definition"><a href="#Problem-Definition" class="headerlink" title="Problem Definition"></a>Problem Definition</h6><p>在经典机器学习中，给定一个任务T，任务的性能P，给定一些额外的条件E，比如标注的训练数据，可以提升任务T的性能P，FSL任务本质也是这样。</p>
-<h6 id="Relevant-Learning-Problems"><a href="#Relevant-Learning-Problems" class="headerlink" title="Relevant Learning Problems"></a>Relevant Learning Problems</h6><p>FSL可以是各种形式的学习，监督，半监督，强化学习，迁移学习等等，本质上的定义取决于可用的数据。</p>
+<h6 id="Relevant-Learning-Problems"><a href="#Relevant-Learning-Problems" class="headerlink" title="Relevant Learning Problems"></a>Relevant Learning Problems</h6><p>FSL可以是各种形式的学习，监督，半监督，强化学习，迁移学习等等，弱监督学习是强调在不完整、不准确、有噪声、数据少的数据上学习，半监督学习是强调在少量标注数据和大量非标注数据上学习，迁移学习是把充足数据上学习的知识迁移到数据匮乏的任务上。本质上的定义取决于可用的数据。</p>
 <p>当然，大多数时候用的都是meta learning，直接把它看作meta learning就行。</p>
 <h5 id="Core-Issue"><a href="#Core-Issue" class="headerlink" title="Core Issue"></a>Core Issue</h5><p>在机器学习中寻找最适合的模型时，通常都是通过找到一组最优的参数来确定这个模型，并通过给定的训练集，最小化损失函数这一目标来指示最优参数的搜索，最小化损失函数如下所示：</p>
 <p>　　　　<img src="/../img/1335117-20200107180341483-79584449.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>h就是我们企图逼近最优模型$ℎ̂$的模型，y是真实标签，l是损失函数，对每一个训练样本的损失函数进行求和，找到这个和的最小值。</p>
 <p>在训练模型中，我们是通过训练集来拟合真实分布，我们训练出来的分布和真实分布往往不一样，这中间的差值称为期望风险（期望损失），表达式如下：</p>
 <p>　　　　<img src="/../img/1335117-20200107181052551-1263293547.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>p为真实分布，要求对损失函数求期望，需要将它放到以真实分布为坐标轴的维度上，它与坐标轴围成的面积就是期望损失，<u>看不懂这个公式，不过感觉也没关系。</u></p>
+<p>p为真实分布，要求对损失函数求期望，需要将它放到以真实分布为坐标轴的维度上，它与坐标轴围成的面积就是期望损失。</p>
 <p>理论上说，让期望风险最小化才能逼近真实分布，但因为真实分布只有神知道，因此最小化期望风险是无法实现的，而在机器学习中通常用经验风险来替换期望风险，经验风险就是在训练集上预测的结果和真实结果的差异，也是我们常说的损失函数，表达式如下：</p>
 <p><img src="/../img/image-20221009224149062.png" srcset="/img/loading.gif" lazyload alt="image-20221009224149062" style="zoom:50%;"></p>
 <p>给出符号描述：</p>
@@ -476,15 +478,41 @@ Entropy=-\int P(i)log_2 P(i)dx</script><p>因此，只要我们知道了任何�
 <p>给定样本复杂度为S，保证上述不等式能在ϵ很小且δ很小时成立时，需要给定的样本数I大于S，给定<a target="_blank" rel="noopener" href="https://blog.csdn.net/shenxiaoming77/article/details/51881321">VC维理论</a>：</p>
 <p><img src="/../img/image-20221010001459061.png" srcset="/img/loading.gif" lazyload alt="image-20221010001459061" style="zoom:50%;"></p>
 <p>知道就行了，算是对降低模型复杂度的理论支撑。</p>
-<h4 id="Taxonomy"><a href="#Taxonomy" class="headerlink" title="Taxonomy"></a><strong>Taxonomy</strong></h4><p>在FSL任务中，我们期待使用先验知识来弥补样本的不足。</p>
+<h4 id="Taxonomy"><a href="#Taxonomy" class="headerlink" title="Taxonomy"></a><strong>Taxonomy</strong></h4><p>如果把小样本学习比作一个黑盒子，给这个黑盒子喂少量的数据，凭什么能让它表现得好呢？显然我们需要外力来帮助，这个外力就是“先验知识”。</p>
+<p>小样本学习的先验知识来自三方面：<strong>数据、模型、算法</strong>，小样本学习的研究也都是从这三方面着手。因此，小样本学习方法大致可分为基于<strong>数据增强</strong>的方法、基于<strong>模型改进</strong>的方法、基于<strong>算法优化</strong>的方法。</p>
 <p>在这里作者将解决这个问题的方法分为了三类：Data，Model，Algorithm。具体的图如下：</p>
 <p><img src="/../img/1335117-20200107184200179-1606317169.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>​        <strong>Data</strong></p>
-<p>　　Data就是通过先验知识来做数据增强，数据量增大自然能解决上述问题。</p>
-<p>　　<strong>Model</strong></p>
-<p>　　通过先验知识来限制模型复杂度，降低假设空间𝐻的大小，减小VC维，使得当前的数据集可以满足。</p>
-<p>　　<strong>Algorithm</strong></p>
-<p>　　通过先验知识来提供一个好的搜索策略，可以是一个好的搜索起始点，也可以是一个明确的搜索策略，来寻找最优点。</p>
+<p><strong>一、基于数据增强的方法</strong></p>
+<p>​    主要思路就是数据增强，通俗地讲就是扩充样本。想到数据增强，我们通常会想到平移、裁剪、翻转、加噪声等操作，但是这些操作可能在特定数据集表现很好，不具有普适性。而且设计这些操作需要对所处理的领域具有足够的了解。小样本学习所使用的数据增强方法主要有三个思路：</p>
+<ol>
+<li>只有小样本数据集：可以训练一个transformer学习样本之间的变化，然后使用该transformer对小样本数据集进行扩充；</li>
+<li>有小样本数据集+弱标注数据集：可以训练transformer从弱标注数据集中“挑选”样本来扩充小样本数据集；</li>
+<li>有小样本数据集+相似的数据集：可以训练一个GAN网络，通过学习给小样本数据集加上扰动来生成新样本。    </li>
+</ol>
+<p><img src="/../img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQ1NTEzNQ==,size_16,color_FFFFFF,t_70.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>基于数据的方法比较容易理解，但是存在的问题是：很多工作都不具备普适性，难以迁移到别的数据集。</p>
+<p><strong>二、基于模型改进的方法</strong></p>
+<p>每个模型经过迭代都会得到近似解，而当样本有限时，在假设空间搜索解就变得困难。这类方法为了缩小假设空间，主要有四种方法：</p>
+<ol>
+<li><p>多任务学习（Multitask Learning）：这种模型可以处理多个任务，因此也就兼备了模型的普适性和一般性。在处理多个任务时，模型的参数可以是共享的，也可以是相关联的；</p>
+</li>
+<li><p><strong>嵌入学习</strong>（Embedding Learning）：将样本映射到一个低维度空间，从而达到了缩小假设空间的效果，然后就可以通过少量的样本求出模型在该假设空间下的近似解。根据映射到低维空间的方法又分为三类：任务特定型（结合任务的具体特点进行映射）、通用型、结合型（结合任务和通用）；</p>
+</li>
+<li><p><strong>基于外部记忆的学习</strong>（Learning with External Memory）：通过对小样本数据集学习得到知识，然后存储到外部，对于新样本，都使用存储在外部的知识进行表示，并根据表示来完成匹配。这种方法大大降低假设空间；</p>
+</li>
+<li><p><strong>生成模型</strong>（Generative Modeling）：生成模型学习小样本数据集的数据分布，并可将其用于各种任务。</p>
+</li>
+</ol>
+<p><strong>三、基于算法优化的方法</strong></p>
+<p>这类方法的核心是通过改进优化算法来更快地搜索到合适解。主要方法有三种：</p>
+<ol>
+<li><p>改善已有参数：这种方法从<strong>参数初始化</strong>的角度着手，主要思路是借助已训练好的模型参数来调整小样本模型的参数，例如：在大数据集训练好模型来初始化小样本模型；聚合其他已训练好的模型到一个模型；给已训练好的模型加一些特别用于小样本任务的参数；等等。</p>
+</li>
+<li><p>改善元学习参数。元学习（meta-learning）是当下很火的一个研究方向，它的思想是学习如何学习。它的结构一般是由一个底层模型和一个顶层模型组成，底层模型是model的主体，顶层模型是meta-learner。更新参数时，它除了要更新底层model，还要更新meta参数。改善策略大致有三类：1）结合不同特定任务模型参数来对新任务的参数进行初始化；2）对模型不确定性建模，以备后续提升；3）改进参数调整流程。</p>
+</li>
+<li><strong>学习优化器。</strong>如下图所示，optimizer每次都迭代会更新上一次的模型参数，现在通过学习小样本数据集中每个迭代的更新值，从而应用在新的测试数据上。</li>
+</ol>
+<p><img src="/../img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjQ1NTEzNQ==,size_16,color_FFFFFF,t_70-20221021144046567.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>接下来的工作都是围绕这几个方向展开来求解FSL问题。</p>
 <p><img src="/../img/1335117-20200107185138248-285067125.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h5 id="DATA"><a href="#DATA" class="headerlink" title="DATA"></a>DATA</h5><p>　　数据增强的方式有很多种，平时也被使用的比较多，在这里作者将数据增强的方法概括成4类：　<img src="/../img/1335117-20200107195137257-1424668420.png" srcset="/img/loading.gif" lazyload alt="img"></p>
