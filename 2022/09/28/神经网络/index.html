@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo37.jpeg">
 <meta property="article:published_time" content="2022-09-28T10:26:43.000Z">
-<meta property="article:modified_time" content="2022-10-31T14:44:39.238Z">
+<meta property="article:modified_time" content="2022-11-02T15:28:56.179Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="机器学习基础理论">
 <meta name="twitter:card" content="summary_large_image">
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          29k words
+          30k words
         
       </span>
     
@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    Last updated on 18 hours ago
+                    Last updated on a minute ago
                   
                 
               </p>
@@ -862,7 +862,32 @@ f(t)=\frac{1}{2 \pi} \int^{+\infty }_{-\infty}F(w)\cdot e^{iwt}dw</script><p>我
 <p>然后用这个卷积核把整个图像都扫一遍，得到一个新的点阵，这样处理得到的图片会少了最外面一圈，我们只需要在处理之前给图像外面加一圈都是0的像素就可以了，</p>
 <p><img src="/../img/image-20221031194648579.png" srcset="/img/loading.gif" lazyload alt="image-20221031194648579" style="zoom:50%;"></p>
 <p><img src="/../img/image-20221031194820757.png" srcset="/img/loading.gif" lazyload alt="image-20221031194820757" style="zoom:50%;"></p>
-<p>在这里，图像就是函数f，卷积核就是函数g，因为图像里的像素点总在不停的变化，对应了系统中那个不稳定的输入，</p>
+<p>在这里，图像就是函数f，卷积核就是函数g，因为图像里的像素点总在不停的变化，对应了系统中那个不稳定的输入，卷积核不变，对应的是稳定的输出。把刚刚吃饭的那个一维的例子扩展到二维，画出来就是一个平面波，这个F(X,Y)就是图像，g函数是一个随着距离t的变化对x的影响。可以说，就是把之前的事件的影响按距离的权重方程累加起来</p>
+<p><img src="/../img/image-20221102154417085.png" srcset="/img/loading.gif" lazyload alt="image-20221102154417085" style="zoom:50%;"></p>
+<p>比如这样一个卷积核，本质上就是找了一个像素点，把它周围的像素点全加起来，然后求平均，这样处理完图像就会变得更平滑，更朦胧，所以叫做平滑卷积操作。</p>
+<p><img src="/../img/image-20221102163132560.png" srcset="/img/loading.gif" lazyload alt="image-20221102163132560" style="zoom:50%;"></p>
+<p><img src="/../img/image-20221102163437083.png" srcset="/img/loading.gif" lazyload alt="image-20221102163437083" style="zoom:50%;"></p>
+<p>也就是说，卷积核就是规定了周围的3x3像素点是如何对当前的像素点产生影响的，当然也存在5x5或者7x7这种两圈甚至三圈像素点对当前像素点产生的影响，甚至是无穷圈，但是考虑计算机计算时的性价比，如果一圈能搞定的话就不会再往多圈考虑。</p>
+<p>f和g之间的星号代表卷积操作，像素点不是连续的，因此展开不是积分，而是连加。x和m-x相加之后消掉x只剩m，同理消掉y只剩n。</p>
+<p><img src="/../img/image-20221102190652020.png" srcset="/img/loading.gif" lazyload alt="image-20221102190652020" style="zoom:50%;"></p>
+<p>如果我们考虑左下角像素对中间像素的影响，就相当于把中间像素当作t时刻，左下角像素当作x时刻，则影响因子g(t-x)代入计算就是g(1,1)。如果把所有周围的和他自己对该像素产生的影响，就是以下形式：</p>
+<p><img src="/../img/image-20221102191041854.png" srcset="/img/loading.gif" lazyload alt="image-20221102191041854" style="zoom:50%;"></p>
+<p>这里表现的g函数并不是卷积核，它要旋转180度之后才是卷积核。如果用了下面这两种卷积核的话，上面这个只把垂直方向的边界给挑出来了，忽略了横向的边界，下面这个只把左右方向的边界挑出来。这个时候虽然还是进行的卷积操作，但其实是把图片里的一些特征给挑了出来，所以说卷积核还有个功能，就是如果选择的合适，还可以把图片的某些特征给挑出来，而其他的特征就被过滤掉了，这样的卷积核也叫过滤器，比如下图这两个就叫做垂直边界过滤器和水平边界过滤器。</p>
+<p><img src="/../img/image-20221102192426626.png" srcset="/img/loading.gif" lazyload alt="image-20221102192426626" style="zoom:50%;"></p>
+<p>而且，这个卷积先相乘再相加的操作可以看作是对周围像素点的试探，而卷积核就是试探的模版，当你不想考虑某个位置的时候，就把这个位置的卷积核设为0，想考虑的时候就把它设置为一个较高的数值。给人的感觉这个像素在主动的试探和选择周围的像素点，通过卷积核把周围有用的特征给保留了下来。</p>
+<p>举个例子，假如我们想识别“X”这个字母，利用以下三个特征就可以把所有的X都识别出来。 </p>
+<p><img src="/../img/image-20221102205255736.png" srcset="/img/loading.gif" lazyload alt="image-20221102205255736" style="zoom:50%;"></p>
+<p>比如说第一种情况，卷积核计算出来等于1，完美匹配。</p>
+<p><img src="/../img/image-20221102205409463.png" srcset="/img/loading.gif" lazyload alt="image-20221102205409463" style="zoom:50%;"></p>
+<p>而用以下这个卷积核虽然也能匹配上，但不是完美匹配，最后计算出的结果就是0.55。</p>
+<p><img src="/../img/image-20221102205619995.png" srcset="/img/loading.gif" lazyload alt="image-20221102205619995" style="zoom:50%;"></p>
+<p>将整个图像和卷积核匹配后，就得到了与这个特征匹配的全部信息。</p>
+<p><img src="/../img/image-20221102210038004.png" srcset="/img/loading.gif" lazyload alt="image-20221102210038004" style="zoom:50%;"></p>
+<p>然后分别用三个卷积核进行操作，用不同的卷积核去对同一个图像做卷积，相当于是三个通道了所以输出也是三个不同的特征图，然后就要输入神经网络开始干活了，后面还有池化反向传播等等等等。</p>
+<p><img src="/../img/image-20221102210105602.png" srcset="/img/loading.gif" lazyload alt="image-20221102210105602" style="zoom:50%;"></p>
+<p>请问这跟刚才吃饭有什么概念</p>
+<p>CNN的C本质上是互相关，只不过“卷积”核往往是对称的，所以才跟卷积运算结果相同</p>
+<p>卷积核不是超参数，是可训练（learnable）的</p>
 <h2 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h2><h3 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h3><p>我们想知道机器是怎么模仿人类学习的，先要知道人类是怎么学习的。首先，学习的意义就是预判，举一反三，见过同类型的题以后，变一变还能做出来。那么这个预判能力怎么来的呢？大概有三个方式：演绎、归纳和演化。而实现人工智能的三大流派分别是：符号主义、连接主义和行为主义，正好可以和上面一一对应。</p>
 <p>演绎意味着绝对理性，单纯从数据中找到真理。归纳则是理性和非理性结合，从数据中萃取出可能需要的特征，再去寻找特征之间的关系，归纳出一定的规律。通过演绎推导出的结论一般是不会错的，而归纳可能因为数据量不够或者提取的特征不恰当等等原因推导出一个不恰当的规律。</p>
 <p>而归纳可能会出错的特点，也意味着它更能容忍模糊和不精确，打个比方，在语义翻译领域，绝对精确演绎出的结果根本没法用，因为语言并不是绝对理性的，它还掺杂着情感。归纳则将理性降格，因为它承认这个世界理性与混乱共存。SVM的本质就是将数据两两比较，寻找差异最小的一种划分方法，也是一种归纳的方法。</p>
