@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/photo37.jpeg">
 <meta property="article:published_time" content="2022-11-03T17:25:02.536Z">
-<meta property="article:modified_time" content="2022-11-11T06:07:49.333Z">
+<meta property="article:modified_time" content="2022-11-17T10:08:58.742Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="论文">
 <meta name="twitter:card" content="summary_large_image">
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7k words
+          11k words
         
       </span>
     
@@ -369,7 +369,27 @@ rescale rate = 1 / (1 - dropout rate)</script><p>没用dropout的神经网络前
 <li>内涵表示命题或语义中的精确定义——形式上学习的概念，比如它的属性特征。</li>
 <li>外延表示与学习相关的原型和概念。</li>
 </ul>
-<h2 id="Mixup"><a href="#Mixup" class="headerlink" title="Mixup"></a>Mixup</h2><p>一、大型神经网络的问题</p>
+<h2 id="Mixup"><a href="#Mixup" class="headerlink" title="Mixup"></a>Mixup</h2><h4 id="mixup-BEYOND-EMPIRICAL-RISK-MINIMIZATION"><a href="#mixup-BEYOND-EMPIRICAL-RISK-MINIMIZATION" class="headerlink" title="mixup: BEYOND EMPIRICAL RISK MINIMIZATION"></a>mixup: BEYOND EMPIRICAL RISK MINIMIZATION</h4><p>大型神经网络可能对样本集过拟合，表现为对训练样本具有记忆性，并且对对抗样本非常敏感。</p>
+<p>mixup作为一种数据增强方法，用于缓解以上问题。mixup表示为成对样本及其标签的凸组合。</p>
+<p><img src="/../img/image-20221108003455079.png" srcset="/img/loading.gif" lazyload alt="image-20221108003455079"></p>
+<p><img src="/../img/image-20221108003848981.png" srcset="/img/loading.gif" lazyload alt="image-20221108003848981"></p>
+<p>实验表明该方法能够有效地提高网络的通用性，减小了对训练样本的记忆，增强了模型对对抗样本的鲁棒性，并进一步提高了GAN的训练稳定性。</p>
+<p>以往用的ERM是用采一部分的样本作为经验分布，去近似真实分布，当遇到真实的Y与模型拟合的Y不同的时候，计算二者的损失对经验分布的积分来作为风险损失函数。</p>
+<p><img src="/../img/image-20221107221254065.png" srcset="/img/loading.gif" lazyload alt="image-20221107221254065" style="zoom:50%;"></p>
+<p><img src="/../img/image-20221108001013275.png" srcset="/img/loading.gif" lazyload alt="image-20221108001013275" style="zoom:50%;"></p>
+<p>现在用一种新的vicinal risk minimization(VRM)来替代，就是用邻近分布来替代经验分布，用于衡量样本$(\tilde x,\tilde y)$出现在样本$(x_i,y_i)$附近的概率，常用的邻近分布有高斯邻近，锁定标签，对训练样本增加一个高斯噪声。</p>
+<p><img src="/../img/image-20221116120959167.png" srcset="/img/loading.gif" lazyload alt="image-20221116120959167" style="zoom:50%;"></p>
+<p>从这个邻近分布中采样训练数据，就是最小化经验邻近风险VRM，这样损失函数就成了离散分布。</p>
+<p><img src="/../img/image-20221116121604368.png" srcset="/img/loading.gif" lazyload alt="image-20221116121604368" style="zoom:50%;"></p>
+<p>这篇论文的主要贡献是提出了一种通用的邻近分布，即mixup：</p>
+<p><img src="/../img/image-20221116121819556.png" srcset="/img/loading.gif" lazyload alt="image-20221116121819556"></p>
+<p>其中$\lambda$服从$Beta(\alpha,\alpha)$分布，超参数$\alpha$控制两个样本的插值强度，当$\alpha=0$时$\lambda=1$，上式恢复为ERM。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># y1, y2 should be one-hot vectors</span><br><span class="hljs-comment">#这里的标签必须是one-hot向量</span><br><span class="hljs-keyword">for</span> (x1, y1), (x2, y2) <span class="hljs-keyword">in</span> <span class="hljs-built_in">zip</span>(loader1, loader2):<br>    lam = numpy.random.beta(alpha, alpha)<br>    x = Variable(lam * x1 + (<span class="hljs-number">1.</span> - lam) * x2)<br>    y = Variable(lam * y1 + (<span class="hljs-number">1.</span> - lam) * y2)<br>    optimizer.zero_grad()<br>    loss(net(x), y).backward()<br>    optimizer.step()<br></code></pre></td></tr></table></figure>
+<p>作者进一步指出，构造三个及以上样本的凸组合不能再带来进一步的增益。实验发现，仅在相同类别的样本中使用mixup不能显著地提高性能。</p>
+<p>mixup能够有效地减少对训练样本之外的样本预测的振荡，且复合奥卡姆剃刀的归纳偏置。 对于下图所示的样本集，绿色表示类别0，橙色表示类别1。经验风险最小化ERM构造了硬分类的决策边界，蓝色区域代表模型分类为1的区域；而mixup实现软分类的决策边界，对于中间的区域，从一个类别过渡到另一个类别，提供更平滑的不确定性估计。</p>
+<p><img src="/../img/5f09bd5d14195aa5944cae85.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>α在0.2 ~ 2之间效果都差不多，说明mixup对α参数并不是很敏感。但如果α过小，等于没有进行mixup的原始数据，如果α过大，等于所有输入都是各取一半混合，样本的多样性和没有增强的原始数据是一样的，但由于标签不直接，所以学习会慢一些，但最终精度和原始数据差不多。</p>
+<p>一、大型神经网络的问题</p>
 <p>大型的深度神经网络存在一些不好的行为，比如<strong>记忆性</strong>和<strong>对抗样本敏感</strong>问题。</p>
 <p>首先需要从神经网络最基本的优化原理，也就是经验风险最小化（ERM原理）讲起。当前的神经网络其实都是基于这个基本思想进行学习或训练的。经过机器学习领域多年的发展，ERM优化原理逐渐暴露出了明显的问题：</p>
 <p>一方面，即使在正则化约束的情况下，或者在标签随机分配的分类问题中，ERM仍允许大型神经网络<strong>记住</strong>训练数据（而不是从训练数据中泛化）。</p>
@@ -379,9 +399,6 @@ rescale rate = 1 / (1 - dropout rate)</script><p>没用dropout的神经网络前
 <p>数据增强方法本质就是选择与训练数据相似但不同的示例进行训练，也可以理解为近邻风险最小化规则的一种形式Vicinal Risk Minimization（VRM）。这种做法也可以理解为将训练数据进行人为的泛化，然后再让神经网络记住。</p>
 <p>同时，数据增强的方法也需要结合具体的数据集，以及相应的专业知识，比如肿瘤分割的数据集就应该避免使用会破坏结构信息的数据增强方法。</p>
 <p>另外，数据增强一个关键假设就是<strong>经过增强的近邻样本共享一个分类，而不会对这种近邻关系建模</strong>。说人话就是，先把数据增强，再构建神经网络。</p>
-<p>mixup就是一种数据增强方法：</p>
-<p><img src="/../img/image-20221108003455079.png" srcset="/img/loading.gif" lazyload alt="image-20221108003455079"></p>
-<p><img src="/../img/image-20221108003848981.png" srcset="/img/loading.gif" lazyload alt="image-20221108003848981"></p>
 <p>选出两组不同类别的训练样本及其标签，$λ∈[0,1]$，具体实现时λ 的值从beta(α,α)分布中采样，α越大越会导致欠拟合。因为label用的是one-hot vector编码，加权之后就变成了同时属于混合前的两个不同类。</p>
 <p>这为不同的类提供了连续的数据样本，直观地扩展了给定训练集的分布，从而使网络在测试阶段更加稳健。</p>
 <p>最后生成一个新的数据和标签，并输入到网络训练。</p>
@@ -404,8 +421,8 @@ rescale rate = 1 / (1 - dropout rate)</script><p>没用dropout的神经网络前
 <ol>
 <li>mixup更适合较小的 weight decay (10−4) ，ERM更适合较大的 weight decay (5 × 10−4)</li>
 <li>线性插值不能对相同label做，要对不同label进行混合。</li>
-<li>λ 的值从beta(α,α)分布中采样，α越大越会导致欠拟合</li>
-<li>imagenet数据集上，α∈[0.1,0.4] 效果更好</li>
+<li>λ 的值从beta(α,α)分布中采样，α越大越会导致欠拟合。</li>
+<li>imagenet数据集上，α∈[0.1,0.4] 效果更好。</li>
 </ol>
 <p>五、其它一些知识点</p>
 <p>（1）pre-training 预训练</p>
@@ -436,10 +453,6 @@ rescale rate = 1 / (1 - dropout rate)</script><p>没用dropout的神经网络前
 <blockquote>
 <p>风险函数：度量平均意义下的模型预测好坏，损失函数的值越小， 模型就越好。</p>
 </blockquote>
-<p>损失函数的期望就是反映真实世界误差的期望风险，理论上是模型 $f(x,θ)$ 关于联合分布 $P(X,Y) $的平均意义下的代价损失，表达为如下公式：</p>
-<p><img src="/../img/image-20221107221254065.png" srcset="/img/loading.gif" lazyload alt="image-20221107221254065"></p>
-<p>模型的训练就是一个去拟合数据真实分布的过程，但现实里，只有神知道真实的概率分布，因此我们只能得到所谓的“经验分布”，mixup论文里写成：</p>
-<p><img src="/../img/image-20221108001013275.png" srcset="/img/loading.gif" lazyload alt="image-20221108001013275"></p>
 <p>理论上认为，训练过程，既然追求收敛，也就是说，训练误差越小越好，可以看作是追逐一种“经验风险最小化”：</p>
 <p>经验风险最小化原则一致性条件认为，如果期望风险和经验风险都收敛于某个极小值，则学习过程是一致的。</p>
 <p><img src="/../img/image-20221108001125178.png" srcset="/img/loading.gif" lazyload alt="image-20221108001125178"></p>
@@ -448,14 +461,16 @@ rescale rate = 1 / (1 - dropout rate)</script><p>没用dropout的神经网络前
 <p>把数据集改成50来做，10验证，数据长度改成1024，把所有文件都放到一起。</p>
 <p>上面构建出的是一个基准baseline网络。</p>
 <p>然后在特征层加mixup。</p>
-<h2 id="ResNet18神经网络"><a href="#ResNet18神经网络" class="headerlink" title="ResNet18神经网络"></a>ResNet18神经网络</h2><p>18是权重层的数量，池化层不涉及权重。</p>
+<h4 id="ResNet18神经网络"><a href="#ResNet18神经网络" class="headerlink" title="ResNet18神经网络"></a>ResNet18神经网络</h4><p>18是权重层的数量，池化层不涉及权重。</p>
 <p>为什么是18，不是串联结构的VGG或者resnet56？</p>
 <p> (1)   随着网络越来越深，训练变得原来越难，网络的优化变得越来越难。理论上，越深的网络，效果应该更好；但实际上，由于训练难度，过深的网络会产生退化问题，效果反而不如相对较浅的网络(随着层数的增多，训练集上的效果变差,这被称为退化问题)。</p>
 <p> (2)  随着网络越来越深,当堆叠到一定网络深度时，就会出现梯度消失或梯度爆炸问题</p>
 <p>所以说也不是不能用56，但是没必要，可能串联起来的效果还不好，那就不用了。</p>
-<h3 id="1-残差网络"><a href="#1-残差网络" class="headerlink" title="1.残差网络"></a>1.残差网络</h3><p>   残差网络是由一系列残差块组成的。一个残差块可以用下图表示，输入通过多次卷积，然后与输入相加。</p>
+<p>1.残差网络</p>
+<p>   残差网络是由一系列残差块组成的。一个残差块可以用下图表示，输入通过多次卷积，然后与输入相加。</p>
 <p><img src="/../img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzk5OTY5MQ==,size_16,color_FFFFFF,t_70.jpeg" srcset="/img/loading.gif" lazyload alt="img"></p>
-<h3 id="2-网格结构图"><a href="#2-网格结构图" class="headerlink" title="2.网格结构图"></a>2.网格结构图</h3><p><img src="/../img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzk5OTY5MQ==,size_16,color_FFFFFF,t_70.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>2.网格结构图</p>
+<p><img src="/../img/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Mzk5OTY5MQ==,size_16,color_FFFFFF,t_70.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>卷积层有17个，FC层1个，所以是18。</p>
 <p>实线表示残差块中的通道数没有变化，虚线表示通道数变化，例如64-&gt;128。</p>
 <p>如果通道数变化了怎么办？比如从64-&gt;128，可以通过1*1卷积调整一下通道数，然后将步长调整成2。</p>
@@ -465,6 +480,55 @@ rescale rate = 1 / (1 - dropout rate)</script><p>没用dropout的神经网络前
 <p>3，4，5层同理，然后接一个平均池化层和一个512个神经元，1000输出的fc层。</p>
 <p>应用到1D中就是：</p>
 <p><img src="/../img/network.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>ResNet.downsample详解</p>
+<p>其中ResNet出现的downsample，可以大致分为一下两种</p>
+<ol>
+<li><p>真正意义上让output.shape长宽变成1/2的我暂且称之为real downsample。</p>
+</li>
+<li><p>shortcut前的x的为了适应shortcut后变化的shape而做的自适应调节，暂且称之为 identity downsample。</p>
+</li>
+</ol>
+<p>downsample是让全图的H<em>W变成1/2H </em> 1/2W，方式是使stride = 2。</p>
+<p>可以看到每个real downsample是在不同layer（相同颜色的块）的第一个block完成的，但是第一个块并没有做downsample。</p>
+<p><strong>特征归纳</strong></p>
+<p>（1） 第一个大layer不做real downsample</p>
+<p>（2）剩下的所有大layer都只在第一个block里的第一个3x3 用stride=2 做real downsample</p>
+<p>相关代码：</p>
+<p><img src="/../img/format,png-8157627.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><strong>real downsample</strong></p>
+<p>可以看到，我们在make layer1时，传进去stride = 1。而后面的layer2 layer3传进去的stride都是2。</p>
+<p><img src="/../img/format,png-20221111170736825.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>怎么做到只让第一个block灵活的调整（是否downsample），而后面的block都不变呢？</p>
+<p>在第97行，把每个layer的第一个block拉出来用自己传进去的stride，传进去stride = 1，那么第一个block就不用downsample；如果传进去stride = 2，那第一个block就要downsample。</p>
+<p>至于剩下的block， 传进去stride = 1还是2都跟它们无关，因为它们都不downsample，所以剩下basic block里第一层3x3的stride都是1。</p>
+<p><strong>identity downsample</strong></p>
+<p>针对的是前后shape不同的情况，也就是虚线部分。该怎么判断用不用呢？</p>
+<p>原理：判断是否进行了real downsample</p>
+<p>如果该layer进行了real downsample，就相当于改变了输出的形状，因此就要进行identity downsample。</p>
+<p>如果该layer没进行real downsample，那么identity downsample也一样为none。</p>
+<p>做法：判断传进来的stride 是不是==1</p>
+<p>等于1，说明该layer没有用stride进行real downsample，前后形状不变，不用对x另做调整来适应f(x)的shape； 不等于1，说明该layer用stride做了downsample，前后形状变了，需要self.downsample对x另做调整来适应f(x)的shape。</p>
+<p><img src="/../img/format,png-20221111193802093.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h4 id="RANDOMMIX：一种混合样本数据增强方法"><a href="#RANDOMMIX：一种混合样本数据增强方法" class="headerlink" title="RANDOMMIX：一种混合样本数据增强方法"></a>RANDOMMIX：一种混合样本数据增强方法</h4><p>从VC维理论推断，当训练数据有限或不足时，更多可学习的参数更容易过拟合训练数据，而深度神经网络成功的重要原因之一是它具有海量的可学习参数，并且模型对训练数据分布之外的数据的泛化能力极其有限。</p>
+<p>本文的方法考虑通过增加混合样本的多样性来提高神经网络的性能。在前人工作的基础上提出了RandomMix，它使混合样本更加多样化，具有更好的性能。此外，RandomMix使模型更加稳健和方便使用。</p>
+<p>将  Candidates   设置为   [Mixup,  CutMix,  ResizeMix,  Fmix]   并将权重设置为  [3,  1,   1,  1]。其他设置和超参数与训练  CIFAR‑10  数据集时相同。</p>
+<h4 id="SMOTE算法"><a href="#SMOTE算法" class="headerlink" title="SMOTE算法"></a>SMOTE算法</h4><p>SMOTE是一种综合采样人工合成数据算法，用于解决数据类别不平衡问题(Imbalanced class problem)，以Over-sampling少数类和Under-sampling多数类结合的方式来合成数据。</p>
+<p>为了解决这一问题，业内已经有以下5种公认的方法去扩充数据集，以至于类别均匀：</p>
+<ol>
+<li>随机的增大少数类的样本数量。</li>
+<li>随机的增大特定少数类样本的数量。</li>
+<li>随机的减少多数类样本的数量。</li>
+<li>随机的减少特定多数类样本的数量。</li>
+<li>修改代价函数，使得少数类出错的代价更高。</li>
+</ol>
+<p>SMOTE算法就是一种综合1，3方法的改进方式，它以每个样本点的k个最近邻样本点为依据，随机的选择N个邻近点进行差值乘上一个[0,1]范围的阈值，从而达到合成数据的目的。这种算法的核心是：特征空间上邻近的点其特征都是相似的。它并不是在数据空间上进行采样，而是在特征空间中进行采样，所以它的准确率会高于传统的采样方式。这也是为什么到目前为止SMOTE以及其派生的算法仍然是较为主流的采样技术的原因。</p>
+<p><strong>Figure 1</strong></p>
+<p>在Figure 1中，假设数据点A在特征空间上有4个邻近点，若N为2，则SMOTE会随机选择其中2个邻近点B,C，分别计算A-&gt;B， A-&gt;C的距离，如图中绿线和红线所示，在绿线或红线上的所有采样点都是合理的，如点A1。为了确保数据点尽可能的多样（不重叠），故乘上一个[0, 1]之间的随机因子。</p>
+<p><img src="/../img/v2-0e9c627a1493cbf8a06097e68a02f69f_r.jpg" srcset="/img/loading.gif" lazyload alt="img" style="zoom: 50%;"></p>
+<p><strong>Figure 2: algorithm</strong></p>
+<p><code>SMOTE</code>负责接受要采样的类数据集X，返回一个经过SMOTE采样后的数据集，大小为<code>(N/100)*T</code>，函数有三个参数，分别是<code>T: 需要处理的数据集X的样本数量; N: 采样比例，一般为100, 200, 300等整百数，对应即1倍，2倍，3倍；K: 为采样的最近邻数量，论文中默认为5</code>。<code>SMOTE</code>代码思想非常简单，扫描每一个样本点，计算每一个样本点的K个最近邻，将每一个最近邻样本点的索引记录在<code>nnarray</code>中，之后传入<code>Populate(N, i, nnarray)</code>中即完成一个样本点的采样。</p>
+<p><code>Populate</code>则负责根据<code>nnarray</code>中的索引去随机生成<code>N</code>个与观测样本<code>i</code>相似的样本。该函数会计算随机邻近点<code>nn</code>与观测样本<code>i</code>点的每一个特征之间的差距<code>dif</code>，将其差距乘上一个[0, 1]随机因子<code>gap</code>，再将<code>dif*gap</code>的值加上观测点<code>i</code>即完成了一个特征的合成。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">NaiveSMOTE</span>(<span class="hljs-params">X, N=<span class="hljs-number">100</span>, K=<span class="hljs-number">5</span></span>):<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    &#123;X&#125;: minority class samples; 少数类的样本</span><br><span class="hljs-string">    &#123;N&#125;: Amount of SMOTE; default 100; </span><br><span class="hljs-string">    &#123;K&#125; Number of nearest; default 5; </span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    <span class="hljs-comment"># &#123;T&#125;: Number of minority class samples; </span><br>    T = X.shape[<span class="hljs-number">0</span>]<br>    <span class="hljs-keyword">if</span> N &lt; <span class="hljs-number">100</span>:<br>        T = (N/<span class="hljs-number">100</span>) * T<br>        N = <span class="hljs-number">100</span><br>    N = (<span class="hljs-built_in">int</span>)(N/<span class="hljs-number">100</span>)<br><br>    numattrs = X.shape[<span class="hljs-number">1</span>]<br>    samples = X[:T]<br>    neigh = NearestNeighbors(n_neighbors=K)<br>    neigh.fit(samples)<br>    Synthetic = np.zeros((T*N, numattrs))<br>    newindex = <span class="hljs-number">0</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">Populate</span>(<span class="hljs-params">N, i, nns, newindex</span>):<br>        <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">        Function to generate the synthetic samples.</span><br><span class="hljs-string">        &quot;&quot;&quot;</span><br>        <span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(N):<br>            nn = np.random.randint(<span class="hljs-number">0</span>, K)<br>            <span class="hljs-keyword">for</span> attr <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(numattrs):<br>                dif = samples[nns[nn], attr] - samples[i, attr]<br>                gap = np.random.random()<br>                Synthetic[newindex, attr] = samples[i, attr] + gap*dif<br>            newindex += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">return</span> newindex<br><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(T):<br>        nns = neigh.kneighbors([samples[i]], K, return_distance=<span class="hljs-literal">False</span>)<br>        newindex = Populate(N, i, nns[<span class="hljs-number">0</span>], newindex)<br>    <span class="hljs-keyword">return</span> Synthetic<br></code></pre></td></tr></table></figure>
 
               
             </div>
